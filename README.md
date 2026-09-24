@@ -25,6 +25,13 @@ Deploy: qualquer host de Next.js (ex.: Vercel), sem variáveis de ambiente.
 3. **Importação**: *Carregar base preenchida* faz merge aditivo (só atualiza quem está na planilha;
    célula vazia não apaga valor salvo). Avisos de valores não reconhecidos vão para o console.
 
+## Planilha de exemplo (demonstração)
+
+`exemplos/Gazin_Mapa_Sucessorio_EXEMPLO_FICTICIO.xlsx` já vem no formato de importação: basta clicar em
+*Carregar base preenchida*. Nomes e posições são os reais; **todas as respostas são sorteadas** e os 40
+analistas/técnicos são pessoas inventadas. Depois da demonstração, use *Limpar base local*.
+Para gerar de novo: `npm run exemplo` (semente fixa; `SEMENTE=7 npm run exemplo` gera outro cenário).
+
 ## Recursos da tela
 
 - **Tela cheia**: botão na barra superior (sai também com Esc).
