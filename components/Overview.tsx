@@ -24,15 +24,17 @@ const pct = (n: number, total: number) => (total ? Math.round((n / total) * 100)
 
 /** Colunas numéricas compartilhadas pelas tabelas de cobertura: contagem e percentual de cada faixa. */
 function CelulasCobertura(r: Resumo) {
-  const comSucessor = pct(r.verde + r.amarelo, r.total);
-  const cor = comSucessor >= 70 ? "verde" : comSucessor >= 40 ? "amarelo" : "vermelho";
+  // Mesma régua da barra: 2 ou mais sucessores = 100%, 1 sucessor = 50%, nenhum = 0%.
+  // Assim uma área com uma única posição e 1 sucessor aparece em âmbar, como na barra.
+  const indice = r.total ? Math.round(((r.verde + r.amarelo * 0.5) / r.total) * 100) : 0;
+  const cor = indice >= 75 ? "verde" : indice >= 40 ? "amarelo" : "vermelho";
   return (
     <>
       <td>
         <MiniBar {...r} />
       </td>
       <td className="num">
-        <span className={`pct-destaque ${cor}`}>{comSucessor}%</span>
+        <span className={`pct-destaque ${cor}`}>{indice}%</span>
       </td>
       {[r.verde, r.amarelo, r.vermelho].map((n, i) => (
         <td key={i} className="num">
@@ -50,8 +52,8 @@ function CabecalhoCobertura({ primeira }: { primeira: string }) {
         <th>{primeira}</th>
         <th className="num">Posições</th>
         <th>Cobertura</th>
-        <th className="num" title="Posições com pelo menos 1 sucessor mapeado">
-          Com sucessor
+        <th className="num" title="2 ou mais sucessores = 100%, 1 sucessor = 50%, sem sucessor = 0%">
+          Índice de cobertura
         </th>
         <th className="num">2 ou mais</th>
         <th className="num">1</th>
@@ -148,6 +150,9 @@ export default function Overview() {
           </tbody>
         </table>
         </div>
+        <p className="nota-tabela">
+          Índice de cobertura: cada posição com 2 ou mais sucessores conta 100%, com 1 sucessor conta 50% e sem sucessor conta 0%.
+        </p>
 
         <h2>Cobertura por diretoria</h2>
         <div className="table-wrap">
