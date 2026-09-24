@@ -1,0 +1,4306 @@
+{
+ "source": "Posicoes_Criticas.xlsx",
+ "chairs": [
+  {
+   "id": "c001",
+   "nome": "Fernando Sanches Graci",
+   "cargo": "Controller",
+   "nivel": "Diretoria",
+   "diretoria": "Controller",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Gilmar Alves de Oliveira",
+   "gestorCargo": "Presidente"
+  },
+  {
+   "id": "c002",
+   "nome": "Francieli Bessa Silva Tavares",
+   "cargo": "Coordenador contabil/tributario",
+   "nivel": "Coordenação",
+   "diretoria": "Controller",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Cleiton Cesar Silva",
+   "gestorCargo": "Gerente de Controladoria"
+  },
+  {
+   "id": "c003",
+   "nome": "Luiz Fernando Bandeira",
+   "cargo": "Coordenador de orçamento",
+   "nivel": "Coordenação",
+   "diretoria": "Controller",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Cleiton Cesar Silva",
+   "gestorCargo": "Gerente de Controladoria"
+  },
+  {
+   "id": "c004",
+   "nome": "Cleiton Cesar Silva",
+   "cargo": "Gerente de controladoria",
+   "nivel": "Gerência",
+   "diretoria": "Controller",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Fernando Sanches Graci",
+   "gestorCargo": "Controller"
+  },
+  {
+   "id": "c005",
+   "nome": "Diego Henrique Garcia Soriani",
+   "cargo": "Gerente fundo de investimento",
+   "nivel": "Gerência",
+   "diretoria": "Controller",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Fernando Sanches Graci",
+   "gestorCargo": "Controller"
+  },
+  {
+   "id": "c006",
+   "nome": "Fabricio Silva Facco",
+   "cargo": "Superv.operação tribut.",
+   "nivel": "Supervisão",
+   "diretoria": "Controller",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Cleiton Cesar Silva",
+   "gestorCargo": "Gerente de Controladoria"
+  },
+  {
+   "id": "c007",
+   "nome": "Leandro Tonhi Mingote",
+   "cargo": "Supervisor contábil",
+   "nivel": "Supervisão",
+   "diretoria": "Controller",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Cleiton Cesar Silva",
+   "gestorCargo": "Gerente de Controladoria"
+  },
+  {
+   "id": "c008",
+   "nome": "Jaciane Pestana Souza",
+   "cargo": "Supervisor de contabilidade",
+   "nivel": "Supervisão",
+   "diretoria": "Controller",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Cleiton Cesar Silva",
+   "gestorCargo": "Gerente de Controladoria"
+  },
+  {
+   "id": "c009",
+   "nome": "Vinicius Ramos da Silva",
+   "cargo": "Coordenador central de compras",
+   "nivel": "Coordenação",
+   "diretoria": "Diretoria administrativa",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Cleiton Fabio Bianchini da Silva",
+   "gestorCargo": "Gerente de Compras Industria"
+  },
+  {
+   "id": "c010",
+   "nome": "Renato Aparecido Andrade",
+   "cargo": "Gerente administrativo",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria administrativa",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Renan da Silva Medeiros",
+   "gestorCargo": "Gerente Administrativo Geral"
+  },
+  {
+   "id": "c011",
+   "nome": "Jeferson Duarte Goncalves",
+   "cargo": "Gerente Administrativo (Parceiros de Negócio)",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria administrativa",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Cleiton Berger",
+   "gestorCargo": "DIRETOR ADMINISTRATIVO"
+  },
+  {
+   "id": "c012",
+   "nome": "Thais Tarcia de Araujo Oliveira",
+   "cargo": "Gerente administrativo de varejo",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria administrativa",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Renan da Silva Medeiros",
+   "gestorCargo": "Gerente Administrativo Geral"
+  },
+  {
+   "id": "c013",
+   "nome": "Renan da Silva Medeiros",
+   "cargo": "Gerente administrativo geral",
+   "nivel": "Gerência Executiva",
+   "diretoria": "Diretoria administrativa",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Cleiton Berger",
+   "gestorCargo": "DIRETOR ADMINISTRATIVO"
+  },
+  {
+   "id": "c014",
+   "nome": "Peter Luiz Cruz Pregidio",
+   "cargo": "Gerente administrativo serviços financeiros",
+   "nivel": "Gerência Executiva",
+   "diretoria": "Diretoria administrativa",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Cleiton Berger",
+   "gestorCargo": "DIRETOR ADMINISTRATIVO"
+  },
+  {
+   "id": "c015",
+   "nome": "Cleiton Fabio Bianchini da Silva",
+   "cargo": "Gerente de compras industria",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria administrativa",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Cleiton Berger",
+   "gestorCargo": "DIRETOR ADMINISTRATIVO"
+  },
+  {
+   "id": "c016",
+   "nome": "Leyffor Augusto de Carvalho Gastaldin",
+   "cargo": "Gerente de engenharia e expansão",
+   "nivel": "Gerência Executiva",
+   "diretoria": "Diretoria administrativa",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Cleiton Berger",
+   "gestorCargo": "DIRETOR ADMINISTRATIVO"
+  },
+  {
+   "id": "c017",
+   "nome": "Joel Borato",
+   "cargo": "Gerente de expansão",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria administrativa",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Leyffor Augusto de Carvalho Gastaldin",
+   "gestorCargo": "Gerente de engenharia e expansão"
+  },
+  {
+   "id": "c018",
+   "nome": "Juliano Silva Vicentini",
+   "cargo": "Gerente de expansão",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria administrativa",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Leyffor Augusto de Carvalho Gastaldin",
+   "gestorCargo": "Gerente de engenharia e expansão"
+  },
+  {
+   "id": "c019",
+   "nome": "Mateus de Azevedo Volttani",
+   "cargo": "Gerente de expansão",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria administrativa",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Leyffor Augusto de Carvalho Gastaldin",
+   "gestorCargo": "Gerente de engenharia e expansão"
+  },
+  {
+   "id": "c020",
+   "nome": "Patricia Giroto",
+   "cargo": "Gerente de riscos",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria administrativa",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Peter Luiz Cruz Pregidio",
+   "gestorCargo": "Gerente administrativo serviços financeiros"
+  },
+  {
+   "id": "c021",
+   "nome": "Janaina Braga Pires Kashiwaya",
+   "cargo": "Gerente de viagem",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria administrativa",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Cleiton Berger",
+   "gestorCargo": "DIRETOR ADMINISTRATIVO"
+  },
+  {
+   "id": "c022",
+   "nome": "Daiane Domingues dos Santos",
+   "cargo": "Supervisor administrativo (ADM geral)",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria administrativa",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Renan da Silva Medeiros",
+   "gestorCargo": "Gerente Administrativo Geral"
+  },
+  {
+   "id": "c023",
+   "nome": "Fabielly Garcia de Souza Costa",
+   "cargo": "Supervisor administrativo (despesas)",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria administrativa",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Renato Aparecido Andrade",
+   "gestorCargo": "Gerente administrativo"
+  },
+  {
+   "id": "c024",
+   "nome": "Raquel Cristina Vidotto Ramos",
+   "cargo": "Supervisor administrativo (despesas)",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria administrativa",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Renato Aparecido Andrade",
+   "gestorCargo": "Gerente administrativo"
+  },
+  {
+   "id": "c025",
+   "nome": "Marcelo de Souza Rodrigues",
+   "cargo": "Supervisor administrativo (expansão)",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria administrativa",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Leyffor Augusto de Carvalho Gastaldin",
+   "gestorCargo": "Gerente de engenharia e expansão"
+  },
+  {
+   "id": "c026",
+   "nome": "Duberlei de Castro da Silva",
+   "cargo": "Coordenador administrativo (assessoria)",
+   "nivel": "Coordenação",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Julio Cezar da Silva",
+   "gestorCargo": "DIRETOR COMERCIAL"
+  },
+  {
+   "id": "c027",
+   "nome": "Robson Rodrigues Jacinto",
+   "cargo": "Coordenador comercial",
+   "nivel": "Coordenação",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Aparecido Benedito dos Santos",
+   "gestorCargo": "GERENTE COMERCIAL"
+  },
+  {
+   "id": "c028",
+   "nome": "Luiz Paulo da Silva Santos",
+   "cargo": "Coordenador de estoque",
+   "nivel": "Coordenação",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Robiano Eloir Pereira",
+   "gestorCargo": "GERENTE DE VAREJO"
+  },
+  {
+   "id": "c029",
+   "nome": "Julio Cezar da Silva",
+   "cargo": "Diretoria comercial",
+   "nivel": "Diretoria",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Gilmar Alves de Oliveira",
+   "gestorCargo": "Presidente"
+  },
+  {
+   "id": "c030",
+   "nome": "Wesley Dionisio da Silva",
+   "cargo": "Gerente (auto posto)",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Julio Cezar da Silva",
+   "gestorCargo": "DIRETOR COMERCIAL"
+  },
+  {
+   "id": "c031",
+   "nome": "",
+   "cargo": "Gerente adjunto varejo",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": true,
+   "gestor": "",
+   "gestorCargo": ""
+  },
+  {
+   "id": "c032",
+   "nome": "Rosana Queiroz da Silva",
+   "cargo": "Gerente administrativo",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Luanna Geraldo Borges",
+   "gestorCargo": "GERENTE DE VAREJO"
+  },
+  {
+   "id": "c033",
+   "nome": "Orlando Rodrigues Neto",
+   "cargo": "Gerente comercial (atacado)",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Frank Soares do Nascimento",
+   "gestorCargo": "GERENTE GERAL DO ATACADO"
+  },
+  {
+   "id": "c034",
+   "nome": "Aparecido Benedito dos Santos",
+   "cargo": "Gerente comercial (consórcio)",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Julio Cezar da Silva",
+   "gestorCargo": "DIRETOR COMERCIAL"
+  },
+  {
+   "id": "c035",
+   "nome": "Thiago Dias Tavares",
+   "cargo": "Gerente comercial (representante consórcio)",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Julio Cezar da Silva",
+   "gestorCargo": "DIRETOR COMERCIAL"
+  },
+  {
+   "id": "c036",
+   "nome": "Paulo Jose da Silva",
+   "cargo": "Gerente comercial (seguros)",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Julio Cezar da Silva",
+   "gestorCargo": "DIRETOR COMERCIAL"
+  },
+  {
+   "id": "c037",
+   "nome": "Leandro Santiago Afonso",
+   "cargo": "Gerente comercial do varejo",
+   "nivel": "Gerência Executiva",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Paulo Sergio dos Santos",
+   "gestorCargo": "GERENTE GERAL DO VAREJO"
+  },
+  {
+   "id": "c038",
+   "nome": "Valdenei Vargas de Almeida",
+   "cargo": "Gerente comercial do varejo",
+   "nivel": "Gerência Executiva",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Paulo Sergio dos Santos",
+   "gestorCargo": "GERENTE GERAL DO VAREJO"
+  },
+  {
+   "id": "c039",
+   "nome": "Andre Schafer Pasinato",
+   "cargo": "Gerente compras",
+   "nivel": "Gerência Executiva",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Julio Cezar da Silva",
+   "gestorCargo": "DIRETOR COMERCIAL"
+  },
+  {
+   "id": "c040",
+   "nome": "Niccolas Daniel Curvelo",
+   "cargo": "Gerente de neg. internacionais",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Andre Schafer Pasinato",
+   "gestorCargo": "Gerente compras"
+  },
+  {
+   "id": "c041",
+   "nome": "Wesley Diniz Alves",
+   "cargo": "Gerente de operações ecommerce",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Julio Cezar da Silva",
+   "gestorCargo": "DIRETOR COMERCIAL"
+  },
+  {
+   "id": "c042",
+   "nome": "Cidclei Reck",
+   "cargo": "Gerente de vendas (atacado)",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Frank Soares do Nascimento",
+   "gestorCargo": "GERENTE GERAL DO ATACADO"
+  },
+  {
+   "id": "c043",
+   "nome": "Juliano Donizete de Sousa",
+   "cargo": "Gerente de vendas (atacado)",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Frank Soares do Nascimento",
+   "gestorCargo": "GERENTE GERAL DO ATACADO"
+  },
+  {
+   "id": "c044",
+   "nome": "Marcio Adriano Leme",
+   "cargo": "Gerente de vendas (atacado)",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Frank Soares do Nascimento",
+   "gestorCargo": "GERENTE GERAL DO ATACADO"
+  },
+  {
+   "id": "c045",
+   "nome": "Natan Henrique Goncalves",
+   "cargo": "Gerente de vendas (atacado)",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Frank Soares do Nascimento",
+   "gestorCargo": "GERENTE GERAL DO ATACADO"
+  },
+  {
+   "id": "c046",
+   "nome": "Juliana Calvo",
+   "cargo": "Gerente de viagem",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Julio Cezar da Silva",
+   "gestorCargo": "DIRETOR COMERCIAL"
+  },
+  {
+   "id": "c047",
+   "nome": "Frank Soares do Nascimento",
+   "cargo": "Gerente geral do atacado",
+   "nivel": "Gerência Executiva",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Julio Cezar da Silva",
+   "gestorCargo": "DIRETOR COMERCIAL"
+  },
+  {
+   "id": "c048",
+   "nome": "Paulo Sergio dos Santos",
+   "cargo": "Gerente geral do varejo",
+   "nivel": "Gerência Executiva",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Julio Cezar da Silva",
+   "gestorCargo": "DIRETOR COMERCIAL"
+  },
+  {
+   "id": "c049",
+   "nome": "Adson Nogueira da Silva",
+   "cargo": "Gerente regional",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Valdenei Vargas de Almeida",
+   "gestorCargo": "Gerente comercial do varejo"
+  },
+  {
+   "id": "c050",
+   "nome": "Anderson Luiz Ferreira Ricardo",
+   "cargo": "Gerente regional",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Leandro Santiago Afonso",
+   "gestorCargo": "Gerente comercial do varejo"
+  },
+  {
+   "id": "c051",
+   "nome": "Arinan Moreira dos Santos",
+   "cargo": "Gerente regional",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Leandro Santiago Afonso",
+   "gestorCargo": "Gerente comercial do varejo"
+  },
+  {
+   "id": "c052",
+   "nome": "Celso Luiz Sacramento de Souza",
+   "cargo": "Gerente regional",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Valdenei Vargas de Almeida",
+   "gestorCargo": "Gerente comercial do varejo"
+  },
+  {
+   "id": "c053",
+   "nome": "Djalma Almeida Andrade",
+   "cargo": "Gerente regional",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Valdenei Vargas de Almeida",
+   "gestorCargo": "Gerente comercial do varejo"
+  },
+  {
+   "id": "c054",
+   "nome": "Erlon Cesar Cruz Almeida",
+   "cargo": "Gerente regional",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Leandro Santiago Afonso",
+   "gestorCargo": "Gerente comercial do varejo"
+  },
+  {
+   "id": "c055",
+   "nome": "Guilherme Caetano Gelamos",
+   "cargo": "Gerente regional",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Valdenei Vargas de Almeida",
+   "gestorCargo": "Gerente comercial do varejo"
+  },
+  {
+   "id": "c056",
+   "nome": "Jadiel Ribeiro Durço",
+   "cargo": "Gerente regional",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Valdenei Vargas de Almeida",
+   "gestorCargo": "Gerente comercial do varejo"
+  },
+  {
+   "id": "c057",
+   "nome": "Jean Medrado dos Santos",
+   "cargo": "Gerente regional",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Valdenei Vargas de Almeida",
+   "gestorCargo": "Gerente comercial do varejo"
+  },
+  {
+   "id": "c058",
+   "nome": "Juliano de Albuquerque Silva",
+   "cargo": "Gerente regional",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Valdenei Vargas de Almeida",
+   "gestorCargo": "Gerente comercial do varejo"
+  },
+  {
+   "id": "c059",
+   "nome": "Luis Carlos Alves de Melo",
+   "cargo": "Gerente regional",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Leandro Santiago Afonso",
+   "gestorCargo": "Gerente comercial do varejo"
+  },
+  {
+   "id": "c060",
+   "nome": "Nicareli Neves",
+   "cargo": "Gerente regional",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Leandro Santiago Afonso",
+   "gestorCargo": "Gerente comercial do varejo"
+  },
+  {
+   "id": "c061",
+   "nome": "Odimar Antonio de Oliveira",
+   "cargo": "Gerente regional",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Leandro Santiago Afonso",
+   "gestorCargo": "Gerente comercial do varejo"
+  },
+  {
+   "id": "c062",
+   "nome": "Ricardo Rodrigues",
+   "cargo": "Gerente regional",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Leandro Santiago Afonso",
+   "gestorCargo": "Gerente comercial do varejo"
+  },
+  {
+   "id": "c063",
+   "nome": "Leandro Ferreira Paim Mendes",
+   "cargo": "Gerente regional",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Leandro Santiago Afonso",
+   "gestorCargo": "Gerente comercial do varejo"
+  },
+  {
+   "id": "c064",
+   "nome": "Gustavo Paixao dos Santos",
+   "cargo": "Supervisor (a) de e-commerce (atacado)",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Frank Soares do Nascimento",
+   "gestorCargo": "GERENTE GERAL DO ATACADO"
+  },
+  {
+   "id": "c065",
+   "nome": "Bruno Rodrigues Martins",
+   "cargo": "Supervisor - varejo",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Paulo Sergio dos Santos",
+   "gestorCargo": "GERENTE GERAL DO VAREJO"
+  },
+  {
+   "id": "c066",
+   "nome": "Aline Portela dos Santos",
+   "cargo": "Supervisor administrativo",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Thais Tarcia de Araujo Oliveira",
+   "gestorCargo": "Gerente administrativo de varejo"
+  },
+  {
+   "id": "c067",
+   "nome": "Andreza Miranda da Silva",
+   "cargo": "Supervisor administrativo",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Thais Tarcia de Araujo Oliveira",
+   "gestorCargo": "Gerente administrativo de varejo"
+  },
+  {
+   "id": "c068",
+   "nome": "Beatriz Santos Kroetzler",
+   "cargo": "Supervisor administrativo",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Thais Tarcia de Araujo Oliveira",
+   "gestorCargo": "Gerente administrativo de varejo"
+  },
+  {
+   "id": "c069",
+   "nome": "Elisandra Martines dos Santos",
+   "cargo": "Supervisor administrativo",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Thais Tarcia de Araujo Oliveira",
+   "gestorCargo": "Gerente administrativo de varejo"
+  },
+  {
+   "id": "c070",
+   "nome": "Hagatha Leticia Zuchinalli Nogueira",
+   "cargo": "Supervisor administrativo",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Thais Tarcia de Araujo Oliveira",
+   "gestorCargo": "Gerente administrativo de varejo"
+  },
+  {
+   "id": "c071",
+   "nome": "Jeovanir Castro de Souza",
+   "cargo": "Supervisor administrativo",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Thais Tarcia de Araujo Oliveira",
+   "gestorCargo": "Gerente administrativo de varejo"
+  },
+  {
+   "id": "c072",
+   "nome": "Juliana Rodriguez Ferro",
+   "cargo": "Supervisor administrativo",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Thais Tarcia de Araujo Oliveira",
+   "gestorCargo": "Gerente administrativo de varejo"
+  },
+  {
+   "id": "c073",
+   "nome": "Keila da Silva Sena Leao",
+   "cargo": "Supervisor administrativo",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Thais Tarcia de Araujo Oliveira",
+   "gestorCargo": "Gerente administrativo de varejo"
+  },
+  {
+   "id": "c074",
+   "nome": "Lidia dos Santos",
+   "cargo": "Supervisor administrativo",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Thais Tarcia de Araujo Oliveira",
+   "gestorCargo": "Gerente administrativo de varejo"
+  },
+  {
+   "id": "c075",
+   "nome": "Maria Cleide Araujo",
+   "cargo": "Supervisor administrativo",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Thais Tarcia de Araujo Oliveira",
+   "gestorCargo": "Gerente administrativo de varejo"
+  },
+  {
+   "id": "c076",
+   "nome": "Maria das Neves Nascimento Galdino",
+   "cargo": "Supervisor administrativo",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Thais Tarcia de Araujo Oliveira",
+   "gestorCargo": "Gerente administrativo de varejo"
+  },
+  {
+   "id": "c077",
+   "nome": "Marileide Porto Fontana",
+   "cargo": "Supervisor administrativo",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Thais Tarcia de Araujo Oliveira",
+   "gestorCargo": "Gerente administrativo de varejo"
+  },
+  {
+   "id": "c078",
+   "nome": "Neiva Cristiane Bortolato Goncalves",
+   "cargo": "Supervisor administrativo",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Thais Tarcia de Araujo Oliveira",
+   "gestorCargo": "Gerente administrativo de varejo"
+  },
+  {
+   "id": "c079",
+   "nome": "Neusa Maria Kaiser",
+   "cargo": "Supervisor administrativo",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Thais Tarcia de Araujo Oliveira",
+   "gestorCargo": "Gerente administrativo de varejo"
+  },
+  {
+   "id": "c080",
+   "nome": "Terisley Rodrigues Ferreira",
+   "cargo": "Supervisor administrativo",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Thais Tarcia de Araujo Oliveira",
+   "gestorCargo": "Gerente administrativo de varejo"
+  },
+  {
+   "id": "c081",
+   "nome": "Samuel Santana Barreto",
+   "cargo": "Supervisor administrativo (atacado)",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Frank Soares do Nascimento",
+   "gestorCargo": "GERENTE GERAL DO ATACADO"
+  },
+  {
+   "id": "c082",
+   "nome": "Lincoln Eduardo Nunes",
+   "cargo": "Supervisor administrativo (e-commerce)",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Edson Oleksyw",
+   "gestorCargo": "DIRETOR DE MARKETING"
+  },
+  {
+   "id": "c083",
+   "nome": "Max Antunes Cavalheiro",
+   "cargo": "Supervisor de licitação",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Julio Cezar da Silva",
+   "gestorCargo": "DIRETOR COMERCIAL"
+  },
+  {
+   "id": "c084",
+   "nome": "Edwagner Tourinho de Oliveira",
+   "cargo": "Supervisor de vendas (atacado)",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Cidclei Reck",
+   "gestorCargo": "Gerente de vendas (atacado)"
+  },
+  {
+   "id": "c085",
+   "nome": "Guilherme Misak Vivian",
+   "cargo": "Supervisor de vendas (atacado)",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria comercial",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Orlando Rodrigues Neto",
+   "gestorCargo": "Gerente comercial (atacado)"
+  },
+  {
+   "id": "c086",
+   "nome": "Rodrigo da Veiga Lima",
+   "cargo": "Coordenador administrativo (governança)",
+   "nivel": "Coordenação",
+   "diretoria": "Diretoria de governança",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Viviane Thomaz",
+   "gestorCargo": "DIRETORA DE GOVERNANÇA"
+  },
+  {
+   "id": "c087",
+   "nome": "Michely Larissa Tonhi de O. Buzinhani",
+   "cargo": "Coordenador de comunicação",
+   "nivel": "Coordenação",
+   "diretoria": "Diretoria de governança",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Viviane Thomaz",
+   "gestorCargo": "DIRETORA DE GOVERNANÇA"
+  },
+  {
+   "id": "c088",
+   "nome": "Thiago Carvalho Ferreira",
+   "cargo": "Coordenador de SESMT",
+   "nivel": "Coordenação",
+   "diretoria": "Diretoria de governança",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Viviane Thomaz",
+   "gestorCargo": "DIRETORA DE GOVERNANÇA"
+  },
+  {
+   "id": "c089",
+   "nome": "Priscila Giomo",
+   "cargo": "Coordenador(a)de pessoal",
+   "nivel": "Coordenação",
+   "diretoria": "Diretoria de governança",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Viviane Thomaz",
+   "gestorCargo": "DIRETORA DE GOVERNANÇA"
+  },
+  {
+   "id": "c090",
+   "nome": "Viviane Thomaz",
+   "cargo": "Diretoria de governança",
+   "nivel": "Diretoria",
+   "diretoria": "Diretoria de governança",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Gilmar Alves de Oliveira",
+   "gestorCargo": "Presidente"
+  },
+  {
+   "id": "c091",
+   "nome": "Milene Thomaz Romano Gantzel",
+   "cargo": "Gerente administrativo de pessoas",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria de governança",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Viviane Thomaz",
+   "gestorCargo": "DIRETORA DE GOVERNANÇA"
+  },
+  {
+   "id": "c092",
+   "nome": "Celso Nobuyuki Yokota",
+   "cargo": "Gerente jurídico",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria de governança",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Viviane Thomaz",
+   "gestorCargo": "DIRETORA DE GOVERNANÇA"
+  },
+  {
+   "id": "c093",
+   "nome": "Ana Paula Franco Prodoscimo Sarti",
+   "cargo": "Supervisor administrativo (governança)",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria de governança",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Viviane Thomaz",
+   "gestorCargo": "DIRETORA DE GOVERNANÇA"
+  },
+  {
+   "id": "c094",
+   "nome": "Maria Aparecida Canella",
+   "cargo": "Coordenador financeiro (financeiro)",
+   "nivel": "Coordenação",
+   "diretoria": "Diretoria de logística",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Celio Roberto Cantuarios",
+   "gestorCargo": "GERENTE ADMINIST.LOGISTICA"
+  },
+  {
+   "id": "c095",
+   "nome": "Edson Guedes de Sousa",
+   "cargo": "Coordenador transporte",
+   "nivel": "Coordenação",
+   "diretoria": "Diretoria de logística",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Celio Roberto Cantuarios",
+   "gestorCargo": "GERENTE ADMINIST.LOGISTICA"
+  },
+  {
+   "id": "c096",
+   "nome": "Franciele Fritsch da Silva",
+   "cargo": "Coordenador transporte",
+   "nivel": "Coordenação",
+   "diretoria": "Diretoria de logística",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Celio Roberto Cantuarios",
+   "gestorCargo": "GERENTE ADMINIST.LOGISTICA"
+  },
+  {
+   "id": "c097",
+   "nome": "Heitor Henrique Bataiero",
+   "cargo": "Coordenador transporte",
+   "nivel": "Coordenação",
+   "diretoria": "Diretoria de logística",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Celio Roberto Cantuarios",
+   "gestorCargo": "GERENTE ADMINIST.LOGISTICA"
+  },
+  {
+   "id": "c098",
+   "nome": "Rafael Marques da Silva",
+   "cargo": "Coordenador transporte",
+   "nivel": "Coordenação",
+   "diretoria": "Diretoria de logística",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Celio Roberto Cantuarios",
+   "gestorCargo": "GERENTE ADMINIST.LOGISTICA"
+  },
+  {
+   "id": "c099",
+   "nome": "Renan Gomes Casagrande",
+   "cargo": "Coordenador transporte",
+   "nivel": "Coordenação",
+   "diretoria": "Diretoria de logística",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Celio Roberto Cantuarios",
+   "gestorCargo": "GERENTE ADMINIST.LOGISTICA"
+  },
+  {
+   "id": "c100",
+   "nome": "Rogelio dos Santos Vargas",
+   "cargo": "Coordenador transporte",
+   "nivel": "Coordenação",
+   "diretoria": "Diretoria de logística",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Celio Roberto Cantuarios",
+   "gestorCargo": "GERENTE ADMINIST.LOGISTICA"
+  },
+  {
+   "id": "c101",
+   "nome": "Teilo de Jesus Santana",
+   "cargo": "Coordenador transporte",
+   "nivel": "Coordenação",
+   "diretoria": "Diretoria de logística",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Celio Roberto Cantuarios",
+   "gestorCargo": "GERENTE ADMINIST.LOGISTICA"
+  },
+  {
+   "id": "c102",
+   "nome": "Willian Fernando Cruz Alves",
+   "cargo": "Coordenador transporte",
+   "nivel": "Coordenação",
+   "diretoria": "Diretoria de logística",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Celio Roberto Cantuarios",
+   "gestorCargo": "GERENTE ADMINIST.LOGISTICA"
+  },
+  {
+   "id": "c103",
+   "nome": "Marcos Antonio Utsunomiya",
+   "cargo": "Diretoria de logística",
+   "nivel": "Diretoria",
+   "diretoria": "Diretoria de logística",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Gilmar Alves de Oliveira",
+   "gestorCargo": "Presidente"
+  },
+  {
+   "id": "c104",
+   "nome": "Celio Roberto Cantuarios",
+   "cargo": "Gerente administrativo logistica",
+   "nivel": "Gerência Executiva",
+   "diretoria": "Diretoria de logística",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Marcos Antonio Utsunomiya",
+   "gestorCargo": "Diretor de logística"
+  },
+  {
+   "id": "c105",
+   "nome": "Luis Carlos da Costa Junior",
+   "cargo": "Gerente assistencia",
+   "nivel": "Gerência Executiva",
+   "diretoria": "Diretoria de logística",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Marcos Antonio Utsunomiya",
+   "gestorCargo": "Diretor de logística"
+  },
+  {
+   "id": "c106",
+   "nome": "Acleilton de Souza Lima",
+   "cargo": "Gerente assistencia",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria de logística",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Luis Carlos da Costa Junior",
+   "gestorCargo": "Gerente assistencia"
+  },
+  {
+   "id": "c107",
+   "nome": "Benjamin Dene de Carvalho Junior",
+   "cargo": "Gerente assistencia",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria de logística",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Luis Carlos da Costa Junior",
+   "gestorCargo": "Gerente assistencia"
+  },
+  {
+   "id": "c108",
+   "nome": "Diego Alisson de Lima Borges",
+   "cargo": "Gerente assistencia",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria de logística",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Luis Carlos da Costa Junior",
+   "gestorCargo": "Gerente assistencia"
+  },
+  {
+   "id": "c109",
+   "nome": "Eduardo Roberto da Silva",
+   "cargo": "Gerente assistencia",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria de logística",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Luis Carlos da Costa Junior",
+   "gestorCargo": "Gerente assistencia"
+  },
+  {
+   "id": "c110",
+   "nome": "Gabriel Pereira Fontaneli",
+   "cargo": "Gerente assistencia",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria de logística",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Luis Carlos da Costa Junior",
+   "gestorCargo": "Gerente assistencia"
+  },
+  {
+   "id": "c111",
+   "nome": "Juliano Bueno da Silva Oliveira",
+   "cargo": "Gerente assistencia",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria de logística",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Luis Carlos da Costa Junior",
+   "gestorCargo": "Gerente assistencia"
+  },
+  {
+   "id": "c112",
+   "nome": "Mauricio Barboza de Souza",
+   "cargo": "Gerente assistencia",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria de logística",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Luis Carlos da Costa Junior",
+   "gestorCargo": "Gerente assistencia"
+  },
+  {
+   "id": "c113",
+   "nome": "Raimundo Nonato Silva Amaral",
+   "cargo": "Gerente assistencia",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria de logística",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Luis Carlos da Costa Junior",
+   "gestorCargo": "Gerente assistencia"
+  },
+  {
+   "id": "c114",
+   "nome": "Renato da Silva Oliveira",
+   "cargo": "Gerente assistencia",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria de logística",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Luis Carlos da Costa Junior",
+   "gestorCargo": "Gerente assistencia"
+  },
+  {
+   "id": "c115",
+   "nome": "Sidnei Francisco da Silva",
+   "cargo": "Gerente assistencia",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria de logística",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Luis Carlos da Costa Junior",
+   "gestorCargo": "Gerente assistencia"
+  },
+  {
+   "id": "c116",
+   "nome": "Donizete Denilson Giomo",
+   "cargo": "Gerente de manutenção",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria de logística",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Celio Roberto Cantuarios",
+   "gestorCargo": "GERENTE ADMINIST.LOGISTICA"
+  },
+  {
+   "id": "c117",
+   "nome": "Vanderlei de Souza Gonçalo",
+   "cargo": "Gerente de planejamento",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria de logística",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Marcos Antonio Utsunomiya",
+   "gestorCargo": "Diretor de logística"
+  },
+  {
+   "id": "c118",
+   "nome": "Elessandro Alves da Silva",
+   "cargo": "Gerente de transporte",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria de logística",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Celio Roberto Cantuarios",
+   "gestorCargo": "GERENTE ADMINIST.LOGISTICA"
+  },
+  {
+   "id": "c119",
+   "nome": "Jonismar Antonio dos Santos",
+   "cargo": "Gerente de transporte",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria de logística",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Celio Roberto Cantuarios",
+   "gestorCargo": "GERENTE ADMINIST.LOGISTICA"
+  },
+  {
+   "id": "c120",
+   "nome": "Robson Muniz de Morais",
+   "cargo": "Gerente de transporte",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria de logística",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Celio Roberto Cantuarios",
+   "gestorCargo": "GERENTE ADMINIST.LOGISTICA"
+  },
+  {
+   "id": "c121",
+   "nome": "Alexsandro Bataieiro",
+   "cargo": "Gerente geral de depósito",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria de logística",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Marcos Antonio Utsunomiya",
+   "gestorCargo": "Diretor de logística"
+  },
+  {
+   "id": "c122",
+   "nome": "Edson Oleksyw",
+   "cargo": "Diretoria de marketing",
+   "nivel": "Diretoria",
+   "diretoria": "Diretoria de marketing",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Gilmar Alves de Oliveira",
+   "gestorCargo": "Presidente"
+  },
+  {
+   "id": "c123",
+   "nome": "Evaldo Barbosa Cavalcante",
+   "cargo": "Superv. propaganda",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria de marketing",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Edson Oleksyw",
+   "gestorCargo": "Diretor de marketing"
+  },
+  {
+   "id": "c124",
+   "nome": "Francisco de Paula Junior",
+   "cargo": "Administrador de banco de dados",
+   "nivel": "Especialista",
+   "diretoria": "Diretoria de TI e inovação",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Alex Coronado dos Santos",
+   "gestorCargo": "GERENTE DE BANCO DE DADOS"
+  },
+  {
+   "id": "c125",
+   "nome": "Fabner Roberto Soares",
+   "cargo": "Administrador de Redes",
+   "nivel": "Especialista",
+   "diretoria": "Diretoria de TI e inovação",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Alex Coronado dos Santos",
+   "gestorCargo": "GERENTE DE BANCO DE DADOS"
+  },
+  {
+   "id": "c126",
+   "nome": "Junior Gil Custodio",
+   "cargo": "Administrador de Redes",
+   "nivel": "Especialista",
+   "diretoria": "Diretoria de TI e inovação",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Alex Coronado dos Santos",
+   "gestorCargo": "GERENTE DE BANCO DE DADOS"
+  },
+  {
+   "id": "c127",
+   "nome": "Danilo Mulizine Stochi",
+   "cargo": "Data Engineer",
+   "nivel": "Especialista",
+   "diretoria": "Diretoria de TI e inovação",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Alex Coronado dos Santos",
+   "gestorCargo": "GERENTE DE BANCO DE DADOS"
+  },
+  {
+   "id": "c128",
+   "nome": "Ricardo Brito Soares",
+   "cargo": "Diretoria de TI e inovação",
+   "nivel": "Diretoria",
+   "diretoria": "Diretoria de TI e inovação",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Gilmar Alves de Oliveira",
+   "gestorCargo": "Presidente"
+  },
+  {
+   "id": "c129",
+   "nome": "Alex Coronado dos Santos",
+   "cargo": "Gerente de banco de dados",
+   "nivel": "Gerência Executiva",
+   "diretoria": "Diretoria de TI e inovação",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Ricardo Brito Soares",
+   "gestorCargo": "Diretor de TI e inovação"
+  },
+  {
+   "id": "c130",
+   "nome": "Kleverson Ricardo de Melo",
+   "cargo": "Gerente de desenvolvimento e programação",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria de TI e inovação",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Alex Coronado dos Santos",
+   "gestorCargo": "GERENTE DE BANCO DE DADOS"
+  },
+  {
+   "id": "c131",
+   "nome": "Rogerio Tsuyoshi Arida",
+   "cargo": "Gerente de desenvolvimento e programação",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria de TI e inovação",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Alex Coronado dos Santos",
+   "gestorCargo": "GERENTE DE BANCO DE DADOS"
+  },
+  {
+   "id": "c132",
+   "nome": "Joel Correia Junior",
+   "cargo": "Gerente de PMO",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria de TI e inovação",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Alex Coronado dos Santos",
+   "gestorCargo": "GERENTE DE BANCO DE DADOS"
+  },
+  {
+   "id": "c133",
+   "nome": "Anderson Rodrigo Giomo",
+   "cargo": "Gerente de suporte",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria de TI e inovação",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Alex Coronado dos Santos",
+   "gestorCargo": "GERENTE DE BANCO DE DADOS"
+  },
+  {
+   "id": "c134",
+   "nome": "Rodrigo Romano Gantzel",
+   "cargo": "Gerente de tecnologia",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria de TI e inovação",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Alex Coronado dos Santos",
+   "gestorCargo": "GERENTE DE BANCO DE DADOS"
+  },
+  {
+   "id": "c135",
+   "nome": "Cadmiel Cristiano de Grande",
+   "cargo": "Supervisor de TI",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria de TI e inovação",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Rodrigo Romano Gantzel",
+   "gestorCargo": "Gerente de tecnologia"
+  },
+  {
+   "id": "c136",
+   "nome": "Edson Macoto Tamura Junior",
+   "cargo": "Tech Lead",
+   "nivel": "Especialista",
+   "diretoria": "Diretoria de TI e inovação",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Alex Coronado dos Santos",
+   "gestorCargo": "GERENTE DE BANCO DE DADOS"
+  },
+  {
+   "id": "c137",
+   "nome": "Fernando Sanches Graci",
+   "cargo": "Diretoria financeira",
+   "nivel": "Diretoria",
+   "diretoria": "Diretoria financeira",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Gilmar Alves de Oliveira",
+   "gestorCargo": "Presidente"
+  },
+  {
+   "id": "c138",
+   "nome": "Joao Everton Ramos",
+   "cargo": "Gerente administrativo (Gazin Bank)",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria financeira",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Maykon Fernando da Costa",
+   "gestorCargo": "GERENTE GERAL"
+  },
+  {
+   "id": "c139",
+   "nome": "Ademar Alencar Jardim Junior",
+   "cargo": "Gerente comercial",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria financeira",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Maykon Fernando da Costa",
+   "gestorCargo": "GERENTE GERAL"
+  },
+  {
+   "id": "c140",
+   "nome": "Anderson Izidoro da Silva",
+   "cargo": "Gerente de crédito (varejo)",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria financeira",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Fernando Sanches Graci",
+   "gestorCargo": "Diretor financeiro"
+  },
+  {
+   "id": "c141",
+   "nome": "Natanael Estevao Chagas Moraes",
+   "cargo": "Gerente de crédito (Atacado,industria)",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria financeira",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Fernando Sanches Graci",
+   "gestorCargo": "Diretor financeiro"
+  },
+  {
+   "id": "c142",
+   "nome": "Celia Xavier Novo",
+   "cargo": "Gerente financeiro",
+   "nivel": "Gerência",
+   "diretoria": "Diretoria financeira",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Fernando Sanches Graci",
+   "gestorCargo": "Diretor financeiro"
+  },
+  {
+   "id": "c143",
+   "nome": "Maykon Fernando da Costa",
+   "cargo": "Gerente geral",
+   "nivel": "Gerência Executiva",
+   "diretoria": "Diretoria financeira",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Fernando Sanches Graci",
+   "gestorCargo": "Diretor financeiro"
+  },
+  {
+   "id": "c144",
+   "nome": "Jessica Fonzar da Silva",
+   "cargo": "Supervisor Comercial (Gazinbank)",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria financeira",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Ademar Alencar Jardim Junior",
+   "gestorCargo": "Gerente comercial"
+  },
+  {
+   "id": "c145",
+   "nome": "Maiara Cristine de Jesus Vieira",
+   "cargo": "Supervisor Comercial (Gazinbank)",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria financeira",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Ademar Alencar Jardim Junior",
+   "gestorCargo": "Gerente comercial"
+  },
+  {
+   "id": "c146",
+   "nome": "Maria Eduarda Matos Medeiros",
+   "cargo": "Supervisor Comercial (Gazinbank)",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria financeira",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Ademar Alencar Jardim Junior",
+   "gestorCargo": "Gerente comercial"
+  },
+  {
+   "id": "c147",
+   "nome": "Natiara Rodrigues dos Santos Vieira",
+   "cargo": "Supervisor Comercial (Gazinbank)",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria financeira",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Ademar Alencar Jardim Junior",
+   "gestorCargo": "Gerente comercial"
+  },
+  {
+   "id": "c148",
+   "nome": "Priscila Andrelina da Silva Bartolomeu",
+   "cargo": "Supervisor Comercial (Gazinbank)",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria financeira",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Ademar Alencar Jardim Junior",
+   "gestorCargo": "Gerente comercial"
+  },
+  {
+   "id": "c149",
+   "nome": "Thomas Jefesson Soares de Souza",
+   "cargo": "Supervisor Comercial (Gazinbank)",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria financeira",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Ademar Alencar Jardim Junior",
+   "gestorCargo": "Gerente comercial"
+  },
+  {
+   "id": "c150",
+   "nome": "Antonio Raimundo Santos de Mendonca",
+   "cargo": "Supervisor regional",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria financeira",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Ademar Alencar Jardim Junior",
+   "gestorCargo": "Gerente comercial"
+  },
+  {
+   "id": "c151",
+   "nome": "Fernando da Silva Dias",
+   "cargo": "Supervisor regional",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria financeira",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Ademar Alencar Jardim Junior",
+   "gestorCargo": "Gerente comercial"
+  },
+  {
+   "id": "c152",
+   "nome": "Iuri Barroso Pinheiro",
+   "cargo": "Supervisor regional",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria financeira",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Ademar Alencar Jardim Junior",
+   "gestorCargo": "Gerente comercial"
+  },
+  {
+   "id": "c153",
+   "nome": "Jordy Alesson Souza Monteiro",
+   "cargo": "Supervisor regional",
+   "nivel": "Supervisão",
+   "diretoria": "Diretoria financeira",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Ademar Alencar Jardim Junior",
+   "gestorCargo": "Gerente comercial"
+  },
+  {
+   "id": "c154",
+   "nome": "Danilo Moureira Niza da Silva",
+   "cargo": "Coord. de projetos e processos",
+   "nivel": "Coordenação",
+   "diretoria": "Gerente admin. industria",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Edgar Zaleski",
+   "gestorCargo": "Gerente de indústria"
+  },
+  {
+   "id": "c155",
+   "nome": "Maicon Aurelio Trovo",
+   "cargo": "Gerente admin. industria",
+   "nivel": "Gerência Executiva",
+   "diretoria": "Gerente admin. industria",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Gilmar Alves de Oliveira",
+   "gestorCargo": "Presidente"
+  },
+  {
+   "id": "c156",
+   "nome": "Rodrigo de Oliveira Novo",
+   "cargo": "Gerente de desenv.de maquinas",
+   "nivel": "Gerência",
+   "diretoria": "Gerente admin. industria",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Maicon Aurelio Trovo",
+   "gestorCargo": "Gerente admin. industria"
+  },
+  {
+   "id": "c157",
+   "nome": "Francisca Marisangela de Jesus Sousa",
+   "cargo": "Gerente de espumação",
+   "nivel": "Gerência",
+   "diretoria": "Gerente admin. industria",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Everson Oliveira Lima",
+   "gestorCargo": "GERENTE INDUSTRIA"
+  },
+  {
+   "id": "c158",
+   "nome": "Jefson Henrique de Jesus Santos",
+   "cargo": "Gerente de espumação",
+   "nivel": "Gerência",
+   "diretoria": "Gerente admin. industria",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Rafael Tomaz Mariano",
+   "gestorCargo": "GERENTE INDUSTRIA"
+  },
+  {
+   "id": "c159",
+   "nome": "Luan Gabriel Schroeder",
+   "cargo": "Gerente de espumação",
+   "nivel": "Gerência",
+   "diretoria": "Gerente admin. industria",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Vinicios Zuse",
+   "gestorCargo": "GERENTE INDUSTRIA"
+  },
+  {
+   "id": "c160",
+   "nome": "Luiz Henrique Martins Trench",
+   "cargo": "Gerente de espumação",
+   "nivel": "Gerência",
+   "diretoria": "Gerente admin. industria",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Marcos de Oliveira Souza",
+   "gestorCargo": "GERENTE INDUSTRIA"
+  },
+  {
+   "id": "c161",
+   "nome": "Ricardo Poteriko Sobrinho",
+   "cargo": "Gerente de espumação",
+   "nivel": "Gerência",
+   "diretoria": "Gerente admin. industria",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Edgar Zaleski",
+   "gestorCargo": "GERENTE INDUSTRIA"
+  },
+  {
+   "id": "c162",
+   "nome": "Roberto Ricardo Buth",
+   "cargo": "Gerente de espumação",
+   "nivel": "Gerência",
+   "diretoria": "Gerente admin. industria",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Anderson Furlan Karnopp",
+   "gestorCargo": "GERENTE INDUSTRIA"
+  },
+  {
+   "id": "c163",
+   "nome": "Yuri Ignochevski Primao",
+   "cargo": "Gerente de espumação",
+   "nivel": "Gerência",
+   "diretoria": "Gerente admin. industria",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Caio Henrique Macedo Garcia",
+   "gestorCargo": "GERENTE INDUSTRIA"
+  },
+  {
+   "id": "c164",
+   "nome": "Anderson Furlan Karnopp",
+   "cargo": "Gerente de indústria",
+   "nivel": "Gerência Executiva",
+   "diretoria": "Gerente admin. industria",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Maicon Aurélio Trovo",
+   "gestorCargo": "GERENTE ADMIN. INDUSTRIA"
+  },
+  {
+   "id": "c165",
+   "nome": "Caio Henrique Macedo Garcia",
+   "cargo": "Gerente de indústria",
+   "nivel": "Gerência Executiva",
+   "diretoria": "Gerente admin. industria",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Maicon Aurélio Trovo",
+   "gestorCargo": "GERENTE ADMIN. INDUSTRIA"
+  },
+  {
+   "id": "c166",
+   "nome": "Edgar Zaleski",
+   "cargo": "Gerente de indústria",
+   "nivel": "Gerência Executiva",
+   "diretoria": "Gerente admin. industria",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Maicon Aurélio Trovo",
+   "gestorCargo": "GERENTE ADMIN. INDUSTRIA"
+  },
+  {
+   "id": "c167",
+   "nome": "Everson Oliveira Lima",
+   "cargo": "Gerente de indústria",
+   "nivel": "Gerência Executiva",
+   "diretoria": "Gerente admin. industria",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Maicon Aurélio Trovo",
+   "gestorCargo": "GERENTE ADMIN. INDUSTRIA"
+  },
+  {
+   "id": "c168",
+   "nome": "Juliana Severo Arantes",
+   "cargo": "Gerente de indústria",
+   "nivel": "Gerência Executiva",
+   "diretoria": "Gerente admin. industria",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Maicon Aurélio Trovo",
+   "gestorCargo": "GERENTE ADMIN. INDUSTRIA"
+  },
+  {
+   "id": "c169",
+   "nome": "Marcos de Oliveira Souza",
+   "cargo": "Gerente de indústria",
+   "nivel": "Gerência Executiva",
+   "diretoria": "Gerente admin. industria",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Maicon Aurélio Trovo",
+   "gestorCargo": "GERENTE ADMIN. INDUSTRIA"
+  },
+  {
+   "id": "c170",
+   "nome": "Rafael Tomaz Mariano",
+   "cargo": "Gerente de indústria",
+   "nivel": "Gerência Executiva",
+   "diretoria": "Gerente admin. industria",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Maicon Aurélio Trovo",
+   "gestorCargo": "GERENTE ADMIN. INDUSTRIA"
+  },
+  {
+   "id": "c171",
+   "nome": "Vinicios Zuse",
+   "cargo": "Gerente de indústria",
+   "nivel": "Gerência Executiva",
+   "diretoria": "Gerente admin. industria",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": true,
+   "vago": false,
+   "gestor": "Maicon Aurélio Trovo",
+   "gestorCargo": "GERENTE ADMIN. INDUSTRIA"
+  },
+  {
+   "id": "c172",
+   "nome": "Marcus Vinicius Cabeça Pereira",
+   "cargo": "Gerente de processos",
+   "nivel": "Gerência",
+   "diretoria": "Gerente admin. industria",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Maicon Aurélio Trovo",
+   "gestorCargo": "GERENTE ADMIN. INDUSTRIA"
+  },
+  {
+   "id": "c173",
+   "nome": "Eduardo Giacometti Xavier",
+   "cargo": "Gerente de projetos",
+   "nivel": "Gerência",
+   "diretoria": "Gerente admin. industria",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Maicon Aurélio Trovo",
+   "gestorCargo": "GERENTE ADMIN. INDUSTRIA"
+  },
+  {
+   "id": "c174",
+   "nome": "Iago Fernando Luiz",
+   "cargo": "Gerente PCP e MRP",
+   "nivel": "Gerência",
+   "diretoria": "Gerente admin. industria",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Maicon Aurélio Trovo",
+   "gestorCargo": "GERENTE ADMIN. INDUSTRIA"
+  },
+  {
+   "id": "c175",
+   "nome": "Denise Avelino da Silva Fattore",
+   "cargo": "Gerente de atendimento ao cliente",
+   "nivel": "Gerência Executiva",
+   "diretoria": "Gerente de atendimento ao cliente",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Gilmar Alves de Oliveira",
+   "gestorCargo": "Presidente"
+  },
+  {
+   "id": "c176",
+   "nome": "Keno Carlos Pratis de Oliveira",
+   "cargo": "Gerente de auditoria",
+   "nivel": "Gerência Executiva",
+   "diretoria": "Gerente de auditoria",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Gilmar Alves de Oliveira",
+   "gestorCargo": "Presidente"
+  },
+  {
+   "id": "c177",
+   "nome": "Marcos Henrique Sabec",
+   "cargo": "Gerente geral agropecuaria",
+   "nivel": "Gerência Executiva",
+   "diretoria": "Gerente geral agropecuaria",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Gilmar Alves de Oliveira",
+   "gestorCargo": "Presidente"
+  },
+  {
+   "id": "c178",
+   "nome": "Carla Francieli Fernandes dos Anjos",
+   "cargo": "Supervisor recrutam. e seleção",
+   "nivel": "Supervisão",
+   "diretoria": "Gerente geral de RH",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Alessandra Guerra de Souza",
+   "gestorCargo": "GERENTE GERAL DE RH"
+  },
+  {
+   "id": "c179",
+   "nome": "Paulo da Silva Braz",
+   "cargo": "Supervisor desenvol. Humano",
+   "nivel": "Supervisão",
+   "diretoria": "Gerente geral de RH",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Alessandra Guerra de Souza",
+   "gestorCargo": "GERENTE GERAL DE RH"
+  },
+  {
+   "id": "c180",
+   "nome": "Elton Fernando Hoshino",
+   "cargo": "Supervisor administrativo (gestão de pessoas)",
+   "nivel": "Supervisão",
+   "diretoria": "Gerente geral de RH",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Alessandra Guerra de Souza",
+   "gestorCargo": "GERENTE GERAL DE RH"
+  }
+ ],
+ "people": [
+  {
+   "id": "p001",
+   "nome": "Fernando Sanches Graci",
+   "nivel": "Diretoria",
+   "cargo": "Controller",
+   "diretoria": "Controller",
+   "chairId": "c001",
+   "chairIds": [
+    "c001",
+    "c137"
+   ]
+  },
+  {
+   "id": "p002",
+   "nome": "Francieli Bessa Silva Tavares",
+   "nivel": "Coordenação",
+   "cargo": "Coordenador contabil/tributario",
+   "diretoria": "Controller",
+   "chairId": "c002",
+   "chairIds": [
+    "c002"
+   ]
+  },
+  {
+   "id": "p003",
+   "nome": "Luiz Fernando Bandeira",
+   "nivel": "Coordenação",
+   "cargo": "Coordenador de orçamento",
+   "diretoria": "Controller",
+   "chairId": "c003",
+   "chairIds": [
+    "c003"
+   ]
+  },
+  {
+   "id": "p004",
+   "nome": "Cleiton Cesar Silva",
+   "nivel": "Gerência",
+   "cargo": "Gerente de controladoria",
+   "diretoria": "Controller",
+   "chairId": "c004",
+   "chairIds": [
+    "c004"
+   ]
+  },
+  {
+   "id": "p005",
+   "nome": "Diego Henrique Garcia Soriani",
+   "nivel": "Gerência",
+   "cargo": "Gerente fundo de investimento",
+   "diretoria": "Controller",
+   "chairId": "c005",
+   "chairIds": [
+    "c005"
+   ]
+  },
+  {
+   "id": "p006",
+   "nome": "Fabricio Silva Facco",
+   "nivel": "Supervisão",
+   "cargo": "Superv.operação tribut.",
+   "diretoria": "Controller",
+   "chairId": "c006",
+   "chairIds": [
+    "c006"
+   ]
+  },
+  {
+   "id": "p007",
+   "nome": "Leandro Tonhi Mingote",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor contábil",
+   "diretoria": "Controller",
+   "chairId": "c007",
+   "chairIds": [
+    "c007"
+   ]
+  },
+  {
+   "id": "p008",
+   "nome": "Jaciane Pestana Souza",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor de contabilidade",
+   "diretoria": "Controller",
+   "chairId": "c008",
+   "chairIds": [
+    "c008"
+   ]
+  },
+  {
+   "id": "p009",
+   "nome": "Vinicius Ramos da Silva",
+   "nivel": "Coordenação",
+   "cargo": "Coordenador central de compras",
+   "diretoria": "Diretoria administrativa",
+   "chairId": "c009",
+   "chairIds": [
+    "c009"
+   ]
+  },
+  {
+   "id": "p010",
+   "nome": "Renato Aparecido Andrade",
+   "nivel": "Gerência",
+   "cargo": "Gerente administrativo",
+   "diretoria": "Diretoria administrativa",
+   "chairId": "c010",
+   "chairIds": [
+    "c010"
+   ]
+  },
+  {
+   "id": "p011",
+   "nome": "Jeferson Duarte Goncalves",
+   "nivel": "Gerência",
+   "cargo": "Gerente Administrativo (Parceiros de Negócio)",
+   "diretoria": "Diretoria administrativa",
+   "chairId": "c011",
+   "chairIds": [
+    "c011"
+   ]
+  },
+  {
+   "id": "p012",
+   "nome": "Thais Tarcia de Araujo Oliveira",
+   "nivel": "Gerência",
+   "cargo": "Gerente administrativo de varejo",
+   "diretoria": "Diretoria administrativa",
+   "chairId": "c012",
+   "chairIds": [
+    "c012"
+   ]
+  },
+  {
+   "id": "p013",
+   "nome": "Renan da Silva Medeiros",
+   "nivel": "Gerência Executiva",
+   "cargo": "Gerente administrativo geral",
+   "diretoria": "Diretoria administrativa",
+   "chairId": "c013",
+   "chairIds": [
+    "c013"
+   ]
+  },
+  {
+   "id": "p014",
+   "nome": "Peter Luiz Cruz Pregidio",
+   "nivel": "Gerência Executiva",
+   "cargo": "Gerente administrativo serviços financeiros",
+   "diretoria": "Diretoria administrativa",
+   "chairId": "c014",
+   "chairIds": [
+    "c014"
+   ]
+  },
+  {
+   "id": "p015",
+   "nome": "Cleiton Fabio Bianchini da Silva",
+   "nivel": "Gerência",
+   "cargo": "Gerente de compras industria",
+   "diretoria": "Diretoria administrativa",
+   "chairId": "c015",
+   "chairIds": [
+    "c015"
+   ]
+  },
+  {
+   "id": "p016",
+   "nome": "Leyffor Augusto de Carvalho Gastaldin",
+   "nivel": "Gerência Executiva",
+   "cargo": "Gerente de engenharia e expansão",
+   "diretoria": "Diretoria administrativa",
+   "chairId": "c016",
+   "chairIds": [
+    "c016"
+   ]
+  },
+  {
+   "id": "p017",
+   "nome": "Joel Borato",
+   "nivel": "Gerência",
+   "cargo": "Gerente de expansão",
+   "diretoria": "Diretoria administrativa",
+   "chairId": "c017",
+   "chairIds": [
+    "c017"
+   ]
+  },
+  {
+   "id": "p018",
+   "nome": "Juliano Silva Vicentini",
+   "nivel": "Gerência",
+   "cargo": "Gerente de expansão",
+   "diretoria": "Diretoria administrativa",
+   "chairId": "c018",
+   "chairIds": [
+    "c018"
+   ]
+  },
+  {
+   "id": "p019",
+   "nome": "Mateus de Azevedo Volttani",
+   "nivel": "Gerência",
+   "cargo": "Gerente de expansão",
+   "diretoria": "Diretoria administrativa",
+   "chairId": "c019",
+   "chairIds": [
+    "c019"
+   ]
+  },
+  {
+   "id": "p020",
+   "nome": "Patricia Giroto",
+   "nivel": "Gerência",
+   "cargo": "Gerente de riscos",
+   "diretoria": "Diretoria administrativa",
+   "chairId": "c020",
+   "chairIds": [
+    "c020"
+   ]
+  },
+  {
+   "id": "p021",
+   "nome": "Janaina Braga Pires Kashiwaya",
+   "nivel": "Gerência",
+   "cargo": "Gerente de viagem",
+   "diretoria": "Diretoria administrativa",
+   "chairId": "c021",
+   "chairIds": [
+    "c021"
+   ]
+  },
+  {
+   "id": "p022",
+   "nome": "Daiane Domingues dos Santos",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor administrativo (ADM geral)",
+   "diretoria": "Diretoria administrativa",
+   "chairId": "c022",
+   "chairIds": [
+    "c022"
+   ]
+  },
+  {
+   "id": "p023",
+   "nome": "Fabielly Garcia de Souza Costa",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor administrativo (despesas)",
+   "diretoria": "Diretoria administrativa",
+   "chairId": "c023",
+   "chairIds": [
+    "c023"
+   ]
+  },
+  {
+   "id": "p024",
+   "nome": "Raquel Cristina Vidotto Ramos",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor administrativo (despesas)",
+   "diretoria": "Diretoria administrativa",
+   "chairId": "c024",
+   "chairIds": [
+    "c024"
+   ]
+  },
+  {
+   "id": "p025",
+   "nome": "Marcelo de Souza Rodrigues",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor administrativo (expansão)",
+   "diretoria": "Diretoria administrativa",
+   "chairId": "c025",
+   "chairIds": [
+    "c025"
+   ]
+  },
+  {
+   "id": "p026",
+   "nome": "Duberlei de Castro da Silva",
+   "nivel": "Coordenação",
+   "cargo": "Coordenador administrativo (assessoria)",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c026",
+   "chairIds": [
+    "c026"
+   ]
+  },
+  {
+   "id": "p027",
+   "nome": "Robson Rodrigues Jacinto",
+   "nivel": "Coordenação",
+   "cargo": "Coordenador comercial",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c027",
+   "chairIds": [
+    "c027"
+   ]
+  },
+  {
+   "id": "p028",
+   "nome": "Luiz Paulo da Silva Santos",
+   "nivel": "Coordenação",
+   "cargo": "Coordenador de estoque",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c028",
+   "chairIds": [
+    "c028"
+   ]
+  },
+  {
+   "id": "p029",
+   "nome": "Julio Cezar da Silva",
+   "nivel": "Diretoria",
+   "cargo": "Diretoria comercial",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c029",
+   "chairIds": [
+    "c029"
+   ]
+  },
+  {
+   "id": "p030",
+   "nome": "Wesley Dionisio da Silva",
+   "nivel": "Gerência",
+   "cargo": "Gerente (auto posto)",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c030",
+   "chairIds": [
+    "c030"
+   ]
+  },
+  {
+   "id": "p031",
+   "nome": "Rosana Queiroz da Silva",
+   "nivel": "Gerência",
+   "cargo": "Gerente administrativo",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c032",
+   "chairIds": [
+    "c032"
+   ]
+  },
+  {
+   "id": "p032",
+   "nome": "Orlando Rodrigues Neto",
+   "nivel": "Gerência",
+   "cargo": "Gerente comercial (atacado)",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c033",
+   "chairIds": [
+    "c033"
+   ]
+  },
+  {
+   "id": "p033",
+   "nome": "Aparecido Benedito dos Santos",
+   "nivel": "Gerência",
+   "cargo": "Gerente comercial (consórcio)",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c034",
+   "chairIds": [
+    "c034"
+   ]
+  },
+  {
+   "id": "p034",
+   "nome": "Thiago Dias Tavares",
+   "nivel": "Gerência",
+   "cargo": "Gerente comercial (representante consórcio)",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c035",
+   "chairIds": [
+    "c035"
+   ]
+  },
+  {
+   "id": "p035",
+   "nome": "Paulo Jose da Silva",
+   "nivel": "Gerência",
+   "cargo": "Gerente comercial (seguros)",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c036",
+   "chairIds": [
+    "c036"
+   ]
+  },
+  {
+   "id": "p036",
+   "nome": "Leandro Santiago Afonso",
+   "nivel": "Gerência Executiva",
+   "cargo": "Gerente comercial do varejo",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c037",
+   "chairIds": [
+    "c037"
+   ]
+  },
+  {
+   "id": "p037",
+   "nome": "Valdenei Vargas de Almeida",
+   "nivel": "Gerência Executiva",
+   "cargo": "Gerente comercial do varejo",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c038",
+   "chairIds": [
+    "c038"
+   ]
+  },
+  {
+   "id": "p038",
+   "nome": "Andre Schafer Pasinato",
+   "nivel": "Gerência Executiva",
+   "cargo": "Gerente compras",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c039",
+   "chairIds": [
+    "c039"
+   ]
+  },
+  {
+   "id": "p039",
+   "nome": "Niccolas Daniel Curvelo",
+   "nivel": "Gerência",
+   "cargo": "Gerente de neg. internacionais",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c040",
+   "chairIds": [
+    "c040"
+   ]
+  },
+  {
+   "id": "p040",
+   "nome": "Wesley Diniz Alves",
+   "nivel": "Gerência",
+   "cargo": "Gerente de operações ecommerce",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c041",
+   "chairIds": [
+    "c041"
+   ]
+  },
+  {
+   "id": "p041",
+   "nome": "Cidclei Reck",
+   "nivel": "Gerência",
+   "cargo": "Gerente de vendas (atacado)",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c042",
+   "chairIds": [
+    "c042"
+   ]
+  },
+  {
+   "id": "p042",
+   "nome": "Juliano Donizete de Sousa",
+   "nivel": "Gerência",
+   "cargo": "Gerente de vendas (atacado)",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c043",
+   "chairIds": [
+    "c043"
+   ]
+  },
+  {
+   "id": "p043",
+   "nome": "Marcio Adriano Leme",
+   "nivel": "Gerência",
+   "cargo": "Gerente de vendas (atacado)",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c044",
+   "chairIds": [
+    "c044"
+   ]
+  },
+  {
+   "id": "p044",
+   "nome": "Natan Henrique Goncalves",
+   "nivel": "Gerência",
+   "cargo": "Gerente de vendas (atacado)",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c045",
+   "chairIds": [
+    "c045"
+   ]
+  },
+  {
+   "id": "p045",
+   "nome": "Juliana Calvo",
+   "nivel": "Gerência",
+   "cargo": "Gerente de viagem",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c046",
+   "chairIds": [
+    "c046"
+   ]
+  },
+  {
+   "id": "p046",
+   "nome": "Frank Soares do Nascimento",
+   "nivel": "Gerência Executiva",
+   "cargo": "Gerente geral do atacado",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c047",
+   "chairIds": [
+    "c047"
+   ]
+  },
+  {
+   "id": "p047",
+   "nome": "Paulo Sergio dos Santos",
+   "nivel": "Gerência Executiva",
+   "cargo": "Gerente geral do varejo",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c048",
+   "chairIds": [
+    "c048"
+   ]
+  },
+  {
+   "id": "p048",
+   "nome": "Adson Nogueira da Silva",
+   "nivel": "Gerência",
+   "cargo": "Gerente regional",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c049",
+   "chairIds": [
+    "c049"
+   ]
+  },
+  {
+   "id": "p049",
+   "nome": "Anderson Luiz Ferreira Ricardo",
+   "nivel": "Gerência",
+   "cargo": "Gerente regional",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c050",
+   "chairIds": [
+    "c050"
+   ]
+  },
+  {
+   "id": "p050",
+   "nome": "Arinan Moreira dos Santos",
+   "nivel": "Gerência",
+   "cargo": "Gerente regional",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c051",
+   "chairIds": [
+    "c051"
+   ]
+  },
+  {
+   "id": "p051",
+   "nome": "Celso Luiz Sacramento de Souza",
+   "nivel": "Gerência",
+   "cargo": "Gerente regional",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c052",
+   "chairIds": [
+    "c052"
+   ]
+  },
+  {
+   "id": "p052",
+   "nome": "Djalma Almeida Andrade",
+   "nivel": "Gerência",
+   "cargo": "Gerente regional",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c053",
+   "chairIds": [
+    "c053"
+   ]
+  },
+  {
+   "id": "p053",
+   "nome": "Erlon Cesar Cruz Almeida",
+   "nivel": "Gerência",
+   "cargo": "Gerente regional",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c054",
+   "chairIds": [
+    "c054"
+   ]
+  },
+  {
+   "id": "p054",
+   "nome": "Guilherme Caetano Gelamos",
+   "nivel": "Gerência",
+   "cargo": "Gerente regional",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c055",
+   "chairIds": [
+    "c055"
+   ]
+  },
+  {
+   "id": "p055",
+   "nome": "Jadiel Ribeiro Durço",
+   "nivel": "Gerência",
+   "cargo": "Gerente regional",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c056",
+   "chairIds": [
+    "c056"
+   ]
+  },
+  {
+   "id": "p056",
+   "nome": "Jean Medrado dos Santos",
+   "nivel": "Gerência",
+   "cargo": "Gerente regional",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c057",
+   "chairIds": [
+    "c057"
+   ]
+  },
+  {
+   "id": "p057",
+   "nome": "Juliano de Albuquerque Silva",
+   "nivel": "Gerência",
+   "cargo": "Gerente regional",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c058",
+   "chairIds": [
+    "c058"
+   ]
+  },
+  {
+   "id": "p058",
+   "nome": "Luis Carlos Alves de Melo",
+   "nivel": "Gerência",
+   "cargo": "Gerente regional",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c059",
+   "chairIds": [
+    "c059"
+   ]
+  },
+  {
+   "id": "p059",
+   "nome": "Nicareli Neves",
+   "nivel": "Gerência",
+   "cargo": "Gerente regional",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c060",
+   "chairIds": [
+    "c060"
+   ]
+  },
+  {
+   "id": "p060",
+   "nome": "Odimar Antonio de Oliveira",
+   "nivel": "Gerência",
+   "cargo": "Gerente regional",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c061",
+   "chairIds": [
+    "c061"
+   ]
+  },
+  {
+   "id": "p061",
+   "nome": "Ricardo Rodrigues",
+   "nivel": "Gerência",
+   "cargo": "Gerente regional",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c062",
+   "chairIds": [
+    "c062"
+   ]
+  },
+  {
+   "id": "p062",
+   "nome": "Leandro Ferreira Paim Mendes",
+   "nivel": "Gerência",
+   "cargo": "Gerente regional",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c063",
+   "chairIds": [
+    "c063"
+   ]
+  },
+  {
+   "id": "p063",
+   "nome": "Gustavo Paixao dos Santos",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor (a) de e-commerce (atacado)",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c064",
+   "chairIds": [
+    "c064"
+   ]
+  },
+  {
+   "id": "p064",
+   "nome": "Bruno Rodrigues Martins",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor - varejo",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c065",
+   "chairIds": [
+    "c065"
+   ]
+  },
+  {
+   "id": "p065",
+   "nome": "Aline Portela dos Santos",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor administrativo",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c066",
+   "chairIds": [
+    "c066"
+   ]
+  },
+  {
+   "id": "p066",
+   "nome": "Andreza Miranda da Silva",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor administrativo",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c067",
+   "chairIds": [
+    "c067"
+   ]
+  },
+  {
+   "id": "p067",
+   "nome": "Beatriz Santos Kroetzler",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor administrativo",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c068",
+   "chairIds": [
+    "c068"
+   ]
+  },
+  {
+   "id": "p068",
+   "nome": "Elisandra Martines dos Santos",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor administrativo",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c069",
+   "chairIds": [
+    "c069"
+   ]
+  },
+  {
+   "id": "p069",
+   "nome": "Hagatha Leticia Zuchinalli Nogueira",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor administrativo",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c070",
+   "chairIds": [
+    "c070"
+   ]
+  },
+  {
+   "id": "p070",
+   "nome": "Jeovanir Castro de Souza",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor administrativo",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c071",
+   "chairIds": [
+    "c071"
+   ]
+  },
+  {
+   "id": "p071",
+   "nome": "Juliana Rodriguez Ferro",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor administrativo",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c072",
+   "chairIds": [
+    "c072"
+   ]
+  },
+  {
+   "id": "p072",
+   "nome": "Keila da Silva Sena Leao",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor administrativo",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c073",
+   "chairIds": [
+    "c073"
+   ]
+  },
+  {
+   "id": "p073",
+   "nome": "Lidia dos Santos",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor administrativo",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c074",
+   "chairIds": [
+    "c074"
+   ]
+  },
+  {
+   "id": "p074",
+   "nome": "Maria Cleide Araujo",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor administrativo",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c075",
+   "chairIds": [
+    "c075"
+   ]
+  },
+  {
+   "id": "p075",
+   "nome": "Maria das Neves Nascimento Galdino",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor administrativo",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c076",
+   "chairIds": [
+    "c076"
+   ]
+  },
+  {
+   "id": "p076",
+   "nome": "Marileide Porto Fontana",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor administrativo",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c077",
+   "chairIds": [
+    "c077"
+   ]
+  },
+  {
+   "id": "p077",
+   "nome": "Neiva Cristiane Bortolato Goncalves",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor administrativo",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c078",
+   "chairIds": [
+    "c078"
+   ]
+  },
+  {
+   "id": "p078",
+   "nome": "Neusa Maria Kaiser",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor administrativo",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c079",
+   "chairIds": [
+    "c079"
+   ]
+  },
+  {
+   "id": "p079",
+   "nome": "Terisley Rodrigues Ferreira",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor administrativo",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c080",
+   "chairIds": [
+    "c080"
+   ]
+  },
+  {
+   "id": "p080",
+   "nome": "Samuel Santana Barreto",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor administrativo (atacado)",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c081",
+   "chairIds": [
+    "c081"
+   ]
+  },
+  {
+   "id": "p081",
+   "nome": "Lincoln Eduardo Nunes",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor administrativo (e-commerce)",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c082",
+   "chairIds": [
+    "c082"
+   ]
+  },
+  {
+   "id": "p082",
+   "nome": "Max Antunes Cavalheiro",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor de licitação",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c083",
+   "chairIds": [
+    "c083"
+   ]
+  },
+  {
+   "id": "p083",
+   "nome": "Edwagner Tourinho de Oliveira",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor de vendas (atacado)",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c084",
+   "chairIds": [
+    "c084"
+   ]
+  },
+  {
+   "id": "p084",
+   "nome": "Guilherme Misak Vivian",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor de vendas (atacado)",
+   "diretoria": "Diretoria comercial",
+   "chairId": "c085",
+   "chairIds": [
+    "c085"
+   ]
+  },
+  {
+   "id": "p085",
+   "nome": "Rodrigo da Veiga Lima",
+   "nivel": "Coordenação",
+   "cargo": "Coordenador administrativo (governança)",
+   "diretoria": "Diretoria de governança",
+   "chairId": "c086",
+   "chairIds": [
+    "c086"
+   ]
+  },
+  {
+   "id": "p086",
+   "nome": "Michely Larissa Tonhi de O. Buzinhani",
+   "nivel": "Coordenação",
+   "cargo": "Coordenador de comunicação",
+   "diretoria": "Diretoria de governança",
+   "chairId": "c087",
+   "chairIds": [
+    "c087"
+   ]
+  },
+  {
+   "id": "p087",
+   "nome": "Thiago Carvalho Ferreira",
+   "nivel": "Coordenação",
+   "cargo": "Coordenador de SESMT",
+   "diretoria": "Diretoria de governança",
+   "chairId": "c088",
+   "chairIds": [
+    "c088"
+   ]
+  },
+  {
+   "id": "p088",
+   "nome": "Priscila Giomo",
+   "nivel": "Coordenação",
+   "cargo": "Coordenador(a)de pessoal",
+   "diretoria": "Diretoria de governança",
+   "chairId": "c089",
+   "chairIds": [
+    "c089"
+   ]
+  },
+  {
+   "id": "p089",
+   "nome": "Viviane Thomaz",
+   "nivel": "Diretoria",
+   "cargo": "Diretoria de governança",
+   "diretoria": "Diretoria de governança",
+   "chairId": "c090",
+   "chairIds": [
+    "c090"
+   ]
+  },
+  {
+   "id": "p090",
+   "nome": "Milene Thomaz Romano Gantzel",
+   "nivel": "Gerência",
+   "cargo": "Gerente administrativo de pessoas",
+   "diretoria": "Diretoria de governança",
+   "chairId": "c091",
+   "chairIds": [
+    "c091"
+   ]
+  },
+  {
+   "id": "p091",
+   "nome": "Celso Nobuyuki Yokota",
+   "nivel": "Gerência",
+   "cargo": "Gerente jurídico",
+   "diretoria": "Diretoria de governança",
+   "chairId": "c092",
+   "chairIds": [
+    "c092"
+   ]
+  },
+  {
+   "id": "p092",
+   "nome": "Ana Paula Franco Prodoscimo Sarti",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor administrativo (governança)",
+   "diretoria": "Diretoria de governança",
+   "chairId": "c093",
+   "chairIds": [
+    "c093"
+   ]
+  },
+  {
+   "id": "p093",
+   "nome": "Maria Aparecida Canella",
+   "nivel": "Coordenação",
+   "cargo": "Coordenador financeiro (financeiro)",
+   "diretoria": "Diretoria de logística",
+   "chairId": "c094",
+   "chairIds": [
+    "c094"
+   ]
+  },
+  {
+   "id": "p094",
+   "nome": "Edson Guedes de Sousa",
+   "nivel": "Coordenação",
+   "cargo": "Coordenador transporte",
+   "diretoria": "Diretoria de logística",
+   "chairId": "c095",
+   "chairIds": [
+    "c095"
+   ]
+  },
+  {
+   "id": "p095",
+   "nome": "Franciele Fritsch da Silva",
+   "nivel": "Coordenação",
+   "cargo": "Coordenador transporte",
+   "diretoria": "Diretoria de logística",
+   "chairId": "c096",
+   "chairIds": [
+    "c096"
+   ]
+  },
+  {
+   "id": "p096",
+   "nome": "Heitor Henrique Bataiero",
+   "nivel": "Coordenação",
+   "cargo": "Coordenador transporte",
+   "diretoria": "Diretoria de logística",
+   "chairId": "c097",
+   "chairIds": [
+    "c097"
+   ]
+  },
+  {
+   "id": "p097",
+   "nome": "Rafael Marques da Silva",
+   "nivel": "Coordenação",
+   "cargo": "Coordenador transporte",
+   "diretoria": "Diretoria de logística",
+   "chairId": "c098",
+   "chairIds": [
+    "c098"
+   ]
+  },
+  {
+   "id": "p098",
+   "nome": "Renan Gomes Casagrande",
+   "nivel": "Coordenação",
+   "cargo": "Coordenador transporte",
+   "diretoria": "Diretoria de logística",
+   "chairId": "c099",
+   "chairIds": [
+    "c099"
+   ]
+  },
+  {
+   "id": "p099",
+   "nome": "Rogelio dos Santos Vargas",
+   "nivel": "Coordenação",
+   "cargo": "Coordenador transporte",
+   "diretoria": "Diretoria de logística",
+   "chairId": "c100",
+   "chairIds": [
+    "c100"
+   ]
+  },
+  {
+   "id": "p100",
+   "nome": "Teilo de Jesus Santana",
+   "nivel": "Coordenação",
+   "cargo": "Coordenador transporte",
+   "diretoria": "Diretoria de logística",
+   "chairId": "c101",
+   "chairIds": [
+    "c101"
+   ]
+  },
+  {
+   "id": "p101",
+   "nome": "Willian Fernando Cruz Alves",
+   "nivel": "Coordenação",
+   "cargo": "Coordenador transporte",
+   "diretoria": "Diretoria de logística",
+   "chairId": "c102",
+   "chairIds": [
+    "c102"
+   ]
+  },
+  {
+   "id": "p102",
+   "nome": "Marcos Antonio Utsunomiya",
+   "nivel": "Diretoria",
+   "cargo": "Diretoria de logística",
+   "diretoria": "Diretoria de logística",
+   "chairId": "c103",
+   "chairIds": [
+    "c103"
+   ]
+  },
+  {
+   "id": "p103",
+   "nome": "Celio Roberto Cantuarios",
+   "nivel": "Gerência Executiva",
+   "cargo": "Gerente administrativo logistica",
+   "diretoria": "Diretoria de logística",
+   "chairId": "c104",
+   "chairIds": [
+    "c104"
+   ]
+  },
+  {
+   "id": "p104",
+   "nome": "Luis Carlos da Costa Junior",
+   "nivel": "Gerência Executiva",
+   "cargo": "Gerente assistencia",
+   "diretoria": "Diretoria de logística",
+   "chairId": "c105",
+   "chairIds": [
+    "c105"
+   ]
+  },
+  {
+   "id": "p105",
+   "nome": "Acleilton de Souza Lima",
+   "nivel": "Gerência",
+   "cargo": "Gerente assistencia",
+   "diretoria": "Diretoria de logística",
+   "chairId": "c106",
+   "chairIds": [
+    "c106"
+   ]
+  },
+  {
+   "id": "p106",
+   "nome": "Benjamin Dene de Carvalho Junior",
+   "nivel": "Gerência",
+   "cargo": "Gerente assistencia",
+   "diretoria": "Diretoria de logística",
+   "chairId": "c107",
+   "chairIds": [
+    "c107"
+   ]
+  },
+  {
+   "id": "p107",
+   "nome": "Diego Alisson de Lima Borges",
+   "nivel": "Gerência",
+   "cargo": "Gerente assistencia",
+   "diretoria": "Diretoria de logística",
+   "chairId": "c108",
+   "chairIds": [
+    "c108"
+   ]
+  },
+  {
+   "id": "p108",
+   "nome": "Eduardo Roberto da Silva",
+   "nivel": "Gerência",
+   "cargo": "Gerente assistencia",
+   "diretoria": "Diretoria de logística",
+   "chairId": "c109",
+   "chairIds": [
+    "c109"
+   ]
+  },
+  {
+   "id": "p109",
+   "nome": "Gabriel Pereira Fontaneli",
+   "nivel": "Gerência",
+   "cargo": "Gerente assistencia",
+   "diretoria": "Diretoria de logística",
+   "chairId": "c110",
+   "chairIds": [
+    "c110"
+   ]
+  },
+  {
+   "id": "p110",
+   "nome": "Juliano Bueno da Silva Oliveira",
+   "nivel": "Gerência",
+   "cargo": "Gerente assistencia",
+   "diretoria": "Diretoria de logística",
+   "chairId": "c111",
+   "chairIds": [
+    "c111"
+   ]
+  },
+  {
+   "id": "p111",
+   "nome": "Mauricio Barboza de Souza",
+   "nivel": "Gerência",
+   "cargo": "Gerente assistencia",
+   "diretoria": "Diretoria de logística",
+   "chairId": "c112",
+   "chairIds": [
+    "c112"
+   ]
+  },
+  {
+   "id": "p112",
+   "nome": "Raimundo Nonato Silva Amaral",
+   "nivel": "Gerência",
+   "cargo": "Gerente assistencia",
+   "diretoria": "Diretoria de logística",
+   "chairId": "c113",
+   "chairIds": [
+    "c113"
+   ]
+  },
+  {
+   "id": "p113",
+   "nome": "Renato da Silva Oliveira",
+   "nivel": "Gerência",
+   "cargo": "Gerente assistencia",
+   "diretoria": "Diretoria de logística",
+   "chairId": "c114",
+   "chairIds": [
+    "c114"
+   ]
+  },
+  {
+   "id": "p114",
+   "nome": "Sidnei Francisco da Silva",
+   "nivel": "Gerência",
+   "cargo": "Gerente assistencia",
+   "diretoria": "Diretoria de logística",
+   "chairId": "c115",
+   "chairIds": [
+    "c115"
+   ]
+  },
+  {
+   "id": "p115",
+   "nome": "Donizete Denilson Giomo",
+   "nivel": "Gerência",
+   "cargo": "Gerente de manutenção",
+   "diretoria": "Diretoria de logística",
+   "chairId": "c116",
+   "chairIds": [
+    "c116"
+   ]
+  },
+  {
+   "id": "p116",
+   "nome": "Vanderlei de Souza Gonçalo",
+   "nivel": "Gerência",
+   "cargo": "Gerente de planejamento",
+   "diretoria": "Diretoria de logística",
+   "chairId": "c117",
+   "chairIds": [
+    "c117"
+   ]
+  },
+  {
+   "id": "p117",
+   "nome": "Elessandro Alves da Silva",
+   "nivel": "Gerência",
+   "cargo": "Gerente de transporte",
+   "diretoria": "Diretoria de logística",
+   "chairId": "c118",
+   "chairIds": [
+    "c118"
+   ]
+  },
+  {
+   "id": "p118",
+   "nome": "Jonismar Antonio dos Santos",
+   "nivel": "Gerência",
+   "cargo": "Gerente de transporte",
+   "diretoria": "Diretoria de logística",
+   "chairId": "c119",
+   "chairIds": [
+    "c119"
+   ]
+  },
+  {
+   "id": "p119",
+   "nome": "Robson Muniz de Morais",
+   "nivel": "Gerência",
+   "cargo": "Gerente de transporte",
+   "diretoria": "Diretoria de logística",
+   "chairId": "c120",
+   "chairIds": [
+    "c120"
+   ]
+  },
+  {
+   "id": "p120",
+   "nome": "Alexsandro Bataieiro",
+   "nivel": "Gerência",
+   "cargo": "Gerente geral de depósito",
+   "diretoria": "Diretoria de logística",
+   "chairId": "c121",
+   "chairIds": [
+    "c121"
+   ]
+  },
+  {
+   "id": "p121",
+   "nome": "Edson Oleksyw",
+   "nivel": "Diretoria",
+   "cargo": "Diretoria de marketing",
+   "diretoria": "Diretoria de marketing",
+   "chairId": "c122",
+   "chairIds": [
+    "c122"
+   ]
+  },
+  {
+   "id": "p122",
+   "nome": "Evaldo Barbosa Cavalcante",
+   "nivel": "Supervisão",
+   "cargo": "Superv. propaganda",
+   "diretoria": "Diretoria de marketing",
+   "chairId": "c123",
+   "chairIds": [
+    "c123"
+   ]
+  },
+  {
+   "id": "p123",
+   "nome": "Francisco de Paula Junior",
+   "nivel": "Especialista",
+   "cargo": "Administrador de banco de dados",
+   "diretoria": "Diretoria de TI e inovação",
+   "chairId": "c124",
+   "chairIds": [
+    "c124"
+   ]
+  },
+  {
+   "id": "p124",
+   "nome": "Fabner Roberto Soares",
+   "nivel": "Especialista",
+   "cargo": "Administrador de Redes",
+   "diretoria": "Diretoria de TI e inovação",
+   "chairId": "c125",
+   "chairIds": [
+    "c125"
+   ]
+  },
+  {
+   "id": "p125",
+   "nome": "Junior Gil Custodio",
+   "nivel": "Especialista",
+   "cargo": "Administrador de Redes",
+   "diretoria": "Diretoria de TI e inovação",
+   "chairId": "c126",
+   "chairIds": [
+    "c126"
+   ]
+  },
+  {
+   "id": "p126",
+   "nome": "Danilo Mulizine Stochi",
+   "nivel": "Especialista",
+   "cargo": "Data Engineer",
+   "diretoria": "Diretoria de TI e inovação",
+   "chairId": "c127",
+   "chairIds": [
+    "c127"
+   ]
+  },
+  {
+   "id": "p127",
+   "nome": "Ricardo Brito Soares",
+   "nivel": "Diretoria",
+   "cargo": "Diretoria de TI e inovação",
+   "diretoria": "Diretoria de TI e inovação",
+   "chairId": "c128",
+   "chairIds": [
+    "c128"
+   ]
+  },
+  {
+   "id": "p128",
+   "nome": "Alex Coronado dos Santos",
+   "nivel": "Gerência Executiva",
+   "cargo": "Gerente de banco de dados",
+   "diretoria": "Diretoria de TI e inovação",
+   "chairId": "c129",
+   "chairIds": [
+    "c129"
+   ]
+  },
+  {
+   "id": "p129",
+   "nome": "Kleverson Ricardo de Melo",
+   "nivel": "Gerência",
+   "cargo": "Gerente de desenvolvimento e programação",
+   "diretoria": "Diretoria de TI e inovação",
+   "chairId": "c130",
+   "chairIds": [
+    "c130"
+   ]
+  },
+  {
+   "id": "p130",
+   "nome": "Rogerio Tsuyoshi Arida",
+   "nivel": "Gerência",
+   "cargo": "Gerente de desenvolvimento e programação",
+   "diretoria": "Diretoria de TI e inovação",
+   "chairId": "c131",
+   "chairIds": [
+    "c131"
+   ]
+  },
+  {
+   "id": "p131",
+   "nome": "Joel Correia Junior",
+   "nivel": "Gerência",
+   "cargo": "Gerente de PMO",
+   "diretoria": "Diretoria de TI e inovação",
+   "chairId": "c132",
+   "chairIds": [
+    "c132"
+   ]
+  },
+  {
+   "id": "p132",
+   "nome": "Anderson Rodrigo Giomo",
+   "nivel": "Gerência",
+   "cargo": "Gerente de suporte",
+   "diretoria": "Diretoria de TI e inovação",
+   "chairId": "c133",
+   "chairIds": [
+    "c133"
+   ]
+  },
+  {
+   "id": "p133",
+   "nome": "Rodrigo Romano Gantzel",
+   "nivel": "Gerência",
+   "cargo": "Gerente de tecnologia",
+   "diretoria": "Diretoria de TI e inovação",
+   "chairId": "c134",
+   "chairIds": [
+    "c134"
+   ]
+  },
+  {
+   "id": "p134",
+   "nome": "Cadmiel Cristiano de Grande",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor de TI",
+   "diretoria": "Diretoria de TI e inovação",
+   "chairId": "c135",
+   "chairIds": [
+    "c135"
+   ]
+  },
+  {
+   "id": "p135",
+   "nome": "Edson Macoto Tamura Junior",
+   "nivel": "Especialista",
+   "cargo": "Tech Lead",
+   "diretoria": "Diretoria de TI e inovação",
+   "chairId": "c136",
+   "chairIds": [
+    "c136"
+   ]
+  },
+  {
+   "id": "p136",
+   "nome": "Joao Everton Ramos",
+   "nivel": "Gerência",
+   "cargo": "Gerente administrativo (Gazin Bank)",
+   "diretoria": "Diretoria financeira",
+   "chairId": "c138",
+   "chairIds": [
+    "c138"
+   ]
+  },
+  {
+   "id": "p137",
+   "nome": "Ademar Alencar Jardim Junior",
+   "nivel": "Gerência",
+   "cargo": "Gerente comercial",
+   "diretoria": "Diretoria financeira",
+   "chairId": "c139",
+   "chairIds": [
+    "c139"
+   ]
+  },
+  {
+   "id": "p138",
+   "nome": "Anderson Izidoro da Silva",
+   "nivel": "Gerência",
+   "cargo": "Gerente de crédito (varejo)",
+   "diretoria": "Diretoria financeira",
+   "chairId": "c140",
+   "chairIds": [
+    "c140"
+   ]
+  },
+  {
+   "id": "p139",
+   "nome": "Natanael Estevao Chagas Moraes",
+   "nivel": "Gerência",
+   "cargo": "Gerente de crédito (Atacado,industria)",
+   "diretoria": "Diretoria financeira",
+   "chairId": "c141",
+   "chairIds": [
+    "c141"
+   ]
+  },
+  {
+   "id": "p140",
+   "nome": "Celia Xavier Novo",
+   "nivel": "Gerência",
+   "cargo": "Gerente financeiro",
+   "diretoria": "Diretoria financeira",
+   "chairId": "c142",
+   "chairIds": [
+    "c142"
+   ]
+  },
+  {
+   "id": "p141",
+   "nome": "Maykon Fernando da Costa",
+   "nivel": "Gerência Executiva",
+   "cargo": "Gerente geral",
+   "diretoria": "Diretoria financeira",
+   "chairId": "c143",
+   "chairIds": [
+    "c143"
+   ]
+  },
+  {
+   "id": "p142",
+   "nome": "Jessica Fonzar da Silva",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor Comercial (Gazinbank)",
+   "diretoria": "Diretoria financeira",
+   "chairId": "c144",
+   "chairIds": [
+    "c144"
+   ]
+  },
+  {
+   "id": "p143",
+   "nome": "Maiara Cristine de Jesus Vieira",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor Comercial (Gazinbank)",
+   "diretoria": "Diretoria financeira",
+   "chairId": "c145",
+   "chairIds": [
+    "c145"
+   ]
+  },
+  {
+   "id": "p144",
+   "nome": "Maria Eduarda Matos Medeiros",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor Comercial (Gazinbank)",
+   "diretoria": "Diretoria financeira",
+   "chairId": "c146",
+   "chairIds": [
+    "c146"
+   ]
+  },
+  {
+   "id": "p145",
+   "nome": "Natiara Rodrigues dos Santos Vieira",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor Comercial (Gazinbank)",
+   "diretoria": "Diretoria financeira",
+   "chairId": "c147",
+   "chairIds": [
+    "c147"
+   ]
+  },
+  {
+   "id": "p146",
+   "nome": "Priscila Andrelina da Silva Bartolomeu",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor Comercial (Gazinbank)",
+   "diretoria": "Diretoria financeira",
+   "chairId": "c148",
+   "chairIds": [
+    "c148"
+   ]
+  },
+  {
+   "id": "p147",
+   "nome": "Thomas Jefesson Soares de Souza",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor Comercial (Gazinbank)",
+   "diretoria": "Diretoria financeira",
+   "chairId": "c149",
+   "chairIds": [
+    "c149"
+   ]
+  },
+  {
+   "id": "p148",
+   "nome": "Antonio Raimundo Santos de Mendonca",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor regional",
+   "diretoria": "Diretoria financeira",
+   "chairId": "c150",
+   "chairIds": [
+    "c150"
+   ]
+  },
+  {
+   "id": "p149",
+   "nome": "Fernando da Silva Dias",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor regional",
+   "diretoria": "Diretoria financeira",
+   "chairId": "c151",
+   "chairIds": [
+    "c151"
+   ]
+  },
+  {
+   "id": "p150",
+   "nome": "Iuri Barroso Pinheiro",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor regional",
+   "diretoria": "Diretoria financeira",
+   "chairId": "c152",
+   "chairIds": [
+    "c152"
+   ]
+  },
+  {
+   "id": "p151",
+   "nome": "Jordy Alesson Souza Monteiro",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor regional",
+   "diretoria": "Diretoria financeira",
+   "chairId": "c153",
+   "chairIds": [
+    "c153"
+   ]
+  },
+  {
+   "id": "p152",
+   "nome": "Danilo Moureira Niza da Silva",
+   "nivel": "Coordenação",
+   "cargo": "Coord. de projetos e processos",
+   "diretoria": "Gerente admin. industria",
+   "chairId": "c154",
+   "chairIds": [
+    "c154"
+   ]
+  },
+  {
+   "id": "p153",
+   "nome": "Maicon Aurelio Trovo",
+   "nivel": "Gerência Executiva",
+   "cargo": "Gerente admin. industria",
+   "diretoria": "Gerente admin. industria",
+   "chairId": "c155",
+   "chairIds": [
+    "c155"
+   ]
+  },
+  {
+   "id": "p154",
+   "nome": "Rodrigo de Oliveira Novo",
+   "nivel": "Gerência",
+   "cargo": "Gerente de desenv.de maquinas",
+   "diretoria": "Gerente admin. industria",
+   "chairId": "c156",
+   "chairIds": [
+    "c156"
+   ]
+  },
+  {
+   "id": "p155",
+   "nome": "Francisca Marisangela de Jesus Sousa",
+   "nivel": "Gerência",
+   "cargo": "Gerente de espumação",
+   "diretoria": "Gerente admin. industria",
+   "chairId": "c157",
+   "chairIds": [
+    "c157"
+   ]
+  },
+  {
+   "id": "p156",
+   "nome": "Jefson Henrique de Jesus Santos",
+   "nivel": "Gerência",
+   "cargo": "Gerente de espumação",
+   "diretoria": "Gerente admin. industria",
+   "chairId": "c158",
+   "chairIds": [
+    "c158"
+   ]
+  },
+  {
+   "id": "p157",
+   "nome": "Luan Gabriel Schroeder",
+   "nivel": "Gerência",
+   "cargo": "Gerente de espumação",
+   "diretoria": "Gerente admin. industria",
+   "chairId": "c159",
+   "chairIds": [
+    "c159"
+   ]
+  },
+  {
+   "id": "p158",
+   "nome": "Luiz Henrique Martins Trench",
+   "nivel": "Gerência",
+   "cargo": "Gerente de espumação",
+   "diretoria": "Gerente admin. industria",
+   "chairId": "c160",
+   "chairIds": [
+    "c160"
+   ]
+  },
+  {
+   "id": "p159",
+   "nome": "Ricardo Poteriko Sobrinho",
+   "nivel": "Gerência",
+   "cargo": "Gerente de espumação",
+   "diretoria": "Gerente admin. industria",
+   "chairId": "c161",
+   "chairIds": [
+    "c161"
+   ]
+  },
+  {
+   "id": "p160",
+   "nome": "Roberto Ricardo Buth",
+   "nivel": "Gerência",
+   "cargo": "Gerente de espumação",
+   "diretoria": "Gerente admin. industria",
+   "chairId": "c162",
+   "chairIds": [
+    "c162"
+   ]
+  },
+  {
+   "id": "p161",
+   "nome": "Yuri Ignochevski Primao",
+   "nivel": "Gerência",
+   "cargo": "Gerente de espumação",
+   "diretoria": "Gerente admin. industria",
+   "chairId": "c163",
+   "chairIds": [
+    "c163"
+   ]
+  },
+  {
+   "id": "p162",
+   "nome": "Anderson Furlan Karnopp",
+   "nivel": "Gerência Executiva",
+   "cargo": "Gerente de indústria",
+   "diretoria": "Gerente admin. industria",
+   "chairId": "c164",
+   "chairIds": [
+    "c164"
+   ]
+  },
+  {
+   "id": "p163",
+   "nome": "Caio Henrique Macedo Garcia",
+   "nivel": "Gerência Executiva",
+   "cargo": "Gerente de indústria",
+   "diretoria": "Gerente admin. industria",
+   "chairId": "c165",
+   "chairIds": [
+    "c165"
+   ]
+  },
+  {
+   "id": "p164",
+   "nome": "Edgar Zaleski",
+   "nivel": "Gerência Executiva",
+   "cargo": "Gerente de indústria",
+   "diretoria": "Gerente admin. industria",
+   "chairId": "c166",
+   "chairIds": [
+    "c166"
+   ]
+  },
+  {
+   "id": "p165",
+   "nome": "Everson Oliveira Lima",
+   "nivel": "Gerência Executiva",
+   "cargo": "Gerente de indústria",
+   "diretoria": "Gerente admin. industria",
+   "chairId": "c167",
+   "chairIds": [
+    "c167"
+   ]
+  },
+  {
+   "id": "p166",
+   "nome": "Juliana Severo Arantes",
+   "nivel": "Gerência Executiva",
+   "cargo": "Gerente de indústria",
+   "diretoria": "Gerente admin. industria",
+   "chairId": "c168",
+   "chairIds": [
+    "c168"
+   ]
+  },
+  {
+   "id": "p167",
+   "nome": "Marcos de Oliveira Souza",
+   "nivel": "Gerência Executiva",
+   "cargo": "Gerente de indústria",
+   "diretoria": "Gerente admin. industria",
+   "chairId": "c169",
+   "chairIds": [
+    "c169"
+   ]
+  },
+  {
+   "id": "p168",
+   "nome": "Rafael Tomaz Mariano",
+   "nivel": "Gerência Executiva",
+   "cargo": "Gerente de indústria",
+   "diretoria": "Gerente admin. industria",
+   "chairId": "c170",
+   "chairIds": [
+    "c170"
+   ]
+  },
+  {
+   "id": "p169",
+   "nome": "Vinicios Zuse",
+   "nivel": "Gerência Executiva",
+   "cargo": "Gerente de indústria",
+   "diretoria": "Gerente admin. industria",
+   "chairId": "c171",
+   "chairIds": [
+    "c171"
+   ]
+  },
+  {
+   "id": "p170",
+   "nome": "Marcus Vinicius Cabeça Pereira",
+   "nivel": "Gerência",
+   "cargo": "Gerente de processos",
+   "diretoria": "Gerente admin. industria",
+   "chairId": "c172",
+   "chairIds": [
+    "c172"
+   ]
+  },
+  {
+   "id": "p171",
+   "nome": "Eduardo Giacometti Xavier",
+   "nivel": "Gerência",
+   "cargo": "Gerente de projetos",
+   "diretoria": "Gerente admin. industria",
+   "chairId": "c173",
+   "chairIds": [
+    "c173"
+   ]
+  },
+  {
+   "id": "p172",
+   "nome": "Iago Fernando Luiz",
+   "nivel": "Gerência",
+   "cargo": "Gerente PCP e MRP",
+   "diretoria": "Gerente admin. industria",
+   "chairId": "c174",
+   "chairIds": [
+    "c174"
+   ]
+  },
+  {
+   "id": "p173",
+   "nome": "Denise Avelino da Silva Fattore",
+   "nivel": "Gerência Executiva",
+   "cargo": "Gerente de atendimento ao cliente",
+   "diretoria": "Gerente de atendimento ao cliente",
+   "chairId": "c175",
+   "chairIds": [
+    "c175"
+   ]
+  },
+  {
+   "id": "p174",
+   "nome": "Keno Carlos Pratis de Oliveira",
+   "nivel": "Gerência Executiva",
+   "cargo": "Gerente de auditoria",
+   "diretoria": "Gerente de auditoria",
+   "chairId": "c176",
+   "chairIds": [
+    "c176"
+   ]
+  },
+  {
+   "id": "p175",
+   "nome": "Marcos Henrique Sabec",
+   "nivel": "Gerência Executiva",
+   "cargo": "Gerente geral agropecuaria",
+   "diretoria": "Gerente geral agropecuaria",
+   "chairId": "c177",
+   "chairIds": [
+    "c177"
+   ]
+  },
+  {
+   "id": "p176",
+   "nome": "Carla Francieli Fernandes dos Anjos",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor recrutam. e seleção",
+   "diretoria": "Gerente geral de RH",
+   "chairId": "c178",
+   "chairIds": [
+    "c178"
+   ]
+  },
+  {
+   "id": "p177",
+   "nome": "Paulo da Silva Braz",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor desenvol. Humano",
+   "diretoria": "Gerente geral de RH",
+   "chairId": "c179",
+   "chairIds": [
+    "c179"
+   ]
+  },
+  {
+   "id": "p178",
+   "nome": "Elton Fernando Hoshino",
+   "nivel": "Supervisão",
+   "cargo": "Supervisor administrativo (gestão de pessoas)",
+   "diretoria": "Gerente geral de RH",
+   "chairId": "c180",
+   "chairIds": [
+    "c180"
+   ]
+  }
+ ]
+}
