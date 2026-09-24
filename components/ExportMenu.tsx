@@ -8,7 +8,7 @@ const FUNDO = "#f4f6f7";
 const IGNORAR = "no-export"; // botões e menus que não devem sair na imagem
 const ESCALA = 2;
 // Blocos que não devem ser cortados ao meio por uma quebra de página do PDF.
-const BLOCOS = ".page-head, .kpis, .filters, .chair-card, .cand, .group-kpis, .leader-box, .section-title, .empty, .modal-head, tr, .doc h2, .doc p, .doc li, .callout";
+const BLOCOS = ".page-head, .kpis, .filters, .chair-card, .cand-linha, .det-cartoes, .det-formula, .det-contexto, .group-kpis, .leader-box, .section-title, .empty, .modal-head, tr, .doc h2, .doc p, .doc li, .callout";
 
 /** Posições (em pixels da imagem) onde a página pode quebrar sem cortar um bloco. */
 function pontosDeQuebra(el: HTMLElement): number[] {
@@ -117,8 +117,16 @@ export default function ExportMenu({ alvo, titulo }: { alvo: () => HTMLElement |
     if (!el) return;
     setGerando(true);
     try {
-      const quebras = pontosDeQuebra(el);
-      const png = await capturar(el);
+      // Um modal com rolagem própria seria capturado só na parte visível: solta a altura durante a captura.
+      el.classList.add("exportando");
+      let quebras: number[];
+      let png: string;
+      try {
+        quebras = pontosDeQuebra(el);
+        png = await capturar(el);
+      } finally {
+        el.classList.remove("exportando");
+      }
       const t = titulo();
       if (formato === "png") {
         const a = document.createElement("a");

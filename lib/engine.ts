@@ -188,7 +188,8 @@ export function pontuar(
   const aplic = criterios.filter((c) => c.aplicavel);
   const max = aplic.reduce((s, c) => s + c.max, 0);
   const pts = aplic.reduce((s, c) => s + c.pontos, 0);
-  return { score: max ? Math.round((pts / max) * 100) : 0, criterios };
+  // Uma casa decimal: evita que 59,5 vire 60 e passe o corte por arredondamento.
+  return { score: max ? Math.round((pts / max) * 1000) / 10 : 0, criterios };
 }
 
 export function successorsFor(chair: Chair, ctx: EngineCtx): ChairResult {
@@ -247,4 +248,9 @@ export function planoDesenvolvimento(nivel: string, ctx: EngineCtx) {
 export function chairSubtitulo(chair: Chair): string {
   const ocup = chair.vago || !chair.nome ? "Posição vaga" : chair.nome;
   return chair.cidade ? `${ocup} · ${chair.cidade}` : ocup;
+}
+
+/** Pontos no formato brasileiro, com no máximo uma casa decimal (78,6; 82; 1,5). */
+export function fmtPontos(n: number): string {
+  return n.toLocaleString("pt-BR", { maximumFractionDigits: 1 });
 }

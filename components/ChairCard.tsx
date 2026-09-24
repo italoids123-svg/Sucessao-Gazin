@@ -1,4 +1,4 @@
-import { coberturaDe } from "@/lib/engine.ts";
+import { coberturaDe, fmtPontos } from "@/lib/engine.ts";
 import type { Chair, ChairResult } from "@/lib/types.ts";
 
 export default function ChairCard({ chair, result, onOpen }: { chair: Chair; result: ChairResult; onOpen: () => void }) {
@@ -26,7 +26,7 @@ export default function ChairCard({ chair, result, onOpen }: { chair: Chair; res
         <div className="meta">
           {result.dentro
             .slice(0, 2)
-            .map((c) => `${c.indicadoPeloLider ? "★ " : ""}${c.person.nome} (${c.score})`)
+            .map((c) => `${c.indicadoPeloLider ? "★ " : ""}${c.person.nome} (${fmtPontos(c.score)})`)
             .join(" · ")}
         </div>
       )}

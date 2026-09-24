@@ -55,13 +55,13 @@ test("coordenação, supervisão e especialista se alimentam entre si", () => {
 test("cadeira em Maringá: pontuação pelo modelo de critérios", () => {
   const r = successorsFor(base().chairs[0], buildCtx(base()));
   // Supervisor: desempenho 30 + líder 5 + interesse 5 + clima 30 + prontidão 10 + mobilidade local 2 = 82
-  // Especialista só indicado pelo líder: 30 + 5 + 0 + (clima n/a) + 0 + estado 13 = 48 de 70 => 69
-  assert.deepEqual(r.dentro.map((c) => [c.person.id, c.score, c.prioridade]), [["sup", 82, 1], ["espec", 69, null]]);
+  // Especialista só indicado pelo líder: 30 + 5 + 0 + (clima n/a) + 0 + estado 13 = 48 de 70 => 68,6
+  assert.deepEqual(r.dentro.map((c) => [c.person.id, c.score, c.prioridade]), [["sup", 82, 1], ["espec", 68.6, null]]);
   assert.ok(r.dentro.every((c) => c.indicadoPeloLider));
-  // Coordenação: 14 + 0 + 5 + 1,5 + 20 = 40,5 de 70 => 58 ("Beatriz" sozinho não é indicação)
-  assert.deepEqual(r.abaixo.map((c) => [c.person.id, c.score, c.indicadoPeloLider]), [["coord", 58, false]]);
-  // Analista: nível não alimenta Gerência; mobilidade vazia não filtra. 5 + 6 = 11 de 70 => 16
-  assert.deepEqual(r.fora.map((c) => [c.person.id, c.score]), [["analista", 16]]);
+  // Coordenação: 14 + 0 + 5 + 1,5 + 20 = 40,5 de 70 => 57,9 ("Beatriz" sozinho não é indicação)
+  assert.deepEqual(r.abaixo.map((c) => [c.person.id, c.score, c.indicadoPeloLider]), [["coord", 57.9, false]]);
+  // Analista: nível não alimenta Gerência; mobilidade vazia não filtra. 5 + 6 = 11 de 70 => 15,7
+  assert.deepEqual(r.fora.map((c) => [c.person.id, c.score]), [["analista", 15.7]]);
 });
 
 test("mobilidade filtra por cidade e por UF", () => {

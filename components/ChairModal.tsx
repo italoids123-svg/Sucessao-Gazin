@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { CONTINUIDADE, CONVERSA, CORTE_ADERENCIA, HORIZONTE, labelOf } from "@/lib/config.ts";
-import { occupantOf, resolverIndicacao } from "@/lib/engine.ts";
+import { useEffect, useRef, useState } from "react";
+import { CONTINUIDADE, CORTE_ADERENCIA, DESEMPENHO, HORIZONTE, MOBILIDADE, labelOf } from "@/lib/config.ts";
+import { fmtPontos, occupantOf, resolverIndicacao } from "@/lib/engine.ts";
 import { useStore } from "@/lib/store.tsx";
 import type { Candidate, Chair } from "@/lib/types.ts";
 import ExportMenu from "./ExportMenu";
@@ -19,56 +19,182 @@ const iniciais = (nome: string) =>
 function statusDe(c: Candidate): { cor: string; texto: string } {
   if (c.grupo === "fora") return { cor: "vermelho", texto: "Fora da hierarquia" };
   if (c.score < CORTE_ADERENCIA) return { cor: "vermelho", texto: "Abaixo do corte" };
-  if (c.score < 80) return { cor: "amarelo", texto: "Aderência média" };
+  if (c.score < 80) return { cor: "amarelo", texto: "Média aderência" };
   return { cor: "verde", texto: "Alta aderência" };
 }
 
-function CandidateRow({ c }: { c: Candidate }) {
-  const st = statusDe(c);
-  const conversa = labelOf(CONVERSA, c.record.conversaDesenvolvimento);
-  const continuidade = labelOf(CONTINUIDADE, c.record.continuidade);
+// Textos curtos para os selos da linha e textos por extenso para o contexto detalhado.
+const SELO_CONVERSA: Record<string, string> = {
+  andamento: "Desenvolvimento: plano em andamento",
+  sem_formalizar: "Desenvolvimento: conversado, sem plano formal",
+  nao: "Desenvolvimento: sem plano",
+};
+const SELO_CONTINUIDADE: Record<string, string> = {
+  imediata: "Com sucessor indicado e pronto",
+  com_suporte: "Com sucessor indicado, com suporte",
+  nao_identifico: "Sem sucessor identificado",
+  sem_elementos: "Sucessão sem elementos para avaliar",
+};
+const PLANO_FORMAL: Record<string, string> = {
+  andamento: "Sim, com ações em andamento",
+  sem_formalizar: "Conversado, mas sem plano formal",
+  nao: "Não",
+};
+const SUCESSOR_PROPRIO: Record<string, string> = {
+  imediata: "Sim, imediatamente",
+  com_suporte: "Sim, com suporte",
+  nao_identifico: "Não identifica sucessor",
+  sem_elementos: "Sem elementos para avaliar",
+};
+
+interface Cartao {
+  titulo: string;
+  sub: string;
+  pontos: number;
+  max: number;
+  aplicavel: boolean;
+}
+
+/** Os cinco critérios do material, com "match de indicação" somando líder + autoindicação. */
+function cartoesDe(c: Candidate): Cartao[] {
+  const k = Object.fromEntries(c.criterios.map((x) => [x.key, x]));
+  const desempenho = DESEMPENHO.find((d) => d.code === c.record.desempenho);
+  const mob = labelOf(MOBILIDADE, c.record.mobilidade);
+  return [
+    {
+      titulo: "Avaliação de desempenho",
+      sub: desempenho ? `${desempenho.label} (ciclo atual)` : "Não avaliado no ciclo",
+      pontos: k.desempenho.pontos,
+      max: k.desempenho.max,
+      aplicavel: true,
+    },
+    {
+      titulo: "Match de indicação",
+      sub: `Líder: ${c.indicadoPeloLider ? "indicou" : "não indicou"} · Autoindicação: ${c.prioridade ? "sim" : "não"}`,
+      pontos: k.indicacaoLider.pontos + k.interesse.pontos,
+      max: k.indicacaoLider.max + k.interesse.max,
+      aplicavel: true,
+    },
+    {
+      titulo: "Pesquisa de clima",
+      sub: k.clima.aplicavel
+        ? typeof c.record.enps2026 === "number"
+          ? `e-NPS 2026: ${c.record.enps2026}`
+          : "Sem resultado de clima 2026"
+        : "Não lidera equipe",
+      pontos: k.clima.pontos,
+      max: k.clima.max,
+      aplicavel: k.clima.aplicavel,
+    },
+    {
+      titulo: "Prontidão declarada",
+      sub: labelOf(HORIZONTE, c.horizonte) || (c.prioridade ? "Horizonte não informado" : "Não se candidatou"),
+      pontos: k.prontidao.pontos,
+      max: k.prontidao.max,
+      aplicavel: true,
+    },
+    {
+      titulo: "Mobilidade",
+      sub: mob ? `Abrangência: ${mob}` : "Não informada",
+      pontos: k.mobilidade.pontos,
+      max: k.mobilidade.max,
+      aplicavel: true,
+    },
+  ];
+}
+
+function Detalhes({ c }: { c: Candidate }) {
+  const aplic = c.criterios.filter((x) => x.aplicavel);
+  const obtidos = aplic.reduce((s, x) => s + x.pontos, 0);
+  const base = aplic.reduce((s, x) => s + x.max, 0);
+  const lacunas =
+    c.prioridade === 1 ? c.record.desenvolvimento1 : c.prioridade === 2 ? c.record.desenvolvimento2 : undefined;
+  const sucessorProprio = SUCESSOR_PROPRIO[c.record.continuidade ?? ""];
   return (
-    <div className="cand">
-      <div className={`avatar ${c.indicadoPeloLider ? "star" : ""}`} title={c.indicadoPeloLider ? "Indicado pelo líder atual" : undefined}>
-        {c.indicadoPeloLider ? "★" : iniciais(c.person.nome)}
+    <div className="cand-detalhes">
+      <div className="det-titulo">Composição da pontuação · base de {fmtPontos(base)} pontos aplicáveis</div>
+      <div className="det-cartoes">
+        {cartoesDe(c).map((k) => (
+          <div key={k.titulo} className={`det-cartao ${k.aplicavel ? "" : "na"}`}>
+            <div className="det-nome">{k.titulo}</div>
+            <div className="det-sub">{k.sub}</div>
+            <div className="det-pontos">{k.aplicavel ? `${fmtPontos(k.pontos)}/${fmtPontos(k.max)}` : "Não se aplica"}</div>
+          </div>
+        ))}
       </div>
-      <div>
-        <div className="nome">
-          {c.person.nome}
-          {c.indicadoPeloLider && (
-            <span className="star" title="Indicado nominalmente pelo ocupante atual">
-              ★
+      <div className="det-formula">
+        {fmtPontos(obtidos)} pontos obtidos ÷ {fmtPontos(base)} aplicáveis × 100 = <b>{fmtPontos(c.score)}</b>
+      </div>
+      <div className="det-titulo">Contexto para a posição</div>
+      <div className="det-contexto">
+        <div>
+          <div className="det-rotulo">Pontos de desenvolvimento para essa posição</div>
+          <div>{c.prioridade ? lacunas || "Não informados" : "Não se candidatou a esta posição"}</div>
+        </div>
+        <div>
+          <div className="det-rotulo">Plano de desenvolvimento formal</div>
+          <div>{PLANO_FORMAL[c.record.conversaDesenvolvimento ?? ""] ?? "Não informado"}</div>
+        </div>
+        <div>
+          <div className="det-rotulo">Sucessor indicado (posição atual desta pessoa)</div>
+          <div>
+            {sucessorProprio ?? "Não informado"}
+            {c.record.possivelSucessorTexto ? ` · ${c.record.possivelSucessorTexto}` : ""}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CandidateRow({ c }: { c: Candidate }) {
+  const [aberto, setAberto] = useState(false);
+  const st = statusDe(c);
+  const seloConversa = SELO_CONVERSA[c.record.conversaDesenvolvimento ?? ""];
+  const seloContinuidade = SELO_CONTINUIDADE[c.record.continuidade ?? ""];
+  return (
+    <div className={`cand ${aberto ? "aberto" : ""}`}>
+      <div className="cand-linha">
+        <div className={`avatar ${c.indicadoPeloLider ? "star" : ""}`} title={c.indicadoPeloLider ? "Indicado pelo líder atual" : undefined}>
+          {c.indicadoPeloLider ? "★" : iniciais(c.person.nome)}
+        </div>
+        <div>
+          <div className="nome">{c.person.nome}</div>
+          <div className="sub">
+            {c.person.cargo || "Sem cargo informado"} · {c.person.nivel}
+          </div>
+        </div>
+        <div className="col-prio">
+          {c.prioridade ? (
+            <>
+              <b>Prioridade {c.prioridade}</b>
+              <div className="horizonte">{labelOf(HORIZONTE, c.horizonte) || "Horizonte não informado"}</div>
+            </>
+          ) : (
+            <>
+              <b>Indicado pelo líder</b>
+              <div className="horizonte">Não se candidatou</div>
+            </>
+          )}
+        </div>
+        <div className="badges">
+          {seloConversa && <span className={`selo ${c.record.conversaDesenvolvimento === "andamento" ? "ok" : ""}`}>{seloConversa}</span>}
+          {seloContinuidade && (
+            <span className={`selo ${c.record.continuidade === "imediata" || c.record.continuidade === "com_suporte" ? "ok" : ""}`}>
+              {seloContinuidade}
             </span>
           )}
         </div>
-        <div className="sub">
-          {c.person.cargo || "Sem cargo informado"} · {c.person.nivel}
+        <div className="score">
+          {fmtPontos(c.score)}
+          <span>pontos</span>
         </div>
+        <div className={`pill ${st.cor}`}>{st.texto}</div>
+        <button className="ver-detalhes no-export" onClick={() => setAberto((a) => !a)} aria-expanded={aberto}>
+          {aberto ? "Ocultar detalhes −" : "Ver detalhes +"}
+        </button>
       </div>
-      <div className="col-prio sub">
-        {c.prioridade ? (
-          <>
-            <b>Prioridade {c.prioridade}</b>
-            <br />
-            {labelOf(HORIZONTE, c.horizonte) || "Horizonte não informado"}
-          </>
-        ) : (
-          <b>Só indicação do líder: não se indicou</b>
-        )}
-      </div>
-      <div className="badges">
-        {conversa && <span className={`chip ${c.record.conversaDesenvolvimento === "andamento" ? "azul" : ""}`}>Plano de desenvolvimento: {conversa}</span>}
-        {continuidade && <span className="chip">Continuidade: {continuidade}</span>}
-      </div>
-      <div className="score">{c.score}</div>
-      <div className={`pill ${st.cor}`}>{st.texto}</div>
-      <div className="breakdown">
-        {c.criterios.map((k) => (
-          <span key={k.key} className={k.aplicavel ? "" : "na"} title={k.detalhe}>
-            {k.label}: {k.aplicavel ? `${Math.round(k.pontos * 10) / 10}/${k.max}` : "não se aplica"}
-          </span>
-        ))}
-      </div>
+      {aberto && <Detalhes c={c} />}
     </div>
   );
 }
