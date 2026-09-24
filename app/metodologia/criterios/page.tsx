@@ -79,7 +79,6 @@ export default function Page() {
           capacidade e aderência à cadeira.
         </p>
         <Tabela cols={["Prazo declarado", "Pontos"]} rows={HORIZONTE.map((h) => [h.label, h.pontos])} />
-        <p>Registre a data da conversa de carreira: o interesse muda ao longo do tempo.</p>
 
         <h2>5. Mobilidade ({PESOS.mobilidade} pontos)</h2>
         <p>
@@ -95,7 +94,7 @@ export default function Page() {
           <li><b>Total</b>: qualquer unidade.</li>
           <li>Sem cidade da posição, sem cidade da pessoa ou sem resposta: não bloqueia.</li>
         </ul>
-        <p>Autodeclarada: valide na conversa de carreira e registre a data, pois pode mudar.</p>
+        <p>Autodeclarada: valide com a pessoa, pois pode mudar ao longo do tempo.</p>
       </div>
     </>
   );

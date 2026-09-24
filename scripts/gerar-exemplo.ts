@@ -88,10 +88,6 @@ const desempenho = () =>
   pesado<string>([["estrela", 11], ["alto_desempenho", 17], ["comprometido", 13], ["alto_potencial", 12], ["solido", 21], ["bom_executor", 10], ["enigma", 5], ["eficaz", 5], ["risco", 3], ["", 3]]);
 const mobilidade = () => pesado<string>([["local", 28], ["matriz", 14], ["estado", 30], ["qualquer", 28]]);
 const enps = () => Math.max(-30, Math.min(98, Math.round(55 + (rnd() + rnd() + rnd() - 1.5) * 50)));
-const dataConversa = () => {
-  const d = new Date(Date.UTC(2026, 5, 1) + Math.floor(rnd() * 110) * 86400000);
-  return `${String(d.getUTCDate()).padStart(2, "0")}/${String(d.getUTCMonth() + 1).padStart(2, "0")}/${d.getUTCFullYear()}`;
-};
 
 type Linha = Record<string, string | number>;
 const nivelDe = new Map<string, string>(data.people.map((p) => [norm(p.nome), p.nivel]));
@@ -129,7 +125,7 @@ const respostas = new Map<string, Linha>();
 function responder(nome: string, lidera: boolean) {
   const r: Linha = {};
   r["Localidade atual (Cidade/Estado)"] = cidadePessoa(nome);
-  r["Data da conversa de carreira"] = dataConversa();
+  rnd(); // mantém a sequência do sorteio (e o mesmo cenário) de quando havia a data da conversa
   r["Mobilidade"] = labelDe(MOBILIDADE, mobilidade());
   const d = desempenho();
   if (d) r["Avaliação de desempenho (ciclo atual)"] = labelDe(DESEMPENHO, d);

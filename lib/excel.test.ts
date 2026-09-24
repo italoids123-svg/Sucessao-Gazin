@@ -32,7 +32,6 @@ test("merge aditivo: atualiza questionário, cria pessoa nova e cidade da cadeir
     alvo["Mobilidade"] = "Dentro do Estado";
     alvo["Lidera equipe"] = "Sim";
     alvo["e-NPS da área 2026"] = -12;
-    alvo["Data da conversa de carreira"] = 46280; // serial do Excel
     base.push({ "Nome completo": "Pessoa Nova Teste", "Nível": "Analista / Técnico", "Horizonte 1": "xpto" });
     wb.Sheets["Base de dados"] = XLSX.utils.json_to_sheet(base);
     const cad = XLSX.utils.sheet_to_json<Record<string, unknown>>(wb.Sheets["Cadeiras"]);
@@ -53,7 +52,6 @@ test("merge aditivo: atualiza questionário, cria pessoa nova e cidade da cadeir
       mobilidade: "estado",
       lideraEquipe: true,
       enps2026: -12,
-      dataConversaCarreira: "15/09/2026",
     },
   );
   assert.ok(stats.avisos.some((a) => a.includes("xpto")));

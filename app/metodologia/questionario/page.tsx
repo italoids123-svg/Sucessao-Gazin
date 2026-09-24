@@ -9,7 +9,6 @@ export default function Page() {
     ["Todos", "O que falta para você assumir essa posição? (Desenvolvimento 1)", "Texto livre"],
     ["Todos", "Existe uma segunda posição de interesse? (Prioridade 2, Horizonte 2, Desenvolvimento 2)", "Opcional, mesmas opções"],
     ["Todos", "Em que cidade você trabalha hoje?", "Cidade/Estado (por exemplo, Douradina/PR)"],
-    ["Todos", "Data da conversa de carreira em que as respostas foram dadas", "Dia/mês/ano (por exemplo, 15/09/2026)"],
     ["Todos", "Para assumir uma nova posição, até onde você se mudaria?", opts(MOBILIDADE)],
     ["Todos", "Você tem conversa de desenvolvimento com seu gestor?", opts(CONVERSA)],
     ["Líderes", "Se você saísse hoje, como ficaria a continuidade da sua posição?", opts(CONTINUIDADE)],

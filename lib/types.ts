@@ -47,7 +47,6 @@ export interface SuccessionRecord {
   conversaDesenvolvimento?: ConversaDesenvolvimento;
   continuidade?: Continuidade;
   possivelSucessorTexto?: string;
-  dataConversaCarreira?: string; // quando interesse/prontidão/mobilidade foram declarados (mudam com o tempo)
   desempenho?: DesempenhoCode; // avaliação de desempenho do ciclo atual
   lideraEquipe?: boolean;
   enps2026?: number | ""; // e-NPS da área na pesquisa de clima 2026

@@ -55,12 +55,6 @@ function CandidateRow({ c }: { c: Candidate }) {
         ) : (
           <b>Só indicação do líder: não se indicou</b>
         )}
-        {c.record.dataConversaCarreira && (
-          <>
-            <br />
-            Conversa: {c.record.dataConversaCarreira}
-          </>
-        )}
       </div>
       <div className="badges">
         {conversa && <span className={`chip ${c.record.conversaDesenvolvimento === "andamento" ? "azul" : ""}`}>Plano de desenvolvimento: {conversa}</span>}
