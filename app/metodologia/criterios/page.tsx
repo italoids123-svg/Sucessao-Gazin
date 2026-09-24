@@ -63,7 +63,10 @@ export default function Page() {
         </p>
 
         <h2>3. Pesquisa de clima 2026 ({PESOS.clima} pontos)</h2>
-        <p>Mede o clima da área pelo e-NPS da pesquisa aplicada em 2026.</p>
+        <p>
+          Mede o clima da área pelo e-NPS (Employee Net Promoter Score, índice de recomendação da empresa pelos próprios
+          colaboradores) da pesquisa aplicada em 2026.
+        </p>
         <Tabela cols={["Faixa de e-NPS 2026", "Pontos"]} rows={CLIMA_FAIXAS.map((f) => [f.label, f.pontos])} />
         <div className="callout warn">
           Aplicado só a quem lidera equipe hoje. Quem não lidera é avaliado sobre {100 - PESOS.clima} pontos, sem ser penalizado pela
@@ -88,7 +91,7 @@ export default function Page() {
         <ul>
           <li><b>Local atual</b>: só posições na própria cidade.</li>
           <li><b>Matriz</b>: só posições em {SEDE}, mesmo que a pessoa já esteja em outra cidade que tenha a posição.</li>
-          <li><b>Dentro do Estado</b>: posições na mesma UF da cidade atual.</li>
+          <li><b>Dentro do Estado</b>: posições no mesmo Estado da cidade atual.</li>
           <li><b>Total</b>: qualquer unidade.</li>
           <li>Sem cidade da posição, sem cidade da pessoa ou sem resposta: não bloqueia.</li>
         </ul>

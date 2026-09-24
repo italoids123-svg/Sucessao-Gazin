@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { CONTINUIDADE, CONVERSA, CORTE_ADERENCIA, HORIZONTE, labelOf } from "@/lib/config.ts";
 import { occupantOf, resolverIndicacao } from "@/lib/engine.ts";
 import { useStore } from "@/lib/store.tsx";
 import type { Candidate, Chair } from "@/lib/types.ts";
+import ExportMenu from "./ExportMenu";
 
 const iniciais = (nome: string) =>
   nome
@@ -62,7 +63,7 @@ function CandidateRow({ c }: { c: Candidate }) {
         )}
       </div>
       <div className="badges">
-        {conversa && <span className={`chip ${c.record.conversaDesenvolvimento === "andamento" ? "azul" : ""}`}>PDI: {conversa}</span>}
+        {conversa && <span className={`chip ${c.record.conversaDesenvolvimento === "andamento" ? "azul" : ""}`}>Plano de desenvolvimento: {conversa}</span>}
         {continuidade && <span className="chip">Continuidade: {continuidade}</span>}
       </div>
       <div className="score">{c.score}</div>
@@ -70,7 +71,7 @@ function CandidateRow({ c }: { c: Candidate }) {
       <div className="breakdown">
         {c.criterios.map((k) => (
           <span key={k.key} className={k.aplicavel ? "" : "na"} title={k.detalhe}>
-            {k.label}: {k.aplicavel ? `${Math.round(k.pontos * 10) / 10}/${k.max}` : "n/a"}
+            {k.label}: {k.aplicavel ? `${Math.round(k.pontos * 10) / 10}/${k.max}` : "não se aplica"}
           </span>
         ))}
       </div>
@@ -107,9 +108,10 @@ export default function ChairModal({ chair, onClose }: { chair: Chair; onClose: 
   }, [onClose]);
 
   const vago = chair.vago || !chair.nome;
+  const modalRef = useRef<HTMLDivElement>(null);
   return (
     <div className="overlay" onClick={onClose}>
-      <div className="modal" role="dialog" aria-modal="true" aria-label={chair.cargo} onClick={(e) => e.stopPropagation()}>
+      <div className="modal" ref={modalRef} role="dialog" aria-modal="true" aria-label={chair.cargo} onClick={(e) => e.stopPropagation()}>
         <div className="modal-head">
           <div>
             <h2>{chair.cargo}</h2>
@@ -119,9 +121,12 @@ export default function ChairModal({ chair, onClose }: { chair: Chair; onClose: 
               {chair.gestor ? ` · Gestor: ${chair.gestor}${chair.gestorCargo ? ` (${chair.gestorCargo})` : ""}` : ""}
             </p>
           </div>
-          <button className="close" onClick={onClose} aria-label="Fechar">
-            ×
-          </button>
+          <div className="modal-tools no-export">
+            <ExportMenu alvo={() => modalRef.current} titulo={() => `${chair.cargo} - ${vago ? "Posição vaga" : chair.nome}`} />
+            <button className="close" onClick={onClose} aria-label="Fechar">
+              ×
+            </button>
+          </div>
         </div>
         <div className="modal-body">
           <div className="group-kpis">
@@ -160,7 +165,7 @@ export default function ChairModal({ chair, onClose }: { chair: Chair; onClose: 
             )}
             {ambiguos.map((a) => (
               <div key={a.trecho} style={{ marginTop: 6, color: "var(--amarelo)" }}>
-                ⚠ &quot;{a.trecho}&quot; corresponde a {a.pessoas.length} pessoas ({a.pessoas.map((x) => x.nome).join(", ")}): a
+                ⚠ &quot;{a.trecho.toLowerCase().replace(/(^|\s)\S/g, (l) => l.toUpperCase())}&quot; corresponde a {a.pessoas.length} pessoas ({a.pessoas.map((x) => x.nome).join(", ")}): a
                 indicação só conta para quem também se indicou à posição. Peça ao líder o nome completo.
               </div>
             ))}

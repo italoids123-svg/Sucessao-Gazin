@@ -4,7 +4,7 @@ export const EMPRESA = "Gazin";
 export const STORAGE_KEY = "gazin-mapa-sucessorio:v1";
 // Incremente sempre que a base padrão (lib/base-data.json) ou a estrutura mudar:
 // descarta a base antiga salva no navegador.
-export const BASE_DATA_VERSION = 2;
+export const BASE_DATA_VERSION = 3;
 
 export interface NivelDef {
   nome: string;
@@ -27,7 +27,7 @@ export const NIVEIS: NivelDef[] = [
   {
     nome: "Especialista",
     slug: "especialista",
-    descricao: "Posições técnicas críticas sem liderança formal (TI e dados).",
+    descricao: "Posições técnicas críticas sem liderança formal (tecnologia da informação e dados).",
     temPagina: true,
   },
   {
@@ -41,18 +41,19 @@ export const NIVEIS: NivelDef[] = [
 export const NIVEL_NOMES = NIVEIS.map((n) => n.nome);
 
 // Quem pode suceder quem. Um nível pode ter mais de um nível elegível.
+// Coordenação, Supervisão e Especialista formam uma mesma faixa: alimentam-se entre si e a si mesmos
+// (um especialista pode suceder outro especialista, um coordenador pode ir para supervisão ou
+// especialista, e assim por diante).
+const FAIXA_TECNICA_E_COORDENACAO = ["Coordenação", "Supervisão", "Especialista"];
 export const HIERARQUIA_PADRAO: HierarquiaEntry[] = [
   { nivel: "Diretoria", elegivel: "Gerência Executiva" },
   { nivel: "Diretoria", elegivel: "Gerência" },
   { nivel: "Gerência Executiva", elegivel: "Gerência" },
-  { nivel: "Gerência", elegivel: "Coordenação" },
-  { nivel: "Gerência", elegivel: "Supervisão" },
-  { nivel: "Gerência", elegivel: "Especialista" },
-  { nivel: "Coordenação", elegivel: "Supervisão" },
-  { nivel: "Coordenação", elegivel: "Especialista" },
-  { nivel: "Coordenação", elegivel: "Analista / Técnico" },
-  { nivel: "Supervisão", elegivel: "Analista / Técnico" },
-  { nivel: "Especialista", elegivel: "Analista / Técnico" },
+  ...FAIXA_TECNICA_E_COORDENACAO.map((elegivel) => ({ nivel: "Gerência", elegivel })),
+  ...FAIXA_TECNICA_E_COORDENACAO.flatMap((nivel) => [
+    ...FAIXA_TECNICA_E_COORDENACAO.map((elegivel) => ({ nivel, elegivel })),
+    { nivel, elegivel: "Analista / Técnico" },
+  ]),
 ];
 
 // ---------- Pontuação de aderência (material "Critérios" da Gazin) ----------

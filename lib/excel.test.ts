@@ -36,7 +36,7 @@ test("merge aditivo: atualiza questionário, cria pessoa nova e cidade da cadeir
     base.push({ "Nome completo": "Pessoa Nova Teste", "Nível": "Analista / Técnico", "Horizonte 1": "xpto" });
     wb.Sheets["Base de dados"] = XLSX.utils.json_to_sheet(base);
     const cad = XLSX.utils.sheet_to_json<Record<string, unknown>>(wb.Sheets["Cadeiras"]);
-    cad[0]["Cidade (Cidade/UF)"] = "Douradina/PR";
+    cad[0]["Cidade (Cidade/Estado)"] = "Douradina/PR";
     wb.Sheets["Cadeiras"] = XLSX.utils.json_to_sheet(cad);
   });
   assert.equal(data.people.length, before.people.length + 1);

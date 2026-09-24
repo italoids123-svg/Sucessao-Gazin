@@ -22,7 +22,7 @@ const COL = {
   nivel: "Nível",
   cargo: "Cargo atual",
   diretoria: "Diretoria",
-  localidade: "Localidade atual (Cidade/UF)",
+  localidade: "Localidade atual (Cidade/Estado)",
   mobilidade: "Mobilidade",
   p1: "Prioridade 1 (cargo de interesse)",
   h1: "Horizonte 1",
@@ -44,7 +44,7 @@ const CCOL = {
   cargo: "Cargo",
   nivel: "Nível",
   diretoria: "Diretoria",
-  cidade: "Cidade (Cidade/UF)",
+  cidade: "Cidade (Cidade/Estado)",
   ocupante: "Ocupante atual",
   tempo: "Tempo de casa (anos)",
   gestor: "Gestor",
@@ -67,10 +67,10 @@ const LEIA_ME = [
   ["Valores aceitos: copie daqui os valores dos campos de múltipla escolha, para evitar erro de digitação."],
   [""],
   ["Regras importantes"],
-  ["Prioridade 1 e 2 devem conter o CARGO EXATO da aba Cadeiras (ex.: \"Gerente regional\")."],
+  ["Prioridade 1 e 2 devem conter o CARGO EXATO da aba Cadeiras (por exemplo, \"Gerente regional\")."],
   ["\"Possível sucessor da sua posição\" é respondido pelo ocupante da cadeira: nome e sobrenome de quem ele indica."],
-  ["Cidade sempre no formato Cidade/UF (ex.: Douradina/PR): a UF é usada na mobilidade \"Dentro do Estado\"."],
-  ["Interesse, prontidão e mobilidade mudam com o tempo: registre a Data da conversa de carreira (dd/mm/aaaa)."],
+  ["Cidade sempre no formato Cidade/Estado com a sigla do Estado (por exemplo, Douradina/PR): o Estado é usado na mobilidade \"Dentro do Estado\"."],
+  ["Interesse, prontidão e mobilidade mudam com o tempo: registre a Data da conversa de carreira (dia/mês/ano, por exemplo 15/09/2026)."],
   ["e-NPS da área 2026: número de -100 a 100, só para quem lidera equipe."],
   [`Corte de aderência: ${CORTE_ADERENCIA} pontos.`],
 ];
@@ -194,7 +194,7 @@ function parseData(v: string, avisos: string[], quem: string): string | undefine
     const d = new Date(Date.UTC(1899, 11, 30) + Math.floor(Number(v)) * 86400000);
     return `${String(d.getUTCDate()).padStart(2, "0")}/${String(d.getUTCMonth() + 1).padStart(2, "0")}/${d.getUTCFullYear()}`;
   }
-  if (!/^\d{1,2}\/\d{1,2}\/\d{2,4}$/.test(v)) avisos.push(`${quem}: data da conversa de carreira "${v}" fora do formato dd/mm/aaaa`);
+  if (!/^\d{1,2}\/\d{1,2}\/\d{2,4}$/.test(v)) avisos.push(`${quem}: data da conversa de carreira "${v}" fora do formato dia/mês/ano`);
   return v;
 }
 

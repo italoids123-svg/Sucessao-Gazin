@@ -23,6 +23,56 @@ def title_name(s):
     small = {"DA", "DE", "DO", "DOS", "DAS", "E"}
     return " ".join(w.lower() if w in small else w.capitalize() for w in s.split(" "))
 
+# Nomes por extenso: sem abreviacoes, siglas ou acentos faltando (aplicado a cargo, diretoria e
+# cargo do gestor). A chave e comparada sem acento e sem diferenca de maiusculas.
+NOME_POR_EXTENSO = {
+    "Coord. de projetos e processos": "Coordenador de projetos e processos",
+    "Coordenador contabil/tributario": "Coordenador contábil/tributário",
+    "Coordenador de SESMT": "Coordenador de segurança e medicina do trabalho",
+    "Coordenador transporte": "Coordenador de transporte",
+    "Coordenador(a)de pessoal": "Coordenador de pessoal",
+    "Diretoria de TI e inovação": "Diretoria de tecnologia da informação e inovação",
+    "Diretor de TI e inovação": "Diretor de tecnologia da informação e inovação",
+    "Gerente PCP e MRP": "Gerente de planejamento e controle da produção e de necessidade de materiais",
+    "Gerente adjunto varejo": "Gerente adjunto de varejo",
+    "Gerente admin. industria": "Gerente administrativo da indústria",
+    "Gerente administrativo logistica": "Gerente administrativo de logística",
+    "Gerente administ.logistica": "Gerente administrativo de logística",
+    "Gerente Administrativo (Parceiros de Negócio)": "Gerente administrativo (parceiros de negócio)",
+    "Gerente Administrativo Geral": "Gerente administrativo geral",
+    "Gerente de Controladoria": "Gerente de controladoria",
+    "Administrador de Redes": "Administrador de redes",
+    "Gerente assistencia": "Gerente de assistência",
+    "Gerente compras": "Gerente de compras",
+    "Gerente de PMO": "Gerente do escritório de projetos",
+    "Gerente de compras industria": "Gerente de compras da indústria",
+    "Gerente de crédito (Atacado,industria)": "Gerente de crédito (atacado e indústria)",
+    "Gerente de desenv.de maquinas": "Gerente de desenvolvimento de máquinas",
+    "Gerente de neg. internacionais": "Gerente de negócios internacionais",
+    "Gerente de operações ecommerce": "Gerente de operações de e-commerce",
+    "Gerente fundo de investimento": "Gerente de fundo de investimento",
+    "Gerente geral agropecuaria": "Gerente geral agropecuária",
+    "Gerente geral de RH": "Gerente geral de recursos humanos",
+    "Gerente industria": "Gerente de indústria",
+    "Superv. propaganda": "Supervisor de propaganda",
+    "Superv.operação tribut.": "Supervisor de operação tributária",
+    "Supervisor (a) de e-commerce (atacado)": "Supervisor de e-commerce (atacado)",
+    "Supervisor - varejo": "Supervisor de varejo",
+    "Supervisor Comercial (Gazinbank)": "Supervisor comercial (Gazin Bank)",
+    "Supervisor administrativo (ADM geral)": "Supervisor administrativo (administração geral)",
+    "Supervisor de TI": "Supervisor de tecnologia da informação",
+    "Supervisor desenvol. Humano": "Supervisor de desenvolvimento humano",
+    "Supervisor recrutam. e seleção": "Supervisor de recrutamento e seleção",
+}
+
+def por_extenso(s):
+    fixed = {norm(k): v for k, v in NOME_POR_EXTENSO.items()}.get(norm(s))
+    if fixed:
+        return fixed
+    if s and s == s.upper() and any(ch.isalpha() for ch in s):
+        s = s.lower()  # cargo do gestor em caixa alta na origem: "DIRETOR COMERCIAL" -> "Diretor comercial"
+    return s[:1].upper() + s[1:]
+
 # Correcoes de inconsistencias da planilha de origem (grafia do gestor diferente da do ocupante).
 GESTOR_FIX = {
     "VINICIOS SUZE": "VINICIOS ZUSE",
@@ -37,6 +87,9 @@ for r in ws.iter_rows(values_only=True, min_row=2):
     cargo, diretoria, ocupante, gestor, gestor_cargo = [re.sub(r"\s+", " ", str(x or "")).strip() for x in r[:5]]
     if gestor_cargo.startswith("="):
         gestor_cargo = ""  # formula quebrada na origem (ex.: "=$A$15"); resolvido abaixo pelo nome do gestor
+    cargo, diretoria = por_extenso(cargo), por_extenso(diretoria)
+    if norm(gestor_cargo) != "A PREENCHER":
+        gestor_cargo = por_extenso(gestor_cargo)
     gestor = GESTOR_FIX.get(norm(gestor), gestor)
     vago = norm(ocupante) in ("", "A PREENCHER")
     rows.append(dict(cargo=cargo, diretoria=diretoria, ocupante="" if vago else ocupante,

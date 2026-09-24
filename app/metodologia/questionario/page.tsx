@@ -8,15 +8,15 @@ export default function Page() {
     ["Todos", "Em quanto tempo você se vê pronto para ela? (Horizonte 1)", opts(HORIZONTE)],
     ["Todos", "O que falta para você assumir essa posição? (Desenvolvimento 1)", "Texto livre"],
     ["Todos", "Existe uma segunda posição de interesse? (Prioridade 2, Horizonte 2, Desenvolvimento 2)", "Opcional, mesmas opções"],
-    ["Todos", "Em que cidade você trabalha hoje?", "Cidade/UF"],
-    ["Todos", "Data da conversa de carreira em que as respostas foram dadas", "dd/mm/aaaa"],
+    ["Todos", "Em que cidade você trabalha hoje?", "Cidade/Estado (por exemplo, Douradina/PR)"],
+    ["Todos", "Data da conversa de carreira em que as respostas foram dadas", "Dia/mês/ano (por exemplo, 15/09/2026)"],
     ["Todos", "Para assumir uma nova posição, até onde você se mudaria?", opts(MOBILIDADE)],
     ["Todos", "Você tem conversa de desenvolvimento com seu gestor?", opts(CONVERSA)],
     ["Líderes", "Se você saísse hoje, como ficaria a continuidade da sua posição?", opts(CONTINUIDADE)],
     ["Líderes", "Quem você indica como possível sucessor da sua posição?", "Nome e sobrenome (um ou mais, separados por vírgula)"],
-    ["RH", "Avaliação de desempenho do ciclo atual", DESEMPENHO.map((n) => n.label).join(" · ") + " · (vazio = não avaliado)"],
-    ["RH", "Lidera equipe hoje?", "Sim · Não"],
-    ["RH", "e-NPS da área na pesquisa de clima 2026", "Número de -100 a 100, só para quem lidera equipe"],
+    ["Recursos Humanos", "Avaliação de desempenho do ciclo atual", DESEMPENHO.map((n) => n.label).join(" · ") + " · (vazio = não avaliado)"],
+    ["Recursos Humanos", "Lidera equipe hoje?", "Sim · Não"],
+    ["Recursos Humanos", "e-NPS da área na pesquisa de clima 2026", "Número de -100 a 100, só para quem lidera equipe"],
   ];
   return (
     <>

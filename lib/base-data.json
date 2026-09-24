@@ -17,7 +17,7 @@
   {
    "id": "c002",
    "nome": "Francieli Bessa Silva Tavares",
-   "cargo": "Coordenador contabil/tributario",
+   "cargo": "Coordenador contábil/tributário",
    "nivel": "Coordenação",
    "diretoria": "Controller",
    "cidade": "",
@@ -25,7 +25,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Cleiton Cesar Silva",
-   "gestorCargo": "Gerente de Controladoria"
+   "gestorCargo": "Gerente de controladoria"
   },
   {
    "id": "c003",
@@ -38,7 +38,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Cleiton Cesar Silva",
-   "gestorCargo": "Gerente de Controladoria"
+   "gestorCargo": "Gerente de controladoria"
   },
   {
    "id": "c004",
@@ -56,7 +56,7 @@
   {
    "id": "c005",
    "nome": "Diego Henrique Garcia Soriani",
-   "cargo": "Gerente fundo de investimento",
+   "cargo": "Gerente de fundo de investimento",
    "nivel": "Gerência",
    "diretoria": "Controller",
    "cidade": "",
@@ -69,7 +69,7 @@
   {
    "id": "c006",
    "nome": "Fabricio Silva Facco",
-   "cargo": "Superv.operação tribut.",
+   "cargo": "Supervisor de operação tributária",
    "nivel": "Supervisão",
    "diretoria": "Controller",
    "cidade": "",
@@ -77,7 +77,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Cleiton Cesar Silva",
-   "gestorCargo": "Gerente de Controladoria"
+   "gestorCargo": "Gerente de controladoria"
   },
   {
    "id": "c007",
@@ -90,7 +90,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Cleiton Cesar Silva",
-   "gestorCargo": "Gerente de Controladoria"
+   "gestorCargo": "Gerente de controladoria"
   },
   {
    "id": "c008",
@@ -103,7 +103,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Cleiton Cesar Silva",
-   "gestorCargo": "Gerente de Controladoria"
+   "gestorCargo": "Gerente de controladoria"
   },
   {
    "id": "c009",
@@ -116,7 +116,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Cleiton Fabio Bianchini da Silva",
-   "gestorCargo": "Gerente de Compras Industria"
+   "gestorCargo": "Gerente de compras da indústria"
   },
   {
    "id": "c010",
@@ -129,12 +129,12 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Renan da Silva Medeiros",
-   "gestorCargo": "Gerente Administrativo Geral"
+   "gestorCargo": "Gerente administrativo geral"
   },
   {
    "id": "c011",
    "nome": "Jeferson Duarte Goncalves",
-   "cargo": "Gerente Administrativo (Parceiros de Negócio)",
+   "cargo": "Gerente administrativo (parceiros de negócio)",
    "nivel": "Gerência",
    "diretoria": "Diretoria administrativa",
    "cidade": "",
@@ -142,7 +142,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Cleiton Berger",
-   "gestorCargo": "DIRETOR ADMINISTRATIVO"
+   "gestorCargo": "Diretor administrativo"
   },
   {
    "id": "c012",
@@ -155,7 +155,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Renan da Silva Medeiros",
-   "gestorCargo": "Gerente Administrativo Geral"
+   "gestorCargo": "Gerente administrativo geral"
   },
   {
    "id": "c013",
@@ -168,7 +168,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Cleiton Berger",
-   "gestorCargo": "DIRETOR ADMINISTRATIVO"
+   "gestorCargo": "Diretor administrativo"
   },
   {
    "id": "c014",
@@ -181,12 +181,12 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Cleiton Berger",
-   "gestorCargo": "DIRETOR ADMINISTRATIVO"
+   "gestorCargo": "Diretor administrativo"
   },
   {
    "id": "c015",
    "nome": "Cleiton Fabio Bianchini da Silva",
-   "cargo": "Gerente de compras industria",
+   "cargo": "Gerente de compras da indústria",
    "nivel": "Gerência",
    "diretoria": "Diretoria administrativa",
    "cidade": "",
@@ -194,7 +194,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Cleiton Berger",
-   "gestorCargo": "DIRETOR ADMINISTRATIVO"
+   "gestorCargo": "Diretor administrativo"
   },
   {
    "id": "c016",
@@ -207,7 +207,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Cleiton Berger",
-   "gestorCargo": "DIRETOR ADMINISTRATIVO"
+   "gestorCargo": "Diretor administrativo"
   },
   {
    "id": "c017",
@@ -272,12 +272,12 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Cleiton Berger",
-   "gestorCargo": "DIRETOR ADMINISTRATIVO"
+   "gestorCargo": "Diretor administrativo"
   },
   {
    "id": "c022",
    "nome": "Daiane Domingues dos Santos",
-   "cargo": "Supervisor administrativo (ADM geral)",
+   "cargo": "Supervisor administrativo (administração geral)",
    "nivel": "Supervisão",
    "diretoria": "Diretoria administrativa",
    "cidade": "",
@@ -285,7 +285,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Renan da Silva Medeiros",
-   "gestorCargo": "Gerente Administrativo Geral"
+   "gestorCargo": "Gerente administrativo geral"
   },
   {
    "id": "c023",
@@ -337,7 +337,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Julio Cezar da Silva",
-   "gestorCargo": "DIRETOR COMERCIAL"
+   "gestorCargo": "Diretor comercial"
   },
   {
    "id": "c027",
@@ -350,7 +350,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Aparecido Benedito dos Santos",
-   "gestorCargo": "GERENTE COMERCIAL"
+   "gestorCargo": "Gerente comercial"
   },
   {
    "id": "c028",
@@ -363,7 +363,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Robiano Eloir Pereira",
-   "gestorCargo": "GERENTE DE VAREJO"
+   "gestorCargo": "Gerente de varejo"
   },
   {
    "id": "c029",
@@ -389,12 +389,12 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Julio Cezar da Silva",
-   "gestorCargo": "DIRETOR COMERCIAL"
+   "gestorCargo": "Diretor comercial"
   },
   {
    "id": "c031",
    "nome": "",
-   "cargo": "Gerente adjunto varejo",
+   "cargo": "Gerente adjunto de varejo",
    "nivel": "Gerência",
    "diretoria": "Diretoria comercial",
    "cidade": "",
@@ -415,7 +415,7 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Luanna Geraldo Borges",
-   "gestorCargo": "GERENTE DE VAREJO"
+   "gestorCargo": "Gerente de varejo"
   },
   {
    "id": "c033",
@@ -428,7 +428,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Frank Soares do Nascimento",
-   "gestorCargo": "GERENTE GERAL DO ATACADO"
+   "gestorCargo": "Gerente geral do atacado"
   },
   {
    "id": "c034",
@@ -441,7 +441,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Julio Cezar da Silva",
-   "gestorCargo": "DIRETOR COMERCIAL"
+   "gestorCargo": "Diretor comercial"
   },
   {
    "id": "c035",
@@ -454,7 +454,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Julio Cezar da Silva",
-   "gestorCargo": "DIRETOR COMERCIAL"
+   "gestorCargo": "Diretor comercial"
   },
   {
    "id": "c036",
@@ -467,7 +467,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Julio Cezar da Silva",
-   "gestorCargo": "DIRETOR COMERCIAL"
+   "gestorCargo": "Diretor comercial"
   },
   {
    "id": "c037",
@@ -480,7 +480,7 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Paulo Sergio dos Santos",
-   "gestorCargo": "GERENTE GERAL DO VAREJO"
+   "gestorCargo": "Gerente geral do varejo"
   },
   {
    "id": "c038",
@@ -493,12 +493,12 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Paulo Sergio dos Santos",
-   "gestorCargo": "GERENTE GERAL DO VAREJO"
+   "gestorCargo": "Gerente geral do varejo"
   },
   {
    "id": "c039",
    "nome": "Andre Schafer Pasinato",
-   "cargo": "Gerente compras",
+   "cargo": "Gerente de compras",
    "nivel": "Gerência Executiva",
    "diretoria": "Diretoria comercial",
    "cidade": "",
@@ -506,12 +506,12 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Julio Cezar da Silva",
-   "gestorCargo": "DIRETOR COMERCIAL"
+   "gestorCargo": "Diretor comercial"
   },
   {
    "id": "c040",
    "nome": "Niccolas Daniel Curvelo",
-   "cargo": "Gerente de neg. internacionais",
+   "cargo": "Gerente de negócios internacionais",
    "nivel": "Gerência",
    "diretoria": "Diretoria comercial",
    "cidade": "",
@@ -519,12 +519,12 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Andre Schafer Pasinato",
-   "gestorCargo": "Gerente compras"
+   "gestorCargo": "Gerente de compras"
   },
   {
    "id": "c041",
    "nome": "Wesley Diniz Alves",
-   "cargo": "Gerente de operações ecommerce",
+   "cargo": "Gerente de operações de e-commerce",
    "nivel": "Gerência",
    "diretoria": "Diretoria comercial",
    "cidade": "",
@@ -532,7 +532,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Julio Cezar da Silva",
-   "gestorCargo": "DIRETOR COMERCIAL"
+   "gestorCargo": "Diretor comercial"
   },
   {
    "id": "c042",
@@ -545,7 +545,7 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Frank Soares do Nascimento",
-   "gestorCargo": "GERENTE GERAL DO ATACADO"
+   "gestorCargo": "Gerente geral do atacado"
   },
   {
    "id": "c043",
@@ -558,7 +558,7 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Frank Soares do Nascimento",
-   "gestorCargo": "GERENTE GERAL DO ATACADO"
+   "gestorCargo": "Gerente geral do atacado"
   },
   {
    "id": "c044",
@@ -571,7 +571,7 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Frank Soares do Nascimento",
-   "gestorCargo": "GERENTE GERAL DO ATACADO"
+   "gestorCargo": "Gerente geral do atacado"
   },
   {
    "id": "c045",
@@ -584,7 +584,7 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Frank Soares do Nascimento",
-   "gestorCargo": "GERENTE GERAL DO ATACADO"
+   "gestorCargo": "Gerente geral do atacado"
   },
   {
    "id": "c046",
@@ -597,7 +597,7 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Julio Cezar da Silva",
-   "gestorCargo": "DIRETOR COMERCIAL"
+   "gestorCargo": "Diretor comercial"
   },
   {
    "id": "c047",
@@ -610,7 +610,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Julio Cezar da Silva",
-   "gestorCargo": "DIRETOR COMERCIAL"
+   "gestorCargo": "Diretor comercial"
   },
   {
    "id": "c048",
@@ -623,7 +623,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Julio Cezar da Silva",
-   "gestorCargo": "DIRETOR COMERCIAL"
+   "gestorCargo": "Diretor comercial"
   },
   {
    "id": "c049",
@@ -823,7 +823,7 @@
   {
    "id": "c064",
    "nome": "Gustavo Paixao dos Santos",
-   "cargo": "Supervisor (a) de e-commerce (atacado)",
+   "cargo": "Supervisor de e-commerce (atacado)",
    "nivel": "Supervisão",
    "diretoria": "Diretoria comercial",
    "cidade": "",
@@ -831,12 +831,12 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Frank Soares do Nascimento",
-   "gestorCargo": "GERENTE GERAL DO ATACADO"
+   "gestorCargo": "Gerente geral do atacado"
   },
   {
    "id": "c065",
    "nome": "Bruno Rodrigues Martins",
-   "cargo": "Supervisor - varejo",
+   "cargo": "Supervisor de varejo",
    "nivel": "Supervisão",
    "diretoria": "Diretoria comercial",
    "cidade": "",
@@ -844,7 +844,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Paulo Sergio dos Santos",
-   "gestorCargo": "GERENTE GERAL DO VAREJO"
+   "gestorCargo": "Gerente geral do varejo"
   },
   {
    "id": "c066",
@@ -1052,7 +1052,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Frank Soares do Nascimento",
-   "gestorCargo": "GERENTE GERAL DO ATACADO"
+   "gestorCargo": "Gerente geral do atacado"
   },
   {
    "id": "c082",
@@ -1065,7 +1065,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Edson Oleksyw",
-   "gestorCargo": "DIRETOR DE MARKETING"
+   "gestorCargo": "Diretor de marketing"
   },
   {
    "id": "c083",
@@ -1078,7 +1078,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Julio Cezar da Silva",
-   "gestorCargo": "DIRETOR COMERCIAL"
+   "gestorCargo": "Diretor comercial"
   },
   {
    "id": "c084",
@@ -1117,7 +1117,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Viviane Thomaz",
-   "gestorCargo": "DIRETORA DE GOVERNANÇA"
+   "gestorCargo": "Diretora de governança"
   },
   {
    "id": "c087",
@@ -1130,12 +1130,12 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Viviane Thomaz",
-   "gestorCargo": "DIRETORA DE GOVERNANÇA"
+   "gestorCargo": "Diretora de governança"
   },
   {
    "id": "c088",
    "nome": "Thiago Carvalho Ferreira",
-   "cargo": "Coordenador de SESMT",
+   "cargo": "Coordenador de segurança e medicina do trabalho",
    "nivel": "Coordenação",
    "diretoria": "Diretoria de governança",
    "cidade": "",
@@ -1143,12 +1143,12 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Viviane Thomaz",
-   "gestorCargo": "DIRETORA DE GOVERNANÇA"
+   "gestorCargo": "Diretora de governança"
   },
   {
    "id": "c089",
    "nome": "Priscila Giomo",
-   "cargo": "Coordenador(a)de pessoal",
+   "cargo": "Coordenador de pessoal",
    "nivel": "Coordenação",
    "diretoria": "Diretoria de governança",
    "cidade": "",
@@ -1156,7 +1156,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Viviane Thomaz",
-   "gestorCargo": "DIRETORA DE GOVERNANÇA"
+   "gestorCargo": "Diretora de governança"
   },
   {
    "id": "c090",
@@ -1182,7 +1182,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Viviane Thomaz",
-   "gestorCargo": "DIRETORA DE GOVERNANÇA"
+   "gestorCargo": "Diretora de governança"
   },
   {
    "id": "c092",
@@ -1195,7 +1195,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Viviane Thomaz",
-   "gestorCargo": "DIRETORA DE GOVERNANÇA"
+   "gestorCargo": "Diretora de governança"
   },
   {
    "id": "c093",
@@ -1208,7 +1208,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Viviane Thomaz",
-   "gestorCargo": "DIRETORA DE GOVERNANÇA"
+   "gestorCargo": "Diretora de governança"
   },
   {
    "id": "c094",
@@ -1221,12 +1221,12 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Celio Roberto Cantuarios",
-   "gestorCargo": "GERENTE ADMINIST.LOGISTICA"
+   "gestorCargo": "Gerente administrativo de logística"
   },
   {
    "id": "c095",
    "nome": "Edson Guedes de Sousa",
-   "cargo": "Coordenador transporte",
+   "cargo": "Coordenador de transporte",
    "nivel": "Coordenação",
    "diretoria": "Diretoria de logística",
    "cidade": "",
@@ -1234,12 +1234,12 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Celio Roberto Cantuarios",
-   "gestorCargo": "GERENTE ADMINIST.LOGISTICA"
+   "gestorCargo": "Gerente administrativo de logística"
   },
   {
    "id": "c096",
    "nome": "Franciele Fritsch da Silva",
-   "cargo": "Coordenador transporte",
+   "cargo": "Coordenador de transporte",
    "nivel": "Coordenação",
    "diretoria": "Diretoria de logística",
    "cidade": "",
@@ -1247,12 +1247,12 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Celio Roberto Cantuarios",
-   "gestorCargo": "GERENTE ADMINIST.LOGISTICA"
+   "gestorCargo": "Gerente administrativo de logística"
   },
   {
    "id": "c097",
    "nome": "Heitor Henrique Bataiero",
-   "cargo": "Coordenador transporte",
+   "cargo": "Coordenador de transporte",
    "nivel": "Coordenação",
    "diretoria": "Diretoria de logística",
    "cidade": "",
@@ -1260,12 +1260,12 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Celio Roberto Cantuarios",
-   "gestorCargo": "GERENTE ADMINIST.LOGISTICA"
+   "gestorCargo": "Gerente administrativo de logística"
   },
   {
    "id": "c098",
    "nome": "Rafael Marques da Silva",
-   "cargo": "Coordenador transporte",
+   "cargo": "Coordenador de transporte",
    "nivel": "Coordenação",
    "diretoria": "Diretoria de logística",
    "cidade": "",
@@ -1273,12 +1273,12 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Celio Roberto Cantuarios",
-   "gestorCargo": "GERENTE ADMINIST.LOGISTICA"
+   "gestorCargo": "Gerente administrativo de logística"
   },
   {
    "id": "c099",
    "nome": "Renan Gomes Casagrande",
-   "cargo": "Coordenador transporte",
+   "cargo": "Coordenador de transporte",
    "nivel": "Coordenação",
    "diretoria": "Diretoria de logística",
    "cidade": "",
@@ -1286,12 +1286,12 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Celio Roberto Cantuarios",
-   "gestorCargo": "GERENTE ADMINIST.LOGISTICA"
+   "gestorCargo": "Gerente administrativo de logística"
   },
   {
    "id": "c100",
    "nome": "Rogelio dos Santos Vargas",
-   "cargo": "Coordenador transporte",
+   "cargo": "Coordenador de transporte",
    "nivel": "Coordenação",
    "diretoria": "Diretoria de logística",
    "cidade": "",
@@ -1299,12 +1299,12 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Celio Roberto Cantuarios",
-   "gestorCargo": "GERENTE ADMINIST.LOGISTICA"
+   "gestorCargo": "Gerente administrativo de logística"
   },
   {
    "id": "c101",
    "nome": "Teilo de Jesus Santana",
-   "cargo": "Coordenador transporte",
+   "cargo": "Coordenador de transporte",
    "nivel": "Coordenação",
    "diretoria": "Diretoria de logística",
    "cidade": "",
@@ -1312,12 +1312,12 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Celio Roberto Cantuarios",
-   "gestorCargo": "GERENTE ADMINIST.LOGISTICA"
+   "gestorCargo": "Gerente administrativo de logística"
   },
   {
    "id": "c102",
    "nome": "Willian Fernando Cruz Alves",
-   "cargo": "Coordenador transporte",
+   "cargo": "Coordenador de transporte",
    "nivel": "Coordenação",
    "diretoria": "Diretoria de logística",
    "cidade": "",
@@ -1325,7 +1325,7 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Celio Roberto Cantuarios",
-   "gestorCargo": "GERENTE ADMINIST.LOGISTICA"
+   "gestorCargo": "Gerente administrativo de logística"
   },
   {
    "id": "c103",
@@ -1343,7 +1343,7 @@
   {
    "id": "c104",
    "nome": "Celio Roberto Cantuarios",
-   "cargo": "Gerente administrativo logistica",
+   "cargo": "Gerente administrativo de logística",
    "nivel": "Gerência Executiva",
    "diretoria": "Diretoria de logística",
    "cidade": "",
@@ -1356,7 +1356,7 @@
   {
    "id": "c105",
    "nome": "Luis Carlos da Costa Junior",
-   "cargo": "Gerente assistencia",
+   "cargo": "Gerente de assistência",
    "nivel": "Gerência Executiva",
    "diretoria": "Diretoria de logística",
    "cidade": "",
@@ -1369,7 +1369,7 @@
   {
    "id": "c106",
    "nome": "Acleilton de Souza Lima",
-   "cargo": "Gerente assistencia",
+   "cargo": "Gerente de assistência",
    "nivel": "Gerência",
    "diretoria": "Diretoria de logística",
    "cidade": "",
@@ -1377,12 +1377,12 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Luis Carlos da Costa Junior",
-   "gestorCargo": "Gerente assistencia"
+   "gestorCargo": "Gerente de assistência"
   },
   {
    "id": "c107",
    "nome": "Benjamin Dene de Carvalho Junior",
-   "cargo": "Gerente assistencia",
+   "cargo": "Gerente de assistência",
    "nivel": "Gerência",
    "diretoria": "Diretoria de logística",
    "cidade": "",
@@ -1390,12 +1390,12 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Luis Carlos da Costa Junior",
-   "gestorCargo": "Gerente assistencia"
+   "gestorCargo": "Gerente de assistência"
   },
   {
    "id": "c108",
    "nome": "Diego Alisson de Lima Borges",
-   "cargo": "Gerente assistencia",
+   "cargo": "Gerente de assistência",
    "nivel": "Gerência",
    "diretoria": "Diretoria de logística",
    "cidade": "",
@@ -1403,12 +1403,12 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Luis Carlos da Costa Junior",
-   "gestorCargo": "Gerente assistencia"
+   "gestorCargo": "Gerente de assistência"
   },
   {
    "id": "c109",
    "nome": "Eduardo Roberto da Silva",
-   "cargo": "Gerente assistencia",
+   "cargo": "Gerente de assistência",
    "nivel": "Gerência",
    "diretoria": "Diretoria de logística",
    "cidade": "",
@@ -1416,12 +1416,12 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Luis Carlos da Costa Junior",
-   "gestorCargo": "Gerente assistencia"
+   "gestorCargo": "Gerente de assistência"
   },
   {
    "id": "c110",
    "nome": "Gabriel Pereira Fontaneli",
-   "cargo": "Gerente assistencia",
+   "cargo": "Gerente de assistência",
    "nivel": "Gerência",
    "diretoria": "Diretoria de logística",
    "cidade": "",
@@ -1429,12 +1429,12 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Luis Carlos da Costa Junior",
-   "gestorCargo": "Gerente assistencia"
+   "gestorCargo": "Gerente de assistência"
   },
   {
    "id": "c111",
    "nome": "Juliano Bueno da Silva Oliveira",
-   "cargo": "Gerente assistencia",
+   "cargo": "Gerente de assistência",
    "nivel": "Gerência",
    "diretoria": "Diretoria de logística",
    "cidade": "",
@@ -1442,12 +1442,12 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Luis Carlos da Costa Junior",
-   "gestorCargo": "Gerente assistencia"
+   "gestorCargo": "Gerente de assistência"
   },
   {
    "id": "c112",
    "nome": "Mauricio Barboza de Souza",
-   "cargo": "Gerente assistencia",
+   "cargo": "Gerente de assistência",
    "nivel": "Gerência",
    "diretoria": "Diretoria de logística",
    "cidade": "",
@@ -1455,12 +1455,12 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Luis Carlos da Costa Junior",
-   "gestorCargo": "Gerente assistencia"
+   "gestorCargo": "Gerente de assistência"
   },
   {
    "id": "c113",
    "nome": "Raimundo Nonato Silva Amaral",
-   "cargo": "Gerente assistencia",
+   "cargo": "Gerente de assistência",
    "nivel": "Gerência",
    "diretoria": "Diretoria de logística",
    "cidade": "",
@@ -1468,12 +1468,12 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Luis Carlos da Costa Junior",
-   "gestorCargo": "Gerente assistencia"
+   "gestorCargo": "Gerente de assistência"
   },
   {
    "id": "c114",
    "nome": "Renato da Silva Oliveira",
-   "cargo": "Gerente assistencia",
+   "cargo": "Gerente de assistência",
    "nivel": "Gerência",
    "diretoria": "Diretoria de logística",
    "cidade": "",
@@ -1481,12 +1481,12 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Luis Carlos da Costa Junior",
-   "gestorCargo": "Gerente assistencia"
+   "gestorCargo": "Gerente de assistência"
   },
   {
    "id": "c115",
    "nome": "Sidnei Francisco da Silva",
-   "cargo": "Gerente assistencia",
+   "cargo": "Gerente de assistência",
    "nivel": "Gerência",
    "diretoria": "Diretoria de logística",
    "cidade": "",
@@ -1494,7 +1494,7 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Luis Carlos da Costa Junior",
-   "gestorCargo": "Gerente assistencia"
+   "gestorCargo": "Gerente de assistência"
   },
   {
    "id": "c116",
@@ -1507,7 +1507,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Celio Roberto Cantuarios",
-   "gestorCargo": "GERENTE ADMINIST.LOGISTICA"
+   "gestorCargo": "Gerente administrativo de logística"
   },
   {
    "id": "c117",
@@ -1533,7 +1533,7 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Celio Roberto Cantuarios",
-   "gestorCargo": "GERENTE ADMINIST.LOGISTICA"
+   "gestorCargo": "Gerente administrativo de logística"
   },
   {
    "id": "c119",
@@ -1546,7 +1546,7 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Celio Roberto Cantuarios",
-   "gestorCargo": "GERENTE ADMINIST.LOGISTICA"
+   "gestorCargo": "Gerente administrativo de logística"
   },
   {
    "id": "c120",
@@ -1559,7 +1559,7 @@
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Celio Roberto Cantuarios",
-   "gestorCargo": "GERENTE ADMINIST.LOGISTICA"
+   "gestorCargo": "Gerente administrativo de logística"
   },
   {
    "id": "c121",
@@ -1590,7 +1590,7 @@
   {
    "id": "c123",
    "nome": "Evaldo Barbosa Cavalcante",
-   "cargo": "Superv. propaganda",
+   "cargo": "Supervisor de propaganda",
    "nivel": "Supervisão",
    "diretoria": "Diretoria de marketing",
    "cidade": "",
@@ -1605,59 +1605,59 @@
    "nome": "Francisco de Paula Junior",
    "cargo": "Administrador de banco de dados",
    "nivel": "Especialista",
-   "diretoria": "Diretoria de TI e inovação",
+   "diretoria": "Diretoria de tecnologia da informação e inovação",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Alex Coronado dos Santos",
-   "gestorCargo": "GERENTE DE BANCO DE DADOS"
+   "gestorCargo": "Gerente de banco de dados"
   },
   {
    "id": "c125",
    "nome": "Fabner Roberto Soares",
-   "cargo": "Administrador de Redes",
+   "cargo": "Administrador de redes",
    "nivel": "Especialista",
-   "diretoria": "Diretoria de TI e inovação",
+   "diretoria": "Diretoria de tecnologia da informação e inovação",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Alex Coronado dos Santos",
-   "gestorCargo": "GERENTE DE BANCO DE DADOS"
+   "gestorCargo": "Gerente de banco de dados"
   },
   {
    "id": "c126",
    "nome": "Junior Gil Custodio",
-   "cargo": "Administrador de Redes",
+   "cargo": "Administrador de redes",
    "nivel": "Especialista",
-   "diretoria": "Diretoria de TI e inovação",
+   "diretoria": "Diretoria de tecnologia da informação e inovação",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Alex Coronado dos Santos",
-   "gestorCargo": "GERENTE DE BANCO DE DADOS"
+   "gestorCargo": "Gerente de banco de dados"
   },
   {
    "id": "c127",
    "nome": "Danilo Mulizine Stochi",
    "cargo": "Data Engineer",
    "nivel": "Especialista",
-   "diretoria": "Diretoria de TI e inovação",
+   "diretoria": "Diretoria de tecnologia da informação e inovação",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Alex Coronado dos Santos",
-   "gestorCargo": "GERENTE DE BANCO DE DADOS"
+   "gestorCargo": "Gerente de banco de dados"
   },
   {
    "id": "c128",
    "nome": "Ricardo Brito Soares",
-   "cargo": "Diretoria de TI e inovação",
+   "cargo": "Diretoria de tecnologia da informação e inovação",
    "nivel": "Diretoria",
-   "diretoria": "Diretoria de TI e inovação",
+   "diretoria": "Diretoria de tecnologia da informação e inovação",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": false,
@@ -1670,85 +1670,85 @@
    "nome": "Alex Coronado dos Santos",
    "cargo": "Gerente de banco de dados",
    "nivel": "Gerência Executiva",
-   "diretoria": "Diretoria de TI e inovação",
+   "diretoria": "Diretoria de tecnologia da informação e inovação",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Ricardo Brito Soares",
-   "gestorCargo": "Diretor de TI e inovação"
+   "gestorCargo": "Diretor de tecnologia da informação e inovação"
   },
   {
    "id": "c130",
    "nome": "Kleverson Ricardo de Melo",
    "cargo": "Gerente de desenvolvimento e programação",
    "nivel": "Gerência",
-   "diretoria": "Diretoria de TI e inovação",
+   "diretoria": "Diretoria de tecnologia da informação e inovação",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Alex Coronado dos Santos",
-   "gestorCargo": "GERENTE DE BANCO DE DADOS"
+   "gestorCargo": "Gerente de banco de dados"
   },
   {
    "id": "c131",
    "nome": "Rogerio Tsuyoshi Arida",
    "cargo": "Gerente de desenvolvimento e programação",
    "nivel": "Gerência",
-   "diretoria": "Diretoria de TI e inovação",
+   "diretoria": "Diretoria de tecnologia da informação e inovação",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Alex Coronado dos Santos",
-   "gestorCargo": "GERENTE DE BANCO DE DADOS"
+   "gestorCargo": "Gerente de banco de dados"
   },
   {
    "id": "c132",
    "nome": "Joel Correia Junior",
-   "cargo": "Gerente de PMO",
+   "cargo": "Gerente do escritório de projetos",
    "nivel": "Gerência",
-   "diretoria": "Diretoria de TI e inovação",
+   "diretoria": "Diretoria de tecnologia da informação e inovação",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Alex Coronado dos Santos",
-   "gestorCargo": "GERENTE DE BANCO DE DADOS"
+   "gestorCargo": "Gerente de banco de dados"
   },
   {
    "id": "c133",
    "nome": "Anderson Rodrigo Giomo",
    "cargo": "Gerente de suporte",
    "nivel": "Gerência",
-   "diretoria": "Diretoria de TI e inovação",
+   "diretoria": "Diretoria de tecnologia da informação e inovação",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Alex Coronado dos Santos",
-   "gestorCargo": "GERENTE DE BANCO DE DADOS"
+   "gestorCargo": "Gerente de banco de dados"
   },
   {
    "id": "c134",
    "nome": "Rodrigo Romano Gantzel",
    "cargo": "Gerente de tecnologia",
    "nivel": "Gerência",
-   "diretoria": "Diretoria de TI e inovação",
+   "diretoria": "Diretoria de tecnologia da informação e inovação",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Alex Coronado dos Santos",
-   "gestorCargo": "GERENTE DE BANCO DE DADOS"
+   "gestorCargo": "Gerente de banco de dados"
   },
   {
    "id": "c135",
    "nome": "Cadmiel Cristiano de Grande",
-   "cargo": "Supervisor de TI",
+   "cargo": "Supervisor de tecnologia da informação",
    "nivel": "Supervisão",
-   "diretoria": "Diretoria de TI e inovação",
+   "diretoria": "Diretoria de tecnologia da informação e inovação",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": false,
@@ -1761,13 +1761,13 @@
    "nome": "Edson Macoto Tamura Junior",
    "cargo": "Tech Lead",
    "nivel": "Especialista",
-   "diretoria": "Diretoria de TI e inovação",
+   "diretoria": "Diretoria de tecnologia da informação e inovação",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Alex Coronado dos Santos",
-   "gestorCargo": "GERENTE DE BANCO DE DADOS"
+   "gestorCargo": "Gerente de banco de dados"
   },
   {
    "id": "c137",
@@ -1793,7 +1793,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Maykon Fernando da Costa",
-   "gestorCargo": "GERENTE GERAL"
+   "gestorCargo": "Gerente geral"
   },
   {
    "id": "c139",
@@ -1806,7 +1806,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Maykon Fernando da Costa",
-   "gestorCargo": "GERENTE GERAL"
+   "gestorCargo": "Gerente geral"
   },
   {
    "id": "c140",
@@ -1824,7 +1824,7 @@
   {
    "id": "c141",
    "nome": "Natanael Estevao Chagas Moraes",
-   "cargo": "Gerente de crédito (Atacado,industria)",
+   "cargo": "Gerente de crédito (atacado e indústria)",
    "nivel": "Gerência",
    "diretoria": "Diretoria financeira",
    "cidade": "",
@@ -1863,7 +1863,7 @@
   {
    "id": "c144",
    "nome": "Jessica Fonzar da Silva",
-   "cargo": "Supervisor Comercial (Gazinbank)",
+   "cargo": "Supervisor comercial (Gazin Bank)",
    "nivel": "Supervisão",
    "diretoria": "Diretoria financeira",
    "cidade": "",
@@ -1876,7 +1876,7 @@
   {
    "id": "c145",
    "nome": "Maiara Cristine de Jesus Vieira",
-   "cargo": "Supervisor Comercial (Gazinbank)",
+   "cargo": "Supervisor comercial (Gazin Bank)",
    "nivel": "Supervisão",
    "diretoria": "Diretoria financeira",
    "cidade": "",
@@ -1889,7 +1889,7 @@
   {
    "id": "c146",
    "nome": "Maria Eduarda Matos Medeiros",
-   "cargo": "Supervisor Comercial (Gazinbank)",
+   "cargo": "Supervisor comercial (Gazin Bank)",
    "nivel": "Supervisão",
    "diretoria": "Diretoria financeira",
    "cidade": "",
@@ -1902,7 +1902,7 @@
   {
    "id": "c147",
    "nome": "Natiara Rodrigues dos Santos Vieira",
-   "cargo": "Supervisor Comercial (Gazinbank)",
+   "cargo": "Supervisor comercial (Gazin Bank)",
    "nivel": "Supervisão",
    "diretoria": "Diretoria financeira",
    "cidade": "",
@@ -1915,7 +1915,7 @@
   {
    "id": "c148",
    "nome": "Priscila Andrelina da Silva Bartolomeu",
-   "cargo": "Supervisor Comercial (Gazinbank)",
+   "cargo": "Supervisor comercial (Gazin Bank)",
    "nivel": "Supervisão",
    "diretoria": "Diretoria financeira",
    "cidade": "",
@@ -1928,7 +1928,7 @@
   {
    "id": "c149",
    "nome": "Thomas Jefesson Soares de Souza",
-   "cargo": "Supervisor Comercial (Gazinbank)",
+   "cargo": "Supervisor comercial (Gazin Bank)",
    "nivel": "Supervisão",
    "diretoria": "Diretoria financeira",
    "cidade": "",
@@ -1993,9 +1993,9 @@
   {
    "id": "c154",
    "nome": "Danilo Moureira Niza da Silva",
-   "cargo": "Coord. de projetos e processos",
+   "cargo": "Coordenador de projetos e processos",
    "nivel": "Coordenação",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": false,
@@ -2006,9 +2006,9 @@
   {
    "id": "c155",
    "nome": "Maicon Aurelio Trovo",
-   "cargo": "Gerente admin. industria",
+   "cargo": "Gerente administrativo da indústria",
    "nivel": "Gerência Executiva",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": false,
@@ -2019,249 +2019,249 @@
   {
    "id": "c156",
    "nome": "Rodrigo de Oliveira Novo",
-   "cargo": "Gerente de desenv.de maquinas",
+   "cargo": "Gerente de desenvolvimento de máquinas",
    "nivel": "Gerência",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Maicon Aurelio Trovo",
-   "gestorCargo": "Gerente admin. industria"
+   "gestorCargo": "Gerente administrativo da indústria"
   },
   {
    "id": "c157",
    "nome": "Francisca Marisangela de Jesus Sousa",
    "cargo": "Gerente de espumação",
    "nivel": "Gerência",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Everson Oliveira Lima",
-   "gestorCargo": "GERENTE INDUSTRIA"
+   "gestorCargo": "Gerente de indústria"
   },
   {
    "id": "c158",
    "nome": "Jefson Henrique de Jesus Santos",
    "cargo": "Gerente de espumação",
    "nivel": "Gerência",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Rafael Tomaz Mariano",
-   "gestorCargo": "GERENTE INDUSTRIA"
+   "gestorCargo": "Gerente de indústria"
   },
   {
    "id": "c159",
    "nome": "Luan Gabriel Schroeder",
    "cargo": "Gerente de espumação",
    "nivel": "Gerência",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Vinicios Zuse",
-   "gestorCargo": "GERENTE INDUSTRIA"
+   "gestorCargo": "Gerente de indústria"
   },
   {
    "id": "c160",
    "nome": "Luiz Henrique Martins Trench",
    "cargo": "Gerente de espumação",
    "nivel": "Gerência",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Marcos de Oliveira Souza",
-   "gestorCargo": "GERENTE INDUSTRIA"
+   "gestorCargo": "Gerente de indústria"
   },
   {
    "id": "c161",
    "nome": "Ricardo Poteriko Sobrinho",
    "cargo": "Gerente de espumação",
    "nivel": "Gerência",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Edgar Zaleski",
-   "gestorCargo": "GERENTE INDUSTRIA"
+   "gestorCargo": "Gerente de indústria"
   },
   {
    "id": "c162",
    "nome": "Roberto Ricardo Buth",
    "cargo": "Gerente de espumação",
    "nivel": "Gerência",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Anderson Furlan Karnopp",
-   "gestorCargo": "GERENTE INDUSTRIA"
+   "gestorCargo": "Gerente de indústria"
   },
   {
    "id": "c163",
    "nome": "Yuri Ignochevski Primao",
    "cargo": "Gerente de espumação",
    "nivel": "Gerência",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Caio Henrique Macedo Garcia",
-   "gestorCargo": "GERENTE INDUSTRIA"
+   "gestorCargo": "Gerente de indústria"
   },
   {
    "id": "c164",
    "nome": "Anderson Furlan Karnopp",
    "cargo": "Gerente de indústria",
    "nivel": "Gerência Executiva",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Maicon Aurélio Trovo",
-   "gestorCargo": "GERENTE ADMIN. INDUSTRIA"
+   "gestorCargo": "Gerente administrativo da indústria"
   },
   {
    "id": "c165",
    "nome": "Caio Henrique Macedo Garcia",
    "cargo": "Gerente de indústria",
    "nivel": "Gerência Executiva",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Maicon Aurélio Trovo",
-   "gestorCargo": "GERENTE ADMIN. INDUSTRIA"
+   "gestorCargo": "Gerente administrativo da indústria"
   },
   {
    "id": "c166",
    "nome": "Edgar Zaleski",
    "cargo": "Gerente de indústria",
    "nivel": "Gerência Executiva",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Maicon Aurélio Trovo",
-   "gestorCargo": "GERENTE ADMIN. INDUSTRIA"
+   "gestorCargo": "Gerente administrativo da indústria"
   },
   {
    "id": "c167",
    "nome": "Everson Oliveira Lima",
    "cargo": "Gerente de indústria",
    "nivel": "Gerência Executiva",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Maicon Aurélio Trovo",
-   "gestorCargo": "GERENTE ADMIN. INDUSTRIA"
+   "gestorCargo": "Gerente administrativo da indústria"
   },
   {
    "id": "c168",
    "nome": "Juliana Severo Arantes",
    "cargo": "Gerente de indústria",
    "nivel": "Gerência Executiva",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Maicon Aurélio Trovo",
-   "gestorCargo": "GERENTE ADMIN. INDUSTRIA"
+   "gestorCargo": "Gerente administrativo da indústria"
   },
   {
    "id": "c169",
    "nome": "Marcos de Oliveira Souza",
    "cargo": "Gerente de indústria",
    "nivel": "Gerência Executiva",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Maicon Aurélio Trovo",
-   "gestorCargo": "GERENTE ADMIN. INDUSTRIA"
+   "gestorCargo": "Gerente administrativo da indústria"
   },
   {
    "id": "c170",
    "nome": "Rafael Tomaz Mariano",
    "cargo": "Gerente de indústria",
    "nivel": "Gerência Executiva",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Maicon Aurélio Trovo",
-   "gestorCargo": "GERENTE ADMIN. INDUSTRIA"
+   "gestorCargo": "Gerente administrativo da indústria"
   },
   {
    "id": "c171",
    "nome": "Vinicios Zuse",
    "cargo": "Gerente de indústria",
    "nivel": "Gerência Executiva",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": true,
    "vago": false,
    "gestor": "Maicon Aurélio Trovo",
-   "gestorCargo": "GERENTE ADMIN. INDUSTRIA"
+   "gestorCargo": "Gerente administrativo da indústria"
   },
   {
    "id": "c172",
    "nome": "Marcus Vinicius Cabeça Pereira",
    "cargo": "Gerente de processos",
    "nivel": "Gerência",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Maicon Aurélio Trovo",
-   "gestorCargo": "GERENTE ADMIN. INDUSTRIA"
+   "gestorCargo": "Gerente administrativo da indústria"
   },
   {
    "id": "c173",
    "nome": "Eduardo Giacometti Xavier",
    "cargo": "Gerente de projetos",
    "nivel": "Gerência",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Maicon Aurélio Trovo",
-   "gestorCargo": "GERENTE ADMIN. INDUSTRIA"
+   "gestorCargo": "Gerente administrativo da indústria"
   },
   {
    "id": "c174",
    "nome": "Iago Fernando Luiz",
-   "cargo": "Gerente PCP e MRP",
+   "cargo": "Gerente de planejamento e controle da produção e de necessidade de materiais",
    "nivel": "Gerência",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Maicon Aurélio Trovo",
-   "gestorCargo": "GERENTE ADMIN. INDUSTRIA"
+   "gestorCargo": "Gerente administrativo da indústria"
   },
   {
    "id": "c175",
@@ -2292,9 +2292,9 @@
   {
    "id": "c177",
    "nome": "Marcos Henrique Sabec",
-   "cargo": "Gerente geral agropecuaria",
+   "cargo": "Gerente geral agropecuária",
    "nivel": "Gerência Executiva",
-   "diretoria": "Gerente geral agropecuaria",
+   "diretoria": "Gerente geral agropecuária",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": false,
@@ -2305,41 +2305,41 @@
   {
    "id": "c178",
    "nome": "Carla Francieli Fernandes dos Anjos",
-   "cargo": "Supervisor recrutam. e seleção",
+   "cargo": "Supervisor de recrutamento e seleção",
    "nivel": "Supervisão",
-   "diretoria": "Gerente geral de RH",
+   "diretoria": "Gerente geral de recursos humanos",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Alessandra Guerra de Souza",
-   "gestorCargo": "GERENTE GERAL DE RH"
+   "gestorCargo": "Gerente geral de recursos humanos"
   },
   {
    "id": "c179",
    "nome": "Paulo da Silva Braz",
-   "cargo": "Supervisor desenvol. Humano",
+   "cargo": "Supervisor de desenvolvimento humano",
    "nivel": "Supervisão",
-   "diretoria": "Gerente geral de RH",
+   "diretoria": "Gerente geral de recursos humanos",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Alessandra Guerra de Souza",
-   "gestorCargo": "GERENTE GERAL DE RH"
+   "gestorCargo": "Gerente geral de recursos humanos"
   },
   {
    "id": "c180",
    "nome": "Elton Fernando Hoshino",
    "cargo": "Supervisor administrativo (gestão de pessoas)",
    "nivel": "Supervisão",
-   "diretoria": "Gerente geral de RH",
+   "diretoria": "Gerente geral de recursos humanos",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Alessandra Guerra de Souza",
-   "gestorCargo": "GERENTE GERAL DE RH"
+   "gestorCargo": "Gerente geral de recursos humanos"
   }
  ],
  "people": [
@@ -2359,7 +2359,7 @@
    "id": "p002",
    "nome": "Francieli Bessa Silva Tavares",
    "nivel": "Coordenação",
-   "cargo": "Coordenador contabil/tributario",
+   "cargo": "Coordenador contábil/tributário",
    "diretoria": "Controller",
    "chairId": "c002",
    "chairIds": [
@@ -2392,7 +2392,7 @@
    "id": "p005",
    "nome": "Diego Henrique Garcia Soriani",
    "nivel": "Gerência",
-   "cargo": "Gerente fundo de investimento",
+   "cargo": "Gerente de fundo de investimento",
    "diretoria": "Controller",
    "chairId": "c005",
    "chairIds": [
@@ -2403,7 +2403,7 @@
    "id": "p006",
    "nome": "Fabricio Silva Facco",
    "nivel": "Supervisão",
-   "cargo": "Superv.operação tribut.",
+   "cargo": "Supervisor de operação tributária",
    "diretoria": "Controller",
    "chairId": "c006",
    "chairIds": [
@@ -2458,7 +2458,7 @@
    "id": "p011",
    "nome": "Jeferson Duarte Goncalves",
    "nivel": "Gerência",
-   "cargo": "Gerente Administrativo (Parceiros de Negócio)",
+   "cargo": "Gerente administrativo (parceiros de negócio)",
    "diretoria": "Diretoria administrativa",
    "chairId": "c011",
    "chairIds": [
@@ -2502,7 +2502,7 @@
    "id": "p015",
    "nome": "Cleiton Fabio Bianchini da Silva",
    "nivel": "Gerência",
-   "cargo": "Gerente de compras industria",
+   "cargo": "Gerente de compras da indústria",
    "diretoria": "Diretoria administrativa",
    "chairId": "c015",
    "chairIds": [
@@ -2579,7 +2579,7 @@
    "id": "p022",
    "nome": "Daiane Domingues dos Santos",
    "nivel": "Supervisão",
-   "cargo": "Supervisor administrativo (ADM geral)",
+   "cargo": "Supervisor administrativo (administração geral)",
    "diretoria": "Diretoria administrativa",
    "chairId": "c022",
    "chairIds": [
@@ -2755,7 +2755,7 @@
    "id": "p038",
    "nome": "Andre Schafer Pasinato",
    "nivel": "Gerência Executiva",
-   "cargo": "Gerente compras",
+   "cargo": "Gerente de compras",
    "diretoria": "Diretoria comercial",
    "chairId": "c039",
    "chairIds": [
@@ -2766,7 +2766,7 @@
    "id": "p039",
    "nome": "Niccolas Daniel Curvelo",
    "nivel": "Gerência",
-   "cargo": "Gerente de neg. internacionais",
+   "cargo": "Gerente de negócios internacionais",
    "diretoria": "Diretoria comercial",
    "chairId": "c040",
    "chairIds": [
@@ -2777,7 +2777,7 @@
    "id": "p040",
    "nome": "Wesley Diniz Alves",
    "nivel": "Gerência",
-   "cargo": "Gerente de operações ecommerce",
+   "cargo": "Gerente de operações de e-commerce",
    "diretoria": "Diretoria comercial",
    "chairId": "c041",
    "chairIds": [
@@ -3030,7 +3030,7 @@
    "id": "p063",
    "nome": "Gustavo Paixao dos Santos",
    "nivel": "Supervisão",
-   "cargo": "Supervisor (a) de e-commerce (atacado)",
+   "cargo": "Supervisor de e-commerce (atacado)",
    "diretoria": "Diretoria comercial",
    "chairId": "c064",
    "chairIds": [
@@ -3041,7 +3041,7 @@
    "id": "p064",
    "nome": "Bruno Rodrigues Martins",
    "nivel": "Supervisão",
-   "cargo": "Supervisor - varejo",
+   "cargo": "Supervisor de varejo",
    "diretoria": "Diretoria comercial",
    "chairId": "c065",
    "chairIds": [
@@ -3294,7 +3294,7 @@
    "id": "p087",
    "nome": "Thiago Carvalho Ferreira",
    "nivel": "Coordenação",
-   "cargo": "Coordenador de SESMT",
+   "cargo": "Coordenador de segurança e medicina do trabalho",
    "diretoria": "Diretoria de governança",
    "chairId": "c088",
    "chairIds": [
@@ -3305,7 +3305,7 @@
    "id": "p088",
    "nome": "Priscila Giomo",
    "nivel": "Coordenação",
-   "cargo": "Coordenador(a)de pessoal",
+   "cargo": "Coordenador de pessoal",
    "diretoria": "Diretoria de governança",
    "chairId": "c089",
    "chairIds": [
@@ -3371,7 +3371,7 @@
    "id": "p094",
    "nome": "Edson Guedes de Sousa",
    "nivel": "Coordenação",
-   "cargo": "Coordenador transporte",
+   "cargo": "Coordenador de transporte",
    "diretoria": "Diretoria de logística",
    "chairId": "c095",
    "chairIds": [
@@ -3382,7 +3382,7 @@
    "id": "p095",
    "nome": "Franciele Fritsch da Silva",
    "nivel": "Coordenação",
-   "cargo": "Coordenador transporte",
+   "cargo": "Coordenador de transporte",
    "diretoria": "Diretoria de logística",
    "chairId": "c096",
    "chairIds": [
@@ -3393,7 +3393,7 @@
    "id": "p096",
    "nome": "Heitor Henrique Bataiero",
    "nivel": "Coordenação",
-   "cargo": "Coordenador transporte",
+   "cargo": "Coordenador de transporte",
    "diretoria": "Diretoria de logística",
    "chairId": "c097",
    "chairIds": [
@@ -3404,7 +3404,7 @@
    "id": "p097",
    "nome": "Rafael Marques da Silva",
    "nivel": "Coordenação",
-   "cargo": "Coordenador transporte",
+   "cargo": "Coordenador de transporte",
    "diretoria": "Diretoria de logística",
    "chairId": "c098",
    "chairIds": [
@@ -3415,7 +3415,7 @@
    "id": "p098",
    "nome": "Renan Gomes Casagrande",
    "nivel": "Coordenação",
-   "cargo": "Coordenador transporte",
+   "cargo": "Coordenador de transporte",
    "diretoria": "Diretoria de logística",
    "chairId": "c099",
    "chairIds": [
@@ -3426,7 +3426,7 @@
    "id": "p099",
    "nome": "Rogelio dos Santos Vargas",
    "nivel": "Coordenação",
-   "cargo": "Coordenador transporte",
+   "cargo": "Coordenador de transporte",
    "diretoria": "Diretoria de logística",
    "chairId": "c100",
    "chairIds": [
@@ -3437,7 +3437,7 @@
    "id": "p100",
    "nome": "Teilo de Jesus Santana",
    "nivel": "Coordenação",
-   "cargo": "Coordenador transporte",
+   "cargo": "Coordenador de transporte",
    "diretoria": "Diretoria de logística",
    "chairId": "c101",
    "chairIds": [
@@ -3448,7 +3448,7 @@
    "id": "p101",
    "nome": "Willian Fernando Cruz Alves",
    "nivel": "Coordenação",
-   "cargo": "Coordenador transporte",
+   "cargo": "Coordenador de transporte",
    "diretoria": "Diretoria de logística",
    "chairId": "c102",
    "chairIds": [
@@ -3470,7 +3470,7 @@
    "id": "p103",
    "nome": "Celio Roberto Cantuarios",
    "nivel": "Gerência Executiva",
-   "cargo": "Gerente administrativo logistica",
+   "cargo": "Gerente administrativo de logística",
    "diretoria": "Diretoria de logística",
    "chairId": "c104",
    "chairIds": [
@@ -3481,7 +3481,7 @@
    "id": "p104",
    "nome": "Luis Carlos da Costa Junior",
    "nivel": "Gerência Executiva",
-   "cargo": "Gerente assistencia",
+   "cargo": "Gerente de assistência",
    "diretoria": "Diretoria de logística",
    "chairId": "c105",
    "chairIds": [
@@ -3492,7 +3492,7 @@
    "id": "p105",
    "nome": "Acleilton de Souza Lima",
    "nivel": "Gerência",
-   "cargo": "Gerente assistencia",
+   "cargo": "Gerente de assistência",
    "diretoria": "Diretoria de logística",
    "chairId": "c106",
    "chairIds": [
@@ -3503,7 +3503,7 @@
    "id": "p106",
    "nome": "Benjamin Dene de Carvalho Junior",
    "nivel": "Gerência",
-   "cargo": "Gerente assistencia",
+   "cargo": "Gerente de assistência",
    "diretoria": "Diretoria de logística",
    "chairId": "c107",
    "chairIds": [
@@ -3514,7 +3514,7 @@
    "id": "p107",
    "nome": "Diego Alisson de Lima Borges",
    "nivel": "Gerência",
-   "cargo": "Gerente assistencia",
+   "cargo": "Gerente de assistência",
    "diretoria": "Diretoria de logística",
    "chairId": "c108",
    "chairIds": [
@@ -3525,7 +3525,7 @@
    "id": "p108",
    "nome": "Eduardo Roberto da Silva",
    "nivel": "Gerência",
-   "cargo": "Gerente assistencia",
+   "cargo": "Gerente de assistência",
    "diretoria": "Diretoria de logística",
    "chairId": "c109",
    "chairIds": [
@@ -3536,7 +3536,7 @@
    "id": "p109",
    "nome": "Gabriel Pereira Fontaneli",
    "nivel": "Gerência",
-   "cargo": "Gerente assistencia",
+   "cargo": "Gerente de assistência",
    "diretoria": "Diretoria de logística",
    "chairId": "c110",
    "chairIds": [
@@ -3547,7 +3547,7 @@
    "id": "p110",
    "nome": "Juliano Bueno da Silva Oliveira",
    "nivel": "Gerência",
-   "cargo": "Gerente assistencia",
+   "cargo": "Gerente de assistência",
    "diretoria": "Diretoria de logística",
    "chairId": "c111",
    "chairIds": [
@@ -3558,7 +3558,7 @@
    "id": "p111",
    "nome": "Mauricio Barboza de Souza",
    "nivel": "Gerência",
-   "cargo": "Gerente assistencia",
+   "cargo": "Gerente de assistência",
    "diretoria": "Diretoria de logística",
    "chairId": "c112",
    "chairIds": [
@@ -3569,7 +3569,7 @@
    "id": "p112",
    "nome": "Raimundo Nonato Silva Amaral",
    "nivel": "Gerência",
-   "cargo": "Gerente assistencia",
+   "cargo": "Gerente de assistência",
    "diretoria": "Diretoria de logística",
    "chairId": "c113",
    "chairIds": [
@@ -3580,7 +3580,7 @@
    "id": "p113",
    "nome": "Renato da Silva Oliveira",
    "nivel": "Gerência",
-   "cargo": "Gerente assistencia",
+   "cargo": "Gerente de assistência",
    "diretoria": "Diretoria de logística",
    "chairId": "c114",
    "chairIds": [
@@ -3591,7 +3591,7 @@
    "id": "p114",
    "nome": "Sidnei Francisco da Silva",
    "nivel": "Gerência",
-   "cargo": "Gerente assistencia",
+   "cargo": "Gerente de assistência",
    "diretoria": "Diretoria de logística",
    "chairId": "c115",
    "chairIds": [
@@ -3679,7 +3679,7 @@
    "id": "p122",
    "nome": "Evaldo Barbosa Cavalcante",
    "nivel": "Supervisão",
-   "cargo": "Superv. propaganda",
+   "cargo": "Supervisor de propaganda",
    "diretoria": "Diretoria de marketing",
    "chairId": "c123",
    "chairIds": [
@@ -3691,7 +3691,7 @@
    "nome": "Francisco de Paula Junior",
    "nivel": "Especialista",
    "cargo": "Administrador de banco de dados",
-   "diretoria": "Diretoria de TI e inovação",
+   "diretoria": "Diretoria de tecnologia da informação e inovação",
    "chairId": "c124",
    "chairIds": [
     "c124"
@@ -3701,8 +3701,8 @@
    "id": "p124",
    "nome": "Fabner Roberto Soares",
    "nivel": "Especialista",
-   "cargo": "Administrador de Redes",
-   "diretoria": "Diretoria de TI e inovação",
+   "cargo": "Administrador de redes",
+   "diretoria": "Diretoria de tecnologia da informação e inovação",
    "chairId": "c125",
    "chairIds": [
     "c125"
@@ -3712,8 +3712,8 @@
    "id": "p125",
    "nome": "Junior Gil Custodio",
    "nivel": "Especialista",
-   "cargo": "Administrador de Redes",
-   "diretoria": "Diretoria de TI e inovação",
+   "cargo": "Administrador de redes",
+   "diretoria": "Diretoria de tecnologia da informação e inovação",
    "chairId": "c126",
    "chairIds": [
     "c126"
@@ -3724,7 +3724,7 @@
    "nome": "Danilo Mulizine Stochi",
    "nivel": "Especialista",
    "cargo": "Data Engineer",
-   "diretoria": "Diretoria de TI e inovação",
+   "diretoria": "Diretoria de tecnologia da informação e inovação",
    "chairId": "c127",
    "chairIds": [
     "c127"
@@ -3734,8 +3734,8 @@
    "id": "p127",
    "nome": "Ricardo Brito Soares",
    "nivel": "Diretoria",
-   "cargo": "Diretoria de TI e inovação",
-   "diretoria": "Diretoria de TI e inovação",
+   "cargo": "Diretoria de tecnologia da informação e inovação",
+   "diretoria": "Diretoria de tecnologia da informação e inovação",
    "chairId": "c128",
    "chairIds": [
     "c128"
@@ -3746,7 +3746,7 @@
    "nome": "Alex Coronado dos Santos",
    "nivel": "Gerência Executiva",
    "cargo": "Gerente de banco de dados",
-   "diretoria": "Diretoria de TI e inovação",
+   "diretoria": "Diretoria de tecnologia da informação e inovação",
    "chairId": "c129",
    "chairIds": [
     "c129"
@@ -3757,7 +3757,7 @@
    "nome": "Kleverson Ricardo de Melo",
    "nivel": "Gerência",
    "cargo": "Gerente de desenvolvimento e programação",
-   "diretoria": "Diretoria de TI e inovação",
+   "diretoria": "Diretoria de tecnologia da informação e inovação",
    "chairId": "c130",
    "chairIds": [
     "c130"
@@ -3768,7 +3768,7 @@
    "nome": "Rogerio Tsuyoshi Arida",
    "nivel": "Gerência",
    "cargo": "Gerente de desenvolvimento e programação",
-   "diretoria": "Diretoria de TI e inovação",
+   "diretoria": "Diretoria de tecnologia da informação e inovação",
    "chairId": "c131",
    "chairIds": [
     "c131"
@@ -3778,8 +3778,8 @@
    "id": "p131",
    "nome": "Joel Correia Junior",
    "nivel": "Gerência",
-   "cargo": "Gerente de PMO",
-   "diretoria": "Diretoria de TI e inovação",
+   "cargo": "Gerente do escritório de projetos",
+   "diretoria": "Diretoria de tecnologia da informação e inovação",
    "chairId": "c132",
    "chairIds": [
     "c132"
@@ -3790,7 +3790,7 @@
    "nome": "Anderson Rodrigo Giomo",
    "nivel": "Gerência",
    "cargo": "Gerente de suporte",
-   "diretoria": "Diretoria de TI e inovação",
+   "diretoria": "Diretoria de tecnologia da informação e inovação",
    "chairId": "c133",
    "chairIds": [
     "c133"
@@ -3801,7 +3801,7 @@
    "nome": "Rodrigo Romano Gantzel",
    "nivel": "Gerência",
    "cargo": "Gerente de tecnologia",
-   "diretoria": "Diretoria de TI e inovação",
+   "diretoria": "Diretoria de tecnologia da informação e inovação",
    "chairId": "c134",
    "chairIds": [
     "c134"
@@ -3811,8 +3811,8 @@
    "id": "p134",
    "nome": "Cadmiel Cristiano de Grande",
    "nivel": "Supervisão",
-   "cargo": "Supervisor de TI",
-   "diretoria": "Diretoria de TI e inovação",
+   "cargo": "Supervisor de tecnologia da informação",
+   "diretoria": "Diretoria de tecnologia da informação e inovação",
    "chairId": "c135",
    "chairIds": [
     "c135"
@@ -3823,7 +3823,7 @@
    "nome": "Edson Macoto Tamura Junior",
    "nivel": "Especialista",
    "cargo": "Tech Lead",
-   "diretoria": "Diretoria de TI e inovação",
+   "diretoria": "Diretoria de tecnologia da informação e inovação",
    "chairId": "c136",
    "chairIds": [
     "c136"
@@ -3866,7 +3866,7 @@
    "id": "p139",
    "nome": "Natanael Estevao Chagas Moraes",
    "nivel": "Gerência",
-   "cargo": "Gerente de crédito (Atacado,industria)",
+   "cargo": "Gerente de crédito (atacado e indústria)",
    "diretoria": "Diretoria financeira",
    "chairId": "c141",
    "chairIds": [
@@ -3899,7 +3899,7 @@
    "id": "p142",
    "nome": "Jessica Fonzar da Silva",
    "nivel": "Supervisão",
-   "cargo": "Supervisor Comercial (Gazinbank)",
+   "cargo": "Supervisor comercial (Gazin Bank)",
    "diretoria": "Diretoria financeira",
    "chairId": "c144",
    "chairIds": [
@@ -3910,7 +3910,7 @@
    "id": "p143",
    "nome": "Maiara Cristine de Jesus Vieira",
    "nivel": "Supervisão",
-   "cargo": "Supervisor Comercial (Gazinbank)",
+   "cargo": "Supervisor comercial (Gazin Bank)",
    "diretoria": "Diretoria financeira",
    "chairId": "c145",
    "chairIds": [
@@ -3921,7 +3921,7 @@
    "id": "p144",
    "nome": "Maria Eduarda Matos Medeiros",
    "nivel": "Supervisão",
-   "cargo": "Supervisor Comercial (Gazinbank)",
+   "cargo": "Supervisor comercial (Gazin Bank)",
    "diretoria": "Diretoria financeira",
    "chairId": "c146",
    "chairIds": [
@@ -3932,7 +3932,7 @@
    "id": "p145",
    "nome": "Natiara Rodrigues dos Santos Vieira",
    "nivel": "Supervisão",
-   "cargo": "Supervisor Comercial (Gazinbank)",
+   "cargo": "Supervisor comercial (Gazin Bank)",
    "diretoria": "Diretoria financeira",
    "chairId": "c147",
    "chairIds": [
@@ -3943,7 +3943,7 @@
    "id": "p146",
    "nome": "Priscila Andrelina da Silva Bartolomeu",
    "nivel": "Supervisão",
-   "cargo": "Supervisor Comercial (Gazinbank)",
+   "cargo": "Supervisor comercial (Gazin Bank)",
    "diretoria": "Diretoria financeira",
    "chairId": "c148",
    "chairIds": [
@@ -3954,7 +3954,7 @@
    "id": "p147",
    "nome": "Thomas Jefesson Soares de Souza",
    "nivel": "Supervisão",
-   "cargo": "Supervisor Comercial (Gazinbank)",
+   "cargo": "Supervisor comercial (Gazin Bank)",
    "diretoria": "Diretoria financeira",
    "chairId": "c149",
    "chairIds": [
@@ -4009,8 +4009,8 @@
    "id": "p152",
    "nome": "Danilo Moureira Niza da Silva",
    "nivel": "Coordenação",
-   "cargo": "Coord. de projetos e processos",
-   "diretoria": "Gerente admin. industria",
+   "cargo": "Coordenador de projetos e processos",
+   "diretoria": "Gerente administrativo da indústria",
    "chairId": "c154",
    "chairIds": [
     "c154"
@@ -4020,8 +4020,8 @@
    "id": "p153",
    "nome": "Maicon Aurelio Trovo",
    "nivel": "Gerência Executiva",
-   "cargo": "Gerente admin. industria",
-   "diretoria": "Gerente admin. industria",
+   "cargo": "Gerente administrativo da indústria",
+   "diretoria": "Gerente administrativo da indústria",
    "chairId": "c155",
    "chairIds": [
     "c155"
@@ -4031,8 +4031,8 @@
    "id": "p154",
    "nome": "Rodrigo de Oliveira Novo",
    "nivel": "Gerência",
-   "cargo": "Gerente de desenv.de maquinas",
-   "diretoria": "Gerente admin. industria",
+   "cargo": "Gerente de desenvolvimento de máquinas",
+   "diretoria": "Gerente administrativo da indústria",
    "chairId": "c156",
    "chairIds": [
     "c156"
@@ -4043,7 +4043,7 @@
    "nome": "Francisca Marisangela de Jesus Sousa",
    "nivel": "Gerência",
    "cargo": "Gerente de espumação",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "chairId": "c157",
    "chairIds": [
     "c157"
@@ -4054,7 +4054,7 @@
    "nome": "Jefson Henrique de Jesus Santos",
    "nivel": "Gerência",
    "cargo": "Gerente de espumação",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "chairId": "c158",
    "chairIds": [
     "c158"
@@ -4065,7 +4065,7 @@
    "nome": "Luan Gabriel Schroeder",
    "nivel": "Gerência",
    "cargo": "Gerente de espumação",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "chairId": "c159",
    "chairIds": [
     "c159"
@@ -4076,7 +4076,7 @@
    "nome": "Luiz Henrique Martins Trench",
    "nivel": "Gerência",
    "cargo": "Gerente de espumação",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "chairId": "c160",
    "chairIds": [
     "c160"
@@ -4087,7 +4087,7 @@
    "nome": "Ricardo Poteriko Sobrinho",
    "nivel": "Gerência",
    "cargo": "Gerente de espumação",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "chairId": "c161",
    "chairIds": [
     "c161"
@@ -4098,7 +4098,7 @@
    "nome": "Roberto Ricardo Buth",
    "nivel": "Gerência",
    "cargo": "Gerente de espumação",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "chairId": "c162",
    "chairIds": [
     "c162"
@@ -4109,7 +4109,7 @@
    "nome": "Yuri Ignochevski Primao",
    "nivel": "Gerência",
    "cargo": "Gerente de espumação",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "chairId": "c163",
    "chairIds": [
     "c163"
@@ -4120,7 +4120,7 @@
    "nome": "Anderson Furlan Karnopp",
    "nivel": "Gerência Executiva",
    "cargo": "Gerente de indústria",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "chairId": "c164",
    "chairIds": [
     "c164"
@@ -4131,7 +4131,7 @@
    "nome": "Caio Henrique Macedo Garcia",
    "nivel": "Gerência Executiva",
    "cargo": "Gerente de indústria",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "chairId": "c165",
    "chairIds": [
     "c165"
@@ -4142,7 +4142,7 @@
    "nome": "Edgar Zaleski",
    "nivel": "Gerência Executiva",
    "cargo": "Gerente de indústria",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "chairId": "c166",
    "chairIds": [
     "c166"
@@ -4153,7 +4153,7 @@
    "nome": "Everson Oliveira Lima",
    "nivel": "Gerência Executiva",
    "cargo": "Gerente de indústria",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "chairId": "c167",
    "chairIds": [
     "c167"
@@ -4164,7 +4164,7 @@
    "nome": "Juliana Severo Arantes",
    "nivel": "Gerência Executiva",
    "cargo": "Gerente de indústria",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "chairId": "c168",
    "chairIds": [
     "c168"
@@ -4175,7 +4175,7 @@
    "nome": "Marcos de Oliveira Souza",
    "nivel": "Gerência Executiva",
    "cargo": "Gerente de indústria",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "chairId": "c169",
    "chairIds": [
     "c169"
@@ -4186,7 +4186,7 @@
    "nome": "Rafael Tomaz Mariano",
    "nivel": "Gerência Executiva",
    "cargo": "Gerente de indústria",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "chairId": "c170",
    "chairIds": [
     "c170"
@@ -4197,7 +4197,7 @@
    "nome": "Vinicios Zuse",
    "nivel": "Gerência Executiva",
    "cargo": "Gerente de indústria",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "chairId": "c171",
    "chairIds": [
     "c171"
@@ -4208,7 +4208,7 @@
    "nome": "Marcus Vinicius Cabeça Pereira",
    "nivel": "Gerência",
    "cargo": "Gerente de processos",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "chairId": "c172",
    "chairIds": [
     "c172"
@@ -4219,7 +4219,7 @@
    "nome": "Eduardo Giacometti Xavier",
    "nivel": "Gerência",
    "cargo": "Gerente de projetos",
-   "diretoria": "Gerente admin. industria",
+   "diretoria": "Gerente administrativo da indústria",
    "chairId": "c173",
    "chairIds": [
     "c173"
@@ -4229,8 +4229,8 @@
    "id": "p172",
    "nome": "Iago Fernando Luiz",
    "nivel": "Gerência",
-   "cargo": "Gerente PCP e MRP",
-   "diretoria": "Gerente admin. industria",
+   "cargo": "Gerente de planejamento e controle da produção e de necessidade de materiais",
+   "diretoria": "Gerente administrativo da indústria",
    "chairId": "c174",
    "chairIds": [
     "c174"
@@ -4262,8 +4262,8 @@
    "id": "p175",
    "nome": "Marcos Henrique Sabec",
    "nivel": "Gerência Executiva",
-   "cargo": "Gerente geral agropecuaria",
-   "diretoria": "Gerente geral agropecuaria",
+   "cargo": "Gerente geral agropecuária",
+   "diretoria": "Gerente geral agropecuária",
    "chairId": "c177",
    "chairIds": [
     "c177"
@@ -4273,8 +4273,8 @@
    "id": "p176",
    "nome": "Carla Francieli Fernandes dos Anjos",
    "nivel": "Supervisão",
-   "cargo": "Supervisor recrutam. e seleção",
-   "diretoria": "Gerente geral de RH",
+   "cargo": "Supervisor de recrutamento e seleção",
+   "diretoria": "Gerente geral de recursos humanos",
    "chairId": "c178",
    "chairIds": [
     "c178"
@@ -4284,8 +4284,8 @@
    "id": "p177",
    "nome": "Paulo da Silva Braz",
    "nivel": "Supervisão",
-   "cargo": "Supervisor desenvol. Humano",
-   "diretoria": "Gerente geral de RH",
+   "cargo": "Supervisor de desenvolvimento humano",
+   "diretoria": "Gerente geral de recursos humanos",
    "chairId": "c179",
    "chairIds": [
     "c179"
@@ -4296,7 +4296,7 @@
    "nome": "Elton Fernando Hoshino",
    "nivel": "Supervisão",
    "cargo": "Supervisor administrativo (gestão de pessoas)",
-   "diretoria": "Gerente geral de RH",
+   "diretoria": "Gerente geral de recursos humanos",
    "chairId": "c180",
    "chairIds": [
     "c180"

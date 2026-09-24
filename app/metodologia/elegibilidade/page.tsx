@@ -63,7 +63,7 @@ export default function Page() {
         <ul>
           <li>
             <b>Dentro da pontuação de aderência</b>: nível elegível e pontuação ≥ {CORTE_ADERENCIA}. Só este grupo conta na cobertura
-            (verde = 2+, âmbar = 1, vermelho = 0).
+            (verde = 2 ou mais, âmbar = 1, vermelho = 0).
           </li>
           <li>
             <b>Abaixo da pontuação de aderência</b>: nível elegível, pontuação &lt; {CORTE_ADERENCIA}.

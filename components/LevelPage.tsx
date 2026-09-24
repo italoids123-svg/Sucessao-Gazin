@@ -107,7 +107,7 @@ export default function LevelPage({ slug }: { slug: string }) {
         )}
         <select value={cobertura} onChange={(e) => setCobertura(e.target.value)} aria-label="Cobertura">
           <option value="">Toda cobertura</option>
-          <option value="verde">2+ sucessores</option>
+          <option value="verde">2 ou mais sucessores</option>
           <option value="amarelo">1 sucessor</option>
           <option value="vermelho">Sem sucessor</option>
         </select>

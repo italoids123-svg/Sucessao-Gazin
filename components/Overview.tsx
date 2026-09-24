@@ -96,7 +96,7 @@ export default function Overview() {
               <th>Nível</th>
               <th className="num">Posições</th>
               <th>Cobertura</th>
-              <th className="num">2+</th>
+              <th className="num">2 ou mais</th>
               <th className="num">1</th>
               <th className="num">0</th>
             </tr>
@@ -126,7 +126,7 @@ export default function Overview() {
               <th>Diretoria / área</th>
               <th className="num">Posições</th>
               <th>Cobertura</th>
-              <th className="num">2+</th>
+              <th className="num">2 ou mais</th>
               <th className="num">1</th>
               <th className="num">0</th>
             </tr>
@@ -151,7 +151,7 @@ export default function Overview() {
         <ul>
           <li>
             <b>{semCidade}</b> de {data.chairs.length} posições sem cidade: nelas a mobilidade não filtra ninguém (continua pontuando pela
-            amplitude declarada). Preencha na aba <b>Cadeiras</b>, no formato Cidade/UF.
+            amplitude declarada). Preencha na aba <b>Cadeiras</b>, no formato Cidade/Estado (por exemplo, Douradina/PR).
           </li>
           {vagas.length > 0 && (
             <li>

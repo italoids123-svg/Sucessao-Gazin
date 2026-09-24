@@ -2,7 +2,7 @@ const MIN_PCT_TEXTO = 15;
 
 export default function CoverageBar({ verde, amarelo, vermelho, total }: { verde: number; amarelo: number; vermelho: number; total: number }) {
   const seg = [
-    { k: "verde", n: verde, label: "2+ sucessores" },
+    { k: "verde", n: verde, label: "2 ou mais sucessores" },
     { k: "amarelo", n: amarelo, label: "1 sucessor" },
     { k: "vermelho", n: vermelho, label: "Sem sucessor" },
   ];

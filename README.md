@@ -25,6 +25,13 @@ Deploy: qualquer host de Next.js (ex.: Vercel), sem variáveis de ambiente.
 3. **Importação**: *Carregar base preenchida* faz merge aditivo (só atualiza quem está na planilha;
    célula vazia não apaga valor salvo). Avisos de valores não reconhecidos vão para o console.
 
+## Recursos da tela
+
+- **Tela cheia**: botão na barra superior (sai também com Esc).
+- **Imprimir / Exportar**: na barra superior (exporta a página atual) e no detalhe de cada posição
+  (exporta só a posição). Escolha **PDF** (páginas A4, sem cortar cartões no meio) ou **PNG**
+  (imagem única).
+
 ## Estrutura
 
 - `lib/config.ts` — níveis, hierarquia de elegibilidade, pesos, corte, escalas (desempenho, e-NPS,
@@ -56,7 +63,12 @@ Escalas completas em `lib/config.ts` e na página *Critérios* do app.
 - **Entrada na posição**: basta uma ponta do match (se indicou OU foi indicado pelo líder).
   Nome indicado que corresponde a mais de uma pessoa só vale para quem também se indicou.
 - **Mobilidade** pontua pela amplitude e também filtra: não aparece em posição fora do alcance declarado.
-- **Hierarquia de elegibilidade** e **corte (60)** não constam do material: são padrão do modelo.
+- **Hierarquia de elegibilidade**: Coordenação, Supervisão e Especialista se alimentam entre si e a si
+  mesmos (movimento lateral dentro da faixa). Gerência, Gerência Executiva e Diretoria continuam só
+  com promoção vertical.
+- **Nomes de cargos e áreas** foram escritos por extenso, sem abreviações nem siglas (mapa em
+  `scripts/build-base.py`, `NOME_POR_EXTENSO`).
+- **Corte (60)** não consta do material: é padrão do modelo.
 - **Matriz**: Douradina/PR.
 - **Cidade das posições** não existe na origem: até ser preenchida (aba Cadeiras, formato Cidade/UF),
   a mobilidade não filtra ninguém e uma mesma pessoa pode aparecer como sucessora de várias posições.

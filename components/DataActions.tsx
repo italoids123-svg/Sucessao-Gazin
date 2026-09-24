@@ -5,6 +5,8 @@ import * as XLSX from "xlsx";
 import { EMPRESA } from "@/lib/config.ts";
 import { applyWorkbook, buildWorkbook } from "@/lib/excel.ts";
 import { useStore } from "@/lib/store.tsx";
+import ExportMenu from "./ExportMenu";
+import FullscreenButton from "./FullscreenButton";
 
 export function formatUpdatedAt(iso: string | null): string {
   if (!iso) return "base inicial (planilha de posições críticas), sem questionário importado";
@@ -45,6 +47,11 @@ export default function DataActions() {
         Atualização da base: <b>{formatUpdatedAt(data.updatedAt)}</b>
       </div>
       <div className="actions">
+        <FullscreenButton />
+        <ExportMenu
+          alvo={() => document.querySelector<HTMLElement>("main.content")}
+          titulo={() => document.querySelector("main.content h1")?.textContent ?? "Painel"}
+        />
         <button className="btn" onClick={download}>
           Baixar base para coleta
         </button>

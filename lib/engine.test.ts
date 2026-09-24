@@ -45,6 +45,13 @@ test("hierarquia agrupa múltiplos níveis elegíveis", () => {
   assert.deepEqual(buildHierMap(HIERARQUIA_PADRAO)["Gerência"], ["Coordenação", "Supervisão", "Especialista"]);
 });
 
+test("coordenação, supervisão e especialista se alimentam entre si", () => {
+  const h = buildHierMap(HIERARQUIA_PADRAO);
+  for (const n of ["Coordenação", "Supervisão", "Especialista"])
+    assert.deepEqual(h[n], ["Coordenação", "Supervisão", "Especialista", "Analista / Técnico"]);
+  assert.deepEqual(h["Diretoria"], ["Gerência Executiva", "Gerência"]);
+});
+
 test("cadeira em Maringá: pontuação pelo modelo de critérios", () => {
   const r = successorsFor(base().chairs[0], buildCtx(base()));
   // Supervisor: desempenho 30 + líder 5 + interesse 5 + clima 30 + prontidão 10 + mobilidade local 2 = 82
