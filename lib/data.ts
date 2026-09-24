@@ -8,7 +8,6 @@ export function initialData(): AppData {
     people: base.people as Person[],
     succession: {},
     hierarquia: HIERARQUIA_PADRAO,
-    cities: [],
     updatedAt: null,
   };
 }

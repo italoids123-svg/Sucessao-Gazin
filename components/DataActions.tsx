@@ -27,7 +27,7 @@ export default function DataActions() {
       setData(next);
       const linhas = [
         `Base carregada: ${stats.pessoasAtualizadas} pessoa(s) atualizada(s), ${stats.pessoasCriadas} criada(s).`,
-        `Cadeiras: ${stats.cadeirasAtualizadas} atualizada(s), ${stats.cadeirasCriadas} criada(s). Cidades: ${stats.cidades}.`,
+        `Cadeiras: ${stats.cadeirasAtualizadas} atualizada(s), ${stats.cadeirasCriadas} criada(s).`,
       ];
       if (stats.avisos.length) {
         linhas.push(`${stats.avisos.length} aviso(s) — veja o console do navegador.`);

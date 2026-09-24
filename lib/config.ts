@@ -4,7 +4,7 @@ export const EMPRESA = "Gazin";
 export const STORAGE_KEY = "gazin-mapa-sucessorio:v1";
 // Incremente sempre que a base padrão (lib/base-data.json) ou a estrutura mudar:
 // descarta a base antiga salva no navegador.
-export const BASE_DATA_VERSION = 1;
+export const BASE_DATA_VERSION = 2;
 
 export interface NivelDef {
   nome: string;
@@ -55,47 +55,57 @@ export const HIERARQUIA_PADRAO: HierarquiaEntry[] = [
   { nivel: "Especialista", elegivel: "Analista / Técnico" },
 ];
 
-// ---------- Pontuação de aderência ----------
+// ---------- Pontuação de aderência (material "Critérios" da Gazin) ----------
+// Soma 100. "Match de indicação" = indicação do líder (5) + interesse autodeclarado (5).
 export const PESOS = {
-  nineBox: 40,
-  indicacao: 20,
-  favorabilidade: 10,
-  interesse: 10,
+  desempenho: 30,
+  indicacaoLider: 5,
+  interesse: 5,
+  clima: 30,
+  prontidao: 10,
   mobilidade: 20,
 };
 export const CORTE_ADERENCIA = 60;
-// Peso de cada ciclo quando os dois têm avaliação.
-export const PESO_CICLO_ANTERIOR = 0.375;
-export const PESO_CICLO_ATUAL = 0.625;
 
-export const NINE_BOX: { code: string; label: string; fator: number }[] = [
-  { code: "9", label: "Alto desempenho · Alto potencial", fator: 1 },
-  { code: "8", label: "Médio desempenho · Alto potencial", fator: 0.8 },
-  { code: "7", label: "Alto desempenho · Médio potencial", fator: 0.8 },
-  { code: "6", label: "Médio desempenho · Médio potencial", fator: 0.6 },
-  { code: "5", label: "Baixo desempenho · Alto potencial", fator: 0.5 },
-  { code: "4", label: "Alto desempenho · Baixo potencial", fator: 0.5 },
-  { code: "3", label: "Baixo desempenho · Médio potencial", fator: 0.25 },
-  { code: "2", label: "Médio desempenho · Baixo potencial", fator: 0.25 },
-  { code: "1", label: "Baixo desempenho · Baixo potencial", fator: 0 },
+// Avaliação de desempenho do ciclo atual: Resultado × Comportamento.
+export const DESEMPENHO: { code: string; label: string; descricao: string; pontos: number }[] = [
+  { code: "estrela", label: "Estrela", descricao: "Resultado alto · Comportamento alto", pontos: 30 },
+  { code: "alto_desempenho", label: "Alto Desempenho", descricao: "Resultado médio · Comportamento alto", pontos: 26 },
+  { code: "comprometido", label: "Empregado Comprometido", descricao: "Resultado baixo · Comportamento alto", pontos: 22 },
+  { code: "alto_potencial", label: "Alto Potencial", descricao: "Resultado alto · Comportamento médio", pontos: 18 },
+  { code: "solido", label: "Empregado Sólido / Responsável", descricao: "Resultado médio · Comportamento médio", pontos: 14 },
+  { code: "bom_executor", label: "Bom Executor / Especialista", descricao: "Resultado baixo · Comportamento médio", pontos: 10 },
+  { code: "enigma", label: "Enigma / Questionável", descricao: "Resultado alto · Comportamento baixo", pontos: 6 },
+  { code: "eficaz", label: "Empregado Eficaz", descricao: "Resultado médio · Comportamento baixo", pontos: 2 },
+  { code: "risco", label: "Risco / Baixo Desempenho", descricao: "Resultado baixo · Comportamento baixo", pontos: 0 },
 ];
 
+// Pesquisa de clima 2026 (e-NPS da área).
+export const CLIMA_FAIXAS: { label: string; ate: number; pontos: number }[] = [
+  { label: "Abaixo de 30", ate: 29.999, pontos: 6 },
+  { label: "30 a 50", ate: 50, pontos: 13 },
+  { label: "51 a 85", ate: 85, pontos: 21 },
+  { label: "Acima de 85", ate: Infinity, pontos: 30 },
+];
+export function pontosClima(enps: number): number {
+  return CLIMA_FAIXAS.find((f) => enps <= f.ate)!.pontos;
+}
+
 export const HORIZONTE: { code: Exclude<Horizonte, "">; label: string; pontos: number }[] = [
-  { code: "imediato", label: "Imediato (até 1 ano)", pontos: 10 },
-  { code: "ate3", label: "Até 3 anos", pontos: 7 },
-  { code: "3a5", label: "De 3 a 5 anos", pontos: 4 },
-  { code: "mais5", label: "Mais de 5 anos", pontos: 2 },
+  { code: "imediato", label: "Imediato", pontos: 10 },
+  { code: "ate3", label: "Até 3 anos", pontos: 6 },
+  { code: "3a5", label: "Mais de 3 até 5 anos", pontos: 3 },
+  { code: "mais5", label: "Mais de 5 anos", pontos: 1.5 },
 ];
 
 export const SEDE = "Douradina/PR";
-export const RAIO_REGIONAL_KM = 40;
-export const FATOR_RODOVIARIO = 1.2;
 
-export const MOBILIDADE: { code: Exclude<Mobilidade, "">; label: string }[] = [
-  { code: "local", label: "Somente na minha cidade atual" },
-  { code: "sede", label: `Somente na sede (${SEDE})` },
-  { code: "raio_regional", label: `Até ${RAIO_REGIONAL_KM} km da minha cidade atual` },
-  { code: "qualquer", label: "Qualquer unidade" },
+// Pontos pela amplitude declarada: quem aceita mais lugares amplia as cadeiras que pode suceder.
+export const MOBILIDADE: { code: Exclude<Mobilidade, "">; label: string; pontos: number }[] = [
+  { code: "local", label: "Local atual", pontos: 2 },
+  { code: "matriz", label: `Matriz (${SEDE})`, pontos: 7 },
+  { code: "estado", label: "Dentro do Estado", pontos: 13 },
+  { code: "qualquer", label: "Total (qualquer unidade)", pontos: 20 },
 ];
 
 export const CONVERSA: { code: Exclude<ConversaDesenvolvimento, "">; label: string }[] = [

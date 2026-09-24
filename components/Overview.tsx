@@ -25,7 +25,7 @@ export default function Overview() {
   const all = resumoCobertura(data.chairs.map((c) => results.get(c.id)!));
   const respondentes = data.people.filter((p) => {
     const r = data.succession[p.id];
-    return r && (r.prioridade1 || r.mobilidade || r.nineBox2026 || r.nineBox2025 || r.possivelSucessorTexto);
+    return r && (r.prioridade1 || r.mobilidade || r.desempenho || r.possivelSucessorTexto);
   }).length;
   const respPct = data.people.length ? Math.round((respondentes / data.people.length) * 100) : 0;
 
@@ -150,8 +150,8 @@ export default function Overview() {
         <h2>Qualidade da base</h2>
         <ul>
           <li>
-            <b>{semCidade}</b> de {data.chairs.length} posições sem cidade: nelas a regra de mobilidade não é avaliada (não bloqueia e
-            não pontua). Preencha na aba <b>Cadeiras</b>.
+            <b>{semCidade}</b> de {data.chairs.length} posições sem cidade: nelas a mobilidade não filtra ninguém (continua pontuando pela
+            amplitude declarada). Preencha na aba <b>Cadeiras</b>, no formato Cidade/UF.
           </li>
           {vagas.length > 0 && (
             <li>

@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { CONTINUIDADE, CONVERSA, CORTE_ADERENCIA, HORIZONTE, labelOf } from "@/lib/config.ts";
-import { occupantOf } from "@/lib/engine.ts";
+import { occupantOf, resolverIndicacao } from "@/lib/engine.ts";
 import { useStore } from "@/lib/store.tsx";
 import type { Candidate, Chair } from "@/lib/types.ts";
 
@@ -45,9 +45,21 @@ function CandidateRow({ c }: { c: Candidate }) {
         </div>
       </div>
       <div className="col-prio sub">
-        <b>Prioridade {c.prioridade}</b>
-        <br />
-        {labelOf(HORIZONTE, c.horizonte) || "Horizonte não informado"}
+        {c.prioridade ? (
+          <>
+            <b>Prioridade {c.prioridade}</b>
+            <br />
+            {labelOf(HORIZONTE, c.horizonte) || "Horizonte não informado"}
+          </>
+        ) : (
+          <b>Só indicação do líder: não se indicou</b>
+        )}
+        {c.record.dataConversaCarreira && (
+          <>
+            <br />
+            Conversa: {c.record.dataConversaCarreira}
+          </>
+        )}
       </div>
       <div className="badges">
         {conversa && <span className={`chip ${c.record.conversaDesenvolvimento === "andamento" ? "azul" : ""}`}>PDI: {conversa}</span>}
@@ -82,6 +94,7 @@ export default function ChairModal({ chair, onClose }: { chair: Chair; onClose: 
   const r = results.get(chair.id)!;
   const ocupante = occupantOf(chair, ctx);
   const recOcupante = ocupante ? ctx.succession[ocupante.id] : undefined;
+  const ambiguos = resolverIndicacao(recOcupante?.possivelSucessorTexto, ctx.people).ambiguos;
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
@@ -115,17 +128,17 @@ export default function ChairModal({ chair, onClose }: { chair: Chair; onClose: 
             <div className="group-kpi verde">
               <div className="n">{r.dentro.length}</div>
               <div className="t">Interessados dentro da pontuação de aderência</div>
-              <div className="s">Nível elegível, interesse declarado e pontuação ≥ {CORTE_ADERENCIA}.</div>
+              <div className="s">Nível elegível, se indicou ou foi indicado pelo líder, e pontuação ≥ {CORTE_ADERENCIA}.</div>
             </div>
             <div className="group-kpi amarelo">
               <div className="n">{r.abaixo.length}</div>
               <div className="t">Interessados abaixo da pontuação de aderência</div>
-              <div className="s">Nível elegível e interesse declarado, mas pontuação &lt; {CORTE_ADERENCIA}.</div>
+              <div className="s">Nível elegível, se indicou ou foi indicado pelo líder, mas pontuação &lt; {CORTE_ADERENCIA}.</div>
             </div>
             <div className="group-kpi vermelho">
               <div className="n">{r.fora.length}</div>
               <div className="t">Interessados fora da hierarquia elegível</div>
-              <div className="s">Declararam interesse, mas o nível atual não alimenta este cargo.</div>
+              <div className="s">Se indicaram ou foram indicados, mas o nível atual não alimenta este cargo.</div>
             </div>
           </div>
 
@@ -145,6 +158,12 @@ export default function ChairModal({ chair, onClose }: { chair: Chair; onClose: 
             ) : (
               <>O ocupante ainda não respondeu quem indica como possível sucessor.</>
             )}
+            {ambiguos.map((a) => (
+              <div key={a.trecho} style={{ marginTop: 6, color: "var(--amarelo)" }}>
+                ⚠ &quot;{a.trecho}&quot; corresponde a {a.pessoas.length} pessoas ({a.pessoas.map((x) => x.nome).join(", ")}): a
+                indicação só conta para quem também se indicou à posição. Peça ao líder o nome completo.
+              </div>
+            ))}
           </div>
 
           <Lista titulo="Dentro da pontuação de aderência" itens={r.dentro} vazio="Nenhum sucessor mapeado para esta posição." />

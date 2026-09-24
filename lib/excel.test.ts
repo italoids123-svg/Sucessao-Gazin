@@ -12,7 +12,7 @@ function roundTrip(edit: (wb: XLSX.WorkBook) => void) {
 }
 
 test("planilha gerada tem as abas esperadas", () => {
-  assert.deepEqual(buildWorkbook(initialData()).SheetNames, ["Leia-me", "Cadeiras", "Base de dados", "Cidades", "Hierarquia", "Valores aceitos"]);
+  assert.deepEqual(buildWorkbook(initialData()).SheetNames, ["Leia-me", "Cadeiras", "Base de dados", "Hierarquia", "Valores aceitos"]);
 });
 
 test("reimportar a planilha sem mudanças não altera cadeiras nem pessoas", () => {
@@ -27,11 +27,12 @@ test("merge aditivo: atualiza questionário, cria pessoa nova e cidade da cadeir
     const base = XLSX.utils.sheet_to_json<Record<string, unknown>>(wb.Sheets["Base de dados"]);
     const alvo = base.find((r) => r["Nome completo"] === "Cleiton Cesar Silva")!;
     alvo["Prioridade 1 (cargo de interesse)"] = "controller";
-    alvo["Horizonte 1"] = "Imediato (até 1 ano)";
-    alvo["Nine Box 2026"] = "9 - Alto desempenho · Alto potencial";
-    alvo["Mobilidade"] = "qualquer";
+    alvo["Horizonte 1"] = "Imediato";
+    alvo["Avaliação de desempenho (ciclo atual)"] = "estrela";
+    alvo["Mobilidade"] = "Dentro do Estado";
     alvo["Lidera equipe"] = "Sim";
-    alvo["Favorabilidade 2026 (%)"] = 0.82;
+    alvo["e-NPS da área 2026"] = -12;
+    alvo["Data da conversa de carreira"] = 46280; // serial do Excel
     base.push({ "Nome completo": "Pessoa Nova Teste", "Nível": "Analista / Técnico", "Horizonte 1": "xpto" });
     wb.Sheets["Base de dados"] = XLSX.utils.json_to_sheet(base);
     const cad = XLSX.utils.sheet_to_json<Record<string, unknown>>(wb.Sheets["Cadeiras"]);
@@ -45,7 +46,15 @@ test("merge aditivo: atualiza questionário, cria pessoa nova e cidade da cadeir
   const p = data.people.find((x) => x.nome === "Cleiton Cesar Silva")!;
   assert.deepEqual(
     { ...data.succession[p.id] },
-    { prioridade1: "controller", horizonte1: "imediato", nineBox2026: "9", mobilidade: "qualquer", lideraEquipe: true, favorabilidade2026: 82 },
+    {
+      prioridade1: "controller",
+      horizonte1: "imediato",
+      desempenho: "estrela",
+      mobilidade: "estado",
+      lideraEquipe: true,
+      enps2026: -12,
+      dataConversaCarreira: "15/09/2026",
+    },
   );
   assert.ok(stats.avisos.some((a) => a.includes("xpto")));
 });

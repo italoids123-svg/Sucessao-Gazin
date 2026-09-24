@@ -3,17 +3,15 @@ import {
   CONTINUIDADE,
   CONVERSA,
   CORTE_ADERENCIA,
+  DESEMPENHO,
   EMPRESA,
   HORIZONTE,
   MOBILIDADE,
-  NINE_BOX,
   NIVEL_NOMES,
-  SEDE,
   labelOf,
 } from "./config.ts";
 import { norm } from "./engine.ts";
-import { normCity } from "./geo.ts";
-import type { AppData, Chair, City, Person, SuccessionRecord } from "./types.ts";
+import type { AppData, Chair, Person, SuccessionRecord } from "./types.ts";
 
 const SIM = "Sim";
 const NAO = "Não";
@@ -35,10 +33,10 @@ const COL = {
   conversa: "Conversa de desenvolvimento",
   continuidade: "Continuidade da sua posição",
   sucessor: "Possível sucessor da sua posição (nome)",
-  nb25: "Nine Box 2025",
-  nb26: "Nine Box 2026",
+  dataConversa: "Data da conversa de carreira",
+  desempenho: "Avaliação de desempenho (ciclo atual)",
   lidera: "Lidera equipe",
-  fav: "Favorabilidade 2026 (%)",
+  enps: "e-NPS da área 2026",
 } as const;
 
 const CCOL = {
@@ -53,10 +51,6 @@ const CCOL = {
   gestorCargo: "Cargo do gestor",
 } as const;
 
-const nineBoxLabel = (c?: string) => {
-  const n = NINE_BOX.find((x) => x.code === c);
-  return n ? `${n.code} - ${n.label}` : "";
-};
 
 const LEIA_ME = [
   [`Mapa Sucessório ${EMPRESA} — planilha de coleta`],
@@ -69,14 +63,15 @@ const LEIA_ME = [
   ["Abas"],
   ["Base de dados: uma linha por pessoa. Casa pelo Nome completo; se o nome não existir, a pessoa é criada (informe o Nível)."],
   ["Cadeiras: posições críticas. Linha com ID atualiza a cadeira (cidade, nível, diretoria, tempo de casa). Linha sem ID cria cadeira nova, exceto se já houver cadeira com o mesmo cargo e ocupante."],
-  ["Cidades: coordenadas de cada Cidade/UF usada. Sem coordenada, a regra de raio regional não é avaliada (não bloqueia ninguém)."],
   ["Hierarquia: qual nível pode suceder qual. Linhas novas são adicionadas; nenhuma é removida."],
   ["Valores aceitos: copie daqui os valores dos campos de múltipla escolha, para evitar erro de digitação."],
   [""],
   ["Regras importantes"],
   ["Prioridade 1 e 2 devem conter o CARGO EXATO da aba Cadeiras (ex.: \"Gerente regional\")."],
   ["\"Possível sucessor da sua posição\" é respondido pelo ocupante da cadeira: nome e sobrenome de quem ele indica."],
-  ["Cidade sempre no formato Cidade/UF (ex.: Douradina/PR)."],
+  ["Cidade sempre no formato Cidade/UF (ex.: Douradina/PR): a UF é usada na mobilidade \"Dentro do Estado\"."],
+  ["Interesse, prontidão e mobilidade mudam com o tempo: registre a Data da conversa de carreira (dd/mm/aaaa)."],
+  ["e-NPS da área 2026: número de -100 a 100, só para quem lidera equipe."],
   [`Corte de aderência: ${CORTE_ADERENCIA} pontos.`],
 ];
 
@@ -118,21 +113,14 @@ export function buildWorkbook(data: AppData): XLSX.WorkBook {
       [COL.conversa]: labelOf(CONVERSA, r.conversaDesenvolvimento),
       [COL.continuidade]: labelOf(CONTINUIDADE, r.continuidade),
       [COL.sucessor]: r.possivelSucessorTexto ?? "",
-      [COL.nb25]: nineBoxLabel(r.nineBox2025),
-      [COL.nb26]: nineBoxLabel(r.nineBox2026),
+      [COL.dataConversa]: r.dataConversaCarreira ?? "",
+      [COL.desempenho]: labelOf(DESEMPENHO, r.desempenho),
       [COL.lidera]: r.lideraEquipe === undefined ? "" : r.lideraEquipe ? SIM : NAO,
-      [COL.fav]: r.favorabilidade2026 ?? "",
+      [COL.enps]: r.enps2026 ?? "",
     };
   });
   const baseSheet = base.length ? XLSX.utils.json_to_sheet(base) : XLSX.utils.aoa_to_sheet([Object.values(COL)]);
   XLSX.utils.book_append_sheet(wb, withWidths(baseSheet), "Base de dados");
-
-  const cidades = [...new Map([{ nome: SEDE, lat: -23.3806, lng: -53.2917 }, ...data.cities].map((c) => [normCity(c.nome), c])).values()];
-  XLSX.utils.book_append_sheet(
-    wb,
-    withWidths(XLSX.utils.aoa_to_sheet([["Cidade/UF", "Latitude", "Longitude"], ...cidades.map((c) => [c.nome, c.lat, c.lng])])),
-    "Cidades",
-  );
 
   XLSX.utils.book_append_sheet(
     wb,
@@ -147,7 +135,7 @@ export function buildWorkbook(data: AppData): XLSX.WorkBook {
     ["Horizonte", HORIZONTE.map((m) => m.label)],
     ["Conversa de desenvolvimento", CONVERSA.map((m) => m.label)],
     ["Continuidade da sua posição", CONTINUIDADE.map((m) => m.label)],
-    ["Nine Box", NINE_BOX.map((n) => `${n.code} - ${n.label}`)],
+    ["Avaliação de desempenho", DESEMPENHO.map((n) => n.label)],
     ["Lidera equipe", [SIM, NAO]],
     ["Cargos (Prioridade 1/2)", cargos],
   ];
@@ -173,7 +161,6 @@ export interface ImportStats {
   pessoasCriadas: number;
   cadeirasAtualizadas: number;
   cadeirasCriadas: number;
-  cidades: number;
   hierarquiaNovas: number;
   avisos: string[];
 }
@@ -199,11 +186,16 @@ function parseEnum<T extends string>(list: { code: T; label: string }[], v: stri
   return hit?.code;
 }
 
-function parseNineBox(v: string, campo: string, avisos: string[], quem: string): string | undefined {
+/** Aceita data do Excel (número serial) ou texto; guarda como dd/mm/aaaa quando reconhece. */
+function parseData(v: string, avisos: string[], quem: string): string | undefined {
   if (!v) return undefined;
-  const m = v.match(/^\s*([1-9])\b/);
-  if (!m) avisos.push(`${quem}: valor "${v}" não reconhecido em ${campo}`);
-  return m?.[1];
+  if (/^\d+(\.\d+)?$/.test(v)) {
+    // Número de série do Excel: dias desde 30/12/1899.
+    const d = new Date(Date.UTC(1899, 11, 30) + Math.floor(Number(v)) * 86400000);
+    return `${String(d.getUTCDate()).padStart(2, "0")}/${String(d.getUTCMonth() + 1).padStart(2, "0")}/${d.getUTCFullYear()}`;
+  }
+  if (!/^\d{1,2}\/\d{1,2}\/\d{2,4}$/.test(v)) avisos.push(`${quem}: data da conversa de carreira "${v}" fora do formato dd/mm/aaaa`);
+  return v;
 }
 
 function parseNivel(v: string): string | undefined {
@@ -216,14 +208,12 @@ export function applyWorkbook(wb: XLSX.WorkBook, current: AppData): { data: AppD
     pessoasCriadas: 0,
     cadeirasAtualizadas: 0,
     cadeirasCriadas: 0,
-    cidades: 0,
     hierarquiaNovas: 0,
     avisos: [],
   };
   const chairs: Chair[] = current.chairs.map((c) => ({ ...c }));
   const people: Person[] = current.people.map((p) => ({ ...p, chairIds: [...(p.chairIds ?? [])] }));
   const succession = { ...current.succession };
-  const cities = new Map(current.cities.map((c) => [normCity(c.nome), c]));
   const hierarquia = [...current.hierarquia];
   const personByName = new Map(people.map((p) => [norm(p.nome), p]));
   const nextId = (prefix: string, list: { id: string }[]) => {
@@ -231,20 +221,6 @@ export function applyWorkbook(wb: XLSX.WorkBook, current: AppData): { data: AppD
     while (list.some((x) => x.id === `${prefix}${String(i).padStart(3, "0")}`)) i++;
     return `${prefix}${String(i).padStart(3, "0")}`;
   };
-
-  // Cidades
-  for (const r of sheetRows(wb, "Cidades")) {
-    const nome = pick(r, "Cidade/UF");
-    const lat = Number(pick(r, "Latitude").replace(",", "."));
-    const lng = Number(pick(r, "Longitude").replace(",", "."));
-    if (!nome) continue;
-    if (!Number.isFinite(lat) || !Number.isFinite(lng) || pick(r, "Latitude") === "" || pick(r, "Longitude") === "") {
-      stats.avisos.push(`Cidades: "${nome}" sem latitude/longitude válidas`);
-      continue;
-    }
-    cities.set(normCity(nome), { nome, lat, lng });
-    stats.cidades++;
-  }
 
   // Hierarquia (aditiva)
   for (const r of sheetRows(wb, "Hierarquia")) {
@@ -361,21 +337,19 @@ export function applyWorkbook(wb: XLSX.WorkBook, current: AppData): { data: AppD
     set("conversaDesenvolvimento", parseEnum(CONVERSA, pick(r, COL.conversa), COL.conversa, av, nome));
     set("continuidade", parseEnum(CONTINUIDADE, pick(r, COL.continuidade), COL.continuidade, av, nome));
     set("possivelSucessorTexto", pick(r, COL.sucessor));
-    set("nineBox2025", parseNineBox(pick(r, COL.nb25), COL.nb25, av, nome));
-    set("nineBox2026", parseNineBox(pick(r, COL.nb26), COL.nb26, av, nome));
+    set("dataConversaCarreira", parseData(pick(r, COL.dataConversa), av, nome));
+    set("desempenho", parseEnum(DESEMPENHO, pick(r, COL.desempenho), COL.desempenho, av, nome));
     const lid = norm(pick(r, COL.lidera));
     if (lid) {
       if (lid === "SIM") rec.lideraEquipe = true;
       else if (lid === "NAO") rec.lideraEquipe = false;
       else av.push(`${nome}: valor "${pick(r, COL.lidera)}" não reconhecido em ${COL.lidera}`);
     }
-    const favTxt = pick(r, COL.fav).replace("%", "").replace(",", ".");
-    if (favTxt) {
-      let fav = Number(favTxt);
-      if (Number.isFinite(fav)) {
-        if (fav > 0 && fav <= 1 && favTxt.includes(".")) fav = fav * 100; // célula formatada como % no Excel
-        rec.favorabilidade2026 = Math.round(fav * 10) / 10;
-      } else av.push(`${nome}: favorabilidade "${favTxt}" inválida`);
+    const enpsTxt = pick(r, COL.enps).replace(",", ".");
+    if (enpsTxt) {
+      const enps = Number(enpsTxt);
+      if (Number.isFinite(enps) && enps >= -100 && enps <= 100) rec.enps2026 = enps;
+      else av.push(`${nome}: e-NPS "${enpsTxt}" inválido (use um número de -100 a 100)`);
     }
     succession[p.id] = rec;
   }
@@ -386,7 +360,6 @@ export function applyWorkbook(wb: XLSX.WorkBook, current: AppData): { data: AppD
       people,
       succession,
       hierarquia,
-      cities: [...cities.values()] as City[],
       updatedAt: new Date().toISOString(),
     },
     stats,

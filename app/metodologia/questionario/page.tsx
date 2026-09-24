@@ -1,4 +1,4 @@
-import { CONTINUIDADE, CONVERSA, HORIZONTE, MOBILIDADE, NINE_BOX } from "@/lib/config.ts";
+import { CONTINUIDADE, CONVERSA, DESEMPENHO, HORIZONTE, MOBILIDADE } from "@/lib/config.ts";
 
 const opts = (l: { label: string }[]) => l.map((i) => i.label).join(" · ");
 
@@ -9,13 +9,14 @@ export default function Page() {
     ["Todos", "O que falta para você assumir essa posição? (Desenvolvimento 1)", "Texto livre"],
     ["Todos", "Existe uma segunda posição de interesse? (Prioridade 2, Horizonte 2, Desenvolvimento 2)", "Opcional, mesmas opções"],
     ["Todos", "Em que cidade você trabalha hoje?", "Cidade/UF"],
+    ["Todos", "Data da conversa de carreira em que as respostas foram dadas", "dd/mm/aaaa"],
     ["Todos", "Para assumir uma nova posição, até onde você se mudaria?", opts(MOBILIDADE)],
     ["Todos", "Você tem conversa de desenvolvimento com seu gestor?", opts(CONVERSA)],
     ["Líderes", "Se você saísse hoje, como ficaria a continuidade da sua posição?", opts(CONTINUIDADE)],
     ["Líderes", "Quem você indica como possível sucessor da sua posição?", "Nome e sobrenome (um ou mais, separados por vírgula)"],
-    ["RH", "Nine Box 2025 e 2026", NINE_BOX.map((n) => `${n.code} - ${n.label}`).join(" · ")],
+    ["RH", "Avaliação de desempenho do ciclo atual", DESEMPENHO.map((n) => n.label).join(" · ") + " · (vazio = não avaliado)"],
     ["RH", "Lidera equipe hoje?", "Sim · Não"],
-    ["RH", "Favorabilidade do time na pesquisa de clima 2026", "Percentual (0 a 100), só para quem lidera equipe"],
+    ["RH", "e-NPS da área na pesquisa de clima 2026", "Número de -100 a 100, só para quem lidera equipe"],
   ];
   return (
     <>
@@ -43,8 +44,8 @@ export default function Page() {
           </tbody>
         </table>
         <div className="callout warn">
-          Interesse declarado é pré-condição para aparecer como sucessor. Uma pessoa que não responde o questionário não aparece em
-          nenhuma posição, mesmo com Nine Box alto ou indicação do líder.
+          Para aparecer numa posição a pessoa precisa se indicar a ela ou ser indicada pelo líder da posição. Quem não responde o
+          questionário e não é indicado não aparece em nenhuma posição, mesmo com avaliação de desempenho alta.
         </div>
       </div>
     </>

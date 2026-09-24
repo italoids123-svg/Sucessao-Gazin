@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { HIERARQUIA_PADRAO, SEDE } from "./config.ts";
+import { HIERARQUIA_PADRAO, SEDE, pontosClima } from "./config.ts";
 import { buildCtx, buildHierMap, planoDesenvolvimento, successorsFor, textoIndicaPessoa } from "./engine.ts";
-import { avaliarMobilidade, buildCoordIndex, mobilidadeAlcancaCidade } from "./geo.ts";
+import { avaliarMobilidade, mobilidadeAlcancaCidade, ufDe } from "./geo.ts";
 import type { AppData, Chair, Person } from "./types.ts";
 
 const chair = (id: string, cargo: string, nivel: string, cidade = ""): Chair => ({
@@ -24,22 +24,19 @@ function base(): AppData {
       person("sup", "Carlos Eduardo Lima", "Supervisão", "s1"),
       person("coord", "Beatriz Nunes", "Coordenação"),
       person("analista", "Diego Alves", "Analista / Técnico"),
+      person("espec", "Eduardo Ramos", "Especialista"),
     ],
     succession: {
-      lider: { possivelSucessorTexto: "Carlos Lima, talvez Beatriz" },
+      lider: { possivelSucessorTexto: "Carlos Lima, talvez Beatriz; Eduardo Ramos" },
       sup: {
         prioridade1: "Gerente regional", horizonte1: "imediato", mobilidade: "local",
-        nineBox2025: "9", nineBox2026: "9", lideraEquipe: true, favorabilidade2026: 80,
-        conversaDesenvolvimento: "andamento",
+        desempenho: "estrela", lideraEquipe: true, enps2026: 90, conversaDesenvolvimento: "andamento",
       },
-      coord: { prioridade1: "gerente  REGIONAL", horizonte1: "mais5", mobilidade: "qualquer", nineBox2026: "5" },
+      coord: { prioridade1: "gerente  REGIONAL", horizonte1: "mais5", mobilidade: "qualquer", desempenho: "solido" },
       analista: { prioridade2: "Gerente regional", horizonte2: "ate3", mobilidade: "" },
+      espec: { desempenho: "estrela", mobilidade: "estado", localidadeAtual: "Londrina - PR" },
     },
     hierarquia: HIERARQUIA_PADRAO,
-    cities: [
-      { nome: "Maringá/PR", lat: -23.42, lng: -51.93 },
-      { nome: "Cuiabá/MT", lat: -15.6, lng: -56.1 },
-    ],
     updatedAt: null,
   };
 }
@@ -48,26 +45,22 @@ test("hierarquia agrupa múltiplos níveis elegíveis", () => {
   assert.deepEqual(buildHierMap(HIERARQUIA_PADRAO)["Gerência"], ["Coordenação", "Supervisão", "Especialista"]);
 });
 
-test("cadeira em Maringá: grupos, indicação e pontuação", () => {
+test("cadeira em Maringá: pontuação pelo modelo de critérios", () => {
   const r = successorsFor(base().chairs[0], buildCtx(base()));
-  // Supervisor: 9box 40 + indicação 20 + fav 8 + interesse 10 + mobilidade 20 = 98
-  assert.equal(r.dentro.length, 1);
-  assert.equal(r.dentro[0].person.id, "sup");
-  assert.equal(r.dentro[0].score, 98);
-  assert.equal(r.dentro[0].indicadoPeloLider, true);
-  // Coordenação: 9box 5 => 20 + interesse 2 + mobilidade 20 = 42 de 90 (não lidera equipe) => 47
-  assert.equal(r.abaixo.length, 1);
-  assert.equal(r.abaixo[0].score, 47);
-  // "Beatriz" sozinho não é indicação (um termo só)
-  assert.equal(r.abaixo[0].indicadoPeloLider, false);
-  // Analista: nível não alimenta Gerência; mobilidade vazia não bloqueia
-  assert.equal(r.fora.map((c) => c.person.id).join(), "analista");
+  // Supervisor: desempenho 30 + líder 5 + interesse 5 + clima 30 + prontidão 10 + mobilidade local 2 = 82
+  // Especialista só indicado pelo líder: 30 + 5 + 0 + (clima n/a) + 0 + estado 13 = 48 de 70 => 69
+  assert.deepEqual(r.dentro.map((c) => [c.person.id, c.score, c.prioridade]), [["sup", 82, 1], ["espec", 69, null]]);
+  assert.ok(r.dentro.every((c) => c.indicadoPeloLider));
+  // Coordenação: 14 + 0 + 5 + 1,5 + 20 = 40,5 de 70 => 58 ("Beatriz" sozinho não é indicação)
+  assert.deepEqual(r.abaixo.map((c) => [c.person.id, c.score, c.indicadoPeloLider]), [["coord", 58, false]]);
+  // Analista: nível não alimenta Gerência; mobilidade vazia não filtra. 5 + 6 = 11 de 70 => 16
+  assert.deepEqual(r.fora.map((c) => [c.person.id, c.score]), [["analista", 16]]);
 });
 
-test("mobilidade local filtra cadeira em outra cidade", () => {
+test("mobilidade filtra por cidade e por UF", () => {
   const r = successorsFor(base().chairs[1], buildCtx(base()));
-  assert.equal(r.dentro.length + r.abaixo.length + r.fora.length, 2);
-  assert.ok(![...r.dentro, ...r.abaixo].some((c) => c.person.id === "sup"));
+  const ids = [...r.dentro, ...r.abaixo, ...r.fora].map((c) => c.person.id).sort();
+  assert.deepEqual(ids, ["analista", "coord"]);
 });
 
 test("ocupante nunca é sucessor da própria cadeira", () => {
@@ -78,18 +71,18 @@ test("ocupante nunca é sucessor da própria cadeira", () => {
 });
 
 test("regras de mobilidade independentes", () => {
-  const idx = buildCoordIndex([
-    { nome: "Perto/PR", lat: -23.5, lng: -53.3 }, // ~13 km da sede
-    { nome: "Umuarama/PR", lat: -23.766, lng: -53.325 }, // ~43 km em linha reta
-    { nome: "Maringá/PR", lat: -23.42, lng: -51.93 },
-  ]);
-  assert.equal(avaliarMobilidade(SEDE, SEDE, "sede", idx), "alcanca");
-  assert.equal(avaliarMobilidade("Umuarama/PR", "Umuarama/PR", "sede", idx), "nao_alcanca");
-  assert.equal(avaliarMobilidade("Douradina - PR", "Perto/PR", "raio_regional", idx), "alcanca");
-  assert.equal(avaliarMobilidade(SEDE, "Umuarama/PR", "raio_regional", idx), "nao_alcanca");
-  assert.equal(avaliarMobilidade(SEDE, "Maringá/PR", "raio_regional", idx), "nao_alcanca");
-  assert.equal(avaliarMobilidade(SEDE, "Cidade Nova/XX", "raio_regional", idx), "indeterminado");
-  assert.equal(mobilidadeAlcancaCidade(SEDE, "", "local", idx), true);
+  assert.equal(ufDe("Douradina - PR"), "PR");
+  assert.equal(avaliarMobilidade(SEDE, SEDE, "matriz"), "alcanca");
+  assert.equal(avaliarMobilidade("Umuarama/PR", "Umuarama/PR", "matriz"), "nao_alcanca");
+  assert.equal(avaliarMobilidade("Douradina - PR", "Maringá/PR", "estado"), "alcanca");
+  assert.equal(avaliarMobilidade(SEDE, "Cuiabá/MT", "estado"), "nao_alcanca");
+  assert.equal(avaliarMobilidade(SEDE, "Cidade sem UF", "estado"), "indeterminado");
+  assert.equal(avaliarMobilidade("Maringá/PR", "Umuarama/PR", "local"), "nao_alcanca");
+  assert.equal(mobilidadeAlcancaCidade(SEDE, "", "local"), true);
+});
+
+test("faixas de e-NPS", () => {
+  assert.deepEqual([-10, 29.5, 30, 50, 51, 85, 86].map(pontosClima), [6, 6, 13, 13, 21, 21, 30]);
 });
 
 test("texto do líder casa nome parcial com dois termos", () => {
@@ -98,7 +91,17 @@ test("texto do líder casa nome parcial com dois termos", () => {
   assert.ok(!textoIndicaPessoa("Maria Silva", "João Carlos da Silva"));
 });
 
+test("nome indicado ambíguo só vale para quem se indicou à posição", () => {
+  const d = base();
+  d.people.push(person("homonimo", "Carlos Augusto Lima", "Supervisão"));
+  d.succession.homonimo = { desempenho: "estrela" };
+  const r = successorsFor(d.chairs[0], buildCtx(d));
+  const todos = [...r.dentro, ...r.abaixo, ...r.fora];
+  assert.ok(!todos.some((c) => c.person.id === "homonimo"));
+  assert.ok(todos.find((c) => c.person.id === "sup")!.indicadoPeloLider);
+});
+
 test("plano de desenvolvimento considera nível e alimentadores", () => {
   const p = planoDesenvolvimento("Gerência", buildCtx(base()));
-  assert.deepEqual(p, { ativos: 1, total: 3, pct: 33 });
+  assert.deepEqual(p, { ativos: 1, total: 4, pct: 25 });
 });

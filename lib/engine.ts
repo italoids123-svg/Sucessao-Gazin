@@ -1,5 +1,5 @@
-import { CORTE_ADERENCIA, HORIZONTE, NINE_BOX, PESOS, PESO_CICLO_ANTERIOR, PESO_CICLO_ATUAL } from "./config.ts";
-import { avaliarMobilidade, buildCoordIndex, type CoordIndex } from "./geo.ts";
+import { CORTE_ADERENCIA, DESEMPENHO, HORIZONTE, MOBILIDADE, PESOS, pontosClima } from "./config.ts";
+import { avaliarMobilidade } from "./geo.ts";
 import type {
   AppData,
   Candidate,
@@ -37,7 +37,6 @@ export interface EngineCtx {
   peopleById: Map<string, Person>;
   succession: AppData["succession"];
   hierMap: Record<string, string[]>;
-  coords: CoordIndex;
   chairsById: Map<string, Chair>;
 }
 
@@ -48,7 +47,6 @@ export function buildCtx(data: AppData): EngineCtx {
     peopleById: new Map(data.people.map((p) => [p.id, p])),
     succession: data.succession,
     hierMap: buildHierMap(data.hierarquia),
-    coords: buildCoordIndex(data.cities),
     chairsById: new Map(data.chairs.map((c) => [c.id, c])),
   };
 }
@@ -71,6 +69,17 @@ export function cidadeDaPessoa(p: Person, rec: SuccessionRecord | undefined, ctx
 const STOP = new Set(["DA", "DE", "DO", "DOS", "DAS", "E"]);
 const tokens = (s: string) => norm(s).split(/[^A-Z]+/).filter((t) => t && !STOP.has(t));
 
+function trechosDoTexto(texto: string): string[][] {
+  return norm(texto)
+    .split(/[,;/\n]| E | OU /)
+    .map(tokens)
+    .filter((t) => t.length >= 2);
+}
+
+function trechoCasaNome(trecho: string[], nome: string[]): boolean {
+  return trecho[0] === nome[0] && trecho.every((x) => nome.includes(x));
+}
+
 /**
  * O texto livre do líder cita o candidato? Cada trecho separado por vírgula, ";", "/", " e " ou
  * quebra de linha é comparado ao nome: mesmo primeiro nome e todos os demais termos do trecho
@@ -79,11 +88,25 @@ const tokens = (s: string) => norm(s).split(/[^A-Z]+/).filter((t) => t && !STOP.
 export function textoIndicaPessoa(texto: string | undefined, nomeCompleto: string): boolean {
   if (!texto) return false;
   const nome = tokens(nomeCompleto);
-  if (nome.length === 0) return false;
-  return norm(texto)
-    .split(/[,;/\n]| E | OU /)
-    .map(tokens)
-    .some((t) => t.length >= 2 && t[0] === nome[0] && t.every((x) => nome.includes(x)));
+  return nome.length > 0 && trechosDoTexto(texto).some((t) => trechoCasaNome(t, nome));
+}
+
+export interface IndicacaoResolvida {
+  unicos: Set<string>; // pessoas indicadas sem ambiguidade
+  ambiguos: { trecho: string; pessoas: Person[] }[]; // trecho que casa com 2+ pessoas da base
+}
+
+/** Resolve o texto do líder contra a base inteira, separando indicações únicas das ambíguas (homônimos). */
+export function resolverIndicacao(texto: string | undefined, people: Person[]): IndicacaoResolvida {
+  const res: IndicacaoResolvida = { unicos: new Set(), ambiguos: [] };
+  if (!texto) return res;
+  const nomes = people.map((p) => ({ p, t: tokens(p.nome) }));
+  for (const trecho of trechosDoTexto(texto)) {
+    const hits = nomes.filter(({ t }) => t.length > 0 && trechoCasaNome(trecho, t)).map(({ p }) => p);
+    if (hits.length === 1) res.unicos.add(hits[0].id);
+    else if (hits.length > 1) res.ambiguos.push({ trecho: trecho.join(" "), pessoas: hits });
+  }
+  return res;
 }
 
 export function interesseNaCadeira(
@@ -96,80 +119,70 @@ export function interesseNaCadeira(
   return null;
 }
 
-function nineBoxFator(code: string | undefined): number | null {
-  if (!code) return null;
-  return NINE_BOX.find((n) => n.code === String(code))?.fator ?? null;
-}
-
 export function pontuar(
-  person: Person,
   rec: SuccessionRecord,
-  chair: Chair,
-  horizonte: Horizonte,
+  interesse: { prioridade: 1 | 2; horizonte: Horizonte } | null,
   indicado: boolean,
-  ctx: EngineCtx,
 ): { score: number; criterios: CriterioScore[] } {
   const criterios: CriterioScore[] = [];
 
-  const f25 = nineBoxFator(rec.nineBox2025);
-  const f26 = nineBoxFator(rec.nineBox2026);
-  let fator = 0;
-  let det = "Sem avaliação registrada";
-  if (f25 !== null && f26 !== null) {
-    fator = PESO_CICLO_ANTERIOR * f25 + PESO_CICLO_ATUAL * f26;
-    det = `2025: quadrante ${rec.nineBox2025} · 2026: quadrante ${rec.nineBox2026}`;
-  } else if (f26 !== null) {
-    fator = f26;
-    det = `2026: quadrante ${rec.nineBox2026}`;
-  } else if (f25 !== null) {
-    fator = f25;
-    det = `2025: quadrante ${rec.nineBox2025}`;
-  }
-  criterios.push({ key: "nineBox", label: "Nine Box", pontos: fator * PESOS.nineBox, max: PESOS.nineBox, aplicavel: true, detalhe: det });
+  const aval = DESEMPENHO.find((d) => d.code === rec.desempenho);
+  criterios.push({
+    key: "desempenho",
+    label: "Desempenho",
+    pontos: aval?.pontos ?? 0,
+    max: PESOS.desempenho,
+    aplicavel: true,
+    detalhe: aval ? `${aval.label} (${aval.descricao})` : "Não avaliado no ciclo",
+  });
 
   criterios.push({
-    key: "indicacao",
+    key: "indicacaoLider",
     label: "Indicação do líder",
-    pontos: indicado ? PESOS.indicacao : 0,
-    max: PESOS.indicacao,
+    pontos: indicado ? PESOS.indicacaoLider : 0,
+    max: PESOS.indicacaoLider,
     aplicavel: true,
     detalhe: indicado ? "Indicado nominalmente pelo ocupante atual" : "Não indicado pelo ocupante atual",
   });
 
-  const lidera = rec.lideraEquipe === true;
-  const fav = typeof rec.favorabilidade2026 === "number" ? Math.max(0, Math.min(100, rec.favorabilidade2026)) : null;
-  criterios.push({
-    key: "favorabilidade",
-    label: "Favorabilidade do time",
-    pontos: lidera && fav !== null ? (fav / 100) * PESOS.favorabilidade : 0,
-    max: PESOS.favorabilidade,
-    aplicavel: lidera,
-    detalhe: !lidera ? "Não lidera equipe: critério não se aplica" : fav === null ? "Sem resultado de clima" : `${fav}% de favorabilidade`,
-  });
-
-  const h = HORIZONTE.find((x) => x.code === horizonte);
   criterios.push({
     key: "interesse",
-    label: "Interesse declarado",
-    pontos: h?.pontos ?? 0,
+    label: "Interesse autodeclarado",
+    pontos: interesse ? PESOS.interesse : 0,
     max: PESOS.interesse,
     aplicavel: true,
-    detalhe: h ? `Horizonte: ${h.label}` : "Horizonte não informado",
+    detalhe: interesse ? `Indicou-se à posição (Prioridade ${interesse.prioridade})` : "Não se indicou à posição",
   });
 
-  const mob = avaliarMobilidade(cidadeDaPessoa(person, rec, ctx), chair.cidade, rec.mobilidade, ctx.coords);
+  const lidera = rec.lideraEquipe === true;
+  const enps = typeof rec.enps2026 === "number" ? rec.enps2026 : null;
+  criterios.push({
+    key: "clima",
+    label: "Pesquisa de clima",
+    pontos: lidera && enps !== null ? pontosClima(enps) : 0,
+    max: PESOS.clima,
+    aplicavel: lidera,
+    detalhe: !lidera ? "Não lidera equipe: critério não se aplica" : enps === null ? "Sem resultado de clima 2026" : `e-NPS 2026: ${enps}`,
+  });
+
+  const h = interesse ? HORIZONTE.find((x) => x.code === interesse.horizonte) : undefined;
+  criterios.push({
+    key: "prontidao",
+    label: "Prontidão declarada",
+    pontos: h?.pontos ?? 0,
+    max: PESOS.prontidao,
+    aplicavel: true,
+    detalhe: h ? `Horizonte: ${h.label}` : interesse ? "Horizonte não informado" : "Sem prontidão declarada para esta posição",
+  });
+
+  const mob = MOBILIDADE.find((m) => m.code === rec.mobilidade);
   criterios.push({
     key: "mobilidade",
-    label: "Mobilidade geográfica",
-    pontos: mob === "alcanca" ? PESOS.mobilidade : 0,
+    label: "Mobilidade",
+    pontos: mob?.pontos ?? 0,
     max: PESOS.mobilidade,
-    aplicavel: mob !== "indeterminado",
-    detalhe:
-      mob === "alcanca"
-        ? "Mobilidade alcança a cidade da posição"
-        : mob === "nao_alcanca"
-          ? "Mobilidade não alcança a cidade da posição"
-          : "Sem dado de cidade/mobilidade: critério fora da base",
+    aplicavel: true,
+    detalhe: mob ? `Disponibilidade: ${mob.label}` : "Mobilidade não informada",
   });
 
   const aplic = criterios.filter((c) => c.aplicavel);
@@ -182,22 +195,33 @@ export function successorsFor(chair: Chair, ctx: EngineCtx): ChairResult {
   const res: ChairResult = { dentro: [], abaixo: [], fora: [] };
   const elegiveis = ctx.hierMap[chair.nivel] ?? [];
   const ocupante = occupantOf(chair, ctx);
-  const textoLider = ocupante ? ctx.succession[ocupante.id]?.possivelSucessorTexto : undefined;
+  const indicacao = resolverIndicacao(ocupante ? ctx.succession[ocupante.id]?.possivelSucessorTexto : undefined, ctx.people);
 
   for (const p of ctx.people) {
     if (chairIdsOf(p).includes(chair.id)) continue;
-    const rec = ctx.succession[p.id];
-    if (!rec) continue;
+    const rec = ctx.succession[p.id] ?? {};
     const interesse = interesseNaCadeira(rec, chair);
-    if (!interesse) continue;
-    // Mobilidade é filtro para os três grupos: quem declarou que não vai até a cidade da posição
+    // Nome ambíguo (homônimos) só vale para quem também se indicou à posição.
+    const indicado =
+      indicacao.unicos.has(p.id) || (!!interesse && indicacao.ambiguos.some((a) => a.pessoas.some((x) => x.id === p.id)));
+    // Entra quem se indicou à posição OU foi indicado pelo líder dela (o "match" soma as duas pontas).
+    if (!interesse && !indicado) continue;
+    // Mobilidade é filtro nos três grupos: quem declarou que não vai até a cidade da posição
     // não é sucessor dela. Sem dado geográfico, não bloqueia.
-    if (avaliarMobilidade(cidadeDaPessoa(p, rec, ctx), chair.cidade, rec.mobilidade, ctx.coords) === "nao_alcanca") continue;
+    if (avaliarMobilidade(cidadeDaPessoa(p, rec, ctx), chair.cidade, rec.mobilidade) === "nao_alcanca") continue;
 
-    const indicado = textoIndicaPessoa(textoLider, p.nome);
-    const { score, criterios } = pontuar(p, rec, chair, interesse.horizonte, indicado, ctx);
+    const { score, criterios } = pontuar(rec, interesse, indicado);
     const grupo = !elegiveis.includes(p.nivel) ? "fora" : score >= CORTE_ADERENCIA ? "dentro" : "abaixo";
-    res[grupo].push({ person: p, record: rec, ...interesse, score, criterios, indicadoPeloLider: indicado, grupo });
+    res[grupo].push({
+      person: p,
+      record: rec,
+      prioridade: interesse?.prioridade ?? null,
+      horizonte: interesse?.horizonte ?? "",
+      score,
+      criterios,
+      indicadoPeloLider: indicado,
+      grupo,
+    });
   }
   for (const g of [res.dentro, res.abaixo, res.fora]) g.sort((a, b) => b.score - a.score || a.person.nome.localeCompare(b.person.nome));
   return res;

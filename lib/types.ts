@@ -30,10 +30,10 @@ export interface HierarquiaEntry {
 }
 
 export type Horizonte = "imediato" | "ate3" | "3a5" | "mais5" | "";
-export type Mobilidade = "local" | "sede" | "raio_regional" | "qualquer" | "";
+export type Mobilidade = "local" | "matriz" | "estado" | "qualquer" | "";
 export type ConversaDesenvolvimento = "andamento" | "sem_formalizar" | "nao" | "";
 export type Continuidade = "imediata" | "com_suporte" | "nao_identifico" | "sem_elementos" | "";
-export type NineBoxCode = string; // "1".."9", "" quando não avaliado
+export type DesempenhoCode = string; // código de DESEMPENHO (config.ts), "" quando não avaliado
 
 export interface SuccessionRecord {
   prioridade1?: string;
@@ -47,25 +47,18 @@ export interface SuccessionRecord {
   conversaDesenvolvimento?: ConversaDesenvolvimento;
   continuidade?: Continuidade;
   possivelSucessorTexto?: string;
-  nineBox2025?: NineBoxCode;
-  nineBox2026?: NineBoxCode;
+  dataConversaCarreira?: string; // quando interesse/prontidão/mobilidade foram declarados (mudam com o tempo)
+  desempenho?: DesempenhoCode; // avaliação de desempenho do ciclo atual
   lideraEquipe?: boolean;
-  favorabilidade2026?: number | "";
+  enps2026?: number | ""; // e-NPS da área na pesquisa de clima 2026
 }
 export type SuccessionMap = Record<string, SuccessionRecord>;
-
-export interface City {
-  nome: string; // "Cidade/UF"
-  lat: number;
-  lng: number;
-}
 
 export interface AppData {
   chairs: Chair[];
   people: Person[];
   succession: SuccessionMap;
   hierarquia: HierarquiaEntry[];
-  cities: City[];
   updatedAt: string | null; // ISO da última importação
 }
 
@@ -83,7 +76,7 @@ export interface CriterioScore {
 export interface Candidate {
   person: Person;
   record: SuccessionRecord;
-  prioridade: 1 | 2;
+  prioridade: 1 | 2 | null; // null = sem interesse declarado, entrou só pela indicação do líder
   horizonte: Horizonte;
   score: number;
   criterios: CriterioScore[];
