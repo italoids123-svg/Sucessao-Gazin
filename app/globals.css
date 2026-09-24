@@ -259,3 +259,12 @@ table.t td.num, table.t th.num { text-align: right; }
 .menu button span { font-size: 12px; color: var(--muted); }
 .btn:disabled { opacity: 0.6; cursor: progress; }
 .modal-tools { display: flex; gap: 8px; align-items: flex-start; flex-shrink: 0; }
+
+/* ---------- Percentuais nas tabelas de cobertura ---------- */
+.pct { font-size: 12px; color: var(--muted); }
+.pct-destaque { font-weight: 700; padding: 2px 8px; border-radius: 12px; font-size: 13px; }
+.pct-destaque.verde { background: var(--verde-bg); color: var(--verde); }
+.pct-destaque.amarelo { background: var(--amarelo-bg); color: var(--amarelo); }
+.pct-destaque.vermelho { background: var(--vermelho-bg); color: var(--vermelho); }
+table.t td.num { white-space: nowrap; }
+.table-wrap { overflow-x: auto; max-width: 100%; }

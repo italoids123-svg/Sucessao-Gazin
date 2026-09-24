@@ -19,6 +19,48 @@ function MiniBar({ verde, amarelo, vermelho, total }: { verde: number; amarelo: 
   );
 }
 
+type Resumo = { verde: number; amarelo: number; vermelho: number; total: number };
+const pct = (n: number, total: number) => (total ? Math.round((n / total) * 100) : 0);
+
+/** Colunas numéricas compartilhadas pelas tabelas de cobertura: contagem e percentual de cada faixa. */
+function CelulasCobertura(r: Resumo) {
+  const comSucessor = pct(r.verde + r.amarelo, r.total);
+  const cor = comSucessor >= 70 ? "verde" : comSucessor >= 40 ? "amarelo" : "vermelho";
+  return (
+    <>
+      <td>
+        <MiniBar {...r} />
+      </td>
+      <td className="num">
+        <span className={`pct-destaque ${cor}`}>{comSucessor}%</span>
+      </td>
+      {[r.verde, r.amarelo, r.vermelho].map((n, i) => (
+        <td key={i} className="num">
+          {n} <span className="pct">({pct(n, r.total)}%)</span>
+        </td>
+      ))}
+    </>
+  );
+}
+
+function CabecalhoCobertura({ primeira }: { primeira: string }) {
+  return (
+    <thead>
+      <tr>
+        <th>{primeira}</th>
+        <th className="num">Posições</th>
+        <th>Cobertura</th>
+        <th className="num" title="Posições com pelo menos 1 sucessor mapeado">
+          Com sucessor
+        </th>
+        <th className="num">2 ou mais</th>
+        <th className="num">1</th>
+        <th className="num">0</th>
+      </tr>
+    </thead>
+  );
+}
+
 export default function Overview() {
   const { data, results, ctx } = useStore();
   const router = useRouter();
@@ -90,17 +132,9 @@ export default function Overview() {
 
       <div className="doc">
         <h2>Cobertura por nível</h2>
+        <div className="table-wrap">
         <table className="t">
-          <thead>
-            <tr>
-              <th>Nível</th>
-              <th className="num">Posições</th>
-              <th>Cobertura</th>
-              <th className="num">2 ou mais</th>
-              <th className="num">1</th>
-              <th className="num">0</th>
-            </tr>
-          </thead>
+          <CabecalhoCobertura primeira="Nível" />
           <tbody>
             {porNivel.map(({ n, resumo }) => (
               <tr key={n.slug} className="overview-row" onClick={() => router.push(`/nivel/${n.slug}`)}>
@@ -108,44 +142,28 @@ export default function Overview() {
                   <Link href={`/nivel/${n.slug}`}>{n.nome}</Link>
                 </td>
                 <td className="num">{resumo.total}</td>
-                <td>
-                  <MiniBar {...resumo} />
-                </td>
-                <td className="num">{resumo.verde}</td>
-                <td className="num">{resumo.amarelo}</td>
-                <td className="num">{resumo.vermelho}</td>
+                <CelulasCobertura {...resumo} />
               </tr>
             ))}
           </tbody>
         </table>
+        </div>
 
         <h2>Cobertura por diretoria</h2>
+        <div className="table-wrap">
         <table className="t">
-          <thead>
-            <tr>
-              <th>Diretoria / área</th>
-              <th className="num">Posições</th>
-              <th>Cobertura</th>
-              <th className="num">2 ou mais</th>
-              <th className="num">1</th>
-              <th className="num">0</th>
-            </tr>
-          </thead>
+          <CabecalhoCobertura primeira="Diretoria / área" />
           <tbody>
             {diretorias.map(({ d, resumo }) => (
               <tr key={d}>
                 <td>{d}</td>
                 <td className="num">{resumo.total}</td>
-                <td>
-                  <MiniBar {...resumo} />
-                </td>
-                <td className="num">{resumo.verde}</td>
-                <td className="num">{resumo.amarelo}</td>
-                <td className="num">{resumo.vermelho}</td>
+                <CelulasCobertura {...resumo} />
               </tr>
             ))}
           </tbody>
         </table>
+        </div>
 
         <h2>Qualidade da base</h2>
         <ul>
