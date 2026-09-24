@@ -3,14 +3,14 @@
  "chairs": [
   {
    "id": "c001",
-   "nome": "Fernando Sanches Graci",
+   "nome": "",
    "cargo": "Controller",
    "nivel": "Diretoria",
    "diretoria": "Controller",
    "cidade": "",
    "tempoCasa": null,
    "prefixLocalidade": false,
-   "vago": false,
+   "vago": true,
    "gestor": "Gilmar Alves de Oliveira",
    "gestorCargo": "Presidente"
   },
@@ -51,7 +51,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Fernando Sanches Graci",
-   "gestorCargo": "Controller"
+   "gestorCargo": "Diretor financeiro"
   },
   {
    "id": "c005",
@@ -64,7 +64,7 @@
    "prefixLocalidade": false,
    "vago": false,
    "gestor": "Fernando Sanches Graci",
-   "gestorCargo": "Controller"
+   "gestorCargo": "Diretor financeiro"
   },
   {
    "id": "c006",
@@ -2345,18 +2345,6 @@
  "people": [
   {
    "id": "p001",
-   "nome": "Fernando Sanches Graci",
-   "nivel": "Diretoria",
-   "cargo": "Controller",
-   "diretoria": "Controller",
-   "chairId": "c001",
-   "chairIds": [
-    "c001",
-    "c137"
-   ]
-  },
-  {
-   "id": "p002",
    "nome": "Francieli Bessa Silva Tavares",
    "nivel": "Coordenação",
    "cargo": "Coordenador contábil/tributário",
@@ -2367,7 +2355,7 @@
    ]
   },
   {
-   "id": "p003",
+   "id": "p002",
    "nome": "Luiz Fernando Bandeira",
    "nivel": "Coordenação",
    "cargo": "Coordenador de orçamento",
@@ -2378,7 +2366,7 @@
    ]
   },
   {
-   "id": "p004",
+   "id": "p003",
    "nome": "Cleiton Cesar Silva",
    "nivel": "Gerência",
    "cargo": "Gerente de controladoria",
@@ -2389,7 +2377,7 @@
    ]
   },
   {
-   "id": "p005",
+   "id": "p004",
    "nome": "Diego Henrique Garcia Soriani",
    "nivel": "Gerência",
    "cargo": "Gerente de fundo de investimento",
@@ -2400,7 +2388,7 @@
    ]
   },
   {
-   "id": "p006",
+   "id": "p005",
    "nome": "Fabricio Silva Facco",
    "nivel": "Supervisão",
    "cargo": "Supervisor de operação tributária",
@@ -2411,7 +2399,7 @@
    ]
   },
   {
-   "id": "p007",
+   "id": "p006",
    "nome": "Leandro Tonhi Mingote",
    "nivel": "Supervisão",
    "cargo": "Supervisor contábil",
@@ -2422,7 +2410,7 @@
    ]
   },
   {
-   "id": "p008",
+   "id": "p007",
    "nome": "Jaciane Pestana Souza",
    "nivel": "Supervisão",
    "cargo": "Supervisor de contabilidade",
@@ -2433,7 +2421,7 @@
    ]
   },
   {
-   "id": "p009",
+   "id": "p008",
    "nome": "Vinicius Ramos da Silva",
    "nivel": "Coordenação",
    "cargo": "Coordenador central de compras",
@@ -2444,7 +2432,7 @@
    ]
   },
   {
-   "id": "p010",
+   "id": "p009",
    "nome": "Renato Aparecido Andrade",
    "nivel": "Gerência",
    "cargo": "Gerente administrativo",
@@ -2455,7 +2443,7 @@
    ]
   },
   {
-   "id": "p011",
+   "id": "p010",
    "nome": "Jeferson Duarte Goncalves",
    "nivel": "Gerência",
    "cargo": "Gerente administrativo (parceiros de negócio)",
@@ -2466,7 +2454,7 @@
    ]
   },
   {
-   "id": "p012",
+   "id": "p011",
    "nome": "Thais Tarcia de Araujo Oliveira",
    "nivel": "Gerência",
    "cargo": "Gerente administrativo de varejo",
@@ -2477,7 +2465,7 @@
    ]
   },
   {
-   "id": "p013",
+   "id": "p012",
    "nome": "Renan da Silva Medeiros",
    "nivel": "Gerência Executiva",
    "cargo": "Gerente administrativo geral",
@@ -2488,7 +2476,7 @@
    ]
   },
   {
-   "id": "p014",
+   "id": "p013",
    "nome": "Peter Luiz Cruz Pregidio",
    "nivel": "Gerência Executiva",
    "cargo": "Gerente administrativo serviços financeiros",
@@ -2499,7 +2487,7 @@
    ]
   },
   {
-   "id": "p015",
+   "id": "p014",
    "nome": "Cleiton Fabio Bianchini da Silva",
    "nivel": "Gerência",
    "cargo": "Gerente de compras da indústria",
@@ -2510,7 +2498,7 @@
    ]
   },
   {
-   "id": "p016",
+   "id": "p015",
    "nome": "Leyffor Augusto de Carvalho Gastaldin",
    "nivel": "Gerência Executiva",
    "cargo": "Gerente de engenharia e expansão",
@@ -2521,7 +2509,7 @@
    ]
   },
   {
-   "id": "p017",
+   "id": "p016",
    "nome": "Joel Borato",
    "nivel": "Gerência",
    "cargo": "Gerente de expansão",
@@ -2532,7 +2520,7 @@
    ]
   },
   {
-   "id": "p018",
+   "id": "p017",
    "nome": "Juliano Silva Vicentini",
    "nivel": "Gerência",
    "cargo": "Gerente de expansão",
@@ -2543,7 +2531,7 @@
    ]
   },
   {
-   "id": "p019",
+   "id": "p018",
    "nome": "Mateus de Azevedo Volttani",
    "nivel": "Gerência",
    "cargo": "Gerente de expansão",
@@ -2554,7 +2542,7 @@
    ]
   },
   {
-   "id": "p020",
+   "id": "p019",
    "nome": "Patricia Giroto",
    "nivel": "Gerência",
    "cargo": "Gerente de riscos",
@@ -2565,7 +2553,7 @@
    ]
   },
   {
-   "id": "p021",
+   "id": "p020",
    "nome": "Janaina Braga Pires Kashiwaya",
    "nivel": "Gerência",
    "cargo": "Gerente de viagem",
@@ -2576,7 +2564,7 @@
    ]
   },
   {
-   "id": "p022",
+   "id": "p021",
    "nome": "Daiane Domingues dos Santos",
    "nivel": "Supervisão",
    "cargo": "Supervisor administrativo (administração geral)",
@@ -2587,7 +2575,7 @@
    ]
   },
   {
-   "id": "p023",
+   "id": "p022",
    "nome": "Fabielly Garcia de Souza Costa",
    "nivel": "Supervisão",
    "cargo": "Supervisor administrativo (despesas)",
@@ -2598,7 +2586,7 @@
    ]
   },
   {
-   "id": "p024",
+   "id": "p023",
    "nome": "Raquel Cristina Vidotto Ramos",
    "nivel": "Supervisão",
    "cargo": "Supervisor administrativo (despesas)",
@@ -2609,7 +2597,7 @@
    ]
   },
   {
-   "id": "p025",
+   "id": "p024",
    "nome": "Marcelo de Souza Rodrigues",
    "nivel": "Supervisão",
    "cargo": "Supervisor administrativo (expansão)",
@@ -2620,7 +2608,7 @@
    ]
   },
   {
-   "id": "p026",
+   "id": "p025",
    "nome": "Duberlei de Castro da Silva",
    "nivel": "Coordenação",
    "cargo": "Coordenador administrativo (assessoria)",
@@ -2631,7 +2619,7 @@
    ]
   },
   {
-   "id": "p027",
+   "id": "p026",
    "nome": "Robson Rodrigues Jacinto",
    "nivel": "Coordenação",
    "cargo": "Coordenador comercial",
@@ -2642,7 +2630,7 @@
    ]
   },
   {
-   "id": "p028",
+   "id": "p027",
    "nome": "Luiz Paulo da Silva Santos",
    "nivel": "Coordenação",
    "cargo": "Coordenador de estoque",
@@ -2653,7 +2641,7 @@
    ]
   },
   {
-   "id": "p029",
+   "id": "p028",
    "nome": "Julio Cezar da Silva",
    "nivel": "Diretoria",
    "cargo": "Diretoria comercial",
@@ -2664,7 +2652,7 @@
    ]
   },
   {
-   "id": "p030",
+   "id": "p029",
    "nome": "Wesley Dionisio da Silva",
    "nivel": "Gerência",
    "cargo": "Gerente (auto posto)",
@@ -2675,7 +2663,7 @@
    ]
   },
   {
-   "id": "p031",
+   "id": "p030",
    "nome": "Rosana Queiroz da Silva",
    "nivel": "Gerência",
    "cargo": "Gerente administrativo",
@@ -2686,7 +2674,7 @@
    ]
   },
   {
-   "id": "p032",
+   "id": "p031",
    "nome": "Orlando Rodrigues Neto",
    "nivel": "Gerência",
    "cargo": "Gerente comercial (atacado)",
@@ -2697,7 +2685,7 @@
    ]
   },
   {
-   "id": "p033",
+   "id": "p032",
    "nome": "Aparecido Benedito dos Santos",
    "nivel": "Gerência",
    "cargo": "Gerente comercial (consórcio)",
@@ -2708,7 +2696,7 @@
    ]
   },
   {
-   "id": "p034",
+   "id": "p033",
    "nome": "Thiago Dias Tavares",
    "nivel": "Gerência",
    "cargo": "Gerente comercial (representante consórcio)",
@@ -2719,7 +2707,7 @@
    ]
   },
   {
-   "id": "p035",
+   "id": "p034",
    "nome": "Paulo Jose da Silva",
    "nivel": "Gerência",
    "cargo": "Gerente comercial (seguros)",
@@ -2730,7 +2718,7 @@
    ]
   },
   {
-   "id": "p036",
+   "id": "p035",
    "nome": "Leandro Santiago Afonso",
    "nivel": "Gerência Executiva",
    "cargo": "Gerente comercial do varejo",
@@ -2741,7 +2729,7 @@
    ]
   },
   {
-   "id": "p037",
+   "id": "p036",
    "nome": "Valdenei Vargas de Almeida",
    "nivel": "Gerência Executiva",
    "cargo": "Gerente comercial do varejo",
@@ -2752,7 +2740,7 @@
    ]
   },
   {
-   "id": "p038",
+   "id": "p037",
    "nome": "Andre Schafer Pasinato",
    "nivel": "Gerência Executiva",
    "cargo": "Gerente de compras",
@@ -2763,7 +2751,7 @@
    ]
   },
   {
-   "id": "p039",
+   "id": "p038",
    "nome": "Niccolas Daniel Curvelo",
    "nivel": "Gerência",
    "cargo": "Gerente de negócios internacionais",
@@ -2774,7 +2762,7 @@
    ]
   },
   {
-   "id": "p040",
+   "id": "p039",
    "nome": "Wesley Diniz Alves",
    "nivel": "Gerência",
    "cargo": "Gerente de operações de e-commerce",
@@ -2785,7 +2773,7 @@
    ]
   },
   {
-   "id": "p041",
+   "id": "p040",
    "nome": "Cidclei Reck",
    "nivel": "Gerência",
    "cargo": "Gerente de vendas (atacado)",
@@ -2796,7 +2784,7 @@
    ]
   },
   {
-   "id": "p042",
+   "id": "p041",
    "nome": "Juliano Donizete de Sousa",
    "nivel": "Gerência",
    "cargo": "Gerente de vendas (atacado)",
@@ -2807,7 +2795,7 @@
    ]
   },
   {
-   "id": "p043",
+   "id": "p042",
    "nome": "Marcio Adriano Leme",
    "nivel": "Gerência",
    "cargo": "Gerente de vendas (atacado)",
@@ -2818,7 +2806,7 @@
    ]
   },
   {
-   "id": "p044",
+   "id": "p043",
    "nome": "Natan Henrique Goncalves",
    "nivel": "Gerência",
    "cargo": "Gerente de vendas (atacado)",
@@ -2829,7 +2817,7 @@
    ]
   },
   {
-   "id": "p045",
+   "id": "p044",
    "nome": "Juliana Calvo",
    "nivel": "Gerência",
    "cargo": "Gerente de viagem",
@@ -2840,7 +2828,7 @@
    ]
   },
   {
-   "id": "p046",
+   "id": "p045",
    "nome": "Frank Soares do Nascimento",
    "nivel": "Gerência Executiva",
    "cargo": "Gerente geral do atacado",
@@ -2851,7 +2839,7 @@
    ]
   },
   {
-   "id": "p047",
+   "id": "p046",
    "nome": "Paulo Sergio dos Santos",
    "nivel": "Gerência Executiva",
    "cargo": "Gerente geral do varejo",
@@ -2862,7 +2850,7 @@
    ]
   },
   {
-   "id": "p048",
+   "id": "p047",
    "nome": "Adson Nogueira da Silva",
    "nivel": "Gerência",
    "cargo": "Gerente regional",
@@ -2873,7 +2861,7 @@
    ]
   },
   {
-   "id": "p049",
+   "id": "p048",
    "nome": "Anderson Luiz Ferreira Ricardo",
    "nivel": "Gerência",
    "cargo": "Gerente regional",
@@ -2884,7 +2872,7 @@
    ]
   },
   {
-   "id": "p050",
+   "id": "p049",
    "nome": "Arinan Moreira dos Santos",
    "nivel": "Gerência",
    "cargo": "Gerente regional",
@@ -2895,7 +2883,7 @@
    ]
   },
   {
-   "id": "p051",
+   "id": "p050",
    "nome": "Celso Luiz Sacramento de Souza",
    "nivel": "Gerência",
    "cargo": "Gerente regional",
@@ -2906,7 +2894,7 @@
    ]
   },
   {
-   "id": "p052",
+   "id": "p051",
    "nome": "Djalma Almeida Andrade",
    "nivel": "Gerência",
    "cargo": "Gerente regional",
@@ -2917,7 +2905,7 @@
    ]
   },
   {
-   "id": "p053",
+   "id": "p052",
    "nome": "Erlon Cesar Cruz Almeida",
    "nivel": "Gerência",
    "cargo": "Gerente regional",
@@ -2928,7 +2916,7 @@
    ]
   },
   {
-   "id": "p054",
+   "id": "p053",
    "nome": "Guilherme Caetano Gelamos",
    "nivel": "Gerência",
    "cargo": "Gerente regional",
@@ -2939,7 +2927,7 @@
    ]
   },
   {
-   "id": "p055",
+   "id": "p054",
    "nome": "Jadiel Ribeiro Durço",
    "nivel": "Gerência",
    "cargo": "Gerente regional",
@@ -2950,7 +2938,7 @@
    ]
   },
   {
-   "id": "p056",
+   "id": "p055",
    "nome": "Jean Medrado dos Santos",
    "nivel": "Gerência",
    "cargo": "Gerente regional",
@@ -2961,7 +2949,7 @@
    ]
   },
   {
-   "id": "p057",
+   "id": "p056",
    "nome": "Juliano de Albuquerque Silva",
    "nivel": "Gerência",
    "cargo": "Gerente regional",
@@ -2972,7 +2960,7 @@
    ]
   },
   {
-   "id": "p058",
+   "id": "p057",
    "nome": "Luis Carlos Alves de Melo",
    "nivel": "Gerência",
    "cargo": "Gerente regional",
@@ -2983,7 +2971,7 @@
    ]
   },
   {
-   "id": "p059",
+   "id": "p058",
    "nome": "Nicareli Neves",
    "nivel": "Gerência",
    "cargo": "Gerente regional",
@@ -2994,7 +2982,7 @@
    ]
   },
   {
-   "id": "p060",
+   "id": "p059",
    "nome": "Odimar Antonio de Oliveira",
    "nivel": "Gerência",
    "cargo": "Gerente regional",
@@ -3005,7 +2993,7 @@
    ]
   },
   {
-   "id": "p061",
+   "id": "p060",
    "nome": "Ricardo Rodrigues",
    "nivel": "Gerência",
    "cargo": "Gerente regional",
@@ -3016,7 +3004,7 @@
    ]
   },
   {
-   "id": "p062",
+   "id": "p061",
    "nome": "Leandro Ferreira Paim Mendes",
    "nivel": "Gerência",
    "cargo": "Gerente regional",
@@ -3027,7 +3015,7 @@
    ]
   },
   {
-   "id": "p063",
+   "id": "p062",
    "nome": "Gustavo Paixao dos Santos",
    "nivel": "Supervisão",
    "cargo": "Supervisor de e-commerce (atacado)",
@@ -3038,7 +3026,7 @@
    ]
   },
   {
-   "id": "p064",
+   "id": "p063",
    "nome": "Bruno Rodrigues Martins",
    "nivel": "Supervisão",
    "cargo": "Supervisor de varejo",
@@ -3049,7 +3037,7 @@
    ]
   },
   {
-   "id": "p065",
+   "id": "p064",
    "nome": "Aline Portela dos Santos",
    "nivel": "Supervisão",
    "cargo": "Supervisor administrativo",
@@ -3060,7 +3048,7 @@
    ]
   },
   {
-   "id": "p066",
+   "id": "p065",
    "nome": "Andreza Miranda da Silva",
    "nivel": "Supervisão",
    "cargo": "Supervisor administrativo",
@@ -3071,7 +3059,7 @@
    ]
   },
   {
-   "id": "p067",
+   "id": "p066",
    "nome": "Beatriz Santos Kroetzler",
    "nivel": "Supervisão",
    "cargo": "Supervisor administrativo",
@@ -3082,7 +3070,7 @@
    ]
   },
   {
-   "id": "p068",
+   "id": "p067",
    "nome": "Elisandra Martines dos Santos",
    "nivel": "Supervisão",
    "cargo": "Supervisor administrativo",
@@ -3093,7 +3081,7 @@
    ]
   },
   {
-   "id": "p069",
+   "id": "p068",
    "nome": "Hagatha Leticia Zuchinalli Nogueira",
    "nivel": "Supervisão",
    "cargo": "Supervisor administrativo",
@@ -3104,7 +3092,7 @@
    ]
   },
   {
-   "id": "p070",
+   "id": "p069",
    "nome": "Jeovanir Castro de Souza",
    "nivel": "Supervisão",
    "cargo": "Supervisor administrativo",
@@ -3115,7 +3103,7 @@
    ]
   },
   {
-   "id": "p071",
+   "id": "p070",
    "nome": "Juliana Rodriguez Ferro",
    "nivel": "Supervisão",
    "cargo": "Supervisor administrativo",
@@ -3126,7 +3114,7 @@
    ]
   },
   {
-   "id": "p072",
+   "id": "p071",
    "nome": "Keila da Silva Sena Leao",
    "nivel": "Supervisão",
    "cargo": "Supervisor administrativo",
@@ -3137,7 +3125,7 @@
    ]
   },
   {
-   "id": "p073",
+   "id": "p072",
    "nome": "Lidia dos Santos",
    "nivel": "Supervisão",
    "cargo": "Supervisor administrativo",
@@ -3148,7 +3136,7 @@
    ]
   },
   {
-   "id": "p074",
+   "id": "p073",
    "nome": "Maria Cleide Araujo",
    "nivel": "Supervisão",
    "cargo": "Supervisor administrativo",
@@ -3159,7 +3147,7 @@
    ]
   },
   {
-   "id": "p075",
+   "id": "p074",
    "nome": "Maria das Neves Nascimento Galdino",
    "nivel": "Supervisão",
    "cargo": "Supervisor administrativo",
@@ -3170,7 +3158,7 @@
    ]
   },
   {
-   "id": "p076",
+   "id": "p075",
    "nome": "Marileide Porto Fontana",
    "nivel": "Supervisão",
    "cargo": "Supervisor administrativo",
@@ -3181,7 +3169,7 @@
    ]
   },
   {
-   "id": "p077",
+   "id": "p076",
    "nome": "Neiva Cristiane Bortolato Goncalves",
    "nivel": "Supervisão",
    "cargo": "Supervisor administrativo",
@@ -3192,7 +3180,7 @@
    ]
   },
   {
-   "id": "p078",
+   "id": "p077",
    "nome": "Neusa Maria Kaiser",
    "nivel": "Supervisão",
    "cargo": "Supervisor administrativo",
@@ -3203,7 +3191,7 @@
    ]
   },
   {
-   "id": "p079",
+   "id": "p078",
    "nome": "Terisley Rodrigues Ferreira",
    "nivel": "Supervisão",
    "cargo": "Supervisor administrativo",
@@ -3214,7 +3202,7 @@
    ]
   },
   {
-   "id": "p080",
+   "id": "p079",
    "nome": "Samuel Santana Barreto",
    "nivel": "Supervisão",
    "cargo": "Supervisor administrativo (atacado)",
@@ -3225,7 +3213,7 @@
    ]
   },
   {
-   "id": "p081",
+   "id": "p080",
    "nome": "Lincoln Eduardo Nunes",
    "nivel": "Supervisão",
    "cargo": "Supervisor administrativo (e-commerce)",
@@ -3236,7 +3224,7 @@
    ]
   },
   {
-   "id": "p082",
+   "id": "p081",
    "nome": "Max Antunes Cavalheiro",
    "nivel": "Supervisão",
    "cargo": "Supervisor de licitação",
@@ -3247,7 +3235,7 @@
    ]
   },
   {
-   "id": "p083",
+   "id": "p082",
    "nome": "Edwagner Tourinho de Oliveira",
    "nivel": "Supervisão",
    "cargo": "Supervisor de vendas (atacado)",
@@ -3258,7 +3246,7 @@
    ]
   },
   {
-   "id": "p084",
+   "id": "p083",
    "nome": "Guilherme Misak Vivian",
    "nivel": "Supervisão",
    "cargo": "Supervisor de vendas (atacado)",
@@ -3269,7 +3257,7 @@
    ]
   },
   {
-   "id": "p085",
+   "id": "p084",
    "nome": "Rodrigo da Veiga Lima",
    "nivel": "Coordenação",
    "cargo": "Coordenador administrativo (governança)",
@@ -3280,7 +3268,7 @@
    ]
   },
   {
-   "id": "p086",
+   "id": "p085",
    "nome": "Michely Larissa Tonhi de O. Buzinhani",
    "nivel": "Coordenação",
    "cargo": "Coordenador de comunicação",
@@ -3291,7 +3279,7 @@
    ]
   },
   {
-   "id": "p087",
+   "id": "p086",
    "nome": "Thiago Carvalho Ferreira",
    "nivel": "Coordenação",
    "cargo": "Coordenador de segurança e medicina do trabalho",
@@ -3302,7 +3290,7 @@
    ]
   },
   {
-   "id": "p088",
+   "id": "p087",
    "nome": "Priscila Giomo",
    "nivel": "Coordenação",
    "cargo": "Coordenador de pessoal",
@@ -3313,7 +3301,7 @@
    ]
   },
   {
-   "id": "p089",
+   "id": "p088",
    "nome": "Viviane Thomaz",
    "nivel": "Diretoria",
    "cargo": "Diretoria de governança",
@@ -3324,7 +3312,7 @@
    ]
   },
   {
-   "id": "p090",
+   "id": "p089",
    "nome": "Milene Thomaz Romano Gantzel",
    "nivel": "Gerência",
    "cargo": "Gerente administrativo de pessoas",
@@ -3335,7 +3323,7 @@
    ]
   },
   {
-   "id": "p091",
+   "id": "p090",
    "nome": "Celso Nobuyuki Yokota",
    "nivel": "Gerência",
    "cargo": "Gerente jurídico",
@@ -3346,7 +3334,7 @@
    ]
   },
   {
-   "id": "p092",
+   "id": "p091",
    "nome": "Ana Paula Franco Prodoscimo Sarti",
    "nivel": "Supervisão",
    "cargo": "Supervisor administrativo (governança)",
@@ -3357,7 +3345,7 @@
    ]
   },
   {
-   "id": "p093",
+   "id": "p092",
    "nome": "Maria Aparecida Canella",
    "nivel": "Coordenação",
    "cargo": "Coordenador financeiro (financeiro)",
@@ -3368,7 +3356,7 @@
    ]
   },
   {
-   "id": "p094",
+   "id": "p093",
    "nome": "Edson Guedes de Sousa",
    "nivel": "Coordenação",
    "cargo": "Coordenador de transporte",
@@ -3379,7 +3367,7 @@
    ]
   },
   {
-   "id": "p095",
+   "id": "p094",
    "nome": "Franciele Fritsch da Silva",
    "nivel": "Coordenação",
    "cargo": "Coordenador de transporte",
@@ -3390,7 +3378,7 @@
    ]
   },
   {
-   "id": "p096",
+   "id": "p095",
    "nome": "Heitor Henrique Bataiero",
    "nivel": "Coordenação",
    "cargo": "Coordenador de transporte",
@@ -3401,7 +3389,7 @@
    ]
   },
   {
-   "id": "p097",
+   "id": "p096",
    "nome": "Rafael Marques da Silva",
    "nivel": "Coordenação",
    "cargo": "Coordenador de transporte",
@@ -3412,7 +3400,7 @@
    ]
   },
   {
-   "id": "p098",
+   "id": "p097",
    "nome": "Renan Gomes Casagrande",
    "nivel": "Coordenação",
    "cargo": "Coordenador de transporte",
@@ -3423,7 +3411,7 @@
    ]
   },
   {
-   "id": "p099",
+   "id": "p098",
    "nome": "Rogelio dos Santos Vargas",
    "nivel": "Coordenação",
    "cargo": "Coordenador de transporte",
@@ -3434,7 +3422,7 @@
    ]
   },
   {
-   "id": "p100",
+   "id": "p099",
    "nome": "Teilo de Jesus Santana",
    "nivel": "Coordenação",
    "cargo": "Coordenador de transporte",
@@ -3445,7 +3433,7 @@
    ]
   },
   {
-   "id": "p101",
+   "id": "p100",
    "nome": "Willian Fernando Cruz Alves",
    "nivel": "Coordenação",
    "cargo": "Coordenador de transporte",
@@ -3456,7 +3444,7 @@
    ]
   },
   {
-   "id": "p102",
+   "id": "p101",
    "nome": "Marcos Antonio Utsunomiya",
    "nivel": "Diretoria",
    "cargo": "Diretoria de logística",
@@ -3467,7 +3455,7 @@
    ]
   },
   {
-   "id": "p103",
+   "id": "p102",
    "nome": "Celio Roberto Cantuarios",
    "nivel": "Gerência Executiva",
    "cargo": "Gerente administrativo de logística",
@@ -3478,7 +3466,7 @@
    ]
   },
   {
-   "id": "p104",
+   "id": "p103",
    "nome": "Luis Carlos da Costa Junior",
    "nivel": "Gerência Executiva",
    "cargo": "Gerente de assistência",
@@ -3489,7 +3477,7 @@
    ]
   },
   {
-   "id": "p105",
+   "id": "p104",
    "nome": "Acleilton de Souza Lima",
    "nivel": "Gerência",
    "cargo": "Gerente de assistência",
@@ -3500,7 +3488,7 @@
    ]
   },
   {
-   "id": "p106",
+   "id": "p105",
    "nome": "Benjamin Dene de Carvalho Junior",
    "nivel": "Gerência",
    "cargo": "Gerente de assistência",
@@ -3511,7 +3499,7 @@
    ]
   },
   {
-   "id": "p107",
+   "id": "p106",
    "nome": "Diego Alisson de Lima Borges",
    "nivel": "Gerência",
    "cargo": "Gerente de assistência",
@@ -3522,7 +3510,7 @@
    ]
   },
   {
-   "id": "p108",
+   "id": "p107",
    "nome": "Eduardo Roberto da Silva",
    "nivel": "Gerência",
    "cargo": "Gerente de assistência",
@@ -3533,7 +3521,7 @@
    ]
   },
   {
-   "id": "p109",
+   "id": "p108",
    "nome": "Gabriel Pereira Fontaneli",
    "nivel": "Gerência",
    "cargo": "Gerente de assistência",
@@ -3544,7 +3532,7 @@
    ]
   },
   {
-   "id": "p110",
+   "id": "p109",
    "nome": "Juliano Bueno da Silva Oliveira",
    "nivel": "Gerência",
    "cargo": "Gerente de assistência",
@@ -3555,7 +3543,7 @@
    ]
   },
   {
-   "id": "p111",
+   "id": "p110",
    "nome": "Mauricio Barboza de Souza",
    "nivel": "Gerência",
    "cargo": "Gerente de assistência",
@@ -3566,7 +3554,7 @@
    ]
   },
   {
-   "id": "p112",
+   "id": "p111",
    "nome": "Raimundo Nonato Silva Amaral",
    "nivel": "Gerência",
    "cargo": "Gerente de assistência",
@@ -3577,7 +3565,7 @@
    ]
   },
   {
-   "id": "p113",
+   "id": "p112",
    "nome": "Renato da Silva Oliveira",
    "nivel": "Gerência",
    "cargo": "Gerente de assistência",
@@ -3588,7 +3576,7 @@
    ]
   },
   {
-   "id": "p114",
+   "id": "p113",
    "nome": "Sidnei Francisco da Silva",
    "nivel": "Gerência",
    "cargo": "Gerente de assistência",
@@ -3599,7 +3587,7 @@
    ]
   },
   {
-   "id": "p115",
+   "id": "p114",
    "nome": "Donizete Denilson Giomo",
    "nivel": "Gerência",
    "cargo": "Gerente de manutenção",
@@ -3610,7 +3598,7 @@
    ]
   },
   {
-   "id": "p116",
+   "id": "p115",
    "nome": "Vanderlei de Souza Gonçalo",
    "nivel": "Gerência",
    "cargo": "Gerente de planejamento",
@@ -3621,7 +3609,7 @@
    ]
   },
   {
-   "id": "p117",
+   "id": "p116",
    "nome": "Elessandro Alves da Silva",
    "nivel": "Gerência",
    "cargo": "Gerente de transporte",
@@ -3632,7 +3620,7 @@
    ]
   },
   {
-   "id": "p118",
+   "id": "p117",
    "nome": "Jonismar Antonio dos Santos",
    "nivel": "Gerência",
    "cargo": "Gerente de transporte",
@@ -3643,7 +3631,7 @@
    ]
   },
   {
-   "id": "p119",
+   "id": "p118",
    "nome": "Robson Muniz de Morais",
    "nivel": "Gerência",
    "cargo": "Gerente de transporte",
@@ -3654,7 +3642,7 @@
    ]
   },
   {
-   "id": "p120",
+   "id": "p119",
    "nome": "Alexsandro Bataieiro",
    "nivel": "Gerência",
    "cargo": "Gerente geral de depósito",
@@ -3665,7 +3653,7 @@
    ]
   },
   {
-   "id": "p121",
+   "id": "p120",
    "nome": "Edson Oleksyw",
    "nivel": "Diretoria",
    "cargo": "Diretoria de marketing",
@@ -3676,7 +3664,7 @@
    ]
   },
   {
-   "id": "p122",
+   "id": "p121",
    "nome": "Evaldo Barbosa Cavalcante",
    "nivel": "Supervisão",
    "cargo": "Supervisor de propaganda",
@@ -3687,7 +3675,7 @@
    ]
   },
   {
-   "id": "p123",
+   "id": "p122",
    "nome": "Francisco de Paula Junior",
    "nivel": "Especialista",
    "cargo": "Administrador de banco de dados",
@@ -3698,7 +3686,7 @@
    ]
   },
   {
-   "id": "p124",
+   "id": "p123",
    "nome": "Fabner Roberto Soares",
    "nivel": "Especialista",
    "cargo": "Administrador de redes",
@@ -3709,7 +3697,7 @@
    ]
   },
   {
-   "id": "p125",
+   "id": "p124",
    "nome": "Junior Gil Custodio",
    "nivel": "Especialista",
    "cargo": "Administrador de redes",
@@ -3720,7 +3708,7 @@
    ]
   },
   {
-   "id": "p126",
+   "id": "p125",
    "nome": "Danilo Mulizine Stochi",
    "nivel": "Especialista",
    "cargo": "Data Engineer",
@@ -3731,7 +3719,7 @@
    ]
   },
   {
-   "id": "p127",
+   "id": "p126",
    "nome": "Ricardo Brito Soares",
    "nivel": "Diretoria",
    "cargo": "Diretoria de tecnologia da informação e inovação",
@@ -3742,7 +3730,7 @@
    ]
   },
   {
-   "id": "p128",
+   "id": "p127",
    "nome": "Alex Coronado dos Santos",
    "nivel": "Gerência Executiva",
    "cargo": "Gerente de banco de dados",
@@ -3753,7 +3741,7 @@
    ]
   },
   {
-   "id": "p129",
+   "id": "p128",
    "nome": "Kleverson Ricardo de Melo",
    "nivel": "Gerência",
    "cargo": "Gerente de desenvolvimento e programação",
@@ -3764,7 +3752,7 @@
    ]
   },
   {
-   "id": "p130",
+   "id": "p129",
    "nome": "Rogerio Tsuyoshi Arida",
    "nivel": "Gerência",
    "cargo": "Gerente de desenvolvimento e programação",
@@ -3775,7 +3763,7 @@
    ]
   },
   {
-   "id": "p131",
+   "id": "p130",
    "nome": "Joel Correia Junior",
    "nivel": "Gerência",
    "cargo": "Gerente do escritório de projetos",
@@ -3786,7 +3774,7 @@
    ]
   },
   {
-   "id": "p132",
+   "id": "p131",
    "nome": "Anderson Rodrigo Giomo",
    "nivel": "Gerência",
    "cargo": "Gerente de suporte",
@@ -3797,7 +3785,7 @@
    ]
   },
   {
-   "id": "p133",
+   "id": "p132",
    "nome": "Rodrigo Romano Gantzel",
    "nivel": "Gerência",
    "cargo": "Gerente de tecnologia",
@@ -3808,7 +3796,7 @@
    ]
   },
   {
-   "id": "p134",
+   "id": "p133",
    "nome": "Cadmiel Cristiano de Grande",
    "nivel": "Supervisão",
    "cargo": "Supervisor de tecnologia da informação",
@@ -3819,7 +3807,7 @@
    ]
   },
   {
-   "id": "p135",
+   "id": "p134",
    "nome": "Edson Macoto Tamura Junior",
    "nivel": "Especialista",
    "cargo": "Tech Lead",
@@ -3827,6 +3815,17 @@
    "chairId": "c136",
    "chairIds": [
     "c136"
+   ]
+  },
+  {
+   "id": "p135",
+   "nome": "Fernando Sanches Graci",
+   "nivel": "Diretoria",
+   "cargo": "Diretoria financeira",
+   "diretoria": "Diretoria financeira",
+   "chairId": "c137",
+   "chairIds": [
+    "c137"
    ]
   },
   {

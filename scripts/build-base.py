@@ -74,6 +74,12 @@ def por_extenso(s):
     return s[:1].upper() + s[1:]
 
 # Correcoes de inconsistencias da planilha de origem (grafia do gestor diferente da do ocupante).
+# Posicoes que estao vagas embora a planilha de origem traga um ocupante (cargo, ocupante na origem).
+# Controller: Fernando Sanches Graci ocupa somente a Diretoria financeira (informado pela Gazin).
+VAGA_CORRIGIDA = {("CONTROLLER", "FERNANDO SANCHES GRACI")}
+# Cargo do gestor corrigido quando o gestor deixa uma posicao: (gestor, cargo na origem) -> cargo real.
+GESTOR_CARGO_FIX = {("FERNANDO SANCHES GRACI", "CONTROLLER"): "Diretor financeiro"}
+
 GESTOR_FIX = {
     "VINICIOS SUZE": "VINICIOS ZUSE",
 }
@@ -91,7 +97,8 @@ for r in ws.iter_rows(values_only=True, min_row=2):
     if norm(gestor_cargo) != "A PREENCHER":
         gestor_cargo = por_extenso(gestor_cargo)
     gestor = GESTOR_FIX.get(norm(gestor), gestor)
-    vago = norm(ocupante) in ("", "A PREENCHER")
+    gestor_cargo = GESTOR_CARGO_FIX.get((norm(gestor), norm(gestor_cargo)), gestor_cargo)
+    vago = norm(ocupante) in ("", "A PREENCHER") or (norm(cargo), norm(ocupante)) in VAGA_CORRIGIDA
     rows.append(dict(cargo=cargo, diretoria=diretoria, ocupante="" if vago else ocupante,
                      gestor="" if norm(gestor) == "A PREENCHER" else gestor,
                      gestorCargo="" if norm(gestor_cargo) == "A PREENCHER" else gestor_cargo, vago=vago))

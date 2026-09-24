@@ -4,7 +4,7 @@ export const EMPRESA = "Gazin";
 export const STORAGE_KEY = "gazin-mapa-sucessorio:v1";
 // Incremente sempre que a base padrão (lib/base-data.json) ou a estrutura mudar:
 // descarta a base antiga salva no navegador.
-export const BASE_DATA_VERSION = 3;
+export const BASE_DATA_VERSION = 4;
 
 export interface NivelDef {
   nome: string;

@@ -18,7 +18,7 @@ Deploy: qualquer host de Next.js (ex.: Vercel), sem variáveis de ambiente.
 ## Fluxo de dados
 
 1. **Base inicial** (`lib/base-data.json`): gerada a partir de `Posicoes_Criticas.xlsx`
-   (180 posições, 178 ocupantes, 1 vaga) por `npm run base -- caminho/Posicoes_Criticas.xlsx`.
+   (180 posições, 178 ocupantes, 2 vagas: Controller e Gerente adjunto de varejo) por `npm run base -- caminho/Posicoes_Criticas.xlsx`.
    Se a planilha de origem mudar, gere de novo e incremente `BASE_DATA_VERSION` em `lib/config.ts`.
 2. **Coleta**: botão *Baixar base para coleta* gera o `.xlsx` com as abas Leia-me, Cadeiras,
    Base de dados, Hierarquia e Valores aceitos.
