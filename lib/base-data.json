@@ -2340,6 +2340,19 @@
    "vago": false,
    "gestor": "Alessandra Guerra de Souza",
    "gestorCargo": "Gerente geral de recursos humanos"
+  },
+  {
+   "id": "c181",
+   "nome": "Alessandra Guerra de Souza",
+   "cargo": "Gerente geral de recursos humanos",
+   "nivel": "Gerência Executiva",
+   "diretoria": "Gerente geral de recursos humanos",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "Gilmar Alves de Oliveira",
+   "gestorCargo": "Presidente"
   }
  ],
  "people": [
@@ -4299,6 +4312,17 @@
    "chairId": "c180",
    "chairIds": [
     "c180"
+   ]
+  },
+  {
+   "id": "p179",
+   "nome": "Alessandra Guerra de Souza",
+   "nivel": "Gerência Executiva",
+   "cargo": "Gerente geral de recursos humanos",
+   "diretoria": "Gerente geral de recursos humanos",
+   "chairId": "c181",
+   "chairIds": [
+    "c181"
    ]
   }
  ]

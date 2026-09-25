@@ -86,10 +86,16 @@ GESTOR_FIX = {
 
 src = sys.argv[1]
 ws = openpyxl.load_workbook(src).active
+# Posicoes criticas que nao constam da planilha de origem (informadas pela Gazin).
+# Vao para o fim da lista para nao renumerar as posicoes existentes.
+# (cargo, diretoria/area, ocupante, gestor, cargo do gestor)
+POSICOES_ADICIONAIS = [
+    ("Gerente geral de RH", "Gerente geral de RH", "ALESSANDRA GUERRA DE SOUZA", "GILMAR ALVES DE OLIVEIRA", "Presidente"),
+]
+
+origem = [r[:5] for r in ws.iter_rows(values_only=True, min_row=2) if r[0]] + POSICOES_ADICIONAIS
 rows = []
-for r in ws.iter_rows(values_only=True, min_row=2):
-    if not r[0]:
-        continue
+for r in origem:
     cargo, diretoria, ocupante, gestor, gestor_cargo = [re.sub(r"\s+", " ", str(x or "")).strip() for x in r[:5]]
     if gestor_cargo.startswith("="):
         gestor_cargo = ""  # formula quebrada na origem (ex.: "=$A$15"); resolvido abaixo pelo nome do gestor
