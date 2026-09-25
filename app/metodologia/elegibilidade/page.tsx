@@ -51,10 +51,6 @@ export default function Page() {
             ))}
           </tbody>
         </table>
-        <div className="callout">
-          Total = soma dos critérios aplicáveis ÷ soma dos pontos aplicáveis × 100, arredondado. Para quem não lidera equipe, a base é{" "}
-          {100 - PESOS.clima} pontos.
-        </div>
 
         <h2>3. Régua de corte</h2>
         <p>
@@ -72,11 +68,6 @@ export default function Page() {
             <b>Fora da hierarquia elegível</b>: o nível atual não alimenta o cargo.
           </li>
         </ul>
-        <div className="callout warn">
-          Mobilidade também é filtro nos três grupos: quem declarou que não vai até a cidade da posição não aparece nela. Isso evita
-          que uma pessoa interessada em &quot;Gerente regional&quot; conte como sucessora das 15 regionais quando só aceita a própria
-          cidade.
-        </div>
 
         <h2>4. Hierarquia de elegibilidade</h2>
         <table className="t">

@@ -42,10 +42,6 @@ export default function Page() {
             ))}
           </tbody>
         </table>
-        <div className="callout warn">
-          Para aparecer numa posição a pessoa precisa se indicar a ela ou ser indicada pelo líder da posição. Quem não responde o
-          questionário e não é indicado não aparece em nenhuma posição, mesmo com avaliação de desempenho alta.
-        </div>
       </div>
     </>
   );

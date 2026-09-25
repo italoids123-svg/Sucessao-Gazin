@@ -43,10 +43,6 @@ export default function Page() {
           cols={["Faixa de atingimento", "Resultado · Comportamento", "Pontos"]}
           rows={[...DESEMPENHO.map((d) => [d.label, d.descricao, d.pontos]), ["Não avaliado", "Sem avaliação no ciclo", 0]]}
         />
-        <div className="callout">
-          A régua privilegia Comportamento: qualquer faixa com Comportamento alto (22 a 30) fica acima de qualquer faixa com
-          Comportamento médio (10 a 18), mesmo com Resultado alto.
-        </div>
 
         <h2>2. Match de indicação ({PESOS.indicacaoLider + PESOS.interesse} pontos)</h2>
         <Tabela
@@ -67,10 +63,6 @@ export default function Page() {
           Mede o clima da área pelo resultado percentual da pesquisa de clima aplicada em 2026.
         </p>
         <Tabela cols={["Resultado da pesquisa de clima 2026", "Pontos"]} rows={CLIMA_FAIXAS.map((f) => [f.label, f.pontos])} />
-        <div className="callout warn">
-          Aplicado só a quem lidera equipe hoje. Quem não lidera é avaliado sobre {100 - PESOS.clima} pontos, sem ser penalizado pela
-          ausência do critério.
-        </div>
 
         <h2>4. Prontidão declarada ({PESOS.prontidao} pontos)</h2>
         <p>
