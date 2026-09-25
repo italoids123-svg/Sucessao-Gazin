@@ -49,7 +49,7 @@ export interface SuccessionRecord {
   possivelSucessorTexto?: string;
   desempenho?: DesempenhoCode; // avaliação de desempenho do ciclo atual
   lideraEquipe?: boolean;
-  enps2026?: number | ""; // e-NPS da área na pesquisa de clima 2026
+  clima2026?: number | ""; // resultado da pesquisa de clima 2026 da área, em % (0 a 100)
 }
 export type SuccessionMap = Record<string, SuccessionRecord>;
 

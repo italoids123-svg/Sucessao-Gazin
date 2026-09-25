@@ -155,14 +155,14 @@ export function pontuar(
   });
 
   const lidera = rec.lideraEquipe === true;
-  const enps = typeof rec.enps2026 === "number" ? rec.enps2026 : null;
+  const clima = typeof rec.clima2026 === "number" ? rec.clima2026 : null;
   criterios.push({
     key: "clima",
     label: "Pesquisa de clima",
-    pontos: lidera && enps !== null ? pontosClima(enps) : 0,
+    pontos: lidera && clima !== null ? pontosClima(clima) : 0,
     max: PESOS.clima,
     aplicavel: lidera,
-    detalhe: !lidera ? "Não lidera equipe: critério não se aplica" : enps === null ? "Sem resultado de clima 2026" : `e-NPS 2026: ${enps}`,
+    detalhe: !lidera ? "Não lidera equipe: critério não se aplica" : clima === null ? "Sem resultado de clima 2026" : `Pesquisa de clima 2026: ${fmtPontos(clima)}%`,
   });
 
   const h = interesse ? HORIZONTE.find((x) => x.code === interesse.horizonte) : undefined;

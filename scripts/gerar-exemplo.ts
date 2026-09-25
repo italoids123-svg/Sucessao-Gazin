@@ -87,7 +87,8 @@ const horizonte = () => pesado<string>([["imediato", 25], ["ate3", 40], ["3a5", 
 const desempenho = () =>
   pesado<string>([["estrela", 11], ["alto_desempenho", 17], ["comprometido", 13], ["alto_potencial", 12], ["solido", 21], ["bom_executor", 10], ["enigma", 5], ["eficaz", 5], ["risco", 3], ["", 3]]);
 const mobilidade = () => pesado<string>([["local", 28], ["matriz", 14], ["estado", 30], ["qualquer", 28]]);
-const enps = () => Math.max(-30, Math.min(98, Math.round(55 + (rnd() + rnd() + rnd() - 1.5) * 50)));
+// Resultado da pesquisa de clima em % (piso de 18%: fica na mesma faixa de pontos de antes).
+const clima = () => Math.max(18, Math.min(98, Math.round(55 + (rnd() + rnd() + rnd() - 1.5) * 50)));
 
 type Linha = Record<string, string | number>;
 const nivelDe = new Map<string, string>(data.people.map((p) => [norm(p.nome), p.nivel]));
@@ -130,7 +131,7 @@ function responder(nome: string, lidera: boolean) {
   const d = desempenho();
   if (d) r["Avaliação de desempenho (ciclo atual)"] = labelDe(DESEMPENHO, d);
   r["Lidera equipe"] = lidera ? "Sim" : "Não";
-  if (lidera) r["e-NPS da área 2026"] = enps();
+  if (lidera) r["Pesquisa de clima 2026 (%)"] = clima();
   r["Conversa de desenvolvimento"] = labelDe(CONVERSA, pesado<string>([["andamento", 40], ["sem_formalizar", 35], ["nao", 25]]));
   if (chance(0.78)) {
     const a1 = alvoDeInteresse(nome, []);
@@ -154,11 +155,11 @@ for (const f of ficticios) responder(f.nome, false);
 // Posição vaga de Controller: dois candidatos internos claros e um terceiro ainda distante.
 Object.assign(respostas.get(norm("Cleiton Cesar Silva"))!, {
   "Prioridade 1 (cargo de interesse)": "Controller", "Horizonte 1": "Imediato",
-  "Avaliação de desempenho (ciclo atual)": "Estrela", "Mobilidade": labelDe(MOBILIDADE, "qualquer"), "e-NPS da área 2026": 78,
+  "Avaliação de desempenho (ciclo atual)": "Estrela", "Mobilidade": labelDe(MOBILIDADE, "qualquer"), "Pesquisa de clima 2026 (%)": 78,
 });
 Object.assign(respostas.get(norm("Diego Henrique Garcia Soriani"))!, {
   "Prioridade 1 (cargo de interesse)": "Controller", "Horizonte 1": "Até 3 anos",
-  "Avaliação de desempenho (ciclo atual)": "Alto Desempenho", "Mobilidade": labelDe(MOBILIDADE, "matriz"), "e-NPS da área 2026": 64,
+  "Avaliação de desempenho (ciclo atual)": "Alto Desempenho", "Mobilidade": labelDe(MOBILIDADE, "matriz"), "Pesquisa de clima 2026 (%)": 64,
 });
 Object.assign(respostas.get(norm("Celia Xavier Novo"))!, {
   "Prioridade 2 (cargo de interesse)": "Controller", "Horizonte 2": "Mais de 3 até 5 anos",

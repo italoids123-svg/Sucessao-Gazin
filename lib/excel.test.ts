@@ -31,7 +31,7 @@ test("merge aditivo: atualiza questionário, cria pessoa nova e cidade da cadeir
     alvo["Avaliação de desempenho (ciclo atual)"] = "estrela";
     alvo["Mobilidade"] = "Dentro do Estado";
     alvo["Lidera equipe"] = "Sim";
-    alvo["e-NPS da área 2026"] = -12;
+    alvo["Pesquisa de clima 2026 (%)"] = 0.82; // célula formatada como % no Excel
     base.push({ "Nome completo": "Pessoa Nova Teste", "Nível": "Analista / Técnico", "Horizonte 1": "xpto" });
     wb.Sheets["Base de dados"] = XLSX.utils.json_to_sheet(base);
     const cad = XLSX.utils.sheet_to_json<Record<string, unknown>>(wb.Sheets["Cadeiras"]);
@@ -51,7 +51,7 @@ test("merge aditivo: atualiza questionário, cria pessoa nova e cidade da cadeir
       desempenho: "estrela",
       mobilidade: "estado",
       lideraEquipe: true,
-      enps2026: -12,
+      clima2026: 82,
     },
   );
   assert.ok(stats.avisos.some((a) => a.includes("xpto")));

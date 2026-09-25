@@ -10,7 +10,7 @@ export default function Page() {
     ["Avaliação de desempenho (ciclo atual)", PESOS.desempenho, "Faixa de Resultado × Comportamento. Não avaliado: 0."],
     ["Indicação do líder", PESOS.indicacaoLider, "O ocupante da posição citou o candidato pelo nome e sobrenome."],
     ["Interesse autodeclarado", PESOS.interesse, "O candidato se indicou à posição como Prioridade 1 ou 2."],
-    ["Pesquisa de clima 2026", PESOS.clima, "Faixa de e-NPS da área. Só para quem lidera equipe."],
+    ["Pesquisa de clima 2026", PESOS.clima, "Faixa de resultado da pesquisa de clima da área. Só para quem lidera equipe."],
     ["Prontidão declarada", PESOS.prontidao, "Horizonte declarado para assumir a posição."],
     ["Mobilidade", PESOS.mobilidade, "Amplitude geográfica aceita: local, matriz, estado ou qualquer unidade."],
   ];

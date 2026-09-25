@@ -78,8 +78,8 @@ function cartoesDe(c: Candidate): Cartao[] {
     {
       titulo: "Pesquisa de clima",
       sub: k.clima.aplicavel
-        ? typeof c.record.enps2026 === "number"
-          ? `e-NPS 2026: ${c.record.enps2026}`
+        ? typeof c.record.clima2026 === "number"
+          ? `Resultado 2026: ${fmtPontos(c.record.clima2026)}%`
           : "Sem resultado de clima 2026"
         : "Não lidera equipe",
       pontos: k.clima.pontos,

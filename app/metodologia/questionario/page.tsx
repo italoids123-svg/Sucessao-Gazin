@@ -15,7 +15,7 @@ export default function Page() {
     ["Líderes", "Quem você indica como possível sucessor da sua posição?", "Nome e sobrenome (um ou mais, separados por vírgula)"],
     ["Recursos Humanos", "Avaliação de desempenho do ciclo atual", DESEMPENHO.map((n) => n.label).join(" · ") + " · (vazio = não avaliado)"],
     ["Recursos Humanos", "Lidera equipe hoje?", "Sim · Não"],
-    ["Recursos Humanos", "e-NPS da área na pesquisa de clima 2026", "Número de -100 a 100, só para quem lidera equipe"],
+    ["Recursos Humanos", "Resultado da pesquisa de clima 2026 da área", "Percentual de 0 a 100, só para quem lidera equipe"],
   ];
   return (
     <>

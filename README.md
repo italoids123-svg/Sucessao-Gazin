@@ -41,7 +41,7 @@ Para gerar de novo: `npm run exemplo` (semente fixa; `SEMENTE=7 npm run exemplo`
 
 ## Estrutura
 
-- `lib/config.ts` — níveis, hierarquia de elegibilidade, pesos, corte, escalas (desempenho, e-NPS,
+- `lib/config.ts` — níveis, hierarquia de elegibilidade, pesos, corte, escalas (desempenho, clima,
   prontidão, mobilidade) e cidade-sede. **Todos os parâmetros de negócio ficam aqui.**
 - `lib/engine.ts` — elegibilidade, pontuação e os três grupos de interessados por posição.
 - `lib/geo.ts` — regra de mobilidade (`mobilidadeAlcancaCidade`), pura e testável.
@@ -56,7 +56,7 @@ Para gerar de novo: `npm run exemplo` (semente fixa; `SEMENTE=7 npm run exemplo`
 |---|---|
 | Avaliação de desempenho, ciclo atual (Resultado × Comportamento) | 30 |
 | Match de indicação: líder indica (5) + colaborador se indica (5) | 10 |
-| Pesquisa de clima 2026 (faixas de e-NPS) | 30 |
+| Pesquisa de clima 2026 (faixas de resultado percentual) | 30 |
 | Prontidão declarada (horizonte) | 10 |
 | Mobilidade (local 2, matriz 7, estado 13, qualquer 20) | 20 |
 

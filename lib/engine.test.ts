@@ -30,7 +30,7 @@ function base(): AppData {
       lider: { possivelSucessorTexto: "Carlos Lima, talvez Beatriz; Eduardo Ramos" },
       sup: {
         prioridade1: "Gerente regional", horizonte1: "imediato", mobilidade: "local",
-        desempenho: "estrela", lideraEquipe: true, enps2026: 90, conversaDesenvolvimento: "andamento",
+        desempenho: "estrela", lideraEquipe: true, clima2026: 90, conversaDesenvolvimento: "andamento",
       },
       coord: { prioridade1: "gerente  REGIONAL", horizonte1: "mais5", mobilidade: "qualquer", desempenho: "solido" },
       analista: { prioridade2: "Gerente regional", horizonte2: "ate3", mobilidade: "" },
@@ -88,8 +88,8 @@ test("regras de mobilidade independentes", () => {
   assert.equal(mobilidadeAlcancaCidade(SEDE, "", "local"), true);
 });
 
-test("faixas de e-NPS", () => {
-  assert.deepEqual([-10, 29.5, 30, 50, 51, 85, 86].map(pontosClima), [6, 6, 13, 13, 21, 21, 30]);
+test("faixas da pesquisa de clima", () => {
+  assert.deepEqual([0, 29.5, 30, 50, 51, 85, 86, 100].map(pontosClima), [6, 6, 13, 13, 21, 21, 30, 30]);
 });
 
 test("texto do líder casa nome parcial com dois termos", () => {

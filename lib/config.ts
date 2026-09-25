@@ -4,7 +4,7 @@ export const EMPRESA = "Gazin";
 export const STORAGE_KEY = "gazin-mapa-sucessorio:v1";
 // Incremente sempre que a base padrão (lib/base-data.json) ou a estrutura mudar:
 // descarta a base antiga salva no navegador.
-export const BASE_DATA_VERSION = 4;
+export const BASE_DATA_VERSION = 5;
 
 export interface NivelDef {
   nome: string;
@@ -81,15 +81,15 @@ export const DESEMPENHO: { code: string; label: string; descricao: string; ponto
   { code: "risco", label: "Risco / Baixo Desempenho", descricao: "Resultado baixo · Comportamento baixo", pontos: 0 },
 ];
 
-// Pesquisa de clima 2026 (e-NPS da área).
+// Pesquisa de clima 2026: resultado percentual (0 a 100%) da área liderada.
 export const CLIMA_FAIXAS: { label: string; ate: number; pontos: number }[] = [
-  { label: "Abaixo de 30", ate: 29.999, pontos: 6 },
-  { label: "30 a 50", ate: 50, pontos: 13 },
-  { label: "51 a 85", ate: 85, pontos: 21 },
-  { label: "Acima de 85", ate: Infinity, pontos: 30 },
+  { label: "Abaixo de 30%", ate: 29.999, pontos: 6 },
+  { label: "30% a 50%", ate: 50, pontos: 13 },
+  { label: "51% a 85%", ate: 85, pontos: 21 },
+  { label: "Acima de 85%", ate: Infinity, pontos: 30 },
 ];
-export function pontosClima(enps: number): number {
-  return CLIMA_FAIXAS.find((f) => enps <= f.ate)!.pontos;
+export function pontosClima(resultado: number): number {
+  return CLIMA_FAIXAS.find((f) => resultado <= f.ate)!.pontos;
 }
 
 export const HORIZONTE: { code: Exclude<Horizonte, "">; label: string; pontos: number }[] = [

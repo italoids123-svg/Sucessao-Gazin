@@ -35,7 +35,7 @@ const COL = {
   sucessor: "Possível sucessor da sua posição (nome)",
   desempenho: "Avaliação de desempenho (ciclo atual)",
   lidera: "Lidera equipe",
-  enps: "e-NPS da área 2026",
+  clima: "Pesquisa de clima 2026 (%)",
 } as const;
 
 const CCOL = {
@@ -69,7 +69,7 @@ const LEIA_ME = [
   ["Prioridade 1 e 2 devem conter o CARGO EXATO da aba Cadeiras (por exemplo, \"Gerente regional\")."],
   ["\"Possível sucessor da sua posição\" é respondido pelo ocupante da cadeira: nome e sobrenome de quem ele indica."],
   ["Cidade sempre no formato Cidade/Estado com a sigla do Estado (por exemplo, Douradina/PR): o Estado é usado na mobilidade \"Dentro do Estado\"."],
-  ["e-NPS da área 2026: número de -100 a 100, só para quem lidera equipe."],
+  ["Pesquisa de clima 2026 (%): resultado da área de 0 a 100 (pode ser 82 ou 82%), só para quem lidera equipe."],
   [`Corte de aderência: ${CORTE_ADERENCIA} pontos.`],
 ];
 
@@ -113,7 +113,7 @@ export function buildWorkbook(data: AppData): XLSX.WorkBook {
       [COL.sucessor]: r.possivelSucessorTexto ?? "",
       [COL.desempenho]: labelOf(DESEMPENHO, r.desempenho),
       [COL.lidera]: r.lideraEquipe === undefined ? "" : r.lideraEquipe ? SIM : NAO,
-      [COL.enps]: r.enps2026 ?? "",
+      [COL.clima]: r.clima2026 ?? "",
     };
   });
   const baseSheet = base.length ? XLSX.utils.json_to_sheet(base) : XLSX.utils.aoa_to_sheet([Object.values(COL)]);
@@ -329,11 +329,13 @@ export function applyWorkbook(wb: XLSX.WorkBook, current: AppData): { data: AppD
       else if (lid === "NAO") rec.lideraEquipe = false;
       else av.push(`${nome}: valor "${pick(r, COL.lidera)}" não reconhecido em ${COL.lidera}`);
     }
-    const enpsTxt = pick(r, COL.enps).replace(",", ".");
-    if (enpsTxt) {
-      const enps = Number(enpsTxt);
-      if (Number.isFinite(enps) && enps >= -100 && enps <= 100) rec.enps2026 = enps;
-      else av.push(`${nome}: e-NPS "${enpsTxt}" inválido (use um número de -100 a 100)`);
+    const climaTxt = pick(r, COL.clima).replace("%", "").replace(",", ".").trim();
+    if (climaTxt) {
+      let clima = Number(climaTxt);
+      // Célula formatada como porcentagem no Excel chega como fração (0,82 = 82%).
+      if (Number.isFinite(clima) && clima > 0 && clima <= 1 && climaTxt.includes(".")) clima *= 100;
+      if (Number.isFinite(clima) && clima >= 0 && clima <= 100) rec.clima2026 = Math.round(clima * 10) / 10;
+      else av.push(`${nome}: pesquisa de clima "${climaTxt}" inválida (use um percentual de 0 a 100)`);
     }
     succession[p.id] = rec;
   }
