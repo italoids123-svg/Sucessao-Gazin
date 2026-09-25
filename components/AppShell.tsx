@@ -6,7 +6,7 @@ import { useState } from "react";
 import { EMPRESA, NIVEIS } from "@/lib/config.ts";
 import { coberturaDe } from "@/lib/engine.ts";
 import { StoreProvider, useStore } from "@/lib/store.tsx";
-import DataActions from "./DataActions";
+import DataActions, { formatUpdatedAt } from "./DataActions";
 
 function Sidebar({ open, onNavigate }: { open: boolean; onNavigate: () => void }) {
   const pathname = usePathname();
@@ -51,6 +51,7 @@ function Sidebar({ open, onNavigate }: { open: boolean; onNavigate: () => void }
         {item("/metodologia/questionario", "Questionário")}
         {item("/metodologia/criterios", "Critérios")}
       </div>
+      <div className="sidebar-rodape">{formatUpdatedAt(data.updatedAt)}</div>
     </aside>
   );
 }

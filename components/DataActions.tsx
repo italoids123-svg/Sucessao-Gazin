@@ -9,8 +9,8 @@ import ExportMenu from "./ExportMenu";
 import FullscreenButton from "./FullscreenButton";
 
 export function formatUpdatedAt(iso: string | null): string {
-  if (!iso) return "base inicial (planilha de posições críticas), sem questionário importado";
-  return new Date(iso).toLocaleString("pt-BR", { dateStyle: "short", timeStyle: "short" });
+  if (!iso) return "Base inicial, sem questionário importado";
+  return `Base atualizada em ${new Date(iso).toLocaleString("pt-BR", { dateStyle: "short", timeStyle: "short" })}`;
 }
 
 export default function DataActions() {
@@ -43,9 +43,6 @@ export default function DataActions() {
 
   return (
     <>
-      <div className="updated">
-        Atualização da base: <b>{formatUpdatedAt(data.updatedAt)}</b>
-      </div>
       <div className="actions">
         <FullscreenButton />
         <ExportMenu
