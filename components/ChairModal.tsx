@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { CONTINUIDADE, CORTE_ADERENCIA, CRITERIO_AREA, HORIZONTE, MOBILIDADE, PERFIL_LABEL, labelOf } from "@/lib/config.ts";
-import { fmtPontos, occupantOf, resolverIndicacao } from "@/lib/engine.ts";
+import { cidadeDaPessoa, fmtPontos, occupantOf, resolverIndicacao } from "@/lib/engine.ts";
 import { useStore } from "@/lib/store.tsx";
 import type { Candidate, Chair } from "@/lib/types.ts";
 import ExportMenu from "./ExportMenu";
@@ -53,6 +53,7 @@ interface Cartao {
   pontos: number;
   max: number;
   aplicavel: boolean;
+  valor?: string; // critérios sem pontos mostram o valor declarado no lugar dos pontos
 }
 
 /** Os seis critérios do material, na ordem dos cartões de critérios da Gazin. */
@@ -70,7 +71,7 @@ function cartoesDe(c: Candidate): Cartao[] {
   return [
     card("desempenho", "Avaliação de desempenho", k.desempenho.detalhe),
     card("indicacaoLider", "Indicação do líder da posição", c.indicadoPeloLider ? "Indicado pelo líder" : "Não indicado pelo líder"),
-    card("mobilidade", "Mobilidade", mob ? `${mob} · mapeada, sem pontuação` : "Não informada · sem pontuação"),
+    { ...card("mobilidade", "Mobilidade", "Mapeado, sem pontuação"), valor: mob || "Não informada" },
     card("avaliacaoArea", area.titulo, k.avaliacaoArea.detalhe.replace(`${area.titulo} 2026`, area.sub)),
     card("interesse", "Interesse declarado", c.prioridade ? `Prioridade ${c.prioridade}` : "Não se candidatou"),
     card("prontidao", "Prontidão declarada", labelOf(HORIZONTE, c.horizonte) || (c.prioridade ? "Horizonte não informado" : "Não se candidatou")),
@@ -91,10 +92,10 @@ function Detalhes({ c }: { c: Candidate }) {
       </div>
       <div className="det-cartoes">
         {cartoesDe(c).map((k) => (
-          <div key={k.titulo} className={`det-cartao ${k.aplicavel ? "" : "na"}`}>
+          <div key={k.titulo} className={`det-cartao ${k.aplicavel || k.valor ? "" : "na"}`}>
             <div className="det-nome">{k.titulo}</div>
             <div className="det-sub">{k.sub}</div>
-            <div className="det-pontos">{k.aplicavel ? `${fmtPontos(k.pontos)}/${fmtPontos(k.max)}` : "Sem pontuação"}</div>
+            <div className="det-pontos">{k.valor ?? `${fmtPontos(k.pontos)}/${fmtPontos(k.max)}`}</div>
           </div>
         ))}
       </div>
@@ -124,7 +125,9 @@ function Detalhes({ c }: { c: Candidate }) {
 }
 
 function CandidateRow({ c }: { c: Candidate }) {
+  const { ctx } = useStore();
   const [aberto, setAberto] = useState(false);
+  const cidade = cidadeDaPessoa(c.person, c.record, ctx);
   const st = statusDe(c);
   const seloConversa = SELO_CONVERSA[c.record.conversaDesenvolvimento ?? ""];
   const seloContinuidade = SELO_CONTINUIDADE[c.record.continuidade ?? ""];
@@ -139,6 +142,7 @@ function CandidateRow({ c }: { c: Candidate }) {
           <div className="sub">
             {c.person.cargo || "Sem cargo informado"} · {c.person.nivel} · {PERFIL_LABEL[c.perfil]}
           </div>
+          <div className="sub">{cidade || "Cidade não informada"}</div>
         </div>
         <div className="col-prio">
           {c.prioridade ? (
