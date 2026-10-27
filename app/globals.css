@@ -319,17 +319,35 @@ table.t td.num { white-space: nowrap; }
 @media (max-width: 520px) { .perfil-cartoes { grid-template-columns: repeat(2, 1fr); } }
 
 /* ---------- Busca por pessoa ---------- */
-.busca-filtros { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px 6px; margin: 18px 0 12px; box-shadow: var(--shadow); }
-.busca-filtros .filters { margin-bottom: 10px; }
-.filtro-grupo { margin-bottom: 10px; }
-.filtro-titulo { font-size: 11.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-.filtro-botoes { display: flex; flex-wrap: wrap; gap: 6px; }
-.filtro-btn { border: 1px solid var(--border); background: var(--card); color: var(--text); border-radius: 16px; padding: 5px 12px; font-size: 12.5px; font-weight: 600; }
-.filtro-btn:hover { border-color: var(--teal); color: var(--teal); }
-.filtro-btn.ativo { background: var(--teal); border-color: var(--teal); color: #fff; }
-.filtro-modo { display: inline-flex; background: #eef2f4; border-radius: 12px; padding: 2px; text-transform: none; letter-spacing: 0; }
-.filtro-modo button { border: 0; background: transparent; font-size: 11.5px; padding: 2px 9px; border-radius: 10px; color: var(--muted); font-weight: 600; }
+.busca-filtros {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 14px; margin: 18px 0 12px;
+  box-shadow: var(--shadow); display: grid; grid-template-columns: minmax(220px, 1.6fr) repeat(5, minmax(150px, 1fr)); gap: 10px; align-items: end;
+}
+.busca-texto { border: 1px solid var(--border); border-radius: 8px; padding: 8px 11px; font-size: 14px; color: var(--text); background: var(--card); width: 100%; }
+.busca-texto:focus { outline: 2px solid var(--teal-claro); border-color: var(--teal); }
+.suspensa { position: relative; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.suspensa-rotulo { font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.suspensa-botao {
+  display: flex; justify-content: space-between; align-items: center; gap: 8px; width: 100%;
+  border: 1px solid var(--border); background: var(--card); color: var(--text); border-radius: 8px; padding: 8px 10px; font-size: 13.5px; text-align: left;
+}
+.suspensa-botao span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.suspensa-botao.ativo { border-color: var(--teal); color: var(--teal); font-weight: 600; background: var(--teal-claro); }
+.suspensa-painel {
+  position: absolute; top: 100%; left: 0; margin-top: 4px; z-index: 30; min-width: 100%; width: max-content; max-width: 320px;
+  max-height: 320px; overflow-y: auto; background: var(--card); border: 1px solid var(--border); border-radius: 10px; box-shadow: var(--shadow-lg); padding: 6px;
+}
+.suspensa-opcao { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 6px; font-size: 13.5px; cursor: pointer; }
+.suspensa-opcao:hover { background: var(--teal-claro); }
+.suspensa-opcao input { accent-color: var(--teal); }
+.suspensa-limpar { border: 0; background: transparent; color: var(--teal); font-weight: 600; font-size: 12.5px; padding: 6px 8px; width: 100%; text-align: left; border-top: 1px solid var(--border); margin-top: 4px; }
+.suspensa-painel .filtro-modo { display: flex; margin: 2px 2px 6px; }
+.suspensa-painel .filtro-modo button { flex: 1; padding: 4px 8px; }
+.filtro-modo { display: inline-flex; background: #eef2f4; border-radius: 12px; padding: 2px; }
+.filtro-modo button { border: 0; background: transparent; font-size: 12px; padding: 2px 9px; border-radius: 10px; color: var(--muted); font-weight: 600; }
 .filtro-modo button.ativo { background: var(--card); color: var(--teal); box-shadow: var(--shadow); }
+@media (max-width: 1200px) { .busca-filtros { grid-template-columns: repeat(3, minmax(0, 1fr)); } .busca-texto { grid-column: 1 / -1; } }
+@media (max-width: 600px) { .busca-filtros { grid-template-columns: 1fr 1fr; } }
 .busca-resumo { display: flex; align-items: center; justify-content: space-between; margin: 0 0 10px; font-size: 13.5px; color: var(--muted); }
 .busca-resumo b { color: var(--text); }
 .pessoa-linha { display: grid; grid-template-columns: 40px minmax(200px, 1.4fr) minmax(220px, 1.6fr) 90px 150px 150px; align-items: center; gap: 12px; padding: 12px 14px; }

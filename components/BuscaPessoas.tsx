@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { HORIZONTE, MOBILIDADE, NIVEIS, PERFIL_LABEL, labelOf } from "@/lib/config.ts";
 import { cidadeDaPessoa, fmtPontos, norm, perfilDe } from "@/lib/engine.ts";
 import { useStore } from "@/lib/store.tsx";
@@ -39,19 +39,62 @@ const GRUPO: Record<Candidate["grupo"], { cor: string; texto: string }> = {
   fora: { cor: "vermelho", texto: "Fora da hierarquia" },
 };
 
-/** Grupo de botões que ligam/desligam valores (vários podem ficar ativos ao mesmo tempo). */
-function Filtro({ titulo, opcoes, ativos, alternar }: { titulo: string; opcoes: string[]; ativos: Set<string>; alternar: (v: string) => void }) {
-  if (!opcoes.length) return null;
+/**
+ * Lista suspensa com múltipla escolha: o botão mostra o que está selecionado e o painel abre com caixas
+ * de marcação. `extra` entra no topo do painel (ex.: escolher entre nível atual e de interesse).
+ */
+function Suspensa({
+  titulo,
+  opcoes,
+  ativos,
+  alternar,
+  limpar,
+  extra,
+}: {
+  titulo: string;
+  opcoes: string[];
+  ativos: Set<string>;
+  alternar: (v: string) => void;
+  limpar: () => void;
+  extra?: React.ReactNode;
+}) {
+  const [aberta, setAberta] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!aberta) return;
+    const fora = (e: MouseEvent) => !ref.current?.contains(e.target as Node) && setAberta(false);
+    const esc = (e: KeyboardEvent) => e.key === "Escape" && setAberta(false);
+    document.addEventListener("mousedown", fora);
+    document.addEventListener("keydown", esc);
+    return () => {
+      document.removeEventListener("mousedown", fora);
+      document.removeEventListener("keydown", esc);
+    };
+  }, [aberta]);
+  const resumo = !ativos.size ? "Todos" : ativos.size === 1 ? [...ativos][0] : `${ativos.size} selecionados`;
   return (
-    <div className="filtro-grupo">
-      <div className="filtro-titulo">{titulo}</div>
-      <div className="filtro-botoes">
-        {opcoes.map((o) => (
-          <button key={o} className={`filtro-btn ${ativos.has(o) ? "ativo" : ""}`} aria-pressed={ativos.has(o)} onClick={() => alternar(o)}>
-            {o}
-          </button>
-        ))}
-      </div>
+    <div className="suspensa" ref={ref}>
+      <span className="suspensa-rotulo">{titulo}</span>
+      <button className={`suspensa-botao ${ativos.size ? "ativo" : ""}`} onClick={() => setAberta((a) => !a)} aria-expanded={aberta}>
+        <span>{resumo}</span>
+        <span aria-hidden>▾</span>
+      </button>
+      {aberta && (
+        <div className="suspensa-painel" role="listbox" aria-multiselectable>
+          {extra}
+          {opcoes.map((o) => (
+            <label key={o} className="suspensa-opcao">
+              <input type="checkbox" checked={ativos.has(o)} onChange={() => alternar(o)} />
+              {o}
+            </label>
+          ))}
+          {ativos.size > 0 && (
+            <button className="suspensa-limpar" onClick={limpar}>
+              Limpar seleção
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 }
@@ -179,33 +222,28 @@ export default function BuscaPessoas() {
       </div>
 
       <div className="busca-filtros">
-        <div className="filters">
-          <input placeholder="Buscar por nome ou cargo atual" value={busca} onChange={(e) => setBusca(e.target.value)} />
-        </div>
-        <div className="filtro-grupo">
-          <div className="filtro-titulo">
-            Cargos
-            <span className="filtro-modo">
+        <input className="busca-texto" placeholder="Buscar por nome ou cargo atual" value={busca} onChange={(e) => setBusca(e.target.value)} />
+        <Suspensa
+          titulo={modoNivel === "atual" ? "Cargo atual" : "Cargo de interesse"}
+          opcoes={opcoesNivel}
+          ativos={nivel.ativos}
+          alternar={nivel.alternar}
+          limpar={nivel.limpar}
+          extra={
+            <div className="filtro-modo">
               <button className={modoNivel === "atual" ? "ativo" : ""} onClick={() => setModoNivel("atual")}>
-                nível atual
+                Nível atual
               </button>
               <button className={modoNivel === "interesse" ? "ativo" : ""} onClick={() => setModoNivel("interesse")}>
-                nível de interesse
+                Nível de interesse
               </button>
-            </span>
-          </div>
-          <div className="filtro-botoes">
-            {opcoesNivel.map((o) => (
-              <button key={o} className={`filtro-btn ${nivel.ativos.has(o) ? "ativo" : ""}`} aria-pressed={nivel.ativos.has(o)} onClick={() => nivel.alternar(o)}>
-                {o}
-              </button>
-            ))}
-          </div>
-        </div>
-        <Filtro titulo="Prontidão declarada" opcoes={opcoesProntidao} ativos={prontidao.ativos} alternar={prontidao.alternar} />
-        <Filtro titulo="Prioridade" opcoes={["Prioridade 1", "Prioridade 2"]} ativos={prioridade.ativos} alternar={prioridade.alternar} />
-        <Filtro titulo="Mobilidade" opcoes={opcoesMobilidade} ativos={mobilidade.ativos} alternar={mobilidade.alternar} />
-        <Filtro titulo="Cidade" opcoes={opcoesCidade} ativos={cidade.ativos} alternar={cidade.alternar} />
+            </div>
+          }
+        />
+        <Suspensa titulo="Prontidão declarada" opcoes={opcoesProntidao} ativos={prontidao.ativos} alternar={prontidao.alternar} limpar={prontidao.limpar} />
+        <Suspensa titulo="Prioridade" opcoes={["Prioridade 1", "Prioridade 2"]} ativos={prioridade.ativos} alternar={prioridade.alternar} limpar={prioridade.limpar} />
+        <Suspensa titulo="Mobilidade" opcoes={opcoesMobilidade} ativos={mobilidade.ativos} alternar={mobilidade.alternar} limpar={mobilidade.limpar} />
+        <Suspensa titulo="Cidade" opcoes={opcoesCidade} ativos={cidade.ativos} alternar={cidade.alternar} limpar={cidade.limpar} />
       </div>
 
       <div className="busca-resumo">
