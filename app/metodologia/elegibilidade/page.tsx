@@ -6,13 +6,14 @@ import { useStore } from "@/lib/store.tsx";
 
 export default function Page() {
   const { ctx } = useStore();
-  const linhas: [string, number, string][] = [
-    ["Avaliação de desempenho (ciclo atual)", PESOS.desempenho, "Faixa de Resultado × Comportamento. Não avaliado: 0."],
-    ["Indicação do líder", PESOS.indicacaoLider, "O ocupante da posição citou o candidato pelo nome e sobrenome."],
-    ["Interesse autodeclarado", PESOS.interesse, "O candidato se indicou à posição como Prioridade 1 ou 2."],
-    ["Pesquisa de clima 2026", PESOS.clima, "Faixa de resultado da pesquisa de clima da área. Só para quem lidera equipe."],
-    ["Prontidão declarada", PESOS.prontidao, "Horizonte declarado para assumir a posição."],
-    ["Mobilidade", PESOS.mobilidade, "Amplitude geográfica aceita: local, matriz, estado ou qualquer unidade."],
+  const linhas: [string, string, string][] = [
+    ["Avaliação de desempenho", `${PESOS.desempenho}`, "Proporcional ao resultado de 2026 (0 a 100%)."],
+    ["Indicação do líder da posição", `${PESOS.indicacaoLider}`, "O ocupante da posição citou o candidato pelo nome e sobrenome."],
+    ["Favorabilidade (líderes)", `${PESOS.avaliacaoArea}`, "Faixa de favorabilidade do clima da área liderada."],
+    ["Avaliação de pares (não líderes)", `${PESOS.avaliacaoArea}`, "Faixa da avaliação feita pelos pares da área."],
+    ["Interesse declarado", `${PESOS.interesse}`, "O candidato se candidatou à posição como Prioridade 1 ou 2."],
+    ["Prontidão declarada", `${PESOS.prontidao}`, "Horizonte declarado para assumir a posição."],
+    ["Mobilidade", "sem pontos", "Mapeada: define em quais posições a pessoa aparece."],
   ];
   return (
     <>

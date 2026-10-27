@@ -217,7 +217,7 @@ a { color: inherit; }
 .cand-detalhes { border-top: 1px dashed var(--border); margin: 0 14px; padding: 14px 0 16px; }
 .det-titulo { font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--teal); margin: 0 0 10px; }
 .det-titulo:not(:first-child) { margin-top: 16px; }
-.det-cartoes { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.det-cartoes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
 .det-cartao { background: #f3f7f8; border-radius: 8px; padding: 10px 12px; }
 .det-cartao.na { opacity: 0.6; }
 .det-nome { font-weight: 700; font-size: 13px; }
@@ -303,3 +303,44 @@ table.t td.num, table.t th.num { text-align: right; }
 table.t td.num { white-space: nowrap; }
 .table-wrap { overflow-x: auto; max-width: 100%; }
 .nota-tabela { font-size: 12.5px; color: var(--muted); margin: 4px 0 0; }
+
+/* ---------- Critérios por perfil ---------- */
+.perfis { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; }
+.perfil-painel { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+.perfil-titulo { background: var(--teal); color: #fff; font-weight: 700; padding: 10px 16px; font-size: 15px; }
+.perfil-cartoes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 14px; }
+.perfil-cartao { border: 1px solid var(--border); border-radius: 10px; padding: 12px 10px; text-align: center; background: var(--card); }
+.perfil-cartao.declarado { background: #e8f5ee; border-color: #cfe9da; }
+.perfil-pontos { font-size: 30px; font-weight: 800; color: var(--teal); line-height: 1.1; }
+.perfil-cartao.declarado .perfil-pontos, .perfil-cartao.declarado .perfil-nome { color: var(--verde); }
+.perfil-nome { font-weight: 700; color: var(--teal); font-size: 14px; margin-top: 6px; }
+.perfil-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+@media (max-width: 1000px) { .perfis { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .perfil-cartoes { grid-template-columns: repeat(2, 1fr); } }
+
+/* ---------- Busca por pessoa ---------- */
+.busca-filtros { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px 6px; margin: 18px 0 12px; box-shadow: var(--shadow); }
+.busca-filtros .filters { margin-bottom: 10px; }
+.filtro-grupo { margin-bottom: 10px; }
+.filtro-titulo { font-size: 11.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.filtro-botoes { display: flex; flex-wrap: wrap; gap: 6px; }
+.filtro-btn { border: 1px solid var(--border); background: var(--card); color: var(--text); border-radius: 16px; padding: 5px 12px; font-size: 12.5px; font-weight: 600; }
+.filtro-btn:hover { border-color: var(--teal); color: var(--teal); }
+.filtro-btn.ativo { background: var(--teal); border-color: var(--teal); color: #fff; }
+.filtro-modo { display: inline-flex; background: #eef2f4; border-radius: 12px; padding: 2px; text-transform: none; letter-spacing: 0; }
+.filtro-modo button { border: 0; background: transparent; font-size: 11.5px; padding: 2px 9px; border-radius: 10px; color: var(--muted); font-weight: 600; }
+.filtro-modo button.ativo { background: var(--card); color: var(--teal); box-shadow: var(--shadow); }
+.busca-resumo { display: flex; align-items: center; justify-content: space-between; margin: 0 0 10px; font-size: 13.5px; color: var(--muted); }
+.busca-resumo b { color: var(--text); }
+.pessoa-linha { display: grid; grid-template-columns: 40px minmax(200px, 1.4fr) minmax(220px, 1.6fr) 90px 150px 150px; align-items: center; gap: 12px; padding: 12px 14px; }
+.pessoa-interesses { font-size: 13px; display: flex; flex-direction: column; gap: 4px; }
+.pessoa-interesse.apagado { opacity: 0.4; }
+.pessoa .score span { display: block; font-size: 10.5px; font-weight: 400; color: var(--muted); }
+.pessoa .pill { display: inline-block; }
+@media (max-width: 1000px) {
+  .pessoa-linha { grid-template-columns: 40px 1fr 80px; }
+  .pessoa-linha .pessoa-interesses { grid-column: 2 / -1; }
+  .pessoa-linha .score { grid-column: 3; grid-row: 1; }
+  .pessoa-linha > div:nth-child(5) { grid-column: 2; }
+  .pessoa-linha .ver-detalhes { grid-column: 3; }
+}

@@ -1,4 +1,4 @@
-import { CORTE_ADERENCIA, DESEMPENHO, HORIZONTE, MOBILIDADE, PESOS, pontosClima } from "./config.ts";
+import { CORTE_ADERENCIA, CRITERIO_AREA, HORIZONTE, MOBILIDADE, PESOS, type Perfil, pontosArea, pontosDesempenho } from "./config.ts";
 import { avaliarMobilidade } from "./geo.ts";
 import type {
   AppData,
@@ -119,50 +119,63 @@ export function interesseNaCadeira(
   return null;
 }
 
+/**
+ * Perfil de pontuação: o "Lidera equipe" do questionário; sem resposta, deduz pela posição ocupada
+ * (quem ocupa posição de Supervisão para cima lidera; Especialista e quem não ocupa posição, não).
+ */
+export function perfilDe(p: Person, rec: SuccessionRecord | undefined): Perfil {
+  if (rec?.lideraEquipe === true) return "lider";
+  if (rec?.lideraEquipe === false) return "naoLider";
+  return chairIdsOf(p).length && p.nivel !== "Especialista" && p.nivel !== "Analista / Técnico" ? "lider" : "naoLider";
+}
+
+const numero = (v: number | "" | undefined) => (typeof v === "number" ? v : null);
+
 export function pontuar(
   rec: SuccessionRecord,
   interesse: { prioridade: 1 | 2; horizonte: Horizonte } | null,
   indicado: boolean,
+  perfil: Perfil,
 ): { score: number; criterios: CriterioScore[] } {
   const criterios: CriterioScore[] = [];
 
-  const aval = DESEMPENHO.find((d) => d.code === rec.desempenho);
+  const desempenho = numero(rec.desempenho2026);
   criterios.push({
     key: "desempenho",
-    label: "Desempenho",
-    pontos: aval?.pontos ?? 0,
+    label: "Avaliação de desempenho",
+    pontos: desempenho === null ? 0 : pontosDesempenho(desempenho),
     max: PESOS.desempenho,
     aplicavel: true,
-    detalhe: aval ? `${aval.label} (${aval.descricao})` : "Não avaliado no ciclo",
+    detalhe: desempenho === null ? "Não avaliado em 2026" : `Desempenho 2026: ${fmtPontos(desempenho)}%`,
   });
 
   criterios.push({
     key: "indicacaoLider",
-    label: "Indicação do líder",
+    label: "Indicação do líder da posição",
     pontos: indicado ? PESOS.indicacaoLider : 0,
     max: PESOS.indicacaoLider,
     aplicavel: true,
     detalhe: indicado ? "Indicado nominalmente pelo ocupante atual" : "Não indicado pelo ocupante atual",
   });
 
+  const area = numero(perfil === "lider" ? rec.favorabilidade2026 : rec.pares2026);
+  const crit = CRITERIO_AREA[perfil];
+  criterios.push({
+    key: "avaliacaoArea",
+    label: crit.titulo,
+    pontos: area === null ? 0 : pontosArea(area),
+    max: PESOS.avaliacaoArea,
+    aplicavel: true,
+    detalhe: area === null ? `Sem resultado de ${crit.titulo.toLowerCase()} 2026` : `${crit.titulo} 2026: ${fmtPontos(area)}%`,
+  });
+
   criterios.push({
     key: "interesse",
-    label: "Interesse autodeclarado",
+    label: "Interesse declarado",
     pontos: interesse ? PESOS.interesse : 0,
     max: PESOS.interesse,
     aplicavel: true,
-    detalhe: interesse ? `Indicou-se à posição (Prioridade ${interesse.prioridade})` : "Não se indicou à posição",
-  });
-
-  const lidera = rec.lideraEquipe === true;
-  const clima = typeof rec.clima2026 === "number" ? rec.clima2026 : null;
-  criterios.push({
-    key: "clima",
-    label: "Pesquisa de clima",
-    pontos: lidera && clima !== null ? pontosClima(clima) : 0,
-    max: PESOS.clima,
-    aplicavel: lidera,
-    detalhe: !lidera ? "Não lidera equipe: critério não se aplica" : clima === null ? "Sem resultado de clima 2026" : `Pesquisa de clima 2026: ${fmtPontos(clima)}%`,
+    detalhe: interesse ? `Declarou interesse (Prioridade ${interesse.prioridade})` : "Não declarou interesse nesta posição",
   });
 
   const h = interesse ? HORIZONTE.find((x) => x.code === interesse.horizonte) : undefined;
@@ -179,15 +192,14 @@ export function pontuar(
   criterios.push({
     key: "mobilidade",
     label: "Mobilidade",
-    pontos: mob?.pontos ?? 0,
+    pontos: 0,
     max: PESOS.mobilidade,
     aplicavel: true,
-    detalhe: mob ? `Disponibilidade: ${mob.label}` : "Mobilidade não informada",
+    detalhe: mob ? `Mapeada, sem pontuação: ${mob.label}` : "Mobilidade não informada",
   });
 
-  const aplic = criterios.filter((c) => c.aplicavel);
-  const max = aplic.reduce((s, c) => s + c.max, 0);
-  const pts = aplic.reduce((s, c) => s + c.pontos, 0);
+  const max = criterios.reduce((s, c) => s + (c.aplicavel ? c.max : 0), 0);
+  const pts = criterios.reduce((s, c) => s + (c.aplicavel ? c.pontos : 0), 0);
   // Uma casa decimal: evita que 59,5 vire 60 e passe o corte por arredondamento.
   return { score: max ? Math.round((pts / max) * 1000) / 10 : 0, criterios };
 }
@@ -211,7 +223,8 @@ export function successorsFor(chair: Chair, ctx: EngineCtx): ChairResult {
     // não é sucessor dela. Sem dado geográfico, não bloqueia.
     if (avaliarMobilidade(cidadeDaPessoa(p, rec, ctx), chair.cidade, rec.mobilidade) === "nao_alcanca") continue;
 
-    const { score, criterios } = pontuar(rec, interesse, indicado);
+    const perfil = perfilDe(p, rec);
+    const { score, criterios } = pontuar(rec, interesse, indicado, perfil);
     const grupo = !elegiveis.includes(p.nivel) ? "fora" : score >= CORTE_ADERENCIA ? "dentro" : "abaixo";
     res[grupo].push({
       person: p,
@@ -221,6 +234,7 @@ export function successorsFor(chair: Chair, ctx: EngineCtx): ChairResult {
       score,
       criterios,
       indicadoPeloLider: indicado,
+      perfil,
       grupo,
     });
   }

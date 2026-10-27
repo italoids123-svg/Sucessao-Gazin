@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { HIERARQUIA_PADRAO, SEDE, pontosClima } from "./config.ts";
-import { buildCtx, buildHierMap, planoDesenvolvimento, successorsFor, textoIndicaPessoa } from "./engine.ts";
+import { HIERARQUIA_PADRAO, SEDE, pontosArea, pontosDesempenho } from "./config.ts";
+import { buildCtx, buildHierMap, perfilDe, planoDesenvolvimento, successorsFor, textoIndicaPessoa } from "./engine.ts";
 import { avaliarMobilidade, mobilidadeAlcancaCidade, ufDe } from "./geo.ts";
 import type { AppData, Chair, Person } from "./types.ts";
 
@@ -30,11 +30,11 @@ function base(): AppData {
       lider: { possivelSucessorTexto: "Carlos Lima, talvez Beatriz; Eduardo Ramos" },
       sup: {
         prioridade1: "Gerente regional", horizonte1: "imediato", mobilidade: "local",
-        desempenho: "estrela", lideraEquipe: true, clima2026: 90, conversaDesenvolvimento: "andamento",
+        desempenho2026: 90, lideraEquipe: true, favorabilidade2026: 90, conversaDesenvolvimento: "andamento",
       },
-      coord: { prioridade1: "gerente  REGIONAL", horizonte1: "mais5", mobilidade: "qualquer", desempenho: "solido" },
+      coord: { prioridade1: "gerente  REGIONAL", horizonte1: "mais5", mobilidade: "qualquer", desempenho2026: 60, pares2026: 40 },
       analista: { prioridade2: "Gerente regional", horizonte2: "ate3", mobilidade: "" },
-      espec: { desempenho: "estrela", mobilidade: "estado", localidadeAtual: "Londrina - PR" },
+      espec: { desempenho2026: 100, pares2026: 90, mobilidade: "estado", localidadeAtual: "Londrina - PR" },
     },
     hierarquia: HIERARQUIA_PADRAO,
     updatedAt: null,
@@ -54,14 +54,19 @@ test("coordenação, supervisão e especialista se alimentam entre si", () => {
 
 test("cadeira em Maringá: pontuação pelo modelo de critérios", () => {
   const r = successorsFor(base().chairs[0], buildCtx(base()));
-  // Supervisor: desempenho 30 + líder 5 + interesse 5 + clima 30 + prontidão 10 + mobilidade local 2 = 82
-  // Especialista só indicado pelo líder: 30 + 5 + 0 + (clima n/a) + 0 + estado 13 = 48 de 70 => 68,6
-  assert.deepEqual(r.dentro.map((c) => [c.person.id, c.score, c.prioridade]), [["sup", 82, 1], ["espec", 68.6, null]]);
+  // Supervisor (líder): desempenho 90% = 45 + líder 5 + favorabilidade 90% = 30 + interesse 5 + prontidão 10 = 95
+  // Especialista (não líder) só indicado pelo líder: 50 + 5 + pares 90% = 30 + 0 + 0 = 85
+  assert.deepEqual(r.dentro.map((c) => [c.person.id, c.score, c.prioridade, c.perfil]), [
+    ["sup", 95, 1, "lider"],
+    ["espec", 85, null, "naoLider"],
+  ]);
   assert.ok(r.dentro.every((c) => c.indicadoPeloLider));
-  // Coordenação: 14 + 0 + 5 + 1,5 + 20 = 40,5 de 70 => 57,9 ("Beatriz" sozinho não é indicação)
-  assert.deepEqual(r.abaixo.map((c) => [c.person.id, c.score, c.indicadoPeloLider]), [["coord", 57.9, false]]);
-  // Analista: nível não alimenta Gerência; mobilidade vazia não filtra. 5 + 6 = 11 de 70 => 15,7
-  assert.deepEqual(r.fora.map((c) => [c.person.id, c.score]), [["analista", 15.7]]);
+  // Coordenação (não líder, sem posição): 60% = 30 + 0 + pares 40% = 13 + 5 + 1,5 = 49,5 ("Beatriz" sozinho não indica)
+  assert.deepEqual(r.abaixo.map((c) => [c.person.id, c.score, c.indicadoPeloLider]), [["coord", 49.5, false]]);
+  // Analista: nível não alimenta Gerência; mobilidade vazia não filtra. 5 + 6 = 11
+  assert.deepEqual(r.fora.map((c) => [c.person.id, c.score]), [["analista", 11]]);
+  // Mobilidade continua mapeada, mas não soma pontos
+  assert.ok(r.dentro.every((c) => c.criterios.find((k) => k.key === "mobilidade")!.pontos === 0));
 });
 
 test("mobilidade filtra por cidade e por UF", () => {
@@ -88,8 +93,21 @@ test("regras de mobilidade independentes", () => {
   assert.equal(mobilidadeAlcancaCidade(SEDE, "", "local"), true);
 });
 
-test("faixas da pesquisa de clima", () => {
-  assert.deepEqual([0, 29.5, 30, 50, 51, 85, 86, 100].map(pontosClima), [6, 6, 13, 13, 21, 21, 30, 30]);
+test("faixas de favorabilidade e avaliação de pares", () => {
+  assert.deepEqual([0, 29.5, 30, 50, 51, 85, 86, 100].map(pontosArea), [6, 6, 13, 13, 21, 21, 30, 30]);
+});
+
+test("desempenho pontua proporcional ao resultado", () => {
+  assert.deepEqual([0, 73, 100, 120, -5].map(pontosDesempenho), [0, 36.5, 50, 50, 0]);
+});
+
+test("perfil: resposta do questionário, senão a posição ocupada", () => {
+  const d = base();
+  const p = (id: string) => d.people.find((x) => x.id === id)!;
+  assert.equal(perfilDe(p("lider"), {}), "lider"); // ocupa posição de Gerência
+  assert.equal(perfilDe(p("espec"), {}), "naoLider"); // sem posição
+  assert.equal(perfilDe(p("lider"), { lideraEquipe: false }), "naoLider");
+  assert.equal(perfilDe(p("analista"), { lideraEquipe: true }), "lider");
 });
 
 test("texto do líder casa nome parcial com dois termos", () => {
@@ -101,7 +119,7 @@ test("texto do líder casa nome parcial com dois termos", () => {
 test("nome indicado ambíguo só vale para quem se indicou à posição", () => {
   const d = base();
   d.people.push(person("homonimo", "Carlos Augusto Lima", "Supervisão"));
-  d.succession.homonimo = { desempenho: "estrela" };
+  d.succession.homonimo = { desempenho2026: 100 };
   const r = successorsFor(d.chairs[0], buildCtx(d));
   const todos = [...r.dentro, ...r.abaixo, ...r.fora];
   assert.ok(!todos.some((c) => c.person.id === "homonimo"));

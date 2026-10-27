@@ -1,4 +1,4 @@
-import { CONTINUIDADE, CONVERSA, DESEMPENHO, HORIZONTE, MOBILIDADE } from "@/lib/config.ts";
+import { CONTINUIDADE, CONVERSA, HORIZONTE, MOBILIDADE } from "@/lib/config.ts";
 
 const opts = (l: { label: string }[]) => l.map((i) => i.label).join(" · ");
 
@@ -13,9 +13,10 @@ export default function Page() {
     ["Todos", "Você tem conversa de desenvolvimento com seu gestor?", opts(CONVERSA)],
     ["Líderes", "Se você saísse hoje, como ficaria a continuidade da sua posição?", opts(CONTINUIDADE)],
     ["Líderes", "Quem você indica como possível sucessor da sua posição?", "Nome e sobrenome (um ou mais, separados por vírgula)"],
-    ["Recursos Humanos", "Avaliação de desempenho do ciclo atual", DESEMPENHO.map((n) => n.label).join(" · ") + " · (vazio = não avaliado)"],
+    ["Recursos Humanos", "Resultado da avaliação de desempenho 2026", "Percentual de 0 a 100"],
     ["Recursos Humanos", "Lidera equipe hoje?", "Sim · Não"],
-    ["Recursos Humanos", "Resultado da pesquisa de clima 2026 da área", "Percentual de 0 a 100, só para quem lidera equipe"],
+    ["Recursos Humanos", "Favorabilidade 2026 (clima da área)", "Percentual de 0 a 100, só para líderes"],
+    ["Recursos Humanos", "Avaliação de pares 2026", "Percentual de 0 a 100, só para não líderes"],
   ];
   return (
     <>

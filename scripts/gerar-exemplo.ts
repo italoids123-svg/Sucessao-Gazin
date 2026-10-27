@@ -1,20 +1,20 @@
 /**
  * Gera uma planilha de EXEMPLO FICTÍCIO no formato de importação da ferramenta, para demonstração.
- * Os nomes e as posições são os da base real; todas as respostas (interesse, desempenho, clima,
+ * Os nomes e as posições são os da base real; todas as respostas (interesse, desempenho, favorabilidade, avaliação de pares,
  * mobilidade, indicações, cidades) são sorteadas. Os analistas incluídos são pessoas inventadas.
  *
  * Uso: npm run exemplo   (grava exemplos/Gazin_Mapa_Sucessorio_EXEMPLO_FICTICIO.xlsx)
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import * as XLSX from "xlsx";
-import { CONTINUIDADE, CONVERSA, DESEMPENHO, HORIZONTE, MOBILIDADE, SEDE } from "../lib/config.ts";
+import { CONTINUIDADE, CONVERSA, HORIZONTE, MOBILIDADE, SEDE } from "../lib/config.ts";
 import { initialData } from "../lib/data.ts";
 import { buildCtx, norm, resumoCobertura, successorsFor } from "../lib/engine.ts";
 import { applyWorkbook, buildWorkbook } from "../lib/excel.ts";
 import type { Chair, Person } from "../lib/types.ts";
 
 // ---------- sorteio reprodutível ----------
-let semente = Number(process.env.SEMENTE ?? 1);
+let semente = Number(process.env.SEMENTE ?? 7);
 function rnd() {
   semente |= 0;
   semente = (semente + 0x6d2b79f5) | 0;
@@ -84,11 +84,11 @@ const LACUNAS = [
   "Gestão de indicadores e metas", "Comunicação com a diretoria", "Formação técnica específica da área",
 ];
 const horizonte = () => pesado<string>([["imediato", 25], ["ate3", 40], ["3a5", 25], ["mais5", 10]]);
-const desempenho = () =>
-  pesado<string>([["estrela", 11], ["alto_desempenho", 17], ["comprometido", 13], ["alto_potencial", 12], ["solido", 21], ["bom_executor", 10], ["enigma", 5], ["eficaz", 5], ["risco", 3], ["", 3]]);
+// Resultado da avaliação de desempenho em % (3% sem avaliação).
+const desempenho = () => (chance(0.03) ? null : Math.max(35, Math.min(100, Math.round(74 + (rnd() + rnd() + rnd() - 1.5) * 34))));
 const mobilidade = () => pesado<string>([["local", 28], ["matriz", 14], ["estado", 30], ["qualquer", 28]]);
-// Resultado da pesquisa de clima em % (piso de 18%: fica na mesma faixa de pontos de antes).
-const clima = () => Math.max(18, Math.min(98, Math.round(55 + (rnd() + rnd() + rnd() - 1.5) * 50)));
+// Favorabilidade (líderes) e avaliação de pares (não líderes), em %.
+const percentualArea = () => Math.max(18, Math.min(98, Math.round(55 + (rnd() + rnd() + rnd() - 1.5) * 50)));
 
 type Linha = Record<string, string | number>;
 const nivelDe = new Map<string, string>(data.people.map((p) => [norm(p.nome), p.nivel]));
@@ -129,9 +129,10 @@ function responder(nome: string, lidera: boolean) {
   rnd(); // mantém a sequência do sorteio (e o mesmo cenário) de quando havia a data da conversa
   r["Mobilidade"] = labelDe(MOBILIDADE, mobilidade());
   const d = desempenho();
-  if (d) r["Avaliação de desempenho (ciclo atual)"] = labelDe(DESEMPENHO, d);
+  if (d !== null) r["Avaliação de desempenho 2026 (%)"] = d;
   r["Lidera equipe"] = lidera ? "Sim" : "Não";
-  if (lidera) r["Pesquisa de clima 2026 (%)"] = clima();
+  if (lidera) r["Favorabilidade 2026 (%) - líderes"] = percentualArea();
+  else r["Avaliação de pares 2026 (%) - não líderes"] = percentualArea();
   r["Conversa de desenvolvimento"] = labelDe(CONVERSA, pesado<string>([["andamento", 40], ["sem_formalizar", 35], ["nao", 25]]));
   if (chance(0.78)) {
     const a1 = alvoDeInteresse(nome, []);
@@ -155,11 +156,11 @@ for (const f of ficticios) responder(f.nome, false);
 // Posição vaga de Controller: dois candidatos internos claros e um terceiro ainda distante.
 Object.assign(respostas.get(norm("Cleiton Cesar Silva"))!, {
   "Prioridade 1 (cargo de interesse)": "Controller", "Horizonte 1": "Imediato",
-  "Avaliação de desempenho (ciclo atual)": "Estrela", "Mobilidade": labelDe(MOBILIDADE, "qualquer"), "Pesquisa de clima 2026 (%)": 78,
+  "Avaliação de desempenho 2026 (%)": 94, "Mobilidade": labelDe(MOBILIDADE, "qualquer"), "Favorabilidade 2026 (%) - líderes": 78,
 });
 Object.assign(respostas.get(norm("Diego Henrique Garcia Soriani"))!, {
   "Prioridade 1 (cargo de interesse)": "Controller", "Horizonte 1": "Até 3 anos",
-  "Avaliação de desempenho (ciclo atual)": "Alto Desempenho", "Mobilidade": labelDe(MOBILIDADE, "matriz"), "Pesquisa de clima 2026 (%)": 64,
+  "Avaliação de desempenho 2026 (%)": 86, "Mobilidade": labelDe(MOBILIDADE, "matriz"), "Favorabilidade 2026 (%) - líderes": 64,
 });
 Object.assign(respostas.get(norm("Celia Xavier Novo"))!, {
   "Prioridade 2 (cargo de interesse)": "Controller", "Horizonte 2": "Mais de 3 até 5 anos",
@@ -208,7 +209,7 @@ const wb = buildWorkbook(data);
 const leiaMe = XLSX.utils.sheet_to_json<string[]>(wb.Sheets["Leia-me"], { header: 1 });
 wb.Sheets["Leia-me"] = XLSX.utils.aoa_to_sheet([
   ["EXEMPLO FICTÍCIO — NÃO SÃO DADOS REAIS"],
-  ["Nomes e posições vêm da base de posições críticas; interesse, desempenho, clima, mobilidade, indicações e cidades foram sorteados."],
+  ["Nomes e posições vêm da base de posições críticas; interesse, desempenho, favorabilidade, avaliação de pares, mobilidade, indicações e cidades foram sorteados."],
   ["Os 40 analistas e técnicos incluídos são pessoas inventadas. Use só para demonstrar a ferramenta; depois clique em \"Limpar base local\"."],
   [""],
   ...leiaMe,

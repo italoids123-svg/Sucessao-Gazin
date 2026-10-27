@@ -29,6 +29,7 @@ function Sidebar({ open, onNavigate }: { open: boolean; onNavigate: () => void }
         </div>
       </div>
       {item("/", "Visão geral")}
+      {item("/pessoas", "Busca por pessoa")}
       <div className="nav-group">
         <h4>Mapa Sucessório</h4>
         {NIVEIS.filter((n) => n.temPagina).map((n) => {

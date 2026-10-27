@@ -3,7 +3,6 @@ import {
   CONTINUIDADE,
   CONVERSA,
   CORTE_ADERENCIA,
-  DESEMPENHO,
   EMPRESA,
   HORIZONTE,
   MOBILIDADE,
@@ -33,9 +32,10 @@ const COL = {
   conversa: "Conversa de desenvolvimento",
   continuidade: "Continuidade da sua posição",
   sucessor: "Possível sucessor da sua posição (nome)",
-  desempenho: "Avaliação de desempenho (ciclo atual)",
+  desempenho: "Avaliação de desempenho 2026 (%)",
   lidera: "Lidera equipe",
-  clima: "Pesquisa de clima 2026 (%)",
+  favorabilidade: "Favorabilidade 2026 (%) - líderes",
+  pares: "Avaliação de pares 2026 (%) - não líderes",
 } as const;
 
 const CCOL = {
@@ -69,7 +69,8 @@ const LEIA_ME = [
   ["Prioridade 1 e 2 devem conter o CARGO EXATO da aba Cadeiras (por exemplo, \"Gerente regional\")."],
   ["\"Possível sucessor da sua posição\" é respondido pelo ocupante da cadeira: nome e sobrenome de quem ele indica."],
   ["Cidade sempre no formato Cidade/Estado com a sigla do Estado (por exemplo, Douradina/PR): o Estado é usado na mobilidade \"Dentro do Estado\"."],
-  ["Pesquisa de clima 2026 (%): resultado da área de 0 a 100 (pode ser 82 ou 82%), só para quem lidera equipe."],
+  ["Percentuais (desempenho, favorabilidade, avaliação de pares): de 0 a 100, pode ser 82 ou 82%."],
+  ["Líderes preenchem Favorabilidade (clima da área); não líderes preenchem Avaliação de pares. Lidera equipe vazio: a ferramenta deduz pela posição ocupada."],
   [`Corte de aderência: ${CORTE_ADERENCIA} pontos.`],
 ];
 
@@ -111,9 +112,10 @@ export function buildWorkbook(data: AppData): XLSX.WorkBook {
       [COL.conversa]: labelOf(CONVERSA, r.conversaDesenvolvimento),
       [COL.continuidade]: labelOf(CONTINUIDADE, r.continuidade),
       [COL.sucessor]: r.possivelSucessorTexto ?? "",
-      [COL.desempenho]: labelOf(DESEMPENHO, r.desempenho),
+      [COL.desempenho]: r.desempenho2026 ?? "",
       [COL.lidera]: r.lideraEquipe === undefined ? "" : r.lideraEquipe ? SIM : NAO,
-      [COL.clima]: r.clima2026 ?? "",
+      [COL.favorabilidade]: r.favorabilidade2026 ?? "",
+      [COL.pares]: r.pares2026 ?? "",
     };
   });
   const baseSheet = base.length ? XLSX.utils.json_to_sheet(base) : XLSX.utils.aoa_to_sheet([Object.values(COL)]);
@@ -132,7 +134,6 @@ export function buildWorkbook(data: AppData): XLSX.WorkBook {
     ["Horizonte", HORIZONTE.map((m) => m.label)],
     ["Conversa de desenvolvimento", CONVERSA.map((m) => m.label)],
     ["Continuidade da sua posição", CONTINUIDADE.map((m) => m.label)],
-    ["Avaliação de desempenho", DESEMPENHO.map((n) => n.label)],
     ["Lidera equipe", [SIM, NAO]],
     ["Cargos (Prioridade 1/2)", cargos],
   ];
@@ -181,6 +182,17 @@ function parseEnum<T extends string>(list: { code: T; label: string }[], v: stri
   const hit = list.find((i) => norm(i.code) === n || norm(i.label) === n);
   if (!hit) avisos.push(`${quem}: valor "${v}" não reconhecido em ${campo}`);
   return hit?.code;
+}
+
+/** Percentual de 0 a 100; aceita "82", "82%" ou a fração de uma célula formatada como % no Excel (0,82). */
+function parsePercentual(v: string, campo: string, avisos: string[], quem: string): number | undefined {
+  const txt = v.replace("%", "").replace(",", ".").trim();
+  if (!txt) return undefined;
+  let n = Number(txt);
+  if (Number.isFinite(n) && n > 0 && n <= 1 && txt.includes(".")) n *= 100;
+  if (Number.isFinite(n) && n >= 0 && n <= 100) return Math.round(n * 10) / 10;
+  avisos.push(`${quem}: "${v}" inválido em ${campo} (use um percentual de 0 a 100)`);
+  return undefined;
 }
 
 function parseNivel(v: string): string | undefined {
@@ -322,21 +334,15 @@ export function applyWorkbook(wb: XLSX.WorkBook, current: AppData): { data: AppD
     set("conversaDesenvolvimento", parseEnum(CONVERSA, pick(r, COL.conversa), COL.conversa, av, nome));
     set("continuidade", parseEnum(CONTINUIDADE, pick(r, COL.continuidade), COL.continuidade, av, nome));
     set("possivelSucessorTexto", pick(r, COL.sucessor));
-    set("desempenho", parseEnum(DESEMPENHO, pick(r, COL.desempenho), COL.desempenho, av, nome));
+    set("desempenho2026", parsePercentual(pick(r, COL.desempenho), COL.desempenho, av, nome));
     const lid = norm(pick(r, COL.lidera));
     if (lid) {
       if (lid === "SIM") rec.lideraEquipe = true;
       else if (lid === "NAO") rec.lideraEquipe = false;
       else av.push(`${nome}: valor "${pick(r, COL.lidera)}" não reconhecido em ${COL.lidera}`);
     }
-    const climaTxt = pick(r, COL.clima).replace("%", "").replace(",", ".").trim();
-    if (climaTxt) {
-      let clima = Number(climaTxt);
-      // Célula formatada como porcentagem no Excel chega como fração (0,82 = 82%).
-      if (Number.isFinite(clima) && clima > 0 && clima <= 1 && climaTxt.includes(".")) clima *= 100;
-      if (Number.isFinite(clima) && clima >= 0 && clima <= 100) rec.clima2026 = Math.round(clima * 10) / 10;
-      else av.push(`${nome}: pesquisa de clima "${climaTxt}" inválida (use um percentual de 0 a 100)`);
-    }
+    set("favorabilidade2026", parsePercentual(pick(r, COL.favorabilidade), COL.favorabilidade, av, nome));
+    set("pares2026", parsePercentual(pick(r, COL.pares), COL.pares, av, nome));
     succession[p.id] = rec;
   }
 

@@ -4,7 +4,7 @@ export const EMPRESA = "Gazin";
 export const STORAGE_KEY = "gazin-mapa-sucessorio:v1";
 // Incremente sempre que a base padrão (lib/base-data.json) ou a estrutura mudar:
 // descarta a base antiga salva no navegador.
-export const BASE_DATA_VERSION = 6;
+export const BASE_DATA_VERSION = 7;
 
 export interface NivelDef {
   nome: string;
@@ -57,39 +57,40 @@ export const HIERARQUIA_PADRAO: HierarquiaEntry[] = [
 ];
 
 // ---------- Pontuação de aderência (material "Critérios" da Gazin) ----------
-// Soma 100. "Match de indicação" = indicação do líder (5) + interesse autodeclarado (5).
+// Dois perfis, cada um somando 100. Muda só o critério de 30 pontos:
+// líderes são avaliados pela favorabilidade (clima da área); não líderes, pela avaliação de pares.
+// Mobilidade continua mapeada (e filtra as posições alcançáveis), mas não pontua.
+export type Perfil = "lider" | "naoLider";
 export const PESOS = {
-  desempenho: 30,
+  desempenho: 50,
   indicacaoLider: 5,
   interesse: 5,
-  clima: 30,
+  avaliacaoArea: 30, // favorabilidade (líder) ou avaliação de pares (não líder)
   prontidao: 10,
-  mobilidade: 20,
+  mobilidade: 0,
 };
+export const CRITERIO_AREA: Record<Perfil, { titulo: string; sub: string }> = {
+  lider: { titulo: "Favorabilidade", sub: "clima da área" },
+  naoLider: { titulo: "Avaliação de pares", sub: "pares da área" },
+};
+export const PERFIL_LABEL: Record<Perfil, string> = { lider: "Líder", naoLider: "Não líder" };
 export const CORTE_ADERENCIA = 60;
 
-// Avaliação de desempenho do ciclo atual: Resultado × Comportamento.
-export const DESEMPENHO: { code: string; label: string; descricao: string; pontos: number }[] = [
-  { code: "estrela", label: "Estrela", descricao: "Resultado alto · Comportamento alto", pontos: 30 },
-  { code: "alto_desempenho", label: "Alto Desempenho", descricao: "Resultado médio · Comportamento alto", pontos: 26 },
-  { code: "comprometido", label: "Empregado Comprometido", descricao: "Resultado baixo · Comportamento alto", pontos: 22 },
-  { code: "alto_potencial", label: "Alto Potencial", descricao: "Resultado alto · Comportamento médio", pontos: 18 },
-  { code: "solido", label: "Empregado Sólido / Responsável", descricao: "Resultado médio · Comportamento médio", pontos: 14 },
-  { code: "bom_executor", label: "Bom Executor / Especialista", descricao: "Resultado baixo · Comportamento médio", pontos: 10 },
-  { code: "enigma", label: "Enigma / Questionável", descricao: "Resultado alto · Comportamento baixo", pontos: 6 },
-  { code: "eficaz", label: "Empregado Eficaz", descricao: "Resultado médio · Comportamento baixo", pontos: 2 },
-  { code: "risco", label: "Risco / Baixo Desempenho", descricao: "Resultado baixo · Comportamento baixo", pontos: 0 },
-];
+/** Avaliação de desempenho 2026 (0 a 100%): pontos proporcionais ao resultado. */
+export function pontosDesempenho(resultado: number): number {
+  return (Math.max(0, Math.min(100, resultado)) / 100) * PESOS.desempenho;
+}
 
-// Pesquisa de clima 2026: resultado percentual (0 a 100%) da área liderada.
-export const CLIMA_FAIXAS: { label: string; ate: number; pontos: number }[] = [
+// Favorabilidade e avaliação de pares (0 a 100%): mesmas faixas, para que líderes e não líderes
+// que disputam a mesma posição sejam medidos na mesma régua.
+export const AREA_FAIXAS: { label: string; ate: number; pontos: number }[] = [
   { label: "Abaixo de 30%", ate: 29.999, pontos: 6 },
   { label: "30% a 50%", ate: 50, pontos: 13 },
   { label: "51% a 85%", ate: 85, pontos: 21 },
   { label: "Acima de 85%", ate: Infinity, pontos: 30 },
 ];
-export function pontosClima(resultado: number): number {
-  return CLIMA_FAIXAS.find((f) => resultado <= f.ate)!.pontos;
+export function pontosArea(resultado: number): number {
+  return AREA_FAIXAS.find((f) => resultado <= f.ate)!.pontos;
 }
 
 export const HORIZONTE: { code: Exclude<Horizonte, "">; label: string; pontos: number }[] = [
@@ -101,12 +102,12 @@ export const HORIZONTE: { code: Exclude<Horizonte, "">; label: string; pontos: n
 
 export const SEDE = "Douradina/PR";
 
-// Pontos pela amplitude declarada: quem aceita mais lugares amplia as cadeiras que pode suceder.
-export const MOBILIDADE: { code: Exclude<Mobilidade, "">; label: string; pontos: number }[] = [
-  { code: "local", label: "Local atual", pontos: 2 },
-  { code: "matriz", label: `Matriz (${SEDE})`, pontos: 7 },
-  { code: "estado", label: "Dentro do Estado", pontos: 13 },
-  { code: "qualquer", label: "Total (qualquer unidade)", pontos: 20 },
+// Onde a pessoa aceita atuar. Não pontua; define em quais posições ela pode aparecer.
+export const MOBILIDADE: { code: Exclude<Mobilidade, "">; label: string }[] = [
+  { code: "local", label: "Local atual" },
+  { code: "matriz", label: `Matriz (${SEDE})` },
+  { code: "estado", label: "Dentro do Estado" },
+  { code: "qualquer", label: "Total (qualquer unidade)" },
 ];
 
 export const CONVERSA: { code: Exclude<ConversaDesenvolvimento, "">; label: string }[] = [

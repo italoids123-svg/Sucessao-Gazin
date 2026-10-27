@@ -28,10 +28,11 @@ test("merge aditivo: atualiza questionário, cria pessoa nova e cidade da cadeir
     const alvo = base.find((r) => r["Nome completo"] === "Cleiton Cesar Silva")!;
     alvo["Prioridade 1 (cargo de interesse)"] = "controller";
     alvo["Horizonte 1"] = "Imediato";
-    alvo["Avaliação de desempenho (ciclo atual)"] = "estrela";
+    alvo["Avaliação de desempenho 2026 (%)"] = "91,5%";
     alvo["Mobilidade"] = "Dentro do Estado";
     alvo["Lidera equipe"] = "Sim";
-    alvo["Pesquisa de clima 2026 (%)"] = 0.82; // célula formatada como % no Excel
+    alvo["Favorabilidade 2026 (%) - líderes"] = 0.82; // célula formatada como % no Excel
+    alvo["Avaliação de pares 2026 (%) - não líderes"] = 140; // inválido: gera aviso
     base.push({ "Nome completo": "Pessoa Nova Teste", "Nível": "Analista / Técnico", "Horizonte 1": "xpto" });
     wb.Sheets["Base de dados"] = XLSX.utils.json_to_sheet(base);
     const cad = XLSX.utils.sheet_to_json<Record<string, unknown>>(wb.Sheets["Cadeiras"]);
@@ -48,11 +49,12 @@ test("merge aditivo: atualiza questionário, cria pessoa nova e cidade da cadeir
     {
       prioridade1: "controller",
       horizonte1: "imediato",
-      desempenho: "estrela",
+      desempenho2026: 91.5,
       mobilidade: "estado",
       lideraEquipe: true,
-      clima2026: 82,
+      favorabilidade2026: 82,
     },
   );
   assert.ok(stats.avisos.some((a) => a.includes("xpto")));
+  assert.ok(stats.avisos.some((a) => a.includes("Avaliação de pares")));
 });

@@ -34,6 +34,9 @@ Para gerar de novo: `npm run exemplo` (semente fixa; `SEMENTE=7 npm run exemplo`
 
 ## Recursos da tela
 
+- **Busca por pessoa**: todos os interessados, com filtros em botões (cargos por nível atual ou de
+  interesse, prontidão, prioridade, mobilidade e cidade) e as posições em que cada um aparece.
+
 - **Tela cheia**: botão na barra superior (sai também com Esc).
 - **Imprimir / Exportar**: na barra superior (exporta a página atual) e no detalhe de cada posição
   (exporta só a posição). Escolha **PDF** (páginas A4, sem cortar cartões no meio) ou **PNG**
@@ -52,21 +55,27 @@ Para gerar de novo: `npm run exemplo` (semente fixa; `SEMENTE=7 npm run exemplo`
 
 ## Critérios de aderência (material "Critérios" da Gazin)
 
-| Critério | Pontos |
-|---|---|
-| Avaliação de desempenho, ciclo atual (Resultado × Comportamento) | 30 |
-| Match de indicação: líder indica (5) + colaborador se indica (5) | 10 |
-| Pesquisa de clima 2026 (faixas de resultado percentual) | 30 |
-| Prontidão declarada (horizonte) | 10 |
-| Mobilidade (local 2, matriz 7, estado 13, qualquer 20) | 20 |
+Dois perfis, ambos somando 100 pontos:
 
-Escalas completas em `lib/config.ts` e na página *Critérios* do app.
+| Critério | Líderes | Não líderes |
+|---|---|---|
+| Avaliação de desempenho 2026 (proporcional ao resultado de 0 a 100%) | 50 | 50 |
+| Indicação do líder da posição | 5 | 5 |
+| Favorabilidade (clima da área) | 30 | – |
+| Avaliação de pares | – | 30 |
+| Interesse declarado | 5 | 5 |
+| Prontidão declarada | 10 | 10 |
+| Mobilidade (mapeada, filtra as posições alcançáveis, sem pontos) | 0 | 0 |
+
+Perfil: coluna "Lidera equipe"; vazia, é líder quem ocupa posição de Supervisão para cima.
+Escalas em `lib/config.ts` e na página *Critérios* do app.
 
 ## Premissas a validar com a Gazin
 
 - **Nível** não existe na planilha de origem; foi derivado do cargo e da linha de reporte
   (regra em `scripts/build-base.py` e na página *Elegibilidade e Aderência*).
-- **Clima só para quem lidera equipe**: o material não diz; quem não lidera é avaliado sobre 70 pontos.
+- **Favorabilidade e avaliação de pares** usam a mesma régua de faixas (6/13/21/30), para que líderes e
+  não líderes que disputam a mesma posição sejam medidos igual.
 - **Entrada na posição**: basta uma ponta do match (se indicou OU foi indicado pelo líder).
   Nome indicado que corresponde a mais de uma pessoa só vale para quem também se indicou.
 - **Mobilidade** pontua pela amplitude e também filtra: não aparece em posição fora do alcance declarado.

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { CONTINUIDADE, CORTE_ADERENCIA, DESEMPENHO, HORIZONTE, MOBILIDADE, labelOf } from "@/lib/config.ts";
+import { CONTINUIDADE, CORTE_ADERENCIA, CRITERIO_AREA, HORIZONTE, MOBILIDADE, PERFIL_LABEL, labelOf } from "@/lib/config.ts";
 import { fmtPontos, occupantOf, resolverIndicacao } from "@/lib/engine.ts";
 import { useStore } from "@/lib/store.tsx";
 import type { Candidate, Chair } from "@/lib/types.ts";
@@ -55,51 +55,25 @@ interface Cartao {
   aplicavel: boolean;
 }
 
-/** Os cinco critérios do material, com "match de indicação" somando líder + autoindicação. */
+/** Os seis critérios do material, na ordem dos cartões de critérios da Gazin. */
 function cartoesDe(c: Candidate): Cartao[] {
   const k = Object.fromEntries(c.criterios.map((x) => [x.key, x]));
-  const desempenho = DESEMPENHO.find((d) => d.code === c.record.desempenho);
   const mob = labelOf(MOBILIDADE, c.record.mobilidade);
+  const area = CRITERIO_AREA[c.perfil];
+  const card = (key: string, titulo: string, sub: string): Cartao => ({
+    titulo,
+    sub,
+    pontos: k[key].pontos,
+    max: k[key].max,
+    aplicavel: k[key].max > 0,
+  });
   return [
-    {
-      titulo: "Avaliação de desempenho",
-      sub: desempenho ? `${desempenho.label} (ciclo atual)` : "Não avaliado no ciclo",
-      pontos: k.desempenho.pontos,
-      max: k.desempenho.max,
-      aplicavel: true,
-    },
-    {
-      titulo: "Match de indicação",
-      sub: `Líder: ${c.indicadoPeloLider ? "indicou" : "não indicou"} · Autoindicação: ${c.prioridade ? "sim" : "não"}`,
-      pontos: k.indicacaoLider.pontos + k.interesse.pontos,
-      max: k.indicacaoLider.max + k.interesse.max,
-      aplicavel: true,
-    },
-    {
-      titulo: "Pesquisa de clima",
-      sub: k.clima.aplicavel
-        ? typeof c.record.clima2026 === "number"
-          ? `Resultado 2026: ${fmtPontos(c.record.clima2026)}%`
-          : "Sem resultado de clima 2026"
-        : "Não lidera equipe",
-      pontos: k.clima.pontos,
-      max: k.clima.max,
-      aplicavel: k.clima.aplicavel,
-    },
-    {
-      titulo: "Prontidão declarada",
-      sub: labelOf(HORIZONTE, c.horizonte) || (c.prioridade ? "Horizonte não informado" : "Não se candidatou"),
-      pontos: k.prontidao.pontos,
-      max: k.prontidao.max,
-      aplicavel: true,
-    },
-    {
-      titulo: "Mobilidade",
-      sub: mob ? `Abrangência: ${mob}` : "Não informada",
-      pontos: k.mobilidade.pontos,
-      max: k.mobilidade.max,
-      aplicavel: true,
-    },
+    card("desempenho", "Avaliação de desempenho", k.desempenho.detalhe),
+    card("indicacaoLider", "Indicação do líder da posição", c.indicadoPeloLider ? "Indicado pelo líder" : "Não indicado pelo líder"),
+    card("mobilidade", "Mobilidade", mob ? `${mob} · mapeada, sem pontuação` : "Não informada · sem pontuação"),
+    card("avaliacaoArea", area.titulo, k.avaliacaoArea.detalhe.replace(`${area.titulo} 2026`, area.sub)),
+    card("interesse", "Interesse declarado", c.prioridade ? `Prioridade ${c.prioridade}` : "Não se candidatou"),
+    card("prontidao", "Prontidão declarada", labelOf(HORIZONTE, c.horizonte) || (c.prioridade ? "Horizonte não informado" : "Não se candidatou")),
   ];
 }
 
@@ -112,13 +86,15 @@ function Detalhes({ c }: { c: Candidate }) {
   const sucessorProprio = SUCESSOR_PROPRIO[c.record.continuidade ?? ""];
   return (
     <div className="cand-detalhes">
-      <div className="det-titulo">Composição da pontuação · base de {fmtPontos(base)} pontos aplicáveis</div>
+      <div className="det-titulo">
+        Composição da pontuação · critérios para {c.perfil === "lider" ? "líderes" : "não líderes"} · base de {fmtPontos(base)} pontos
+      </div>
       <div className="det-cartoes">
         {cartoesDe(c).map((k) => (
           <div key={k.titulo} className={`det-cartao ${k.aplicavel ? "" : "na"}`}>
             <div className="det-nome">{k.titulo}</div>
             <div className="det-sub">{k.sub}</div>
-            <div className="det-pontos">{k.aplicavel ? `${fmtPontos(k.pontos)}/${fmtPontos(k.max)}` : "Não se aplica"}</div>
+            <div className="det-pontos">{k.aplicavel ? `${fmtPontos(k.pontos)}/${fmtPontos(k.max)}` : "Sem pontuação"}</div>
           </div>
         ))}
       </div>
@@ -161,7 +137,7 @@ function CandidateRow({ c }: { c: Candidate }) {
         <div>
           <div className="nome">{c.person.nome}</div>
           <div className="sub">
-            {c.person.cargo || "Sem cargo informado"} · {c.person.nivel}
+            {c.person.cargo || "Sem cargo informado"} · {c.person.nivel} · {PERFIL_LABEL[c.perfil]}
           </div>
         </div>
         <div className="col-prio">

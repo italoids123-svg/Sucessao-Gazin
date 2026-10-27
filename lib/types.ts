@@ -33,7 +33,6 @@ export type Horizonte = "imediato" | "ate3" | "3a5" | "mais5" | "";
 export type Mobilidade = "local" | "matriz" | "estado" | "qualquer" | "";
 export type ConversaDesenvolvimento = "andamento" | "sem_formalizar" | "nao" | "";
 export type Continuidade = "imediata" | "com_suporte" | "nao_identifico" | "sem_elementos" | "";
-export type DesempenhoCode = string; // código de DESEMPENHO (config.ts), "" quando não avaliado
 
 export interface SuccessionRecord {
   prioridade1?: string;
@@ -47,9 +46,10 @@ export interface SuccessionRecord {
   conversaDesenvolvimento?: ConversaDesenvolvimento;
   continuidade?: Continuidade;
   possivelSucessorTexto?: string;
-  desempenho?: DesempenhoCode; // avaliação de desempenho do ciclo atual
-  lideraEquipe?: boolean;
-  clima2026?: number | ""; // resultado da pesquisa de clima 2026 da área, em % (0 a 100)
+  desempenho2026?: number | ""; // resultado da avaliação de desempenho 2026, em % (0 a 100)
+  lideraEquipe?: boolean; // vazio: deduzido da posição que a pessoa ocupa
+  favorabilidade2026?: number | ""; // líderes: favorabilidade (clima da área) 2026, em %
+  pares2026?: number | ""; // não líderes: avaliação de pares 2026, em %
 }
 export type SuccessionMap = Record<string, SuccessionRecord>;
 
@@ -80,6 +80,7 @@ export interface Candidate {
   score: number;
   criterios: CriterioScore[];
   indicadoPeloLider: boolean;
+  perfil: "lider" | "naoLider";
   grupo: GrupoInteressado;
 }
 
