@@ -304,20 +304,6 @@ table.t td.num { white-space: nowrap; }
 .table-wrap { overflow-x: auto; max-width: 100%; }
 .nota-tabela { font-size: 12.5px; color: var(--muted); margin: 4px 0 0; }
 
-/* ---------- Critérios por perfil ---------- */
-.perfis { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; }
-.perfil-painel { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
-.perfil-titulo { background: var(--teal); color: #fff; font-weight: 700; padding: 10px 16px; font-size: 15px; }
-.perfil-cartoes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 14px; }
-.perfil-cartao { border: 1px solid var(--border); border-radius: 10px; padding: 12px 10px; text-align: center; background: var(--card); }
-.perfil-cartao.declarado { background: #e8f5ee; border-color: #cfe9da; }
-.perfil-pontos { font-size: 30px; font-weight: 800; color: var(--teal); line-height: 1.1; }
-.perfil-cartao.declarado .perfil-pontos, .perfil-cartao.declarado .perfil-nome { color: var(--verde); }
-.perfil-nome { font-weight: 700; color: var(--teal); font-size: 14px; margin-top: 6px; }
-.perfil-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
-@media (max-width: 1000px) { .perfis { grid-template-columns: 1fr; } }
-@media (max-width: 520px) { .perfil-cartoes { grid-template-columns: repeat(2, 1fr); } }
-
 /* ---------- Busca por pessoa ---------- */
 .busca-filtros {
   background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 14px; margin: 18px 0 12px;

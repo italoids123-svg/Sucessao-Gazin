@@ -1,32 +1,6 @@
-import { AREA_FAIXAS, CRITERIO_AREA, HORIZONTE, PESOS, SEDE, type Perfil } from "@/lib/config.ts";
+import { AREA_FAIXAS, HORIZONTE, PESOS, SEDE } from "@/lib/config.ts";
 
 const fmt = (n: number) => n.toLocaleString("pt-BR");
-
-const CARTOES = (perfil: Perfil): [number, string, string, boolean][] => [
-  [PESOS.desempenho, "Avaliação de desempenho", "desempenho 2026", false],
-  [PESOS.indicacaoLider, "Indicação do líder da posição", "líder da posição", false],
-  [PESOS.mobilidade, "Mobilidade", "onde você aceita atuar", true],
-  [PESOS.avaliacaoArea, CRITERIO_AREA[perfil].titulo, CRITERIO_AREA[perfil].sub, false],
-  [PESOS.interesse, "Interesse declarado", "declaração aberta de onde gostaria de atuar", true],
-  [PESOS.prontidao, "Prontidão declarada", "em quanto tempo você se vê pronto", true],
-];
-
-function Painel({ perfil, titulo }: { perfil: Perfil; titulo: string }) {
-  return (
-    <div className="perfil-painel">
-      <div className="perfil-titulo">{titulo}</div>
-      <div className="perfil-cartoes">
-        {CARTOES(perfil).map(([pontos, nome, sub, declarado]) => (
-          <div key={nome} className={`perfil-cartao ${declarado ? "declarado" : ""}`}>
-            <div className="perfil-pontos">{pontos}</div>
-            <div className="perfil-nome">{nome}</div>
-            <div className="perfil-sub">{sub}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 interface Linha {
   rotulo: string;
@@ -66,10 +40,6 @@ export default function Page() {
         <div className="eyebrow">Metodologia</div>
         <h1>Critérios</h1>
         <p>100 pontos distribuídos em critérios de aderência à sucessão, com réguas diferentes para líderes e não líderes.</p>
-      </div>
-      <div className="perfis">
-        <Painel perfil="lider" titulo="Para líderes" />
-        <Painel perfil="naoLider" titulo="Para não líderes" />
       </div>
 
       <div className="blocos">
