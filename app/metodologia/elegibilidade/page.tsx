@@ -13,7 +13,7 @@ export default function Page() {
     ["Avaliação de pares (não líderes)", `${PESOS.avaliacaoArea}`, "Faixa da avaliação feita pelos pares da área."],
     ["Interesse declarado", `${PESOS.interesse}`, "O candidato se candidatou à posição como Prioridade 1 ou 2."],
     ["Prontidão declarada", `${PESOS.prontidao}`, "Horizonte declarado para assumir a posição."],
-    ["Mobilidade", "sem pontos", "Mapeada: define em quais posições a pessoa aparece."],
+    ["Mobilidade", "sem pontos", "Mapeada e informativa: não impede a pessoa de aparecer em outras cidades."],
   ];
   return (
     <>
@@ -25,7 +25,7 @@ export default function Page() {
         <h2>1. Quem aparece em uma posição</h2>
         <p>
           Aparece quem se indicou ao cargo exato da posição (Prioridade 1 ou 2) <b>ou</b> foi indicado nominalmente pelo ocupante
-          atual, desde que a mobilidade declarada alcance a cidade da posição. O ocupante nunca aparece como sucessor da própria
+          atual, em qualquer cidade (a mobilidade declarada é só informativa). O ocupante nunca aparece como sucessor da própria
           posição. A diretoria/área é só informação de exibição e filtro: nunca bloqueia.
         </p>
 

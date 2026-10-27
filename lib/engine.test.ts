@@ -69,10 +69,16 @@ test("cadeira em Maringá: pontuação pelo modelo de critérios", () => {
   assert.ok(r.dentro.every((c) => c.criterios.find((k) => k.key === "mobilidade")!.pontos === 0));
 });
 
-test("mobilidade filtra por cidade e por UF", () => {
+test("mobilidade não impede de aparecer em outra cidade, só sinaliza", () => {
+  // Posição em Cuiabá/MT: o supervisor só aceita a cidade atual (Maringá/PR) e mesmo assim aparece.
   const r = successorsFor(base().chairs[1], buildCtx(base()));
-  const ids = [...r.dentro, ...r.abaixo, ...r.fora].map((c) => c.person.id).sort();
-  assert.deepEqual(ids, ["analista", "coord"]);
+  const todos = [...r.dentro, ...r.abaixo, ...r.fora];
+  assert.deepEqual(todos.map((c) => c.person.id).sort(), ["analista", "coord", "sup"]);
+  const sup = todos.find((c) => c.person.id === "sup")!;
+  assert.equal(sup.foraDaMobilidade, true);
+  // Mesma pontuação de Maringá, sem a indicação do líder (a posição de Cuiabá não tem ocupante): 95 - 5 = 90
+  assert.equal(sup.score, 90);
+  assert.equal(todos.find((c) => c.person.id === "coord")!.foraDaMobilidade, false); // aceita qualquer unidade
 });
 
 test("ocupante nunca é sucessor da própria cadeira", () => {

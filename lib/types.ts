@@ -80,6 +80,7 @@ export interface Candidate {
   score: number;
   criterios: CriterioScore[];
   indicadoPeloLider: boolean;
+  foraDaMobilidade: boolean; // a posição fica fora da mobilidade declarada (só informativo)
   perfil: "lider" | "naoLider";
   grupo: GrupoInteressado;
 }

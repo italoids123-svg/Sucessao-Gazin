@@ -102,14 +102,11 @@ export default function Page() {
         <Tabela cols={["Prazo declarado", "Pontos"]} rows={HORIZONTE.map((h) => [h.label, h.pontos])} />
 
         <h2>Mobilidade (sem pontuação)</h2>
-        <p>Onde a pessoa aceita atuar. Não soma pontos, mas define em quais posições ela aparece:</p>
-        <ul>
-          <li><b>Local atual</b>: só posições na própria cidade.</li>
-          <li><b>Matriz</b>: só posições em {SEDE}, mesmo que a pessoa já esteja em outra cidade que tenha a posição.</li>
-          <li><b>Dentro do Estado</b>: posições no mesmo Estado da cidade atual.</li>
-          <li><b>Total</b>: qualquer unidade.</li>
-          <li>Sem cidade da posição, sem cidade da pessoa ou sem resposta: não bloqueia.</li>
-        </ul>
+        <p>
+          Onde a pessoa aceita atuar: local atual, matriz ({SEDE}), dentro do Estado ou qualquer unidade. É mapeada e aparece no detalhe
+          do candidato, mas não soma pontos nem impede a pessoa de aparecer em posições de outras cidades. Quando a posição fica fora do
+          que a pessoa declarou, o detalhe do candidato sinaliza.
+        </p>
       </div>
     </>
   );

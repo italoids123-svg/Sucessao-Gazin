@@ -327,8 +327,8 @@ export default function BuscaPessoas() {
                     </table>
                   ) : (
                     <div className="empty">
-                      Não aparece em nenhuma posição: a mobilidade declarada não alcança as posições de interesse, ou o cargo informado não
-                      existe na base.
+                      Não aparece em nenhuma posição: o cargo informado não existe na base ou corresponde apenas à posição que a pessoa
+                      já ocupa.
                     </div>
                   )}
                 </div>

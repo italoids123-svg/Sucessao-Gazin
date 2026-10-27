@@ -173,8 +173,8 @@ export default function Overview() {
         <h2>Qualidade da base</h2>
         <ul>
           <li>
-            <b>{semCidade}</b> de {data.chairs.length} posições sem cidade: nelas a mobilidade não filtra ninguém (continua pontuando pela
-            amplitude declarada). Preencha na aba <b>Cadeiras</b>, no formato Cidade/Estado (por exemplo, Douradina/PR).
+            <b>{semCidade}</b> de {data.chairs.length} posições sem cidade: nelas não é possível sinalizar quem está fora da mobilidade
+            declarada. Preencha na aba <b>Cadeiras</b>, no formato Cidade/Estado (por exemplo, Douradina/PR).
           </li>
           {vagas.length > 0 && (
             <li>

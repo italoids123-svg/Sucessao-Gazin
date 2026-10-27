@@ -71,7 +71,10 @@ function cartoesDe(c: Candidate): Cartao[] {
   return [
     card("desempenho", "Avaliação de desempenho", k.desempenho.detalhe),
     card("indicacaoLider", "Indicação do líder da posição", c.indicadoPeloLider ? "Indicado pelo líder" : "Não indicado pelo líder"),
-    { ...card("mobilidade", "Mobilidade", "Mapeado, sem pontuação"), valor: mob || "Não informada" },
+    {
+      ...card("mobilidade", "Mobilidade", c.foraDaMobilidade ? "Mapeado, sem pontuação · esta posição fica fora" : "Mapeado, sem pontuação"),
+      valor: mob || "Não informada",
+    },
     card("avaliacaoArea", area.titulo, k.avaliacaoArea.detalhe.replace(`${area.titulo} 2026`, area.sub)),
     card("interesse", "Interesse declarado", c.prioridade ? `Prioridade ${c.prioridade}` : "Não se candidatou"),
     card("prontidao", "Prontidão declarada", labelOf(HORIZONTE, c.horizonte) || (c.prioridade ? "Horizonte não informado" : "Não se candidatou")),

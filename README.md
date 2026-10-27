@@ -65,7 +65,7 @@ Dois perfis, ambos somando 100 pontos:
 | Avaliação de pares | – | 30 |
 | Interesse declarado | 5 | 5 |
 | Prontidão declarada | 10 | 10 |
-| Mobilidade (mapeada, filtra as posições alcançáveis, sem pontos) | 0 | 0 |
+| Mobilidade (mapeada e informativa, sem pontos e sem filtrar posições) | 0 | 0 |
 
 Perfil: coluna "Lidera equipe"; vazia, é líder quem ocupa posição de Supervisão para cima.
 Escalas em `lib/config.ts` e na página *Critérios* do app.
@@ -78,7 +78,8 @@ Escalas em `lib/config.ts` e na página *Critérios* do app.
   não líderes que disputam a mesma posição sejam medidos igual.
 - **Entrada na posição**: basta uma ponta do match (se indicou OU foi indicado pelo líder).
   Nome indicado que corresponde a mais de uma pessoa só vale para quem também se indicou.
-- **Mobilidade** pontua pela amplitude e também filtra: não aparece em posição fora do alcance declarado.
+- **Mobilidade** não pontua nem filtra: a pessoa aparece em qualquer cidade; o detalhe só sinaliza quando a
+  posição fica fora do que ela declarou.
 - **Hierarquia de elegibilidade**: Coordenação, Supervisão e Especialista se alimentam entre si e a si
   mesmos (movimento lateral dentro da faixa). Gerência, Gerência Executiva e Diretoria continuam só
   com promoção vertical.
@@ -86,5 +87,6 @@ Escalas em `lib/config.ts` e na página *Critérios* do app.
   `scripts/build-base.py`, `NOME_POR_EXTENSO`).
 - **Corte (60)** não consta do material: é padrão do modelo.
 - **Matriz**: Douradina/PR.
-- **Cidade das posições** não existe na origem: até ser preenchida (aba Cadeiras, formato Cidade/UF),
-  a mobilidade não filtra ninguém e uma mesma pessoa pode aparecer como sucessora de várias posições.
+- **Cidade das posições** não existe na origem: preencha na aba Cadeiras (formato Cidade/Estado) para o
+  detalhe sinalizar quem está fora da mobilidade declarada. Uma mesma pessoa pode aparecer como sucessora
+  de várias posições do mesmo cargo.

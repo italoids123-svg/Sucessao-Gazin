@@ -219,9 +219,9 @@ export function successorsFor(chair: Chair, ctx: EngineCtx): ChairResult {
       indicacao.unicos.has(p.id) || (!!interesse && indicacao.ambiguos.some((a) => a.pessoas.some((x) => x.id === p.id)));
     // Entra quem se indicou à posição OU foi indicado pelo líder dela (o "match" soma as duas pontas).
     if (!interesse && !indicado) continue;
-    // Mobilidade é filtro nos três grupos: quem declarou que não vai até a cidade da posição
-    // não é sucessor dela. Sem dado geográfico, não bloqueia.
-    if (avaliarMobilidade(cidadeDaPessoa(p, rec, ctx), chair.cidade, rec.mobilidade) === "nao_alcanca") continue;
+    // Mobilidade é só informativa: não pontua nem impede a pessoa de aparecer. Apenas sinaliza
+    // quando a posição fica fora do que ela declarou aceitar.
+    const foraDaMobilidade = avaliarMobilidade(cidadeDaPessoa(p, rec, ctx), chair.cidade, rec.mobilidade) === "nao_alcanca";
 
     const perfil = perfilDe(p, rec);
     const { score, criterios } = pontuar(rec, interesse, indicado, perfil);
@@ -234,6 +234,7 @@ export function successorsFor(chair: Chair, ctx: EngineCtx): ChairResult {
       score,
       criterios,
       indicadoPeloLider: indicado,
+      foraDaMobilidade,
       perfil,
       grupo,
     });
