@@ -2,33 +2,6 @@ import { AREA_FAIXAS, CRITERIO_AREA, HORIZONTE, PESOS, SEDE, type Perfil } from 
 
 const fmt = (n: number) => n.toLocaleString("pt-BR");
 
-function Tabela({ cols, rows }: { cols: string[]; rows: (string | number)[][] }) {
-  return (
-    <table className="t">
-      <thead>
-        <tr>
-          {cols.map((c, i) => (
-            <th key={c} className={i === cols.length - 1 ? "num" : undefined}>
-              {c}
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {rows.map((r) => (
-          <tr key={String(r[0])}>
-            {r.map((v, i) => (
-              <td key={i} className={i === r.length - 1 ? "num" : undefined}>
-                {typeof v === "number" ? fmt(v) : v}
-              </td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
-}
-
 const CARTOES = (perfil: Perfil): [number, string, string, boolean][] => [
   [PESOS.desempenho, "Avaliação de desempenho", "desempenho 2026", false],
   [PESOS.indicacaoLider, "Indicação do líder da posição", "líder da posição", false],
@@ -55,58 +28,145 @@ function Painel({ perfil, titulo }: { perfil: Perfil; titulo: string }) {
   );
 }
 
+interface Linha {
+  rotulo: string;
+  sub?: string;
+  pts: string;
+}
+
+/** Um bloco por critério: título, peso no modelo, faixas com a pontuação à direita e nota de rodapé. */
+function Bloco({ titulo, peso, linhas, nota }: { titulo: string; peso: string; linhas: Linha[]; nota?: React.ReactNode }) {
+  return (
+    <section className="bloco">
+      <h2>{titulo}</h2>
+      <div className="bloco-peso">{peso}</div>
+      <div className="bloco-linhas">
+        {linhas.map((l) => (
+          <div key={l.rotulo} className="bloco-linha">
+            <div>
+              <div>{l.rotulo}</div>
+              {l.sub && <div className="bloco-sub">{l.sub}</div>}
+            </div>
+            <div className="bloco-pts">{l.pts}</div>
+          </div>
+        ))}
+      </div>
+      {nota && <div className="bloco-nota">{nota}</div>}
+    </section>
+  );
+}
+
+const pts = (n: number) => `${fmt(n)} ${n === 1 ? "pt" : "pts"}`;
+
 export default function Page() {
+  const faixasArea = [...AREA_FAIXAS].reverse().map((f) => ({ rotulo: f.label, pts: pts(f.pontos) }));
   return (
     <>
       <div className="page-head">
+        <div className="eyebrow">Metodologia</div>
         <h1>Critérios</h1>
-        <p>Os critérios e pontuações são públicos. Líderes e não líderes têm réguas diferentes; ambas somam 100 pontos.</p>
+        <p>100 pontos distribuídos em critérios de aderência à sucessão, com réguas diferentes para líderes e não líderes.</p>
       </div>
       <div className="perfis">
         <Painel perfil="lider" titulo="Para líderes" />
         <Painel perfil="naoLider" titulo="Para não líderes" />
       </div>
-      <div className="doc">
-        <h2>Quem é líder</h2>
-        <p>
-          Vale a resposta &quot;Lidera equipe&quot; da planilha de coleta. Sem resposta, a ferramenta considera líder quem ocupa posição
-          de Supervisão para cima; Especialistas e pessoas sem posição crítica são avaliados como não líderes.
-        </p>
 
-        <h2>Avaliação de desempenho ({PESOS.desempenho} pontos)</h2>
-        <p>
-          Resultado da avaliação de desempenho 2026, de 0 a 100%. Os pontos são proporcionais ao resultado: 80% vale{" "}
-          {fmt((80 / 100) * PESOS.desempenho)} pontos, 100% vale {PESOS.desempenho}. Sem avaliação: 0.
-        </p>
+      <div className="blocos">
+        <Bloco
+          titulo="Avaliação de desempenho (2026)"
+          peso={`Peso: ${PESOS.desempenho} pontos no modelo`}
+          linhas={[
+            ...[100, 90, 80, 70, 60, 50].map((r) => ({
+              rotulo: `Resultado ${r}%`,
+              sub: r === 100 ? "pontuação máxima" : undefined,
+              pts: pts((r / 100) * PESOS.desempenho),
+            })),
+            { rotulo: "Não avaliado", sub: "Sem avaliação no ciclo", pts: pts(0) },
+          ]}
+          nota={
+            <>
+              Pontos proporcionais ao resultado: resultado ÷ 100 × {PESOS.desempenho}. Exemplo: 73% vale{" "}
+              {fmt((73 / 100) * PESOS.desempenho)} pontos. Vale para líderes e não líderes.
+            </>
+          }
+        />
 
-        <h2>Indicação do líder da posição ({PESOS.indicacaoLider} pontos)</h2>
-        <p>
-          O ocupante atual da posição cita o candidato pelo nome e sobrenome (&quot;João Silva&quot; indica &quot;João Carlos da
-          Silva&quot;; &quot;João&quot; sozinho não indica).
-        </p>
+        <Bloco
+          titulo="Indicação do líder da posição"
+          peso={`Peso: ${PESOS.indicacaoLider} pontos no modelo`}
+          linhas={[
+            { rotulo: "O ocupante da posição indica a pessoa nominalmente como possível sucessora", pts: pts(PESOS.indicacaoLider) },
+            { rotulo: "Sem indicação nominal do ocupante", pts: pts(0) },
+          ]}
+          nota={
+            <>
+              A indicação vale quando cita nome e sobrenome (&quot;João Silva&quot; indica &quot;João Carlos da Silva&quot;;
+              &quot;João&quot; sozinho não indica). Nome que corresponde a mais de uma pessoa só vale para quem também se candidatou
+              à posição.
+            </>
+          }
+        />
 
-        <h2>
-          {CRITERIO_AREA.lider.titulo} (líderes) e {CRITERIO_AREA.naoLider.titulo} (não líderes) ({PESOS.avaliacaoArea} pontos)
-        </h2>
-        <p>
-          Líderes: favorabilidade do clima da área que lideram. Não líderes: avaliação feita pelos pares da área. Ambas em percentual e na
-          mesma régua de faixas.
-        </p>
-        <Tabela cols={["Resultado 2026", "Pontos"]} rows={AREA_FAIXAS.map((f) => [f.label, f.pontos])} />
+        <Bloco
+          titulo="Interesse declarado"
+          peso={`Peso: ${PESOS.interesse} pontos no modelo`}
+          linhas={[
+            { rotulo: "Declarou a posição como Prioridade 1 ou 2", pts: pts(PESOS.interesse) },
+            { rotulo: "Não declarou interesse na posição", pts: pts(0) },
+          ]}
+          nota={<>Basta se candidatar ou ser indicado pelo líder para aparecer na posição; a pontuação soma as duas pontas.</>}
+        />
 
-        <h2>Interesse declarado ({PESOS.interesse} pontos)</h2>
-        <p>A pessoa se candidatou à posição como Prioridade 1 ou 2.</p>
+        <Bloco
+          titulo="Favorabilidade (líderes)"
+          peso={`Peso: ${PESOS.avaliacaoArea} pontos no modelo`}
+          linhas={faixasArea}
+          nota={<>Fonte: favorabilidade do clima da área que a pessoa lidera, pesquisa 2026. Aplicado só a líderes.</>}
+        />
 
-        <h2>Prontidão declarada ({PESOS.prontidao} pontos)</h2>
-        <p>Em quanto tempo a pessoa se vê pronta para assumir a posição.</p>
-        <Tabela cols={["Prazo declarado", "Pontos"]} rows={HORIZONTE.map((h) => [h.label, h.pontos])} />
+        <Bloco
+          titulo="Avaliação de pares (não líderes)"
+          peso={`Peso: ${PESOS.avaliacaoArea} pontos no modelo`}
+          linhas={faixasArea}
+          nota={<>Fonte: avaliação feita pelos pares da área, 2026. Aplicado só a não líderes, na mesma régua da favorabilidade.</>}
+        />
 
-        <h2>Mobilidade (sem pontuação)</h2>
-        <p>
-          Onde a pessoa aceita atuar: local atual, matriz ({SEDE}), dentro do Estado ou qualquer unidade. É mapeada e aparece no detalhe
-          do candidato, mas não soma pontos nem impede a pessoa de aparecer em posições de outras cidades. Quando a posição fica fora do
-          que a pessoa declarou, o detalhe do candidato sinaliza.
-        </p>
+        <Bloco
+          titulo="Prontidão declarada"
+          peso={`Peso: ${PESOS.prontidao} pontos no modelo`}
+          linhas={HORIZONTE.map((h) => ({ rotulo: h.label, pts: pts(h.pontos) }))}
+          nota={<>Em quanto tempo a pessoa se vê pronta para assumir a posição de interesse.</>}
+        />
+
+        <Bloco
+          titulo="Mobilidade"
+          peso="Sem pontuação: mapeada e informativa"
+          linhas={[
+            { rotulo: "Local atual", sub: "só a cidade onde trabalha hoje", pts: "mapeado" },
+            { rotulo: "Matriz", sub: SEDE, pts: "mapeado" },
+            { rotulo: "Dentro do Estado", sub: "mesmo Estado da cidade atual", pts: "mapeado" },
+            { rotulo: "Total", sub: "qualquer unidade", pts: "mapeado" },
+          ]}
+          nota={
+            <>
+              Não soma pontos nem impede a pessoa de aparecer em posições de outras cidades. O detalhe do candidato sinaliza quando a
+              posição fica fora do que a pessoa declarou.
+            </>
+          }
+        />
+
+        <Bloco
+          titulo="Quem é líder"
+          peso="Define qual régua de 30 pontos se aplica"
+          linhas={[
+            { rotulo: "Respondeu \"Sim\" em Lidera equipe", pts: "Líder" },
+            { rotulo: "Respondeu \"Não\" em Lidera equipe", pts: "Não líder" },
+            { rotulo: "Sem resposta e ocupa posição de Supervisão para cima", pts: "Líder" },
+            { rotulo: "Sem resposta, Especialista ou sem posição crítica", pts: "Não líder" },
+          ]}
+          nota={<>As duas réguas somam 100 pontos; muda só o critério de 30 pontos.</>}
+        />
       </div>
     </>
   );

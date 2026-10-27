@@ -362,3 +362,18 @@ table.t td.num { white-space: nowrap; }
   .pessoa-linha > div:nth-child(5) { grid-column: 2; }
   .pessoa-linha .ver-detalhes { grid-column: 3; }
 }
+
+/* ---------- Critérios em blocos ---------- */
+.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 6px; }
+.blocos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 18px; }
+.bloco { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px 22px; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+.bloco h2 { margin: 0; font-size: 18px; color: var(--azul-escuro); }
+.bloco-peso { color: var(--teal); font-weight: 700; font-size: 13.5px; margin: 4px 0 12px; }
+.bloco-linhas { display: flex; flex-direction: column; }
+.bloco-linha { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 9px 0; border-bottom: 1px dashed var(--border); font-size: 14px; line-height: 1.4; }
+.bloco-linha:last-child { border-bottom: 0; }
+.bloco-sub { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+.bloco-pts { font-weight: 700; color: var(--azul); white-space: nowrap; font-size: 14px; }
+.bloco-nota { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 12.5px; color: var(--muted); line-height: 1.55; }
+@media (max-width: 1100px) { .blocos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 700px) { .blocos { grid-template-columns: 1fr; } }
