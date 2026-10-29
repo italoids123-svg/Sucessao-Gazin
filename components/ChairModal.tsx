@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { CONTINUIDADE, CORTE_ADERENCIA, CRITERIO_AREA, HORIZONTE, MOBILIDADE, PERFIL_LABEL, labelOf } from "@/lib/config.ts";
+import { CLIMA_FONTE, CONTINUIDADE, CORTE_ADERENCIA, HORIZONTE, MOBILIDADE, PERFIL_LABEL, labelOf } from "@/lib/config.ts";
 import { cidadeDaPessoa, fmtPontos, occupantOf, resolverIndicacao } from "@/lib/engine.ts";
 import { useStore } from "@/lib/store.tsx";
 import type { Candidate, Chair } from "@/lib/types.ts";
@@ -56,11 +56,10 @@ interface Cartao {
   valor?: string; // critérios sem pontos mostram o valor declarado no lugar dos pontos
 }
 
-/** Os seis critérios do material, na ordem dos cartões de critérios da Gazin. */
+/** Critérios na ordem do material da Gazin (desempenho e clima primeiro), com a mobilidade só informativa no fim. */
 function cartoesDe(c: Candidate): Cartao[] {
   const k = Object.fromEntries(c.criterios.map((x) => [x.key, x]));
   const mob = labelOf(MOBILIDADE, c.record.mobilidade);
-  const area = CRITERIO_AREA[c.perfil];
   const card = (key: string, titulo: string, sub: string): Cartao => ({
     titulo,
     sub,
@@ -70,14 +69,14 @@ function cartoesDe(c: Candidate): Cartao[] {
   });
   return [
     card("desempenho", "Avaliação de desempenho", k.desempenho.detalhe),
+    card("clima", CLIMA_FONTE[c.perfil].titulo, k.clima.detalhe),
     card("indicacaoLider", "Indicação do líder da posição", c.indicadoPeloLider ? "Indicado pelo líder" : "Não indicado pelo líder"),
+    card("interesse", "Interesse declarado", c.prioridade ? `Prioridade ${c.prioridade}` : "Não se candidatou"),
+    card("prontidao", "Prontidão declarada", labelOf(HORIZONTE, c.horizonte) || (c.prioridade ? "Horizonte não informado" : "Não se candidatou")),
     {
       ...card("mobilidade", "Mobilidade", c.foraDaMobilidade ? "Mapeado, sem pontuação · esta posição fica fora" : "Mapeado, sem pontuação"),
       valor: mob || "Não informada",
     },
-    card("avaliacaoArea", area.titulo, k.avaliacaoArea.detalhe.replace(`${area.titulo} 2026`, area.sub)),
-    card("interesse", "Interesse declarado", c.prioridade ? `Prioridade ${c.prioridade}` : "Não se candidatou"),
-    card("prontidao", "Prontidão declarada", labelOf(HORIZONTE, c.horizonte) || (c.prioridade ? "Horizonte não informado" : "Não se candidatou")),
   ];
 }
 

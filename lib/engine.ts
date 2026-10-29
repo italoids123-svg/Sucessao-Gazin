@@ -1,4 +1,14 @@
-import { CORTE_ADERENCIA, CRITERIO_AREA, HORIZONTE, MOBILIDADE, PESOS, type Perfil, pontosArea, pontosDesempenho } from "./config.ts";
+import {
+  CLIMA_FONTE,
+  CORTE_ADERENCIA,
+  HORIZONTE,
+  MOBILIDADE,
+  PESOS,
+  type Perfil,
+  pontosAutoavaliacao,
+  pontosAvaliacaoGestor,
+  pontosClima,
+} from "./config.ts";
 import { avaliarMobilidade } from "./geo.ts";
 import type {
   AppData,
@@ -139,14 +149,19 @@ export function pontuar(
 ): { score: number; criterios: CriterioScore[] } {
   const criterios: CriterioScore[] = [];
 
-  const desempenho = numero(rec.desempenho2026);
+  const auto = numero(rec.autoavaliacao2026);
+  const gestor = numero(rec.avaliacaoGestor2026);
+  const partes = [
+    auto === null ? "autoavaliação não informada" : `autoavaliação ${fmtPontos(auto)}%`,
+    gestor === null ? "gestor não informado" : `gestor ${fmtPontos(gestor)}%`,
+  ];
   criterios.push({
     key: "desempenho",
     label: "Avaliação de desempenho",
-    pontos: desempenho === null ? 0 : pontosDesempenho(desempenho),
+    pontos: (auto === null ? 0 : pontosAutoavaliacao(auto)) + (gestor === null ? 0 : pontosAvaliacaoGestor(gestor)),
     max: PESOS.desempenho,
     aplicavel: true,
-    detalhe: desempenho === null ? "Não avaliado em 2026" : `Desempenho 2026: ${fmtPontos(desempenho)}%`,
+    detalhe: auto === null && gestor === null ? "Não avaliado em 2026" : partes.join(" · "),
   });
 
   criterios.push({
@@ -158,15 +173,15 @@ export function pontuar(
     detalhe: indicado ? "Indicado nominalmente pelo ocupante atual" : "Não indicado pelo ocupante atual",
   });
 
-  const area = numero(perfil === "lider" ? rec.favorabilidade2026 : rec.pares2026);
-  const crit = CRITERIO_AREA[perfil];
+  const clima = numero(perfil === "lider" ? rec.climaEquipe2026 : rec.climaDepartamento2026);
+  const fonte = CLIMA_FONTE[perfil];
   criterios.push({
-    key: "avaliacaoArea",
-    label: crit.titulo,
-    pontos: area === null ? 0 : pontosArea(area),
-    max: PESOS.avaliacaoArea,
+    key: "clima",
+    label: fonte.titulo,
+    pontos: clima === null ? 0 : pontosClima(clima),
+    max: PESOS.clima,
     aplicavel: true,
-    detalhe: area === null ? `Sem resultado de ${crit.titulo.toLowerCase()} 2026` : `${crit.titulo} 2026: ${fmtPontos(area)}%`,
+    detalhe: clima === null ? `Sem resultado (${fonte.sub})` : `${fonte.sub}: ${fmtPontos(clima)}%`,
   });
 
   criterios.push({

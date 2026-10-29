@@ -55,27 +55,23 @@ Para gerar de novo: `npm run exemplo` (semente fixa; `SEMENTE=7 npm run exemplo`
 
 ## Critérios de aderência (material "Critérios" da Gazin)
 
-Dois perfis, ambos somando 100 pontos:
+| Critério | Pontos |
+|---|---|
+| Avaliação de desempenho 2026: autoavaliação (10) + avaliação do gestor (30), proporcionais ao resultado | 40 |
+| Pesquisa de clima 2026, proporcional ao resultado: líderes, respondida pela equipe; não líderes, avaliação do departamento | 40 |
+| Indicação do líder da posição | 5 |
+| Interesse declarado | 5 |
+| Prontidão declarada | 10 |
+| Mobilidade (mapeada e informativa, sem pontos e sem filtrar posições) | 0 |
 
-| Critério | Líderes | Não líderes |
-|---|---|---|
-| Avaliação de desempenho 2026 (proporcional ao resultado de 0 a 100%) | 50 | 50 |
-| Indicação do líder da posição | 5 | 5 |
-| Favorabilidade (clima da área) | 30 | – |
-| Avaliação de pares | – | 30 |
-| Interesse declarado | 5 | 5 |
-| Prontidão declarada | 10 | 10 |
-| Mobilidade (mapeada e informativa, sem pontos e sem filtrar posições) | 0 | 0 |
-
-Perfil: coluna "Lidera equipe"; vazia, é líder quem ocupa posição de Supervisão para cima.
+Perfil (líder ou não líder): coluna "Lidera equipe"; vazia, é líder quem ocupa posição de Supervisão para cima.
 Escalas em `lib/config.ts` e na página *Critérios* do app.
 
 ## Premissas a validar com a Gazin
 
 - **Nível** não existe na planilha de origem; foi derivado do cargo e da linha de reporte
   (regra em `scripts/build-base.py` e na página *Elegibilidade e Aderência*).
-- **Favorabilidade e avaliação de pares** usam a mesma régua de faixas (6/13/21/30), para que líderes e
-  não líderes que disputam a mesma posição sejam medidos igual.
+- **Pesquisa de clima e desempenho** pontuam proporcional ao resultado (o material não define faixas).
 - **Entrada na posição**: basta uma ponta do match (se indicou OU foi indicado pelo líder).
   Nome indicado que corresponde a mais de uma pessoa só vale para quem também se indicou.
 - **Mobilidade** não pontua nem filtra: a pessoa aparece em qualquer cidade; o detalhe só sinaliza quando a

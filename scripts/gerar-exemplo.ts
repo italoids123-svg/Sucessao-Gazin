@@ -1,6 +1,6 @@
 /**
  * Gera uma planilha de EXEMPLO FICTÍCIO no formato de importação da ferramenta, para demonstração.
- * Os nomes e as posições são os da base real; todas as respostas (interesse, desempenho, favorabilidade, avaliação de pares,
+ * Os nomes e as posições são os da base real; todas as respostas (interesse, autoavaliação, avaliação do gestor, pesquisa de clima,
  * mobilidade, indicações, cidades) são sorteadas. Os analistas incluídos são pessoas inventadas.
  *
  * Uso: npm run exemplo   (grava exemplos/Gazin_Mapa_Sucessorio_EXEMPLO_FICTICIO.xlsx)
@@ -87,8 +87,8 @@ const horizonte = () => pesado<string>([["imediato", 25], ["ate3", 40], ["3a5", 
 // Resultado da avaliação de desempenho em % (3% sem avaliação).
 const desempenho = () => (chance(0.03) ? null : Math.max(35, Math.min(100, Math.round(74 + (rnd() + rnd() + rnd() - 1.5) * 34))));
 const mobilidade = () => pesado<string>([["local", 28], ["matriz", 14], ["estado", 30], ["qualquer", 28]]);
-// Favorabilidade (líderes) e avaliação de pares (não líderes), em %.
-const percentualArea = () => Math.max(18, Math.min(98, Math.round(55 + (rnd() + rnd() + rnd() - 1.5) * 50)));
+// Pesquisa de clima em %: respondida pela equipe (líderes) ou avaliação do departamento (não líderes).
+const percentualClima = () => Math.max(18, Math.min(98, Math.round(55 + (rnd() + rnd() + rnd() - 1.5) * 50)));
 
 type Linha = Record<string, string | number>;
 const nivelDe = new Map<string, string>(data.people.map((p) => [norm(p.nome), p.nivel]));
@@ -128,11 +128,14 @@ function responder(nome: string, lidera: boolean) {
   r["Localidade atual (Cidade/Estado)"] = cidadePessoa(nome);
   rnd(); // mantém a sequência do sorteio (e o mesmo cenário) de quando havia a data da conversa
   r["Mobilidade"] = labelDe(MOBILIDADE, mobilidade());
-  const d = desempenho();
-  if (d !== null) r["Avaliação de desempenho 2026 (%)"] = d;
+  const d = desempenho(); // avaliação do gestor; a autoavaliação costuma vir um pouco acima
+  if (d !== null) {
+    r["Avaliação do gestor 2026 (%)"] = d;
+    r["Autoavaliação de desempenho 2026 (%)"] = Math.min(100, d + Math.round(rnd() * 12));
+  }
   r["Lidera equipe"] = lidera ? "Sim" : "Não";
-  if (lidera) r["Favorabilidade 2026 (%) - líderes"] = percentualArea();
-  else r["Avaliação de pares 2026 (%) - não líderes"] = percentualArea();
+  if (lidera) r["Pesquisa de clima 2026 (%) - líderes (equipe)"] = percentualClima();
+  else r["Pesquisa de clima 2026 (%) - não líderes (departamento)"] = percentualClima();
   r["Conversa de desenvolvimento"] = labelDe(CONVERSA, pesado<string>([["andamento", 40], ["sem_formalizar", 35], ["nao", 25]]));
   if (chance(0.78)) {
     const a1 = alvoDeInteresse(nome, []);
@@ -156,11 +159,13 @@ for (const f of ficticios) responder(f.nome, false);
 // Posição vaga de Controller: dois candidatos internos claros e um terceiro ainda distante.
 Object.assign(respostas.get(norm("Cleiton Cesar Silva"))!, {
   "Prioridade 1 (cargo de interesse)": "Controller", "Horizonte 1": "Imediato",
-  "Avaliação de desempenho 2026 (%)": 94, "Mobilidade": labelDe(MOBILIDADE, "qualquer"), "Favorabilidade 2026 (%) - líderes": 78,
+  "Avaliação do gestor 2026 (%)": 94, "Autoavaliação de desempenho 2026 (%)": 96, "Mobilidade": labelDe(MOBILIDADE, "qualquer"),
+  "Pesquisa de clima 2026 (%) - líderes (equipe)": 78,
 });
 Object.assign(respostas.get(norm("Diego Henrique Garcia Soriani"))!, {
   "Prioridade 1 (cargo de interesse)": "Controller", "Horizonte 1": "Até 3 anos",
-  "Avaliação de desempenho 2026 (%)": 86, "Mobilidade": labelDe(MOBILIDADE, "matriz"), "Favorabilidade 2026 (%) - líderes": 64,
+  "Avaliação do gestor 2026 (%)": 86, "Autoavaliação de desempenho 2026 (%)": 90, "Mobilidade": labelDe(MOBILIDADE, "matriz"),
+  "Pesquisa de clima 2026 (%) - líderes (equipe)": 64,
 });
 Object.assign(respostas.get(norm("Celia Xavier Novo"))!, {
   "Prioridade 2 (cargo de interesse)": "Controller", "Horizonte 2": "Mais de 3 até 5 anos",
@@ -209,7 +214,7 @@ const wb = buildWorkbook(data);
 const leiaMe = XLSX.utils.sheet_to_json<string[]>(wb.Sheets["Leia-me"], { header: 1 });
 wb.Sheets["Leia-me"] = XLSX.utils.aoa_to_sheet([
   ["EXEMPLO FICTÍCIO — NÃO SÃO DADOS REAIS"],
-  ["Nomes e posições vêm da base de posições críticas; interesse, desempenho, favorabilidade, avaliação de pares, mobilidade, indicações e cidades foram sorteados."],
+  ["Nomes e posições vêm da base de posições críticas; interesse, autoavaliação, avaliação do gestor, pesquisa de clima, mobilidade, indicações e cidades foram sorteados."],
   ["Os 40 analistas e técnicos incluídos são pessoas inventadas. Use só para demonstrar a ferramenta; depois clique em \"Limpar base local\"."],
   [""],
   ...leiaMe,

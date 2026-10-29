@@ -46,10 +46,11 @@ export interface SuccessionRecord {
   conversaDesenvolvimento?: ConversaDesenvolvimento;
   continuidade?: Continuidade;
   possivelSucessorTexto?: string;
-  desempenho2026?: number | ""; // resultado da avaliação de desempenho 2026, em % (0 a 100)
+  autoavaliacao2026?: number | ""; // autoavaliação de desempenho 2026, em % (0 a 100)
+  avaliacaoGestor2026?: number | ""; // avaliação de desempenho feita pelo gestor 2026, em %
   lideraEquipe?: boolean; // vazio: deduzido da posição que a pessoa ocupa
-  favorabilidade2026?: number | ""; // líderes: favorabilidade (clima da área) 2026, em %
-  pares2026?: number | ""; // não líderes: avaliação de pares 2026, em %
+  climaEquipe2026?: number | ""; // líderes: pesquisa de clima respondida pela equipe 2026, em %
+  climaDepartamento2026?: number | ""; // não líderes: avaliação do departamento 2026, em %
 }
 export type SuccessionMap = Record<string, SuccessionRecord>;
 

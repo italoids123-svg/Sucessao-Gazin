@@ -69,7 +69,7 @@ export default function Overview() {
   const all = resumoCobertura(data.chairs.map((c) => results.get(c.id)!));
   const respondentes = data.people.filter((p) => {
     const r = data.succession[p.id];
-    return r && (r.prioridade1 || r.mobilidade || typeof r.desempenho2026 === "number" || r.possivelSucessorTexto);
+    return r && (r.prioridade1 || r.mobilidade || typeof r.avaliacaoGestor2026 === "number" || typeof r.autoavaliacao2026 === "number" || r.possivelSucessorTexto);
   }).length;
   const respPct = data.people.length ? Math.round((respondentes / data.people.length) * 100) : 0;
 

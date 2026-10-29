@@ -32,10 +32,11 @@ const COL = {
   conversa: "Conversa de desenvolvimento",
   continuidade: "Continuidade da sua posição",
   sucessor: "Possível sucessor da sua posição (nome)",
-  desempenho: "Avaliação de desempenho 2026 (%)",
+  autoavaliacao: "Autoavaliação de desempenho 2026 (%)",
+  avaliacaoGestor: "Avaliação do gestor 2026 (%)",
   lidera: "Lidera equipe",
-  favorabilidade: "Favorabilidade 2026 (%) - líderes",
-  pares: "Avaliação de pares 2026 (%) - não líderes",
+  climaEquipe: "Pesquisa de clima 2026 (%) - líderes (equipe)",
+  climaDepartamento: "Pesquisa de clima 2026 (%) - não líderes (departamento)",
 } as const;
 
 const CCOL = {
@@ -69,8 +70,8 @@ const LEIA_ME = [
   ["Prioridade 1 e 2 devem conter o CARGO EXATO da aba Cadeiras (por exemplo, \"Gerente regional\")."],
   ["\"Possível sucessor da sua posição\" é respondido pelo ocupante da cadeira: nome e sobrenome de quem ele indica."],
   ["Cidade sempre no formato Cidade/Estado com a sigla do Estado (por exemplo, Douradina/PR): o Estado é usado na mobilidade \"Dentro do Estado\"."],
-  ["Percentuais (desempenho, favorabilidade, avaliação de pares): de 0 a 100, pode ser 82 ou 82%."],
-  ["Líderes preenchem Favorabilidade (clima da área); não líderes preenchem Avaliação de pares. Lidera equipe vazio: a ferramenta deduz pela posição ocupada."],
+  ["Percentuais (autoavaliação, avaliação do gestor, pesquisa de clima): de 0 a 100, pode ser 82 ou 82%."],
+  ["Pesquisa de clima: líderes, pela pesquisa respondida pela equipe; não líderes, pela avaliação do departamento. Lidera equipe vazio: a ferramenta deduz pela posição ocupada."],
   [`Corte de aderência: ${CORTE_ADERENCIA} pontos.`],
 ];
 
@@ -112,10 +113,11 @@ export function buildWorkbook(data: AppData): XLSX.WorkBook {
       [COL.conversa]: labelOf(CONVERSA, r.conversaDesenvolvimento),
       [COL.continuidade]: labelOf(CONTINUIDADE, r.continuidade),
       [COL.sucessor]: r.possivelSucessorTexto ?? "",
-      [COL.desempenho]: r.desempenho2026 ?? "",
+      [COL.autoavaliacao]: r.autoavaliacao2026 ?? "",
+      [COL.avaliacaoGestor]: r.avaliacaoGestor2026 ?? "",
       [COL.lidera]: r.lideraEquipe === undefined ? "" : r.lideraEquipe ? SIM : NAO,
-      [COL.favorabilidade]: r.favorabilidade2026 ?? "",
-      [COL.pares]: r.pares2026 ?? "",
+      [COL.climaEquipe]: r.climaEquipe2026 ?? "",
+      [COL.climaDepartamento]: r.climaDepartamento2026 ?? "",
     };
   });
   const baseSheet = base.length ? XLSX.utils.json_to_sheet(base) : XLSX.utils.aoa_to_sheet([Object.values(COL)]);
@@ -334,15 +336,16 @@ export function applyWorkbook(wb: XLSX.WorkBook, current: AppData): { data: AppD
     set("conversaDesenvolvimento", parseEnum(CONVERSA, pick(r, COL.conversa), COL.conversa, av, nome));
     set("continuidade", parseEnum(CONTINUIDADE, pick(r, COL.continuidade), COL.continuidade, av, nome));
     set("possivelSucessorTexto", pick(r, COL.sucessor));
-    set("desempenho2026", parsePercentual(pick(r, COL.desempenho), COL.desempenho, av, nome));
+    set("autoavaliacao2026", parsePercentual(pick(r, COL.autoavaliacao), COL.autoavaliacao, av, nome));
+    set("avaliacaoGestor2026", parsePercentual(pick(r, COL.avaliacaoGestor), COL.avaliacaoGestor, av, nome));
     const lid = norm(pick(r, COL.lidera));
     if (lid) {
       if (lid === "SIM") rec.lideraEquipe = true;
       else if (lid === "NAO") rec.lideraEquipe = false;
       else av.push(`${nome}: valor "${pick(r, COL.lidera)}" não reconhecido em ${COL.lidera}`);
     }
-    set("favorabilidade2026", parsePercentual(pick(r, COL.favorabilidade), COL.favorabilidade, av, nome));
-    set("pares2026", parsePercentual(pick(r, COL.pares), COL.pares, av, nome));
+    set("climaEquipe2026", parsePercentual(pick(r, COL.climaEquipe), COL.climaEquipe, av, nome));
+    set("climaDepartamento2026", parsePercentual(pick(r, COL.climaDepartamento), COL.climaDepartamento, av, nome));
     succession[p.id] = rec;
   }
 

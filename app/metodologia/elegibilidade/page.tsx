@@ -7,10 +7,9 @@ import { useStore } from "@/lib/store.tsx";
 export default function Page() {
   const { ctx } = useStore();
   const linhas: [string, string, string][] = [
-    ["Avaliação de desempenho", `${PESOS.desempenho}`, "Proporcional ao resultado de 2026 (0 a 100%)."],
+    ["Avaliação de desempenho", `${PESOS.desempenho}`, `Autoavaliação (até ${PESOS.autoavaliacao}) + avaliação do gestor (até ${PESOS.avaliacaoGestor}), proporcionais ao resultado.`],
+    ["Pesquisa de clima", `${PESOS.clima}`, "Líderes: pesquisa respondida pela equipe. Não líderes: avaliação do departamento. Proporcional ao resultado."],
     ["Indicação do líder da posição", `${PESOS.indicacaoLider}`, "O ocupante da posição citou o candidato pelo nome e sobrenome."],
-    ["Favorabilidade (líderes)", `${PESOS.avaliacaoArea}`, "Faixa de favorabilidade do clima da área liderada."],
-    ["Avaliação de pares (não líderes)", `${PESOS.avaliacaoArea}`, "Faixa da avaliação feita pelos pares da área."],
     ["Interesse declarado", `${PESOS.interesse}`, "O candidato se candidatou à posição como Prioridade 1 ou 2."],
     ["Prontidão declarada", `${PESOS.prontidao}`, "Horizonte declarado para assumir a posição."],
     ["Mobilidade", "sem pontos", "Mapeada e informativa: não impede a pessoa de aparecer em outras cidades."],

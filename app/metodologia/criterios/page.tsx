@@ -1,4 +1,4 @@
-import { AREA_FAIXAS, HORIZONTE, PESOS, SEDE } from "@/lib/config.ts";
+import { CLIMA_FONTE, HORIZONTE, PESOS, SEDE } from "@/lib/config.ts";
 
 const fmt = (n: number) => n.toLocaleString("pt-BR");
 
@@ -33,13 +33,12 @@ function Bloco({ titulo, peso, linhas, nota }: { titulo: string; peso: string; l
 const pts = (n: number) => `${fmt(n)} ${n === 1 ? "pt" : "pts"}`;
 
 export default function Page() {
-  const faixasArea = [...AREA_FAIXAS].reverse().map((f) => ({ rotulo: f.label, pts: pts(f.pontos) }));
   return (
     <>
       <div className="page-head">
         <div className="eyebrow">Metodologia</div>
         <h1>Critérios</h1>
-        <p>100 pontos distribuídos em critérios de aderência à sucessão, com réguas diferentes para líderes e não líderes.</p>
+        <p>O que define a posição de cada pessoa no programa: 100 pontos distribuídos em cinco critérios de aderência à sucessão.</p>
       </div>
 
       <div className="blocos">
@@ -47,17 +46,30 @@ export default function Page() {
           titulo="Avaliação de desempenho (2026)"
           peso={`Peso: ${PESOS.desempenho} pontos no modelo`}
           linhas={[
-            ...[100, 90, 80, 70, 60, 50].map((r) => ({
-              rotulo: `Resultado ${r}%`,
-              sub: r === 100 ? "pontuação máxima" : undefined,
-              pts: pts((r / 100) * PESOS.desempenho),
-            })),
-            { rotulo: "Não avaliado", sub: "Sem avaliação no ciclo", pts: pts(0) },
+            { rotulo: "Autoavaliação", sub: "resultado de 0 a 100%", pts: `até ${pts(PESOS.autoavaliacao)}` },
+            { rotulo: "Avaliação do gestor", sub: "resultado de 0 a 100%", pts: `até ${pts(PESOS.avaliacaoGestor)}` },
+            { rotulo: "Não avaliado", sub: "sem resultado no ciclo", pts: pts(0) },
           ]}
           nota={
             <>
-              Pontos proporcionais ao resultado: resultado ÷ 100 × {PESOS.desempenho}. Exemplo: 73% vale{" "}
-              {fmt((73 / 100) * PESOS.desempenho)} pontos. Vale para líderes e não líderes.
+              Cada parte pontua proporcional ao resultado: 80% na autoavaliação vale {fmt(0.8 * PESOS.autoavaliacao)} pontos e 90% na
+              avaliação do gestor vale {fmt(0.9 * PESOS.avaliacaoGestor)} pontos. Vale para líderes e não líderes.
+            </>
+          }
+        />
+
+        <Bloco
+          titulo="Pesquisa de clima"
+          peso={`Peso: ${PESOS.clima} pontos no modelo`}
+          linhas={[
+            { rotulo: "Líderes que exercem gestão de pessoas", sub: CLIMA_FONTE.lider.descricao, pts: `até ${pts(PESOS.clima)}` },
+            { rotulo: "Profissionais que não exercem gestão de pessoas", sub: CLIMA_FONTE.naoLider.descricao, pts: `até ${pts(PESOS.clima)}` },
+            { rotulo: "Sem resultado", pts: pts(0) },
+          ]}
+          nota={
+            <>
+              Resultado de 0 a 100%, com pontos proporcionais: 75% vale {fmt(0.75 * PESOS.clima)} pontos. Quem é líder define qual das
+              duas fontes vale para a pessoa.
             </>
           }
         />
@@ -82,24 +94,10 @@ export default function Page() {
           titulo="Interesse declarado"
           peso={`Peso: ${PESOS.interesse} pontos no modelo`}
           linhas={[
-            { rotulo: "Declarou a posição como Prioridade 1 ou 2", pts: pts(PESOS.interesse) },
+            { rotulo: "Declarou a posição como Prioridade 1 ou 2", sub: "onde gostaria de atuar", pts: pts(PESOS.interesse) },
             { rotulo: "Não declarou interesse na posição", pts: pts(0) },
           ]}
           nota={<>Basta se candidatar ou ser indicado pelo líder para aparecer na posição; a pontuação soma as duas pontas.</>}
-        />
-
-        <Bloco
-          titulo="Favorabilidade (líderes)"
-          peso={`Peso: ${PESOS.avaliacaoArea} pontos no modelo`}
-          linhas={faixasArea}
-          nota={<>Fonte: favorabilidade do clima da área que a pessoa lidera, pesquisa 2026. Aplicado só a líderes.</>}
-        />
-
-        <Bloco
-          titulo="Avaliação de pares (não líderes)"
-          peso={`Peso: ${PESOS.avaliacaoArea} pontos no modelo`}
-          linhas={faixasArea}
-          nota={<>Fonte: avaliação feita pelos pares da área, 2026. Aplicado só a não líderes, na mesma régua da favorabilidade.</>}
         />
 
         <Bloco
@@ -128,14 +126,14 @@ export default function Page() {
 
         <Bloco
           titulo="Quem é líder"
-          peso="Define qual régua de 30 pontos se aplica"
+          peso="Define qual fonte da pesquisa de clima se aplica"
           linhas={[
             { rotulo: "Respondeu \"Sim\" em Lidera equipe", pts: "Líder" },
             { rotulo: "Respondeu \"Não\" em Lidera equipe", pts: "Não líder" },
             { rotulo: "Sem resposta e ocupa posição de Supervisão para cima", pts: "Líder" },
             { rotulo: "Sem resposta, Especialista ou sem posição crítica", pts: "Não líder" },
           ]}
-          nota={<>As duas réguas somam 100 pontos; muda só o critério de 30 pontos.</>}
+          nota={<>Os demais critérios valem igual para líderes e não líderes.</>}
         />
       </div>
     </>
