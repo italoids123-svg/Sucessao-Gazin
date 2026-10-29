@@ -91,6 +91,7 @@ ws = openpyxl.load_workbook(src).active
 # (cargo, diretoria/area, ocupante, gestor, cargo do gestor)
 POSICOES_ADICIONAIS = [
     ("Gerente geral de RH", "Gerente geral de RH", "ALESSANDRA GUERRA DE SOUZA", "GILMAR ALVES DE OLIVEIRA", "Presidente"),
+    ("Presidente", "Presidência", "GILMAR ALVES DE OLIVEIRA", "", ""),
 ]
 
 origem = [r[:5] for r in ws.iter_rows(values_only=True, min_row=2) if r[0]] + POSICOES_ADICIONAIS
@@ -129,6 +130,8 @@ for r in rows:
 
 def nivel(r):
     c = norm(r["cargo"])
+    if c == "PRESIDENTE":
+        return "Presidência"
     if c.startswith("DIRETORIA") or c == "CONTROLLER":
         return "Diretoria"
     if c.startswith("GERENTE"):
@@ -156,7 +159,7 @@ cargo_count = {}
 for r in rows:
     cargo_count[norm(r["cargo"])] = cargo_count.get(norm(r["cargo"]), 0) + 1
 
-NIVEL_RANK = ["Diretoria", "Gerência Executiva", "Gerência", "Coordenação", "Supervisão", "Especialista"]
+NIVEL_RANK = ["Presidência", "Diretoria", "Gerência Executiva", "Gerência", "Coordenação", "Supervisão", "Especialista"]
 chairs, people, person_ids = [], [], {}
 for i, r in enumerate(rows, 1):
     cid = f"c{i:03d}"

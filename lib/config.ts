@@ -4,7 +4,7 @@ export const EMPRESA = "Gazin";
 export const STORAGE_KEY = "gazin-mapa-sucessorio:v1";
 // Incremente sempre que a base padrão (lib/base-data.json) ou a estrutura mudar:
 // descarta a base antiga salva no navegador.
-export const BASE_DATA_VERSION = 8;
+export const BASE_DATA_VERSION = 9;
 
 export interface NivelDef {
   nome: string;
@@ -14,6 +14,7 @@ export interface NivelDef {
 }
 
 export const NIVEIS: NivelDef[] = [
+  { nome: "Presidência", slug: "presidencia", descricao: "Presidência da empresa.", temPagina: true },
   { nome: "Diretoria", slug: "diretoria", descricao: "Diretorias e Controller, reportando à Presidência.", temPagina: true },
   {
     nome: "Gerência Executiva",
@@ -46,6 +47,7 @@ export const NIVEL_NOMES = NIVEIS.map((n) => n.nome);
 // especialista, e assim por diante).
 const FAIXA_TECNICA_E_COORDENACAO = ["Coordenação", "Supervisão", "Especialista"];
 export const HIERARQUIA_PADRAO: HierarquiaEntry[] = [
+  { nivel: "Presidência", elegivel: "Diretoria" },
   { nivel: "Diretoria", elegivel: "Gerência Executiva" },
   { nivel: "Diretoria", elegivel: "Gerência" },
   { nivel: "Gerência Executiva", elegivel: "Gerência" },

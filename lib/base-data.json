@@ -2353,6 +2353,19 @@
    "vago": false,
    "gestor": "Gilmar Alves de Oliveira",
    "gestorCargo": "Presidente"
+  },
+  {
+   "id": "c182",
+   "nome": "Gilmar Alves de Oliveira",
+   "cargo": "Presidente",
+   "nivel": "Presidência",
+   "diretoria": "Presidência",
+   "cidade": "",
+   "tempoCasa": null,
+   "prefixLocalidade": false,
+   "vago": false,
+   "gestor": "",
+   "gestorCargo": ""
   }
  ],
  "people": [
@@ -4323,6 +4336,17 @@
    "chairId": "c181",
    "chairIds": [
     "c181"
+   ]
+  },
+  {
+   "id": "p180",
+   "nome": "Gilmar Alves de Oliveira",
+   "nivel": "Presidência",
+   "cargo": "Presidente",
+   "diretoria": "Presidência",
+   "chairId": "c182",
+   "chairIds": [
+    "c182"
    ]
   }
  ]

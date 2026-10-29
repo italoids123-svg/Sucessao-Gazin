@@ -50,6 +50,7 @@ test("coordenação, supervisão e especialista se alimentam entre si", () => {
   for (const n of ["Coordenação", "Supervisão", "Especialista"])
     assert.deepEqual(h[n], ["Coordenação", "Supervisão", "Especialista", "Analista / Técnico"]);
   assert.deepEqual(h["Diretoria"], ["Gerência Executiva", "Gerência"]);
+  assert.deepEqual(h["Presidência"], ["Diretoria"]);
 });
 
 test("cadeira em Maringá: pontuação pelo modelo de critérios", () => {

@@ -91,6 +91,7 @@ export default function Page() {
         <h2>5. Como os níveis foram definidos</h2>
         <p>A planilha de posições críticas não traz nível. Ele foi derivado do cargo e da linha de reporte:</p>
         <ul>
+          <li><b>Presidência</b>: o cargo de Presidente.</li>
           <li><b>Diretoria</b>: cargos &quot;Diretoria …&quot; e Controller.</li>
           <li>
             <b>Gerência Executiva</b>: gerentes que respondem à Presidência ou que têm outro gerente abaixo deles (estendido às demais

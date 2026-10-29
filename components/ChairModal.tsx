@@ -218,7 +218,8 @@ export default function ChairModal({ chair, onClose }: { chair: Chair; onClose: 
           <div>
             <h2>{chair.cargo}</h2>
             <p>
-              {vago ? "Posição vaga" : `Ocupante atual: ${chair.nome}`} · {chair.nivel} · {chair.diretoria}
+              {vago ? "Posição vaga" : `Ocupante atual: ${chair.nome}`} · {chair.nivel}
+              {chair.diretoria && chair.diretoria !== chair.nivel ? ` · ${chair.diretoria}` : ""}
               {chair.cidade ? ` · ${chair.cidade}` : " · cidade não informada"}
               {chair.gestor ? ` · Gestor: ${chair.gestor}${chair.gestorCargo ? ` (${chair.gestorCargo})` : ""}` : ""}
             </p>

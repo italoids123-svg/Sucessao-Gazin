@@ -14,7 +14,7 @@ import { applyWorkbook, buildWorkbook } from "../lib/excel.ts";
 import type { Chair, Person } from "../lib/types.ts";
 
 // ---------- sorteio reprodutível ----------
-let semente = Number(process.env.SEMENTE ?? 7);
+let semente = Number(process.env.SEMENTE ?? 5);
 function rnd() {
   semente |= 0;
   semente = (semente + 0x6d2b79f5) | 0;
@@ -100,6 +100,9 @@ const cidadePessoa = (nome: string) => {
 const diretoriaPessoa = (nome: string) =>
   data.people.find((x) => norm(x.nome) === norm(nome))?.diretoria ?? ficticios.find((f) => norm(f.nome) === norm(nome))!.diretoria;
 
+// Diretoria e Presidência atraem poucas candidaturas: são os níveis mais difíceis de cobrir.
+const TOPO = ["Presidência", "Diretoria"];
+
 /** Cadeiras que a pessoa pode pleitear; com pequena chance de mirar uma fora da hierarquia elegível. */
 function alvoDeInteresse(nome: string, excluir: string[]): Chair | undefined {
   const nivel = nivelDe.get(norm(nome))!;
@@ -114,11 +117,11 @@ function alvoDeInteresse(nome: string, excluir: string[]): Chair | undefined {
   );
   if (!alvos.length) return undefined;
   // Quem só pode subir para Diretoria (Gerência Executiva) declara essa ambição com menos frequência.
-  if (alvos.every((c) => c.nivel === "Diretoria") && !chance(0.3)) return undefined;
+  if (alvos.every((c) => TOPO.includes(c.nivel)) && !chance(0.3)) return undefined;
   // Preferência pela mesma área e pela mesma cidade, como tende a acontecer na prática.
   // Diretoria atrai poucas candidaturas: é o nível mais difícil de cobrir.
   const peso = (c: Chair) =>
-    (1 + (c.diretoria === diretoriaPessoa(nome) ? 6 : 0) + (cidadeDe.get(c.id) === cidadePessoa(nome) ? 2 : 0)) * (c.nivel === "Diretoria" ? 0.03 : 1);
+    (1 + (c.diretoria === diretoriaPessoa(nome) ? 6 : 0) + (cidadeDe.get(c.id) === cidadePessoa(nome) ? 2 : 0)) * (TOPO.includes(c.nivel) ? 0.03 : 1);
   return pesado(alvos.map((c) => [c, peso(c)]));
 }
 
@@ -257,7 +260,7 @@ console.log(`Importação: ${stats.pessoasAtualizadas} atualizadas, ${stats.pess
 if (stats.avisos.length) console.log(stats.avisos.slice(0, 5).join("\n"));
 const geral = resumoCobertura(res.map((x) => x.r));
 console.log("Cobertura geral:", geral);
-for (const n of ["Diretoria", "Gerência Executiva", "Gerência", "Coordenação", "Supervisão", "Especialista"])
+for (const n of ["Presidência", "Diretoria", "Gerência Executiva", "Gerência", "Coordenação", "Supervisão", "Especialista"])
   console.log(n.padEnd(20), resumoCobertura(res.filter((x) => x.c.nivel === n).map((x) => x.r)));
 const fora = res.reduce((s, x) => s + x.r.fora.length, 0);
 const soLider = res.reduce((s, x) => s + x.r.dentro.concat(x.r.abaixo).filter((k) => k.prioridade === null).length, 0);
@@ -270,3 +273,5 @@ console.log("Gerente regional:", regionais.map((x) => `${x.c.cidade}:${x.r.dentr
 const compartilhados = new Map<string, number>();
 for (const x of res) for (const k of x.r.dentro) compartilhados.set(k.person.nome, (compartilhados.get(k.person.nome) ?? 0) + 1);
 console.log("sucessores em 3+ posições:", [...compartilhados].filter(([, n]) => n >= 3).length, "| pessoas distintas como sucessoras:", compartilhados.size);
+for (const x of res.filter((x) => x.c.nivel === "Presidência"))
+  console.log("  Presidente: dentro", x.r.dentro.map((k) => `${k.person.nome} ${k.score}`).join("; ") || "-", "| abaixo", x.r.abaixo.length);
