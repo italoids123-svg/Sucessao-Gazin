@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { HORIZONTE, MOBILIDADE, NIVEIS, PERFIL_LABEL, labelOf } from "@/lib/config.ts";
-import { LIDERANCA_PENDENTES } from "@/lib/data.ts";
+import { LIDERANCA, LIDERANCA_PENDENTES } from "@/lib/data.ts";
 import { cidadeDaPessoa, equipeDe, fmtPontos, mapaDeLideranca, norm, perfilDe } from "@/lib/engine.ts";
 import { useStore } from "@/lib/store.tsx";
 import type { Candidate, Chair, Person, SuccessionRecord } from "@/lib/types.ts";
@@ -243,8 +243,14 @@ export default function BuscaPessoas() {
             if (i.horizonte === "imediato") c.imediato++;
             cargos.set(i.cargo, c);
           }
+        // A lista de liderança traz pessoas que não estão na base de posições críticas: não receberam o questionário.
+        const naBase = new Set(data.people.map((p) => norm(p.nome)));
+        const nomeDaLista = new Map(LIDERANCA.map((v) => [norm(v.colaborador), v.colaborador]));
+        const fora = [...membros].filter((n) => !naBase.has(n)).map((n) => nomeDaLista.get(n) ?? n);
         return {
           total: membros.size,
+          mapeados: membros.size - fora.length,
+          fora: fora.sort(collator.compare),
           interessados: interessados.length,
           cargos: [...cargos.entries()].sort((a, b) => b[1].n - a[1].n || collator.compare(a[0], b[0])),
         };
@@ -324,15 +330,27 @@ export default function BuscaPessoas() {
           </div>
           <div className="equipe-numeros">
             <span>
-              <b>{equipe.total}</b> colaboradores na equipe
+              <b>{equipe.total}</b> na equipe
+            </span>
+            <span>
+              <b>{equipe.mapeados}</b> na base de posições críticas
             </span>
             <span>
               <b>{equipe.interessados}</b> com interesse declarado
             </span>
             <span>
-              <b>{equipe.total - equipe.interessados}</b> sem interesse declarado
+              <b>{equipe.mapeados - equipe.interessados}</b> na base sem interesse declarado
+            </span>
+            <span>
+              <b>{equipe.fora.length}</b> fora da base (não responderam o questionário)
             </span>
           </div>
+          {equipe.fora.length > 0 && (
+            <details className="equipe-pendentes">
+              <summary>Quem está na equipe pela lista de liderança, mas fora da base de posições críticas</summary>
+              <p>{equipe.fora.join(" · ")}</p>
+            </details>
+          )}
           {equipe.cargos.length > 0 && (
             <div className="equipe-cargos">
               <span className="equipe-rotulo">Para onde a equipe quer ir:</span>
@@ -367,7 +385,11 @@ export default function BuscaPessoas() {
       {!linhas.length ? (
         <div className="empty">Nenhuma pessoa declarou interesse ainda. Carregue a planilha de coleta preenchida.</div>
       ) : !visiveis.length ? (
-        <div className="empty">Nenhuma pessoa com esses filtros.</div>
+        <div className="empty">
+          {equipe && equipe.mapeados === 0
+            ? "Ninguém desta equipe está na base de posições críticas, então ninguém dela respondeu o questionário."
+            : "Nenhuma pessoa com esses filtros."}
+        </div>
       ) : (
         visiveis.map((l) => {
           const aberto = abertos.has(l.person.id);
