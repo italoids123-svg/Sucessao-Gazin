@@ -2,7 +2,8 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { HORIZONTE, MOBILIDADE, NIVEIS, PERFIL_LABEL, labelOf } from "@/lib/config.ts";
-import { cidadeDaPessoa, equipeDe, fmtPontos, gestorDe, norm, perfilDe } from "@/lib/engine.ts";
+import { LIDERANCA_PENDENTES } from "@/lib/data.ts";
+import { cidadeDaPessoa, equipeDe, fmtPontos, mapaDeLideranca, norm, perfilDe } from "@/lib/engine.ts";
 import { useStore } from "@/lib/store.tsx";
 import type { Candidate, Chair, Person, SuccessionRecord } from "@/lib/types.ts";
 import ChairModal from "./ChairModal";
@@ -199,13 +200,11 @@ export default function BuscaPessoas() {
   const opcoesCidade = [...new Set(linhas.map((l) => l.cidade))].sort((a, b) => (a === SEM_CIDADE ? 1 : b === SEM_CIDADE ? -1 : collator.compare(a, b)));
   const opcoesMobilidade = [...MOBILIDADE.map((m) => m.label), ...(linhas.some((l) => l.mobilidade === SEM_MOBILIDADE) ? [SEM_MOBILIDADE] : [])];
 
-  // Gestores: quem aparece como gestor imediato de alguém da base.
+  // Gestores: quem aparece como líder imediato na lista de liderança ou na base (nome da base, com acento, quando houver).
   const opcoesGestor = useMemo(() => {
+    const daBase = new Map(data.people.map((p) => [norm(p.nome), p.nome]));
     const porNome = new Map<string, string>();
-    for (const p of data.people) {
-      const g = gestorDe(p, ctx);
-      if (g && !porNome.has(norm(g))) porNome.set(norm(g), g);
-    }
+    for (const g of mapaDeLideranca(ctx).values()) if (!porNome.has(norm(g))) porNome.set(norm(g), daBase.get(norm(g)) ?? g);
     return [...porNome.values()].sort(collator.compare);
   }, [data.people, ctx]);
   const membros = useMemo(() => {
@@ -225,7 +224,7 @@ export default function BuscaPessoas() {
   const visiveis = linhas.filter(
     (l) =>
       (!q || norm(`${l.person.nome} ${l.person.cargo}`).includes(q)) &&
-      (!membros || membros.has(l.person.id)) &&
+      (!membros || membros.has(norm(l.person.nome))) &&
       (modoNivel !== "atual" || !nivel.ativos.size || nivel.ativos.has(l.person.nivel)) &&
       (!cidade.ativos.size || cidade.ativos.has(l.cidade)) &&
       (!mobilidade.ativos.size || mobilidade.ativos.has(l.mobilidade)) &&
@@ -235,7 +234,7 @@ export default function BuscaPessoas() {
   // Para onde a equipe do gestor quer ir: cargos de interesse mais citados (P1 e P2).
   const equipe = membros
     ? (() => {
-        const interessados = linhas.filter((l) => membros.has(l.person.id));
+        const interessados = linhas.filter((l) => membros.has(norm(l.person.nome)));
         const cargos = new Map<string, { n: number; imediato: number }>();
         for (const l of interessados)
           for (const i of l.interesses) {
@@ -325,7 +324,7 @@ export default function BuscaPessoas() {
           </div>
           <div className="equipe-numeros">
             <span>
-              <b>{equipe.total}</b> colaboradores na base
+              <b>{equipe.total}</b> colaboradores na equipe
             </span>
             <span>
               <b>{equipe.interessados}</b> com interesse declarado
@@ -344,6 +343,12 @@ export default function BuscaPessoas() {
                 </span>
               ))}
             </div>
+          )}
+          {LIDERANCA_PENDENTES.length > 0 && (
+            <details className="equipe-pendentes">
+              <summary>{LIDERANCA_PENDENTES.length} pessoas da lista de liderança ainda sem líder identificado (fora de qualquer equipe)</summary>
+              <p>{LIDERANCA_PENDENTES.join(" · ")}</p>
+            </details>
           )}
         </div>
       )}

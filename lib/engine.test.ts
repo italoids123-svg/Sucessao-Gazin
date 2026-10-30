@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { HIERARQUIA_PADRAO, SEDE, pontosAutoavaliacao, pontosAvaliacaoGestor, pontosClima } from "./config.ts";
-import { buildCtx, buildHierMap, equipeDe, perfilDe, planoDesenvolvimento, successorsFor, textoIndicaPessoa } from "./engine.ts";
+import { buildCtx, buildHierMap, equipeDe, gestorDe, perfilDe, planoDesenvolvimento, successorsFor, textoIndicaPessoa } from "./engine.ts";
 import { avaliarMobilidade, mobilidadeAlcancaCidade, ufDe } from "./geo.ts";
 import type { AppData, Chair, Person } from "./types.ts";
 
@@ -143,6 +143,22 @@ test("equipe do gestor: diretos ou toda a cadeia abaixo", () => {
   d.people.find((x) => x.id === "coord")!.gestor = "ana paula SOUZA";
   d.people.find((x) => x.id === "analista")!.gestor = "Carlos Eduardo Lima";
   const ctx = buildCtx(d);
-  assert.deepEqual([...equipeDe("Ana Paula Souza", ctx, false)].sort(), ["coord", "sup"]);
-  assert.deepEqual([...equipeDe("Ana Paula Souza", ctx, true)].sort(), ["analista", "coord", "sup"]);
+  assert.deepEqual([...equipeDe("Ana Paula Souza", ctx, false)].sort(), ["BEATRIZ NUNES", "CARLOS EDUARDO LIMA"]);
+  assert.deepEqual([...equipeDe("Ana Paula Souza", ctx, true)].sort(), ["BEATRIZ NUNES", "CARLOS EDUARDO LIMA", "DIEGO ALVES"]);
+});
+
+test("lista de liderança: vale depois da planilha e antes da posição, e traz quem não está na base", () => {
+  const d = base();
+  d.chairs[2].gestor = "Fulano da Posição";
+  d.people.find((x) => x.id === "analista")!.gestor = "Ana Paula Souza"; // informado na planilha: prevalece
+  const ctx = buildCtx(d, [
+    { colaborador: "CARLOS EDUARDO LIMA", lider: "Ana Paula Souza" },
+    { colaborador: "Diego Alves", lider: "Outro Líder" },
+    { colaborador: "Joana Fora da Base", lider: "Carlos Eduardo Lima" },
+    { colaborador: "Eduardo Ramos", lider: "Eduardo Ramos" }, // a própria pessoa: ignorado
+  ]);
+  assert.equal(gestorDe(d.people.find((x) => x.id === "sup")!, ctx), "Ana Paula Souza");
+  assert.equal(gestorDe(d.people.find((x) => x.id === "analista")!, ctx), "Ana Paula Souza");
+  assert.equal(gestorDe(d.people.find((x) => x.id === "espec")!, ctx), "");
+  assert.deepEqual([...equipeDe("Ana Paula Souza", ctx, true)].sort(), ["CARLOS EDUARDO LIMA", "DIEGO ALVES", "JOANA FORA DA BASE"]);
 });

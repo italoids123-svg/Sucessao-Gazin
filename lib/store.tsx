@@ -2,7 +2,7 @@
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { BASE_DATA_VERSION, STORAGE_KEY } from "./config.ts";
-import { initialData } from "./data.ts";
+import { LIDERANCA, initialData } from "./data.ts";
 import { buildCtx, successorsFor, type EngineCtx } from "./engine.ts";
 import type { AppData, ChairResult } from "./types.ts";
 
@@ -62,7 +62,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     window.setTimeout(() => setToast((t) => (t === msg ? null : t)), 5000);
   }, []);
 
-  const ctx = useMemo(() => buildCtx(data), [data]);
+  const ctx = useMemo(() => buildCtx(data, LIDERANCA), [data]);
   const results = useMemo(() => new Map(data.chairs.map((c) => [c.id, successorsFor(c, ctx)])), [data.chairs, ctx]);
 
   const value = useMemo(

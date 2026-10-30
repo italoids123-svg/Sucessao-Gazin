@@ -48,9 +48,17 @@ export interface EngineCtx {
   succession: AppData["succession"];
   hierMap: Record<string, string[]>;
   chairsById: Map<string, Chair>;
+  /** Liderança imediata da lista oficial: nome do colaborador (normalizado) -> nome do líder. */
+  lideranca: Map<string, string>;
 }
 
-export function buildCtx(data: AppData): EngineCtx {
+/** Vínculo colaborador -> líder vindo da lista de liderança imediata. */
+export interface VinculoLideranca {
+  colaborador: string;
+  lider: string;
+}
+
+export function buildCtx(data: AppData, lideranca: VinculoLideranca[] = []): EngineCtx {
   return {
     chairs: data.chairs,
     people: data.people,
@@ -58,6 +66,7 @@ export function buildCtx(data: AppData): EngineCtx {
     succession: data.succession,
     hierMap: buildHierMap(data.hierarquia),
     chairsById: new Map(data.chairs.map((c) => [c.id, c])),
+    lideranca: new Map(lideranca.filter((v) => v.lider && norm(v.lider) !== norm(v.colaborador)).map((v) => [norm(v.colaborador), v.lider])),
   };
 }
 
@@ -70,37 +79,48 @@ export function occupantOf(chair: Chair, ctx: EngineCtx): Person | undefined {
   return ctx.people.find((p) => chairIdsOf(p).includes(chair.id));
 }
 
-/** Cidade de referência da pessoa: a declarada no questionário, senão a da cadeira que ocupa. */
-/** Gestor imediato: o informado na planilha de coleta, senão o gestor da posição que a pessoa ocupa. */
+/**
+ * Gestor imediato, nesta ordem: o informado na planilha de coleta, o da lista de liderança imediata
+ * e, por último, o gestor da posição que a pessoa ocupa.
+ */
 export function gestorDe(p: Person, ctx: EngineCtx): string {
   if (p.gestor) return p.gestor;
+  const daLista = ctx.lideranca.get(norm(p.nome));
+  if (daLista) return daLista;
   return p.chairId ? (ctx.chairsById.get(p.chairId)?.gestor ?? "") : "";
 }
 
 /**
- * Equipe de um gestor: subordinados diretos ou, com `indiretos`, toda a cadeia abaixo dele
- * (colaboradores dos colaboradores). Compara nomes sem acento e sem diferença de maiúsculas.
+ * Quem responde a quem, por nome normalizado: as pessoas da base (com `gestorDe`) mais quem só está
+ * na lista de liderança. Assim a equipe inclui quem não está na base, sem inventar nível ou cargo.
+ */
+export function mapaDeLideranca(ctx: EngineCtx): Map<string, string> {
+  const mapa = new Map(ctx.lideranca);
+  for (const p of ctx.people) {
+    const g = gestorDe(p, ctx);
+    if (g) mapa.set(norm(p.nome), g);
+  }
+  return mapa;
+}
+
+/**
+ * Equipe de um gestor (nomes normalizados): subordinados diretos ou, com `indiretos`, toda a cadeia
+ * abaixo dele. Compara nomes sem acento e sem diferença de maiúsculas.
  */
 export function equipeDe(gestor: string, ctx: EngineCtx, indiretos: boolean): Set<string> {
-  const porGestor = new Map<string, Person[]>();
-  for (const p of ctx.people) {
-    const g = norm(gestorDe(p, ctx));
-    if (!g) continue;
-    if (!porGestor.has(g)) porGestor.set(g, []);
-    porGestor.get(g)!.push(p);
+  const porGestor = new Map<string, string[]>();
+  for (const [colab, g] of mapaDeLideranca(ctx)) {
+    const k = norm(g);
+    if (!porGestor.has(k)) porGestor.set(k, []);
+    porGestor.get(k)!.push(colab);
   }
   const equipe = new Set<string>();
   const fila = [norm(gestor)];
-  const vistos = new Set(fila);
   while (fila.length) {
-    for (const p of porGestor.get(fila.shift()!) ?? []) {
-      if (equipe.has(p.id)) continue;
-      equipe.add(p.id);
-      const n = norm(p.nome);
-      if (indiretos && !vistos.has(n)) {
-        vistos.add(n);
-        fila.push(n);
-      }
+    for (const n of porGestor.get(fila.shift()!) ?? []) {
+      if (equipe.has(n) || n === norm(gestor)) continue;
+      equipe.add(n);
+      if (indiretos) fila.push(n);
     }
   }
   return equipe;

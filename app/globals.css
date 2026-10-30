@@ -372,6 +372,9 @@ table.t td.num { white-space: nowrap; }
 .equipe-numeros b { color: var(--text); font-size: 15px; }
 .equipe-cargos { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-top: 10px; }
 .equipe-rotulo { font-size: 12.5px; font-weight: 600; color: var(--azul-escuro); margin-right: 4px; }
+.equipe-pendentes { margin-top: 10px; font-size: 12.5px; color: var(--muted); }
+.equipe-pendentes summary { cursor: pointer; }
+.equipe-pendentes p { margin: 6px 0 0; line-height: 1.5; }
 
 /* ---------- Busca por pessoa: desenvolvimento ---------- */
 .pessoa-botoes { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }

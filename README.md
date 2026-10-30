@@ -53,6 +53,7 @@ Para gerar de novo: `npm run exemplo` (semente fixa; `SEMENTE=7 npm run exemplo`
 - `lib/store.tsx` — estado global + persistência versionada no `localStorage`.
 - `components/` e `app/` — Visão geral, uma página por nível, modal da posição e metodologia.
 - `scripts/build-base.py` — conversão da planilha de posições críticas (inclui a regra de nível).
+- `scripts/build-lideranca.py` — conversão da lista de liderança imediata para `lib/lideranca.json`, usada no filtro por gestor. Ordem do gestor: planilha de coleta → lista de liderança → gestor da posição. Nomes incompletos só são completados quando confirmados; quem não tem líder em nenhuma fonte fica em `pendentes`.
 
 ## Critérios de aderência (material "Critérios" da Gazin)
 
