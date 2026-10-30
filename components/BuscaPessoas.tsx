@@ -148,6 +148,7 @@ export default function BuscaPessoas() {
   const gestor = useFiltro();
   const [modoEquipe, setModoEquipe] = useState<"diretos" | "toda">("diretos");
   const [abertos, setAbertos] = useState<Set<string>>(new Set());
+  const [devAbertos, setDevAbertos] = useState<Set<string>>(new Set());
   const [cadeiraAberta, setCadeiraAberta] = useState<string | null>(null);
   const fecharModal = useCallback(() => setCadeiraAberta(null), []);
 
@@ -256,13 +257,15 @@ export default function BuscaPessoas() {
     setBusca("");
     [gestor, nivel, prontidao, cidade, prioridade, mobilidade].forEach((f) => f.limpar());
   };
-  const alternarAberto = (id: string) =>
-    setAbertos((s) => {
+  const alternar = (set: typeof setAbertos) => (id: string) =>
+    set((s) => {
       const n = new Set(s);
       if (n.has(id)) n.delete(id);
       else n.add(id);
       return n;
     });
+  const alternarAberto = alternar(setAbertos);
+  const alternarDev = alternar(setDevAbertos);
   const cadeira = cadeiraAberta ? data.chairs.find((c) => c.id === cadeiraAberta) : undefined;
 
   return (
@@ -363,9 +366,10 @@ export default function BuscaPessoas() {
       ) : (
         visiveis.map((l) => {
           const aberto = abertos.has(l.person.id);
+          const devAberto = devAbertos.has(l.person.id);
           const m = l.melhor;
           return (
-            <div key={l.person.id} className={`cand pessoa ${aberto ? "aberto" : ""}`}>
+            <div key={l.person.id} className={`cand pessoa ${aberto || devAberto ? "aberto" : ""}`}>
               <div className="pessoa-linha">
                 <div className="avatar">{iniciais(l.person.nome)}</div>
                 <div>
@@ -390,14 +394,47 @@ export default function BuscaPessoas() {
                   <span>melhor pontuação</span>
                 </div>
                 <div>{m ? <div className={`pill ${GRUPO[m.cand.grupo].cor}`}>{GRUPO[m.cand.grupo].texto}</div> : <div className="pill">Sem posição alcançável</div>}</div>
-                <button className="ver-detalhes no-export" onClick={() => alternarAberto(l.person.id)} aria-expanded={aberto}>
-                  {aberto ? "Ocultar posições −" : `Ver posições (${l.aparicoes.length}) +`}
-                </button>
+                <div className="pessoa-botoes no-export">
+                  <button className="ver-detalhes" onClick={() => alternarDev(l.person.id)} aria-expanded={devAberto}>
+                    {devAberto ? "Desenvolvimento −" : "Desenvolvimento +"}
+                  </button>
+                  <button className="ver-detalhes" onClick={() => alternarAberto(l.person.id)} aria-expanded={aberto}>
+                    {aberto ? "Ocultar posições −" : `Ver posições (${l.aparicoes.length}) +`}
+                  </button>
+                </div>
               </div>
+              {devAberto && (
+                <div className="cand-detalhes">
+                  <div className="det-titulo">Pontos de desenvolvimento declarados</div>
+                  <div className="dev-prioridades">
+                    {([1, 2] as const).map((n) => {
+                      const i = l.interesses.find((x) => x.prioridade === n);
+                      const texto = n === 1 ? l.rec.desenvolvimento1 : l.rec.desenvolvimento2;
+                      return (
+                        <div key={n} className="dev-prioridade">
+                          <div className="det-rotulo">Prioridade {n}</div>
+                          {i ? (
+                            <>
+                              <div className="dev-cargo">
+                                {i.cargo}
+                                <span className="horizonte"> · {labelOf(HORIZONTE, i.horizonte) || "horizonte não informado"}</span>
+                              </div>
+                              <div className={`dev-texto ${texto ? "" : "vazio"}`}>{texto || "Pontos de desenvolvimento não informados"}</div>
+                            </>
+                          ) : (
+                            <div className="dev-texto vazio">Não declarou Prioridade {n}</div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
               {aberto && (
                 <div className="cand-detalhes">
                   <div className="det-titulo">Posições em que aparece como candidata</div>
                   {l.aparicoes.length ? (
+                    <div className="table-wrap">
                     <table className="t">
                       <thead>
                         <tr>
@@ -424,6 +461,7 @@ export default function BuscaPessoas() {
                         ))}
                       </tbody>
                     </table>
+                    </div>
                   ) : (
                     <div className="empty">
                       Não aparece em nenhuma posição: o cargo informado não existe na base ou corresponde apenas à posição que a pessoa

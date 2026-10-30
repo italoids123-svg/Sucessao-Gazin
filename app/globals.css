@@ -346,7 +346,7 @@ table.t td.num { white-space: nowrap; }
   .pessoa-linha .pessoa-interesses { grid-column: 2 / -1; }
   .pessoa-linha .score { grid-column: 3; grid-row: 1; }
   .pessoa-linha > div:nth-child(5) { grid-column: 2; }
-  .pessoa-linha .ver-detalhes { grid-column: 3; }
+  .pessoa-linha .pessoa-botoes { grid-column: 2 / -1; flex-direction: row; justify-content: flex-end; gap: 14px; }
 }
 
 /* ---------- Critérios em blocos ---------- */
@@ -372,3 +372,12 @@ table.t td.num { white-space: nowrap; }
 .equipe-numeros b { color: var(--text); font-size: 15px; }
 .equipe-cargos { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-top: 10px; }
 .equipe-rotulo { font-size: 12.5px; font-weight: 600; color: var(--azul-escuro); margin-right: 4px; }
+
+/* ---------- Busca por pessoa: desenvolvimento ---------- */
+.pessoa-botoes { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+.dev-prioridades { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.dev-prioridade { background: #f3f7f8; border-radius: 8px; padding: 10px 12px; }
+.dev-cargo { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+.dev-texto { font-size: 13.5px; line-height: 1.5; }
+.dev-texto.vazio { color: var(--muted); font-style: italic; }
+@media (max-width: 700px) { .dev-prioridades { grid-template-columns: 1fr; } }
