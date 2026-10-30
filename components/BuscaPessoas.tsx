@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { HORIZONTE, MOBILIDADE, NIVEIS, PERFIL_LABEL, labelOf } from "@/lib/config.ts";
-import { cidadeDaPessoa, fmtPontos, norm, perfilDe } from "@/lib/engine.ts";
+import { cidadeDaPessoa, equipeDe, fmtPontos, gestorDe, norm, perfilDe } from "@/lib/engine.ts";
 import { useStore } from "@/lib/store.tsx";
 import type { Candidate, Chair, Person, SuccessionRecord } from "@/lib/types.ts";
 import ChairModal from "./ChairModal";
@@ -50,6 +50,7 @@ function Suspensa({
   alternar,
   limpar,
   extra,
+  buscavel,
 }: {
   titulo: string;
   opcoes: string[];
@@ -57,8 +58,10 @@ function Suspensa({
   alternar: (v: string) => void;
   limpar: () => void;
   extra?: React.ReactNode;
+  buscavel?: boolean; // listas longas (ex.: gestores) ganham um campo para filtrar as opções
 }) {
   const [aberta, setAberta] = useState(false);
+  const [filtroOpcoes, setFiltroOpcoes] = useState("");
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!aberta) return;
@@ -82,7 +85,16 @@ function Suspensa({
       {aberta && (
         <div className="suspensa-painel" role="listbox" aria-multiselectable>
           {extra}
-          {opcoes.map((o) => (
+          {buscavel && (
+            <input
+              className="suspensa-busca"
+              placeholder="Digite um nome"
+              value={filtroOpcoes}
+              onChange={(e) => setFiltroOpcoes(e.target.value)}
+              autoFocus
+            />
+          )}
+          {opcoes.filter((o) => !filtroOpcoes || norm(o).includes(norm(filtroOpcoes))).map((o) => (
             <label key={o} className="suspensa-opcao">
               <input type="checkbox" checked={ativos.has(o)} onChange={() => alternar(o)} />
               {o}
@@ -133,6 +145,8 @@ export default function BuscaPessoas() {
   const cidade = useFiltro();
   const prioridade = useFiltro();
   const mobilidade = useFiltro();
+  const gestor = useFiltro();
+  const [modoEquipe, setModoEquipe] = useState<"diretos" | "toda">("diretos");
   const [abertos, setAbertos] = useState<Set<string>>(new Set());
   const [cadeiraAberta, setCadeiraAberta] = useState<string | null>(null);
   const fecharModal = useCallback(() => setCadeiraAberta(null), []);
@@ -184,6 +198,22 @@ export default function BuscaPessoas() {
   const opcoesCidade = [...new Set(linhas.map((l) => l.cidade))].sort((a, b) => (a === SEM_CIDADE ? 1 : b === SEM_CIDADE ? -1 : collator.compare(a, b)));
   const opcoesMobilidade = [...MOBILIDADE.map((m) => m.label), ...(linhas.some((l) => l.mobilidade === SEM_MOBILIDADE) ? [SEM_MOBILIDADE] : [])];
 
+  // Gestores: quem aparece como gestor imediato de alguém da base.
+  const opcoesGestor = useMemo(() => {
+    const porNome = new Map<string, string>();
+    for (const p of data.people) {
+      const g = gestorDe(p, ctx);
+      if (g && !porNome.has(norm(g))) porNome.set(norm(g), g);
+    }
+    return [...porNome.values()].sort(collator.compare);
+  }, [data.people, ctx]);
+  const membros = useMemo(() => {
+    if (!gestor.ativos.size) return null;
+    const ids = new Set<string>();
+    for (const g of gestor.ativos) for (const id of equipeDe(g, ctx, modoEquipe === "toda")) ids.add(id);
+    return ids;
+  }, [gestor.ativos, ctx, modoEquipe]);
+
   // Um interesse conta quando passa ao mesmo tempo pelos filtros de prioridade, prontidão e (se for o modo) nível de interesse.
   const interesseValido = (i: Interesse) =>
     (!prioridade.ativos.size || prioridade.ativos.has(`Prioridade ${i.prioridade}`)) &&
@@ -194,16 +224,37 @@ export default function BuscaPessoas() {
   const visiveis = linhas.filter(
     (l) =>
       (!q || norm(`${l.person.nome} ${l.person.cargo}`).includes(q)) &&
+      (!membros || membros.has(l.person.id)) &&
       (modoNivel !== "atual" || !nivel.ativos.size || nivel.ativos.has(l.person.nivel)) &&
       (!cidade.ativos.size || cidade.ativos.has(l.cidade)) &&
       (!mobilidade.ativos.size || mobilidade.ativos.has(l.mobilidade)) &&
       l.interesses.some(interesseValido),
   );
 
-  const algumFiltro = !!(q || nivel.ativos.size || prontidao.ativos.size || cidade.ativos.size || prioridade.ativos.size || mobilidade.ativos.size);
+  // Para onde a equipe do gestor quer ir: cargos de interesse mais citados (P1 e P2).
+  const equipe = membros
+    ? (() => {
+        const interessados = linhas.filter((l) => membros.has(l.person.id));
+        const cargos = new Map<string, { n: number; imediato: number }>();
+        for (const l of interessados)
+          for (const i of l.interesses) {
+            const c = cargos.get(i.cargo) ?? { n: 0, imediato: 0 };
+            c.n++;
+            if (i.horizonte === "imediato") c.imediato++;
+            cargos.set(i.cargo, c);
+          }
+        return {
+          total: membros.size,
+          interessados: interessados.length,
+          cargos: [...cargos.entries()].sort((a, b) => b[1].n - a[1].n || collator.compare(a[0], b[0])),
+        };
+      })()
+    : null;
+
+  const algumFiltro = !!(gestor.ativos.size || q || nivel.ativos.size || prontidao.ativos.size || cidade.ativos.size || prioridade.ativos.size || mobilidade.ativos.size);
   const limparTudo = () => {
     setBusca("");
-    [nivel, prontidao, cidade, prioridade, mobilidade].forEach((f) => f.limpar());
+    [gestor, nivel, prontidao, cidade, prioridade, mobilidade].forEach((f) => f.limpar());
   };
   const alternarAberto = (id: string) =>
     setAbertos((s) => {
@@ -224,6 +275,24 @@ export default function BuscaPessoas() {
       <div className="busca-filtros">
         <input className="busca-texto" placeholder="Buscar por nome ou cargo atual" value={busca} onChange={(e) => setBusca(e.target.value)} />
         <Suspensa
+          titulo={modoEquipe === "diretos" ? "Gestor · diretos" : "Gestor · equipe"}
+          opcoes={opcoesGestor}
+          ativos={gestor.ativos}
+          alternar={gestor.alternar}
+          limpar={gestor.limpar}
+          buscavel
+          extra={
+            <div className="filtro-modo">
+              <button className={modoEquipe === "diretos" ? "ativo" : ""} onClick={() => setModoEquipe("diretos")}>
+                Só diretos
+              </button>
+              <button className={modoEquipe === "toda" ? "ativo" : ""} onClick={() => setModoEquipe("toda")}>
+                Toda a equipe
+              </button>
+            </div>
+          }
+        />
+        <Suspensa
           titulo={modoNivel === "atual" ? "Cargo atual" : "Cargo de interesse"}
           opcoes={opcoesNivel}
           ativos={nivel.ativos}
@@ -240,11 +309,41 @@ export default function BuscaPessoas() {
             </div>
           }
         />
-        <Suspensa titulo="Prontidão declarada" opcoes={opcoesProntidao} ativos={prontidao.ativos} alternar={prontidao.alternar} limpar={prontidao.limpar} />
+        <Suspensa titulo="Prontidão" opcoes={opcoesProntidao} ativos={prontidao.ativos} alternar={prontidao.alternar} limpar={prontidao.limpar} />
         <Suspensa titulo="Prioridade" opcoes={["Prioridade 1", "Prioridade 2"]} ativos={prioridade.ativos} alternar={prioridade.alternar} limpar={prioridade.limpar} />
         <Suspensa titulo="Mobilidade" opcoes={opcoesMobilidade} ativos={mobilidade.ativos} alternar={mobilidade.alternar} limpar={mobilidade.limpar} />
         <Suspensa titulo="Cidade" opcoes={opcoesCidade} ativos={cidade.ativos} alternar={cidade.alternar} limpar={cidade.limpar} />
       </div>
+
+      {equipe && (
+        <div className="equipe-resumo">
+          <div className="equipe-titulo">
+            {[...gestor.ativos].join(", ")} · {modoEquipe === "diretos" ? "subordinados diretos" : "toda a equipe"}
+          </div>
+          <div className="equipe-numeros">
+            <span>
+              <b>{equipe.total}</b> colaboradores na base
+            </span>
+            <span>
+              <b>{equipe.interessados}</b> com interesse declarado
+            </span>
+            <span>
+              <b>{equipe.total - equipe.interessados}</b> sem interesse declarado
+            </span>
+          </div>
+          {equipe.cargos.length > 0 && (
+            <div className="equipe-cargos">
+              <span className="equipe-rotulo">Para onde a equipe quer ir:</span>
+              {equipe.cargos.map(([cargo, c]) => (
+                <span key={cargo} className="chip azul">
+                  {cargo} · {c.n}
+                  {c.imediato ? ` (${c.imediato} imediato)` : ""}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
 
       <div className="busca-resumo">
         <span>

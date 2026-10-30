@@ -307,7 +307,7 @@ table.t td.num { white-space: nowrap; }
 /* ---------- Busca por pessoa ---------- */
 .busca-filtros {
   background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 14px; margin: 18px 0 12px;
-  box-shadow: var(--shadow); display: grid; grid-template-columns: minmax(220px, 1.6fr) repeat(5, minmax(150px, 1fr)); gap: 10px; align-items: end;
+  box-shadow: var(--shadow); display: grid; grid-template-columns: minmax(200px, 1.4fr) repeat(6, minmax(120px, 1fr)); gap: 10px; align-items: end;
 }
 .busca-texto { border: 1px solid var(--border); border-radius: 8px; padding: 8px 11px; font-size: 14px; color: var(--text); background: var(--card); width: 100%; }
 .busca-texto:focus { outline: 2px solid var(--teal-claro); border-color: var(--teal); }
@@ -363,3 +363,12 @@ table.t td.num { white-space: nowrap; }
 .bloco-nota { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 12.5px; color: var(--muted); line-height: 1.55; }
 @media (max-width: 1100px) { .blocos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 700px) { .blocos { grid-template-columns: 1fr; } }
+
+/* ---------- Busca por pessoa: gestor e resumo da equipe ---------- */
+.suspensa-busca { width: 100%; border: 1px solid var(--border); border-radius: 7px; padding: 6px 9px; font-size: 13px; margin: 2px 0 6px; }
+.equipe-resumo { background: var(--teal-claro); border: 1px solid #b9d7dc; border-radius: var(--radius); padding: 12px 16px; margin-bottom: 12px; }
+.equipe-titulo { font-weight: 700; color: var(--azul-escuro); margin-bottom: 6px; }
+.equipe-numeros { display: flex; gap: 18px; flex-wrap: wrap; font-size: 13.5px; color: var(--muted); }
+.equipe-numeros b { color: var(--text); font-size: 15px; }
+.equipe-cargos { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-top: 10px; }
+.equipe-rotulo { font-size: 12.5px; font-weight: 600; color: var(--azul-escuro); margin-right: 4px; }

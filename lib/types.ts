@@ -22,6 +22,7 @@ export interface Person {
   diretoria: string;
   chairId: string | null; // cadeira principal
   chairIds?: string[]; // todas as cadeiras que ocupa (ex.: Controller + Diretoria financeira)
+  gestor?: string; // gestor imediato informado na planilha; vazio: o gestor da posição que ocupa
 }
 
 export interface HierarquiaEntry {

@@ -212,6 +212,17 @@ for (const c of data.chairs) {
 // Diretoria financeira: indicação com nome ambíguo ("Cleiton Silva" = dois Cleitons na base), para mostrar o alerta.
 respostas.get(norm("Fernando Sanches Graci"))!["Possível sucessor da sua posição (nome)"] = "Cleiton Silva, Maykon Fernando da Costa";
 
+// Gestor dos analistas inventados: um supervisor, coordenador ou gerente da mesma área, escolhido
+// pelo nome (sem usar o sorteio, para não alterar o restante do cenário).
+function gestorFicticio(nome: string, diretoria: string): string {
+  const lideres = data.chairs.filter(
+    (c) => c.nome && c.diretoria === diretoria && ["Supervisão", "Coordenação", "Gerência", "Gerência Executiva"].includes(c.nivel),
+  );
+  if (!lideres.length) return "";
+  const h = [...nome].reduce((a, ch) => (a * 31 + ch.charCodeAt(0)) % 9973, 7);
+  return lideres[h % lideres.length].nome;
+}
+
 // ---------- monta a planilha ----------
 const wb = buildWorkbook(data);
 const leiaMe = XLSX.utils.sheet_to_json<string[]>(wb.Sheets["Leia-me"], { header: 1 });
@@ -226,7 +237,14 @@ wb.Sheets["Leia-me"] = XLSX.utils.aoa_to_sheet([
 const base = XLSX.utils.sheet_to_json<Linha>(wb.Sheets["Base de dados"]);
 for (const linha of base) Object.assign(linha, respostas.get(norm(String(linha["Nome completo"]))) ?? {});
 for (const f of ficticios)
-  base.push({ "Nome completo": f.nome, "Nível": "Analista / Técnico", "Cargo atual": f.cargo, "Diretoria": f.diretoria, ...respostas.get(norm(f.nome))! });
+  base.push({
+    "Nome completo": f.nome,
+    "Nível": "Analista / Técnico",
+    "Cargo atual": f.cargo,
+    "Diretoria": f.diretoria,
+    "Gestor imediato (nome completo)": gestorFicticio(f.nome, f.diretoria),
+    ...respostas.get(norm(f.nome))!,
+  });
 const colunas = Object.keys(XLSX.utils.sheet_to_json<Linha>(wb.Sheets["Base de dados"], { header: 1 })[0] as unknown as object).length
   ? (XLSX.utils.sheet_to_json<string[]>(wb.Sheets["Base de dados"], { header: 1 })[0] as string[])
   : [];

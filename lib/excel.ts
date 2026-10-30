@@ -21,6 +21,7 @@ const COL = {
   nivel: "Nível",
   cargo: "Cargo atual",
   diretoria: "Diretoria",
+  gestor: "Gestor imediato (nome completo)",
   localidade: "Localidade atual (Cidade/Estado)",
   mobilidade: "Mobilidade",
   p1: "Prioridade 1 (cargo de interesse)",
@@ -102,6 +103,7 @@ export function buildWorkbook(data: AppData): XLSX.WorkBook {
       [COL.nivel]: p.nivel,
       [COL.cargo]: p.cargo,
       [COL.diretoria]: p.diretoria,
+      [COL.gestor]: p.gestor || (p.chairId ? (chairById.get(p.chairId)?.gestor ?? "") : ""),
       [COL.localidade]: cidade,
       [COL.mobilidade]: labelOf(MOBILIDADE, r.mobilidade),
       [COL.p1]: r.prioridade1 ?? "",
@@ -314,6 +316,14 @@ export function applyWorkbook(wb: XLSX.WorkBook, current: AppData): { data: AppD
         if (pick(r, COL.cargo)) p.cargo = pick(r, COL.cargo);
         if (pick(r, COL.diretoria)) p.diretoria = pick(r, COL.diretoria);
       }
+    }
+
+    // Gestor imediato: guarda só quando difere do gestor que a posição ocupada já indica.
+    const gestor = pick(r, COL.gestor);
+    if (gestor) {
+      const daPosicao = p.chairId ? chairs.find((c) => c.id === p!.chairId)?.gestor : undefined;
+      if (norm(gestor) === norm(daPosicao)) delete p.gestor;
+      else p.gestor = gestor;
     }
 
     const rec: SuccessionRecord = { ...(succession[p.id] ?? {}) };

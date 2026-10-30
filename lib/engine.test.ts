@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { HIERARQUIA_PADRAO, SEDE, pontosAutoavaliacao, pontosAvaliacaoGestor, pontosClima } from "./config.ts";
-import { buildCtx, buildHierMap, perfilDe, planoDesenvolvimento, successorsFor, textoIndicaPessoa } from "./engine.ts";
+import { buildCtx, buildHierMap, equipeDe, perfilDe, planoDesenvolvimento, successorsFor, textoIndicaPessoa } from "./engine.ts";
 import { avaliarMobilidade, mobilidadeAlcancaCidade, ufDe } from "./geo.ts";
 import type { AppData, Chair, Person } from "./types.ts";
 
@@ -134,4 +134,15 @@ test("nome indicado ambíguo só vale para quem se indicou à posição", () => 
 test("plano de desenvolvimento considera nível e alimentadores", () => {
   const p = planoDesenvolvimento("Gerência", buildCtx(base()));
   assert.deepEqual(p, { ativos: 1, total: 4, pct: 25 });
+});
+
+test("equipe do gestor: diretos ou toda a cadeia abaixo", () => {
+  const d = base();
+  // lider (Ana Paula) ocupa g1; sup responde a ela pela posição; coord e analista informados na planilha.
+  d.chairs[2].gestor = "Ana Paula Souza";
+  d.people.find((x) => x.id === "coord")!.gestor = "ana paula SOUZA";
+  d.people.find((x) => x.id === "analista")!.gestor = "Carlos Eduardo Lima";
+  const ctx = buildCtx(d);
+  assert.deepEqual([...equipeDe("Ana Paula Souza", ctx, false)].sort(), ["coord", "sup"]);
+  assert.deepEqual([...equipeDe("Ana Paula Souza", ctx, true)].sort(), ["analista", "coord", "sup"]);
 });

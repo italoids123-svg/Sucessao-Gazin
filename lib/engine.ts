@@ -71,6 +71,41 @@ export function occupantOf(chair: Chair, ctx: EngineCtx): Person | undefined {
 }
 
 /** Cidade de referência da pessoa: a declarada no questionário, senão a da cadeira que ocupa. */
+/** Gestor imediato: o informado na planilha de coleta, senão o gestor da posição que a pessoa ocupa. */
+export function gestorDe(p: Person, ctx: EngineCtx): string {
+  if (p.gestor) return p.gestor;
+  return p.chairId ? (ctx.chairsById.get(p.chairId)?.gestor ?? "") : "";
+}
+
+/**
+ * Equipe de um gestor: subordinados diretos ou, com `indiretos`, toda a cadeia abaixo dele
+ * (colaboradores dos colaboradores). Compara nomes sem acento e sem diferença de maiúsculas.
+ */
+export function equipeDe(gestor: string, ctx: EngineCtx, indiretos: boolean): Set<string> {
+  const porGestor = new Map<string, Person[]>();
+  for (const p of ctx.people) {
+    const g = norm(gestorDe(p, ctx));
+    if (!g) continue;
+    if (!porGestor.has(g)) porGestor.set(g, []);
+    porGestor.get(g)!.push(p);
+  }
+  const equipe = new Set<string>();
+  const fila = [norm(gestor)];
+  const vistos = new Set(fila);
+  while (fila.length) {
+    for (const p of porGestor.get(fila.shift()!) ?? []) {
+      if (equipe.has(p.id)) continue;
+      equipe.add(p.id);
+      const n = norm(p.nome);
+      if (indiretos && !vistos.has(n)) {
+        vistos.add(n);
+        fila.push(n);
+      }
+    }
+  }
+  return equipe;
+}
+
 export function cidadeDaPessoa(p: Person, rec: SuccessionRecord | undefined, ctx: EngineCtx): string {
   if (rec?.localidadeAtual) return rec.localidadeAtual;
   return p.chairId ? (ctx.chairsById.get(p.chairId)?.cidade ?? "") : "";

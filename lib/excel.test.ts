@@ -34,7 +34,12 @@ test("merge aditivo: atualiza questionário, cria pessoa nova e cidade da cadeir
     alvo["Lidera equipe"] = "Sim";
     alvo["Pesquisa de clima 2026 (%) - líderes (equipe)"] = 0.82; // célula formatada como % no Excel
     alvo["Pesquisa de clima 2026 (%) - não líderes (departamento)"] = 140; // inválido: gera aviso
-    base.push({ "Nome completo": "Pessoa Nova Teste", "Nível": "Analista / Técnico", "Horizonte 1": "xpto" });
+    base.push({
+      "Nome completo": "Pessoa Nova Teste",
+      "Nível": "Analista / Técnico",
+      "Horizonte 1": "xpto",
+      "Gestor imediato (nome completo)": "Alessandra Guerra de Souza",
+    });
     wb.Sheets["Base de dados"] = XLSX.utils.json_to_sheet(base);
     const cad = XLSX.utils.sheet_to_json<Record<string, unknown>>(wb.Sheets["Cadeiras"]);
     cad[0]["Cidade (Cidade/Estado)"] = "Douradina/PR";
@@ -58,5 +63,7 @@ test("merge aditivo: atualiza questionário, cria pessoa nova e cidade da cadeir
     },
   );
   assert.ok(stats.avisos.some((a) => a.includes("xpto")));
+  assert.equal(data.people.find((x) => x.nome === "Pessoa Nova Teste")!.gestor, "Alessandra Guerra de Souza");
+  assert.equal(p.gestor, undefined); // igual ao gestor da posição: não duplica
   assert.ok(stats.avisos.some((a) => a.includes("departamento")));
 });

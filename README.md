@@ -34,7 +34,8 @@ Para gerar de novo: `npm run exemplo` (semente fixa; `SEMENTE=7 npm run exemplo`
 
 ## Recursos da tela
 
-- **Busca por pessoa**: todos os interessados, com filtros em listas suspensas de múltipla escolha (cargos por nível atual ou de
+- **Busca por pessoa**: todos os interessados, com filtro por gestor (só diretos ou toda a equipe, com
+  resumo de para onde a equipe quer ir) e filtros em listas suspensas de múltipla escolha (cargos por nível atual ou de
   interesse, prontidão, prioridade, mobilidade e cidade) e as posições em que cada um aparece.
 
 - **Tela cheia**: botão na barra superior (sai também com Esc).
