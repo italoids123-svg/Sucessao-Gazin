@@ -200,11 +200,16 @@ export default function BuscaPessoas() {
   const opcoesCidade = [...new Set(linhas.map((l) => l.cidade))].sort((a, b) => (a === SEM_CIDADE ? 1 : b === SEM_CIDADE ? -1 : collator.compare(a, b)));
   const opcoesMobilidade = [...MOBILIDADE.map((m) => m.label), ...(linhas.some((l) => l.mobilidade === SEM_MOBILIDADE) ? [SEM_MOBILIDADE] : [])];
 
-  // Gestores: quem aparece como líder imediato na lista de liderança ou na base (nome da base, com acento, quando houver).
+  // Gestores: só líderes com alguém da base de posições críticas na equipe (direta ou abaixo), ou seja, com posições
+  // sendo trabalhadas. Nome da base, com acento, quando houver.
   const opcoesGestor = useMemo(() => {
     const daBase = new Map(data.people.map((p) => [norm(p.nome), p.nome]));
     const porNome = new Map<string, string>();
-    for (const g of mapaDeLideranca(ctx).values()) if (!porNome.has(norm(g))) porNome.set(norm(g), daBase.get(norm(g)) ?? g);
+    for (const g of mapaDeLideranca(ctx).values()) {
+      const k = norm(g);
+      if (porNome.has(k) || ![...equipeDe(g, ctx, true)].some((n) => daBase.has(n))) continue;
+      porNome.set(k, daBase.get(k) ?? g);
+    }
     return [...porNome.values()].sort(collator.compare);
   }, [data.people, ctx]);
   const membros = useMemo(() => {
